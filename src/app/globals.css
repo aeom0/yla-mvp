@@ -1,0 +1,56 @@
+/* Tailwind v4 */
+@import "tailwindcss";
+
+/* Fuentes */
+@import "@fontsource/playfair-display/600.css";
+@import "@fontsource/lato/400.css";
+
+/* Paleta fija */
+:root{
+  --lavender:#B497D6;
+  --beige:#F6EBD9;
+  --gold:#E8D3A3;
+  --smoke:#DADADA;
+  --ink:#333333;
+
+  --font-title:"Playfair Display", serif;
+  --font-body:"Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Tokens LIGHT */
+:root{
+  --bg:var(--beige);
+  --text:var(--ink);
+  --card:#ffffff;
+  --border:var(--smoke);
+  --muted:#6b6b6b;
+  --accent:var(--lavender);
+}
+
+/* Tokens DARK */
+.dark{
+  --bg:#1c1a22;
+  --text:var(--beige);
+  --card:#24212b;
+  --border:#3a3645;
+  --muted:#a39fb0;
+  --accent:var(--gold);
+}
+
+/* Base */
+*,*::before,*::after{ box-sizing:border-box; }
+html,body{ height:100%; }
+body{
+  margin:0;
+  font-family:var(--font-body);
+  background:var(--bg);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+h1,h2,h3,.title{ font-family:var(--font-title); }
+
+/* Helpers opcionales */
+.container-yla{ max-width:80rem; margin:0 auto; padding:0 1rem; }
+.card{ background:var(--card); border:1px solid var(--border); border-radius:1rem; box-shadow:0 6px 24px rgba(0,0,0,.06); }
+.transition-soft{ transition:all .25s cubic-bezier(.22,.61,.36,1); }
