@@ -1,41 +1,38 @@
 "use client";
 
-import { Home, BookOpen, Sparkles, User } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Home, Calendar, BookOpenText, ShoppingBag, BarChart3 } from "lucide-react";
 
 const items = [
-  { href: "/", icon: Home, label: "Inicio" },
-  { href: "/ritual", icon: Sparkles, label: "Ritual" },
-  { href: "/bitacora", icon: BookOpen, label: "Bitácora" },
-  { href: "/perfil", icon: User, label: "Perfil" },
+  { href: "/", label: "Inicio", Icon: Home },
+  { href: "/agenda", label: "Agenda", Icon: Calendar },
+  { href: "/bitacora", label: "Bitácora", Icon: BookOpenText },
+  { href: "/tienda", label: "Tienda", Icon: ShoppingBag },
+  { href: "/dashboard", label: "Dash", Icon: BarChart3 },
 ];
 
 export function BottomNav() {
   const pathname = usePathname();
-
   return (
-    <nav className="sticky bottom-0 z-40 border-t border-[var(--border)] bg-[var(--bg)]/90 backdrop-blur md:hidden">
-      <ul className="container-yla flex justify-around py-2">
-        {items.map(({ href, icon: Icon, label }) => {
-          const active = pathname === href;
+    <nav className="md:hidden sticky bottom-0 z-50 border-t border-[var(--border)] bg-[var(--bg)]/95 backdrop-blur">
+      <div className="grid grid-cols-5">
+        {items.map(({ href, label, Icon }) => {
+          const active = pathname === href || (href !== "/" && pathname.startsWith(href));
           return (
-            <li key={href}>
-              <Link
-                href={href}
-                className={`flex flex-col items-center gap-0.5 text-xs transition-soft ${
-                  active
-                    ? "text-[var(--accent)]"
-                    : "text-[var(--muted)] hover:text-[var(--text)]"
-                }`}
-              >
-                <Icon className="h-5 w-5" />
-                {label}
-              </Link>
-            </li>
+            <Link
+              key={href}
+              href={href}
+              className={`flex flex-col items-center justify-center py-2 text-xs transition-soft ${
+                active ? "text-[var(--accent)]" : "text-[var(--muted)] hover:text-[var(--text)]"
+              }`}
+            >
+              <Icon size={18} className="mb-0.5" />
+              {label}
+            </Link>
           );
         })}
-      </ul>
+      </div>
     </nav>
   );
 }

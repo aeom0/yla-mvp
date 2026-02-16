@@ -1,24 +1,44 @@
 "use client";
 
-import { Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { ThemeToggle } from "@/components/theme/ThemeToggle";
+
+const links = [
+  { href: "/agenda", label: "Agenda" },
+  { href: "/bitacora", label: "Bitácora" },
+  { href: "/tienda", label: "Tienda" },
+  { href: "/dashboard", label: "Dashboard" },
+];
 
 export function Header() {
-  const { theme, setTheme } = useTheme();
-
+  const pathname = usePathname();
   return (
-    <header className="sticky top-0 z-40 border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur">
-      <div className="container-yla flex items-center justify-between h-14">
-        <span className="title text-lg tracking-tight">YLA</span>
-
-        <button
-          aria-label="Cambiar tema"
-          onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-          className="rounded-full p-2 hover:bg-[var(--accent)]/20 transition-soft"
-        >
-          <Sun className="h-5 w-5 hidden dark:block" />
-          <Moon className="h-5 w-5 block dark:hidden" />
-        </button>
+    <header className="sticky top-0 z-50 border-b border-[var(--border)] bg-[var(--bg)]/80 backdrop-blur">
+      <div className="container-yla h-14 flex items-center justify-between">
+        <Link href="/" className="title text-lg md:text-xl tracking-tight">
+          Yoga con Lógica y Alma
+        </Link>
+        <nav className="hidden md:flex items-center gap-4 text-sm">
+          {links.map((l) => {
+            const active = pathname.startsWith(l.href);
+            return (
+              <Link
+                key={l.href}
+                href={l.href}
+                className={`px-3 py-1.5 rounded-2xl transition-soft ${
+                  active ? "bg-[var(--card)] border border-[var(--border)]" : "hover:opacity-80"
+                }`}
+              >
+                {l.label}
+              </Link>
+            );
+          })}
+          <ThemeToggle />
+        </nav>
+        <div className="md:hidden">
+          <ThemeToggle />
+        </div>
       </div>
     </header>
   );
