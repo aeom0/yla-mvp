@@ -8,29 +8,73 @@ export function Hero() {
   const { hero } = siteContent;
 
   return (
-    <section className="relative min-h-[85vh] flex items-center justify-center overflow-hidden">
-      {/* Background decorativo sutil */}
-      <div className="absolute inset-0 bg-gradient-to-b from-accent/5 to-transparent pointer-events-none" />
+    <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Fondo degradado lila → beige */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(160deg, rgba(180,151,214,.13) 0%, rgba(232,211,163,.10) 60%, transparent 100%)",
+        }}
+      />
+      {/* Orbe decorativo superior derecha */}
+      <div
+        aria-hidden="true"
+        className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-20 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, var(--lavender) 0%, transparent 70%)",
+        }}
+      />
+      {/* Orbe dorado inferior izquierda */}
+      <div
+        aria-hidden="true"
+        className="absolute -bottom-16 -left-16 w-72 h-72 rounded-full opacity-15 pointer-events-none"
+        style={{
+          background:
+            "radial-gradient(circle, var(--gold-deep) 0%, transparent 70%)",
+        }}
+      />
 
-      <div className="container-yla relative z-10 text-center py-20">
-        {/* Tagline */}
-        <div className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 mb-6 shadow-soft">
-          <Sparkles size={16} className="text-accent" />
-          <span className="text-sm text-muted">{hero.tagline}</span>
+      <div className="container-yla relative z-10 text-center py-24">
+        {/* Tagline pill */}
+        <div
+          className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8"
+          style={{
+            background: "rgba(232,211,163,.25)",
+            border: "1px solid var(--gold-deep)",
+          }}
+        >
+          <Sparkles size={14} style={{ color: "var(--gold-deep)" }} />
+          <span
+            className="text-sm font-medium"
+            style={{ color: "var(--gold-deep)" }}
+          >
+            {hero.tagline}
+          </span>
         </div>
 
-        {/* Título principal */}
-        <h1 className="title text-4xl md:text-6xl lg:text-7xl mb-4 bg-gradient-to-br from-accent to-accent/60 bg-clip-text text-transparent">
+        {/* Título */}
+        <h1
+          className="title text-5xl md:text-6xl lg:text-7xl mb-5 leading-tight"
+          style={{ color: "var(--accent)" }}
+        >
           {hero.title}
         </h1>
 
         {/* Subtítulo */}
-        <p className="text-xl md:text-2xl text-muted mb-3 max-w-2xl mx-auto">
+        <p
+          className="text-xl md:text-2xl mb-3 max-w-2xl mx-auto font-medium"
+          style={{ color: "var(--text)" }}
+        >
           {hero.subtitle}
         </p>
 
         {/* Descripción */}
-        <p className="text-lg md:text-xl mb-10 max-w-xl mx-auto italic">
+        <p
+          className="text-lg md:text-xl mb-12 max-w-xl mx-auto italic"
+          style={{ color: "var(--muted)" }}
+        >
           &ldquo;{hero.description}&rdquo;
         </p>
 
@@ -58,8 +102,8 @@ export function Hero() {
           </Button>
         </div>
 
-        {/* Stats decorativos */}
-        <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
+        {/* Stats — con acento dorado en el valor */}
+        <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
           {[
             { value: "4", label: "Programas" },
             { value: "100+", label: "Alumnas" },
@@ -67,10 +111,15 @@ export function Hero() {
             { value: "20+", label: "Productos" },
           ].map((stat, i) => (
             <div key={i} className="text-center">
-              <div className="text-3xl md:text-4xl font-semibold text-accent mb-1">
+              <div
+                className="text-4xl md:text-5xl font-semibold mb-1"
+                style={{ color: "var(--gold-deep)", fontFamily: "var(--font-title)" }}
+              >
                 {stat.value}
               </div>
-              <div className="text-sm text-muted">{stat.label}</div>
+              <div className="text-sm" style={{ color: "var(--muted)" }}>
+                {stat.label}
+              </div>
             </div>
           ))}
         </div>

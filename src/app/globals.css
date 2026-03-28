@@ -4,6 +4,7 @@
 /* Fuentes */
 @import "@fontsource/playfair-display/600.css";
 @import "@fontsource/lato/400.css";
+@import "@fontsource/lato/700.css";
 
 /* Tailwind v4 theme tokens */
 @theme {
@@ -13,60 +14,87 @@
   --color-border: var(--border);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
+  --color-accent-warm: var(--accent-warm);
   --color-lavender: var(--lavender);
   --color-beige: var(--beige);
   --color-gold: var(--gold);
   --color-smoke: var(--smoke);
   --color-ink: var(--ink);
   --shadow-soft: 0 6px 24px rgba(0,0,0,.06);
+  --shadow-warm: 0 8px 32px rgba(232,211,163,.25);
 }
 
 /* Paleta fija */
 :root{
-  --lavender:#B497D6;
-  --beige:#F6EBD9;
-  --gold:#E8D3A3;
-  --smoke:#DADADA;
-  --ink:#333333;
+  --lavender: #B497D6;
+  --lavender-deep: #9478bc;
+  --beige: #F6EBD9;
+  --beige-warm: #f0e0c4;
+  --gold: #E8D3A3;
+  --gold-deep: #c9a96e;
+  --smoke: #DADADA;
+  --ink: #333333;
 
-  --font-title:"Playfair Display", serif;
-  --font-body:"Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-title: "Playfair Display", serif;
+  --font-body: "Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 /* Tokens LIGHT */
 :root{
-  --bg:var(--beige);
-  --text:var(--ink);
-  --card:#ffffff;
-  --border:var(--smoke);
-  --muted:#6b6b6b;
-  --accent:var(--lavender);
+  --bg: var(--beige);
+  --text: var(--ink);
+  --card: #ffffff;
+  --border: rgba(180,151,214,.2);
+  --muted: #7a7080;
+  --accent: var(--lavender);
+  --accent-warm: var(--gold-deep);
+  --section-alt: #f0e6f6;  /* lila muy suave para secciones alternas */
 }
 
 /* Tokens DARK */
 .dark{
-  --bg:#1c1a22;
-  --text:var(--beige);
-  --card:#24212b;
-  --border:#3a3645;
-  --muted:#a39fb0;
-  --accent:var(--gold);
+  --bg: #1c1a22;
+  --text: var(--beige);
+  --card: #24212b;
+  --border: #3a3645;
+  --muted: #a39fb0;
+  --accent: var(--lavender);
+  --accent-warm: var(--gold);
+  --section-alt: #211e29;
 }
 
 /* Base */
-*,*::before,*::after{ box-sizing:border-box; }
-html,body{ height:100%; }
+*,*::before,*::after{ box-sizing: border-box; }
+html,body{ height: 100%; }
 body{
-  margin:0;
-  font-family:var(--font-body);
-  background:var(--bg);
-  color:var(--text);
-  -webkit-font-smoothing:antialiased;
-  -moz-osx-font-smoothing:grayscale;
+  margin: 0;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
-h1,h2,h3,.title{ font-family:var(--font-title); }
+h1,h2,h3,.title{ font-family: var(--font-title); }
 
-/* Helpers opcionales */
-.container-yla{ max-width:80rem; margin:0 auto; padding:0 1rem; }
-.card{ background:var(--card); border:1px solid var(--border); border-radius:1rem; box-shadow:0 6px 24px rgba(0,0,0,.06); }
-.transition-soft{ transition:all .25s cubic-bezier(.22,.61,.36,1); }
+/* Helpers */
+.container-yla{ max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+.card{
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 1rem;
+  box-shadow: 0 6px 24px rgba(0,0,0,.06);
+}
+.transition-soft{ transition: all .25s cubic-bezier(.22,.61,.36,1); }
+
+/* Gold accent utility */
+.text-gold-deep{ color: var(--gold-deep); }
+.bg-gold-soft{ background: rgba(232,211,163,.18); }
+.border-gold{ border-color: var(--gold-deep); }
+
+/* Section divider wave — purely decorative */
+.section-wave{
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}

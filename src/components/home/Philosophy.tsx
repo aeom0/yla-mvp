@@ -3,17 +3,14 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
 import { Atom, Brain, Sparkles } from "lucide-react";
 
-const iconMap = {
-  Atom,
-  Brain,
-  Sparkles,
-};
+const iconMap = { Atom, Brain, Sparkles };
 
 export function Philosophy() {
   const { philosophy } = siteContent;
 
   return (
-    <Section id="filosofia" className="bg-card/50">
+    // Sección con fondo lila muy suave — contrasta con el beige del Hero
+    <Section id="filosofia" style={{ background: "var(--section-alt)" }}>
       <SectionHeader
         title={philosophy.title}
         subtitle={philosophy.description}
@@ -24,13 +21,20 @@ export function Philosophy() {
         {philosophy.pillars.map((pillar, i) => {
           const Icon = iconMap[pillar.icon as keyof typeof iconMap];
           return (
-            <Card key={i} className="hover:shadow-lg transition-soft">
+            <Card
+              key={i}
+              className="hover:shadow-lg transition-soft"
+              style={{ borderTop: "3px solid var(--lavender)" }}
+            >
               <CardBody className="text-center">
-                <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-accent/10 mb-4">
-                  <Icon size={28} className="text-accent" />
+                <div
+                  className="inline-flex items-center justify-center w-14 h-14 rounded-full mb-4"
+                  style={{ background: "rgba(180,151,214,.15)" }}
+                >
+                  <Icon size={28} style={{ color: "var(--lavender)" }} />
                 </div>
                 <h3 className="title text-xl mb-2">{pillar.title}</h3>
-                <p className="text-muted text-sm leading-relaxed">
+                <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
                   {pillar.description}
                 </p>
               </CardBody>

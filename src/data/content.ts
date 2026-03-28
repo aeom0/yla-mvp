@@ -65,7 +65,7 @@ export const siteContent = {
           "Anclar patrones y necesidades",
           "Avanzar con Intención",
         ],
-        color: "lavender",
+        accent: "lavender",
       },
       {
         id: "enraiza-te",
@@ -78,7 +78,7 @@ export const siteContent = {
           "Fuerza y liderazgo interior",
           "Integración y expansión",
         ],
-        color: "gold",
+        accent: "gold",
       },
       {
         id: "elogio-a-ti",
@@ -86,7 +86,7 @@ export const siteContent = {
         duration: "4 meses",
         description: "Reconecta con tu esencia y activa tu poder personal",
         stages: ["Despertar", "Reconexión", "Reprogramación", "Consagración"],
-        color: "beige",
+        accent: "lavender",
       },
     ],
   },
@@ -139,7 +139,7 @@ export const siteContent = {
     subtitle: "Lógica aplicada al alma",
     items: [
       {
-        icon: "Yoga",
+        icon: "Wind",
         title: "Yoga físico",
         description: "Adaptado a tu nivel y propósito, con intención clara",
       },
@@ -168,8 +168,9 @@ export const siteContent = {
 
   about: {
     title: "Hola, soy Yube Karina",
+    credential: "Ingeniera industrial de profesión. Instructora de yoga con formación avanzada. Creadora de un método que nadie más enseña.",
     description:
-      "Ingeniera industrial de profesión, yogui de corazón. Creadora de Yoga con Lógica y Alma, un espacio donde la mente y el espíritu se abrazan.",
+      "Llevo años cruzando dos mundos que la mayoría separa: el pensamiento estructurado de la ingeniería y la sabiduría profunda del yoga. De esa fusión nació Yoga con Lógica y Alma.",
     highlights: [
       "Facilitadora de experiencias transformadoras",
       "Practicante de pole dance",
@@ -178,6 +179,94 @@ export const siteContent = {
     ],
     quote:
       "Aquí combino estructura con sensibilidad, amor propio con acción, espiritualidad con práctica. Bienvenida a mi universo. Aquí, todo nace desde el alma.",
+  },
+
+  shop: {
+    title: "Herramientas para tu camino",
+    subtitle: "Cada producto lleva una intención. No compras un PDF, compras una invitación a conocerte más.",
+    payhipUrl: "https://payhip.com/ConLogicayAlma",
+    products: [
+      {
+        id: "posturas-gratis",
+        category: "guia" as const,
+        title: "Guía de posturas básicas",
+        intention: "Tu primer paso en el camino del yoga. Con amor y claridad.",
+        badge: "Gratis",
+        isFree: true,
+      },
+      {
+        id: "camino-merecimiento",
+        category: "cuaderno" as const,
+        title: "Camino al Merecimiento",
+        intention: "Recuérdate que mereces todo lo que deseas con intención.",
+        badge: null,
+        isFree: false,
+      },
+      {
+        id: "mandalas-abundancia",
+        category: "cuaderno" as const,
+        title: "Mandalas de Abundancia",
+        intention: "Colorea tu camino hacia la prosperidad con conciencia.",
+        badge: null,
+        isFree: false,
+      },
+      {
+        id: "camino-abundancia",
+        category: "cuaderno" as const,
+        title: "Camino a la Abundancia",
+        intention: "Un diario que transforma tus pensamientos en realidad.",
+        badge: "Nuevo",
+        isFree: false,
+      },
+      {
+        id: "meditacion-descanso",
+        category: "audio" as const,
+        title: "Meditaciones para el descanso",
+        intention: "Suelta el día. Deja que el cuerpo respire y el alma descanse.",
+        badge: null,
+        isFree: false,
+      },
+      {
+        id: "pack-yoga-lunar",
+        category: "video" as const,
+        title: "Pack Yoga Lunar",
+        intention: "Sincroniza tu práctica con los ciclos de la luna.",
+        badge: "Popular",
+        isFree: false,
+      },
+    ],
+  },
+
+  faq: {
+    title: "Preguntas frecuentes",
+    subtitle: "Todo lo que necesitas saber para empezar",
+    items: [
+      {
+        question: "¿Qué hace único a Yoga con Lógica y Alma?",
+        answer:
+          "Es un punto de encuentro entre lo tangible y lo sutil. Integra lo físico, lo mental y lo energético como caminos para reconectar con nuestra esencia. Aquí el cuerpo es un canal de conciencia, la lógica una herramienta de claridad, y el alma la guía que nos devuelve al hogar interior.",
+      },
+      {
+        question: "¿Qué nivel necesito para empezar?",
+        answer:
+          "No necesitas experiencia previa en yoga ni en herramientas de desarrollo personal. Solo ganas de conocerte, de explorar tu cuerpo con amor y tu mente con curiosidad. Cada práctica se adapta a ti, a tu momento, a tu energía.",
+      },
+      {
+        question: "¿En qué se diferencia de una clase tradicional de yoga?",
+        answer:
+          "Mientras en una clase tradicional el enfoque está en las posturas físicas, aquí vamos más allá: integramos yoga con recursos de crecimiento personal — análisis FODA del alma, rueda de la vida, journaling — creando una experiencia más profunda y transformadora.",
+      },
+      {
+        question: "¿Cuánto duran las sesiones?",
+        answer:
+          "Las clases suelen durar 60 minutos, pero también ofrecemos prácticas más cortas de 10, 30 o 45 minutos. Tenemos un plan \"a tu ritmo\" para que puedas integrarlas sin presión en tu rutina.",
+      },
+      {
+        question: "¿Cómo se integran las herramientas de análisis?",
+        answer:
+          "Al final de cada clase dejamos un espacio para aplicar dinámicas de reflexión — preguntas poderosas, mapas mentales, ejercicios de scripting. Además hacemos seguimiento en sesiones posteriores y acompañamiento fuera del espacio de clase.",
+      },
+    ],
   },
 
   community: {
@@ -198,10 +287,10 @@ export const siteContent = {
     tagline: "Organizamos el bienestar, ritualizamos la estructura",
     links: {
       main: [
-        { label: "Programas", href: "/programas" },
-        { label: "Clases Online", href: "/clases" },
-        { label: "Tienda", href: "/tienda" },
-        { label: "Sobre mí", href: "/sobre-mi" },
+        { label: "Programas", href: "#programas" },
+        { label: "Tienda", href: "#tienda" },
+        { label: "Sobre mí", href: "#sobre-mi" },
+        { label: "FAQ", href: "#faq" },
       ],
       legal: [
         { label: "Política de Privacidad", href: "/privacidad" },

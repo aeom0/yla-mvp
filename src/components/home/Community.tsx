@@ -10,18 +10,26 @@ export function Community() {
   const { community, newsletter } = siteContent;
 
   return (
+    // Fondo beige base
     <Section id="comunidad">
       <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        {/* Comunidad WhatsApp */}
-        <Card className="bg-gradient-to-br from-accent/5 to-transparent">
+
+        {/* WhatsApp — acento lila */}
+        <Card
+          className="transition-soft hover:shadow-lg"
+          style={{ borderTop: "3px solid var(--lavender)" }}
+        >
           <CardBody className="text-center py-10">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-accent/10 mb-4">
-              <MessageCircle size={32} className="text-accent" />
+            <div
+              className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4"
+              style={{ background: "rgba(180,151,214,.15)" }}
+            >
+              <MessageCircle size={32} style={{ color: "var(--lavender)" }} />
             </div>
-
             <h3 className="title text-2xl mb-3">{community.title}</h3>
-            <p className="text-muted mb-6">{community.description}</p>
-
+            <p className="mb-6" style={{ color: "var(--muted)" }}>
+              {community.description}
+            </p>
             <Button
               variant="primary"
               onClick={() => window.open(community.whatsappLink, "_blank")}
@@ -31,21 +39,26 @@ export function Community() {
           </CardBody>
         </Card>
 
-        {/* Newsletter */}
-        <Card className="bg-gradient-to-br from-gold/5 to-transparent">
+        {/* Newsletter — acento dorado */}
+        <Card
+          className="transition-soft hover:shadow-lg"
+          style={{ borderTop: "3px solid var(--gold-deep)" }}
+        >
           <CardBody className="py-10">
-            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gold/10 mb-4">
-              <Mail size={32} className="text-gold" />
+            <div
+              className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4"
+              style={{ background: "rgba(201,169,110,.15)" }}
+            >
+              <Mail size={32} style={{ color: "var(--gold-deep)" }} />
             </div>
-
             <h3 className="title text-2xl mb-3">{newsletter.title}</h3>
-            <p className="text-muted mb-6">{newsletter.description}</p>
-
+            <p className="mb-6" style={{ color: "var(--muted)" }}>
+              {newsletter.description}
+            </p>
             <form
               className="flex flex-col gap-3"
               onSubmit={(e) => {
                 e.preventDefault();
-                // Aquí conectarías con tu servicio de email
                 alert("Funcionalidad de newsletter por implementar");
               }}
             >
@@ -53,7 +66,12 @@ export function Community() {
                 type="email"
                 placeholder={newsletter.placeholder}
                 required
-                className="rounded-2xl border border-border bg-bg px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-accent/50"
+                className="rounded-2xl px-4 py-3 text-sm focus:outline-none"
+                style={{
+                  border: "1px solid var(--border)",
+                  background: "var(--bg)",
+                  color: "var(--text)",
+                }}
               />
               <Button type="submit" variant="ghost">
                 Suscribirme
