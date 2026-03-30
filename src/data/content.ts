@@ -4,7 +4,7 @@
 export const siteContent = {
   hero: {
     title: "Yoga con Lógica y Alma®",
-    /** Fórmula doc: beneficio emocional + acción */
+    /** Fórmula doc: beneficio emocional + método lógico + acción */
     headlineEmotional: "Encuentra estructura para tu mente y espacio para tu alma.",
     headlineAction: "Empieza hoy con un regalo: tu primera herramienta gratis.",
     microCta: "Acceso inmediato • a tu ritmo",
@@ -229,7 +229,7 @@ export const siteContent = {
   about: {
     title: "Hola, soy Yube Karina",
     credential:
-      "Ingeniera industrial de profesión. Instructora de yoga con formación avanzada. Creadora de un método que nadie más enseña.",
+      "Ingeniera industrial de profesión, yogui de corazón. Creadora de Yoga con Lógica y Alma.",
     description:
       "Un espacio donde la mente y el espíritu se abrazan: combino estructura con sensibilidad, amor propio con acción, espiritualidad con práctica. Llevo años cruzando dos mundos que la mayoría separa: el pensamiento estructurado de la ingeniería y la sabiduría profunda del yoga.",
     extended:

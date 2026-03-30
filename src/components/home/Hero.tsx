@@ -13,7 +13,7 @@ export function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(160deg, color-mix(in srgb, var(--lavender) 10%, transparent) 0%, rgba(232,211,163,.10) 55%, transparent 100%)",
+            "linear-gradient(160deg, color-mix(in srgb, var(--purple-brand) 8%, transparent) 0%, rgba(232,211,163,.10) 55%, transparent 100%)",
         }}
       />
       {/* Orbe decorativo superior derecha */}
@@ -36,7 +36,7 @@ export function Hero() {
       />
 
       <div className="container-yla relative z-10 text-center py-24">
-        {/* Título principal */}
+        {/* Título principal — ocupa todo el centro visual */}
         <h1
           className="title text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight"
           style={{ color: "var(--accent)" }}
@@ -46,13 +46,13 @@ export function Hero() {
 
         {/* Beneficio emocional */}
         <p
-          className="text-xl md:text-2xl mb-3 max-w-2xl mx-auto font-semibold leading-snug"
+          className="text-xl md:text-2xl mb-4 max-w-2xl mx-auto font-semibold leading-snug"
           style={{ color: "var(--text)" }}
         >
           {hero.headlineEmotional}
         </p>
 
-        {/* Acción + invitación */}
+        {/* CTA de acción */}
         <p
           className="text-base md:text-lg mb-2 max-w-xl mx-auto font-medium"
           style={{ color: "var(--gold-deep)" }}
@@ -60,20 +60,18 @@ export function Hero() {
           {hero.headlineAction}
         </p>
 
-        {/* Microcopy de acceso */}
+        {/* Micro copy de confianza */}
         <p className="text-sm mb-10" style={{ color: "var(--muted)" }}>
           {hero.microCta}
         </p>
 
-        {/* CTAs */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        {/* CTAs principales */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
           <Button
             variant="primary"
             className="text-base px-8 py-4 min-h-[48px]"
             onClick={() =>
-              document
-                .getElementById("guia-gratis")
-                ?.scrollIntoView({ behavior: "smooth" })
+              document.getElementById("guia-gratis")?.scrollIntoView({ behavior: "smooth" })
             }
           >
             {hero.cta.primary}
@@ -82,22 +80,20 @@ export function Hero() {
             variant="ghost"
             className="text-base px-8 py-4 min-h-[48px]"
             onClick={() =>
-              document
-                .getElementById("programas")
-                ?.scrollIntoView({ behavior: "smooth" })
+              document.getElementById("programas")?.scrollIntoView({ behavior: "smooth" })
             }
           >
             {hero.cta.secondary}
           </Button>
         </div>
 
-        {/* ─── Franja de prueba social ─── */}
-        {/* Aparece DESPUÉS de los CTAs para no competir con el headline */}
+        {/* ——— Social proof strip — DEBAJO de los CTAs ——— */}
+        {/* Aparece al hacer un pequeño scroll natural, no compite con el título */}
         <div
-          className="mt-16 rounded-2xl px-6 py-5 max-w-3xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-5"
+          className="grid grid-cols-2 md:grid-cols-4 gap-px max-w-2xl mx-auto rounded-2xl overflow-hidden"
           style={{
-            background: "rgba(232,211,163,.10)",
-            border: "1px solid rgba(201,169,110,.20)",
+            background: "var(--border)",
+            boxShadow: "0 2px 16px rgba(0,0,0,.06)",
           }}
         >
           {[
@@ -106,7 +102,11 @@ export function Hero() {
             { value: "8+", label: "Clases/mes" },
             { value: "20+", label: "Productos" },
           ].map((stat, i) => (
-            <div key={i} className="text-center">
+            <div
+              key={i}
+              className="text-center py-5 px-4"
+              style={{ background: "var(--card)" }}
+            >
               <div
                 className="text-3xl md:text-4xl font-semibold mb-0.5"
                 style={{
@@ -116,7 +116,7 @@ export function Hero() {
               >
                 {stat.value}
               </div>
-              <div className="text-xs md:text-sm" style={{ color: "var(--muted)" }}>
+              <div className="text-xs uppercase tracking-wide" style={{ color: "var(--muted)" }}>
                 {stat.label}
               </div>
             </div>
