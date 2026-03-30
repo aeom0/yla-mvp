@@ -6,76 +6,93 @@
 @import "@fontsource/lato/400.css";
 @import "@fontsource/lato/700.css";
 
+/* ============================================================
+   SISTEMA DE COLOR — Yoga con Lógica y Alma
+   Identidad visual: Contexto_YLA.docx (marzo 2026)
+   ============================================================
+   Morado profundo  #5B3A8E  → elegancia, introspección, espiritualidad
+   Lila suave       #C6B7E2  → calma, feminidad, suavidad
+   Beige cálido     #F6EBD9  → base neutra, calidez, tierra
+   Dorado acento    #D4AF37  → valor, merecimiento, abundancia
+   Gris neutro      #D9D9D9  → balance, estructura
+   Carbón           #333333  → legibilidad, contraste
+   ============================================================ */
+
 /* Tailwind v4 theme tokens */
 @theme {
-  --color-bg: var(--bg);
-  --color-text: var(--text);
-  --color-card: var(--card);
-  --color-border: var(--border);
-  --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-accent-warm: var(--accent-warm);
-  --color-lavender: var(--lavender);
-  --color-beige: var(--beige);
-  --color-gold: var(--gold);
-  --color-smoke: var(--smoke);
-  --color-ink: var(--ink);
-  --color-purple-brand: var(--purple-brand);
-  --color-lila-doc: var(--lila-doc);
-  --color-gold-doc: var(--gold-doc);
-  --shadow-soft: 0 6px 24px rgba(0,0,0,.06);
-  --shadow-warm: 0 8px 32px rgba(232,211,163,.25);
+  --color-bg:           var(--bg);
+  --color-text:         var(--text);
+  --color-card:         var(--card);
+  --color-border:       var(--border);
+  --color-muted:        var(--muted);
+  --color-accent:       var(--accent);
+  --color-accent-warm:  var(--accent-warm);
+  --color-purple:       var(--purple);
+  --color-purple-soft:  var(--purple-soft);
+  --color-beige:        var(--beige);
+  --color-gold:         var(--gold);
+  --color-gold-deep:    var(--gold-deep);
+  --color-smoke:        var(--smoke);
+  --color-ink:          var(--ink);
+  --shadow-soft:        0 6px 24px rgba(0,0,0,.07);
+  --shadow-warm:        0 8px 32px rgba(212,175,55,.20);
+  --shadow-purple:      0 8px 32px rgba(91,58,142,.18);
 }
 
-/* Paleta fija */
-:root{
-  --lavender: #B497D6;
-  --lavender-deep: #9478bc;
-  --beige: #F6EBD9;
-  --beige-warm: #f0e0c4;
-  --gold: #E8D3A3;
-  --gold-deep: #c9a96e;
-  --smoke: #DADADA;
-  --ink: #333333;
+/* ── Paleta fija (nunca cambia entre temas) ── */
+:root {
+  /* Morado */
+  --purple:       #5B3A8E;
+  --purple-deep:  #432a6b;
+  --purple-soft:  #C6B7E2;
+  --purple-mist:  rgba(91,58,142,.08);
 
-  /* Referencia Contexto_YLA.docx (identidad “lógica y alma”); CTAs primarios = gold (skill yla-dev) */
-  --purple-brand: #5b3a8e;
-  --lila-doc: #c6b7e2;
-  --gray-doc: #d9d9d9;
-  --gold-doc: #d4af37;
+  /* Beige */
+  --beige:        #F6EBD9;
+  --beige-warm:   #f0e0c4;
 
-  --font-title: "Playfair Display", serif;
-  --font-body: "Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  /* Dorado */
+  --gold:         #D4AF37;
+  --gold-deep:    #b8920e;
+  --gold-pale:    rgba(212,175,55,.15);
+
+  /* Neutros */
+  --smoke:        #D9D9D9;
+  --ink:          #333333;
+
+  /* Tipografía */
+  --font-title:   "Playfair Display", serif;
+  --font-body:    "Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* Tokens LIGHT */
-:root{
-  --bg: var(--beige);
-  --text: var(--ink);
-  --card: #ffffff;
-  --border: rgba(180,151,214,.2);
-  --muted: #7a7080;
-  --accent: var(--lavender);
+/* ── Tokens semánticos LIGHT ── */
+:root {
+  --bg:          var(--beige);
+  --text:        var(--ink);
+  --card:        #ffffff;
+  --border:      rgba(91,58,142,.18);
+  --muted:       #6b5f80;
+  --accent:      var(--purple);
   --accent-warm: var(--gold-deep);
-  --section-alt: #f0e6f6;  /* lila muy suave para secciones alternas */
+  --section-alt: #ede5f7;   /* lila muy suave — secciones alternas */
 }
 
-/* Tokens DARK */
-.dark{
-  --bg: #1c1a22;
-  --text: var(--beige);
-  --card: #24212b;
-  --border: #3a3645;
-  --muted: #a39fb0;
-  --accent: var(--lavender);
+/* ── Tokens semánticos DARK ── */
+.dark {
+  --bg:          #1a1525;
+  --text:        var(--beige);
+  --card:        #221c30;
+  --border:      #3d3355;
+  --muted:       #a99ec0;
+  --accent:      var(--purple-soft);
   --accent-warm: var(--gold);
-  --section-alt: #211e29;
+  --section-alt: #1e1829;
 }
 
-/* Base */
-*,*::before,*::after{ box-sizing: border-box; }
-html,body{ height: 100%; }
-body{
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
   margin: 0;
   font-family: var(--font-body);
   background: var(--bg);
@@ -83,25 +100,30 @@ body{
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-h1,h2,h3,.title{ font-family: var(--font-title); }
+h1, h2, h3, .title { font-family: var(--font-title); }
 
-/* Helpers */
-.container-yla{ max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
-.card{
+/* ── Layout helpers ── */
+.container-yla { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+.card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 1rem;
   box-shadow: 0 6px 24px rgba(0,0,0,.06);
 }
-.transition-soft{ transition: all .25s cubic-bezier(.22,.61,.36,1); }
+.transition-soft { transition: all .25s cubic-bezier(.22,.61,.36,1); }
 
-/* Gold accent utility */
-.text-gold-deep{ color: var(--gold-deep); }
-.bg-gold-soft{ background: rgba(232,211,163,.18); }
-.border-gold{ border-color: var(--gold-deep); }
+/* ── Gold utility classes ── */
+.text-gold-deep  { color: var(--gold-deep); }
+.bg-gold-soft    { background: var(--gold-pale); }
+.border-gold     { border-color: var(--gold-deep); }
 
-/* Section divider wave — purely decorative */
-.section-wave{
+/* ── Purple utility classes ── */
+.text-purple     { color: var(--purple); }
+.bg-purple-mist  { background: var(--purple-mist); }
+.border-purple   { border-color: var(--purple); }
+
+/* ── Section wave (decorativo) ── */
+.section-wave {
   display: block;
   width: 100%;
   overflow: hidden;
