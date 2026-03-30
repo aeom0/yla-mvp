@@ -3,12 +3,9 @@
 
 export const siteContent = {
   hero: {
-    tagline: "El arte de Volver a Ti",
     title: "Yoga con Lógica y Alma®",
     /** Fórmula doc: beneficio emocional + método lógico + acción */
     headlineEmotional: "Encuentra estructura para tu mente y espacio para tu alma.",
-    headlineMethod:
-      "Clases de 20 minutos pensadas para integrarse en tu jornada, con guía clara y sin humo.",
     headlineAction: "Empieza hoy con un regalo: tu primera herramienta gratis.",
     microCta: "Acceso inmediato • a tu ritmo",
     cta: {
@@ -245,7 +242,7 @@ export const siteContent = {
     ],
     quote:
       "Aquí combino estructura con sensibilidad, amor propio con acción, espiritualidad con práctica. Bienvenida a mi universo. Aquí, todo nace desde el alma.",
-    /** ID de YouTube (solo el ID); vacío = mostramos bloque “próximamente” */
+    /** ID de YouTube (solo el ID); vacío = mostramos bloque "próximamente" */
     welcomeVideoYoutubeId: "" as string,
   },
 
