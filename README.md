@@ -1,36 +1,49 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Yoga con Lógica y Alma — yla-mvp
 
-## Getting Started
+Landing y funnel digital de **Yube Karina**: método que mezcla estructura (ingeniería) con práctica de yoga y autoconocimiento.
 
-First, run the development server:
+- **Deploy:** [Vercel](https://yla-mvp.vercel.app) (dominio propio planificado: `yogaconlogicayalma.com`)
+- **Tienda:** [Payhip — ConLogicayAlma](https://payhip.com/ConLogicayAlma)
+
+## Stack
+
+Next.js 15 (App Router) · React 19 · TypeScript strict · Tailwind CSS v4 · Lucide · `@fontsource` (Playfair + Lato)
+
+## Desarrollo
 
 ```bash
-npm run dev
-# or
+yarn install
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+yarn build   # verificación producción + tipos
+yarn lint
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Contenido
 
-## Learn More
+Todo el copy visible sale de [`src/data/content.ts`](src/data/content.ts). Los componentes en [`src/components/home/`](src/components/home/) solo renderizan datos.
 
-To learn more about Next.js, take a look at the following resources:
+## Rutas principales
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| Ruta | Descripción |
+|------|-------------|
+| `/` | Landing (Hero, filosofía, programas, testimonios, sobre mí, comunidad, tienda, lead magnet, FAQ) |
+| `/membresia` | Página de membresía y comparación de planes |
+| `POST /api/subscribe` | Validación de email (MVP; falta conectar proveedor de correo) |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Documentación del repo
 
-## Deploy on Vercel
+| Archivo | Propósito |
+|---------|-----------|
+| [`CLAUDE.md`](CLAUDE.md) | Contexto técnico para asistentes de código |
+| [`GEMINI.md`](GEMINI.md) | Brief para Yube + flujo con Gemini |
+| [`ROADMAP.md`](ROADMAP.md) | Fases del producto y backlog |
+| [`.claude/skills/yla-dev-SKILL.md`](.claude/skills/yla-dev-SKILL.md) | Skill del proyecto (convenciones YLA) |
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## Créditos
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Marca y contenido: **Yube Karina** · Desarrollo: **Alberto**

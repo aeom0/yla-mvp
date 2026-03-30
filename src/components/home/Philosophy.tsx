@@ -1,12 +1,12 @@
 import { Card, CardBody } from "@/components/ui/Card";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
-import { Atom, Brain, Sparkles } from "lucide-react";
+import { Activity, Brain, Sparkles } from "lucide-react";
 
-const iconMap = { Atom, Brain, Sparkles };
+const iconMap = { Activity, Brain, Sparkles };
 
 export function Philosophy() {
-  const { philosophy } = siteContent;
+  const { philosophy, copyDual } = siteContent;
 
   return (
     // Sección con fondo lila muy suave — contrasta con el beige del Hero
@@ -16,6 +16,31 @@ export function Philosophy() {
         subtitle={philosophy.description}
         centered
       />
+
+      <div className="grid md:grid-cols-2 gap-4 max-w-4xl mx-auto mb-12">
+        <div
+          className="rounded-2xl p-5 text-sm leading-relaxed border"
+          style={{ borderColor: "var(--border)", background: "var(--card)" }}
+        >
+          <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--gold-deep)" }}>
+            Lógica
+          </span>
+          <p className="mt-2" style={{ color: "var(--muted)" }}>
+            {copyDual.logicExample}
+          </p>
+        </div>
+        <div
+          className="rounded-2xl p-5 text-sm leading-relaxed border"
+          style={{ borderColor: "var(--border)", background: "var(--card)" }}
+        >
+          <span className="text-xs font-semibold uppercase tracking-wide" style={{ color: "var(--lavender-deep)" }}>
+            Alma
+          </span>
+          <p className="mt-2" style={{ color: "var(--muted)" }}>
+            {copyDual.soulExample}
+          </p>
+        </div>
+      </div>
 
       <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {philosophy.pillars.map((pillar, i) => {

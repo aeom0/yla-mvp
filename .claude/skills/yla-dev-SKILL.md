@@ -22,7 +22,7 @@ description: >
 **Yoga con Lógica y Alma** es la plataforma digital de **Yube Karina** (ingeniera industrial + yogui).
 El método fusiona estructura analítica con práctica espiritual. El asesor técnico es **Alberto**.
 
-**Fase actual:** Landing page 100% implementada. Próximo paso: PWA (Fase 1).
+**Fase actual:** Landing + funnel base (lead magnet, membresía, testimonios, header/nav). Pendientes: ESP para emails, video YouTube en About, dominio. Detalle en **`ROADMAP.md`**. Próxima fase grande: PWA.
 
 **Tagline:** *"Organizamos el bienestar, ritualizamos la estructura."*  
 **Público:** Mujeres conscientes y emprendedoras, mercado hispanohablante.
@@ -52,15 +52,16 @@ El método fusiona estructura analítica con práctica espiritual. El asesor té
 ### Tokens de color (variables CSS en globals.css)
 
 ```css
---lavender: #B497D6;  /* espiritual, complemento */
---beige:    #F6EBD9;  /* fondo base cálido */
---gold:     #E8D3A3;  /* ACENTO DOMINANTE — CTAs, borders, highlights */
---smoke:    #DADADA;  /* texto secundario */
---charcoal: #333333;  /* texto principal */
+--lavender: #B497D6;
+--beige: #F6EBD9;
+--gold: #E8D3A3;       /* CTA primario (Button primary) */
+--gold-deep: #c9a96e;
+--purple-brand: #5b3a8e;  /* brief marca — secciones premium / lead magnet */
+--lila-doc: #c6b7e2;
+--gold-doc: #d4af37;
 ```
 
-> **Gold es el rey.** El refresh visual de marzo 2026 consolidó `#E8D3A3` como color dominante
-> en botones, borders y highlights. Lavanda = espiritual pero secundario.
+> **Gold en botones primarios.** Lavanda y morado de marca para jerarquía y bloques especiales. Ver `globals.css` para tokens light/dark.
 
 ### Tailwind v4 en clases
 
@@ -99,43 +100,18 @@ className="font-dancing"   // Dancing Script
 ```
 src/
 ├── app/
-│   ├── layout.tsx          ← fuentes, metadata, ThemeProvider
-│   ├── page.tsx            ← landing (importa secciones)
-│   └── globals.css         ← variables CSS + Tailwind base
-│
+│   ├── layout.tsx , page.tsx , globals.css
+│   ├── api/subscribe/route.ts
+│   └── membresia/page.tsx
 ├── components/
-│   ├── ui/                 ← átomos reutilizables
-│   │   ├── Button.tsx
-│   │   ├── Card.tsx
-│   │   └── Section.tsx
-│   │
-│   ├── home/               ← secciones del landing
-│   │   ├── Hero.tsx        ✅
-│   │   ├── Philosophy.tsx  ✅
-│   │   ├── Programs.tsx    ✅
-│   │   ├── About.tsx       ✅
-│   │   ├── Community.tsx   ✅
-│   │   ├── Shop.tsx        ✅
-│   │   ├── FAQ.tsx         ✅
-│   │   └── Footer.tsx      ✅
-│   │
-│   ├── layout/
-│   │   ├── Header.tsx
-│   │   └── BottomNav.tsx
-│   │
-│   └── theme/
-│       └── ThemeToggle.tsx
-│
-├── data/
-│   └── content.ts          ← FUENTE DE VERDAD del contenido
-│
-├── lib/
-│   ├── utils.ts
-│   └── constants.ts
-│
-├── hooks/                  ← custom hooks
-└── types/
-    └── index.ts            ← interfaces TypeScript
+│   ├── ui/ (Button, Card, Section)
+│   ├── home/ (Hero, Philosophy, Programs, Testimonials, About,
+│   │         Community, Shop, LeadMagnet, FAQ, Footer)
+│   ├── layout/ (Header, BottomNav)
+│   └── theme/ThemeToggle.tsx
+├── data/content.ts
+├── lib/, hooks/, types/
+└── (ver ROADMAP.md para fases del producto)
 ```
 
 ---
@@ -225,26 +201,7 @@ Si un componente supera ~150 líneas, dividirlo. Si mezcla fetch + render, separ
 
 ## 🚀 Roadmap
 
-```
-Fase 0 ✅  Landing page Next.js (completa)
-           │
-Fase 1 →   PWA
-           ├── Dashboard espiritual del usuario
-           ├── Bitácora del alma (journaling guiado)
-           ├── Modo Ritual (música + intención + respiración)
-           ├── Rituales lunares
-           └── Comunidad interna
-           │
-Fase 2     Full web app
-           ├── Auth + DB (Supabase)
-           ├── Membresías y pagos (Stripe)
-           └── Tienda integrada
-           │
-Fase 3     App nativa (tras validar en web)
-           │
-Fase 4     Concept Store física (Turmero/Maracay)
-           └── QR codes ↔ app
-```
+Plan de producto y backlog: **`ROADMAP.md`** en la raíz del repo.
 
 ---
 

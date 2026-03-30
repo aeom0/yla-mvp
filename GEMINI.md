@@ -65,13 +65,17 @@ El sitio web (`yogaconlogicayalma.com`) actúa como **hub central** que conecta 
 ### Paleta de colores
 
 ```
-Gold (acento DOMINANTE) → #E8D3A3  — botones, bordes, highlights
-Gold profundo           → #C9A96E  — textos de acento, CTAs
+Gold (CTA primario)     → #E8D3A3  — botón principal (texto oscuro)
+Gold profundo           → #C9A96E  — bordes, acentos
 Lavanda                 → #B497D6  — espiritual, complemento
 Beige cálido            → #F6EBD9  — fondo base
 Smoke                   → #DADADA  — texto secundario
 Charcoal                → #333333  — texto principal
+Morado marca (brief)    → #5B3A8E  — bloques premium / identidad (variables CSS)
+Lila suave (brief)      → #C6B7E2  — fondos tipo lead magnet
 ```
+
+Los valores viven en `src/app/globals.css`; el botón primario del diseño actual es **dorado**, no morado.
 
 ### Tipografía
 
@@ -97,28 +101,22 @@ Dancing Script   → mantras, frases inspiradoras, citas canalizadas
 yla-mvp/
 ├── src/
 │   ├── app/
-│   │   ├── layout.tsx        ← estructura raíz, fuentes, metadata
-│   │   ├── page.tsx          ← landing page principal
-│   │   └── globals.css       ← variables de color y estilos base
-│   │
+│   │   ├── layout.tsx
+│   │   ├── page.tsx              ← landing (orden de secciones)
+│   │   ├── globals.css
+│   │   ├── api/subscribe/route.ts
+│   │   └── membresia/page.tsx
 │   ├── components/
-│   │   ├── home/             ← secciones del landing
-│   │   │   ├── Hero.tsx
-│   │   │   ├── Philosophy.tsx
-│   │   │   ├── Programs.tsx
-│   │   │   ├── About.tsx
-│   │   │   ├── Community.tsx
-│   │   │   ├── Shop.tsx
-│   │   │   ├── FAQ.tsx
-│   │   │   └── Footer.tsx
-│   │   ├── ui/               ← componentes reutilizables (Button, Card, Section)
-│   │   └── layout/           ← Header y navegación
-│   │
+│   │   ├── home/
+│   │   │   ├── Hero, Philosophy, Programs, Testimonials,
+│   │   │   │   About, Community, Shop, LeadMagnet, FAQ, Footer
+│   │   ├── ui/ , layout/ , theme/
 │   └── data/
-│       └── content.ts        ← ⭐ TODO el texto visible vive aquí
-│
-├── CLAUDE.md                 ← contexto técnico para Claude (desarrollador)
-└── GEMINI.md                 ← este archivo (contexto para Gemini + Yube)
+│       └── content.ts            ← ⭐ TODO el texto visible vive aquí
+├── README.md
+├── ROADMAP.md                  ← fases y backlog detallados
+├── CLAUDE.md
+└── GEMINI.md
 ```
 
 ### ⭐ Regla clave: `content.ts` es la fuente de verdad
@@ -134,18 +132,21 @@ Alberto lo actualiza en el código.
 
 ---
 
-## 🌐 Secciones actuales del landing (todas implementadas ✅)
+## 🌐 Qué incluye la web ahora
 
-| Sección | Qué muestra |
-|---------|------------|
-| **Hero** | Tagline, título, descripción, botones CTA, estadísticas |
-| **Philosophy** | Los 3 pilares del método (ciencia + lógica + práctica) |
-| **Programs** | Los 3 programas de 4 meses: Encuentra tu Centro, Enraíza-Te, Elogio a Ti |
-| **About** | Presentación de Yube Karina, credencial, cita |
-| **Community** | Comunidad WhatsApp + formulario de newsletter |
-| **Shop** | Productos digitales con enlace a Payhip |
-| **FAQ** | Preguntas frecuentes con acordeón interactivo |
-| **Footer** | Links, redes sociales, legal |
+| Sección / ruta | Qué muestra |
+|----------------|------------|
+| **Hero** | Tagline, título, líneas beneficio + método + acción, 2 CTAs, estadísticas |
+| **Philosophy** | Pilares Cuerpo / Mente / Espíritu + bloque copy Lógica / Alma |
+| **Programs** | Tres programas + CTA hacia tienda; bloque clases personalizadas |
+| **Testimonios** | Tarjetas con citas (avanzar a fotos reales con permiso) |
+| **About** | Bio extendida; video YouTube opcional (`welcomeVideoYoutubeId` en `content.ts`) |
+| **Community** | «Comunidad en movimiento», grid hacia IG, WhatsApp, newsletter cartas |
+| **Shop** | Productos y CTAs según `content.ts`, enlaces Payhip |
+| **Lead magnet** | Formulario email → `/api/subscribe` (conectar lista de correo después) |
+| **FAQ** | Acordeón |
+| **Footer** | Enlaces de funnel, confianza, legal, redes |
+| **`/membresia`** | Comparación planes; destacado «Cartas para habitarte» |
 
 ---
 
@@ -184,27 +185,9 @@ Planes: **Esencial** (4 clases/mes) · **Consciente** (8 clases/mes)
 
 ---
 
-## 🚀 Roadmap del proyecto
+## 🚀 Roadmap
 
-```
-Fase 0 ✅  Landing page (COMPLETA — live en Vercel)
-           │
-Fase 1     PWA (Progressive Web App)
-           ├── Dashboard espiritual del usuario
-           ├── Bitácora del alma (journaling guiado)
-           ├── Modo Ritual (música + intención + respiración)
-           ├── Calendario de clases y reservas
-           └── Comunidad interna
-           │
-Fase 2     Full Web App
-           ├── Registro y login de usuarias (Supabase)
-           ├── Membresías y pagos (Stripe)
-           └── Tienda integrada
-           │
-Fase 3     App nativa Android/iOS
-           │
-Fase 4     Concept Store física (Turmero/Maracay)
-```
+La versión detallada (pendientes de Fase 0, PWA, app, tienda física, deuda técnica) está en **`ROADMAP.md`**. Usalo como referencia única cuando planifiques con Yube.
 
 ---
 
@@ -291,4 +274,5 @@ Gemini indica el objeto a agregar en shop.products dentro de content.ts:
 
 ---
 
-*Documento mantenido por Alberto. Actualizar cuando haya cambios en el stack, roadmap o productos.*
+*Documento mantenido por Alberto. Mantener alineado con `ROADMAP.md`, `CLAUDE.md` y el código.*
+

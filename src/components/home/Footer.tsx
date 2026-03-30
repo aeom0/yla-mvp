@@ -98,6 +98,13 @@ export function Footer() {
           </div>
         </div>
 
+        <p
+          className="text-xs text-center mb-6 max-w-2xl mx-auto leading-relaxed"
+          style={{ color: "rgba(246,235,217,.55)" }}
+        >
+          {siteContent.trust.paymentLine} {siteContent.trust.guarantee}
+        </p>
+
         {/* Bottom bar */}
         <div
           className="pt-6 flex flex-col md:flex-row items-center justify-between gap-2 text-xs"
@@ -107,7 +114,7 @@ export function Footer() {
           }}
         >
           <span>© {new Date().getFullYear()} Yoga con Lógica y Alma®. Todos los derechos reservados.</span>
-          <span>Hecho con 🤍 y mucha intención.</span>
+          <span>Hecho con intención y estructura.</span>
         </div>
       </div>
     </footer>

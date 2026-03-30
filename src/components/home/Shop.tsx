@@ -28,9 +28,11 @@ export function Shop() {
   const categories: ProductCategory[] = ["guia", "cuaderno", "audio", "video"];
 
   return (
-    // Fondo lila suave — alterna con el beige de Community
     <Section id="tienda" style={{ background: "var(--section-alt)" }}>
       <SectionHeader title={shop.title} subtitle={shop.subtitle} centered />
+      <p className="text-center text-sm -mt-4 mb-10 max-w-lg mx-auto" style={{ color: "var(--muted)" }}>
+        {shop.payhipNote}
+      </p>
 
       {categories.map((cat) => {
         const products = shop.products.filter((p) => p.category === cat);
@@ -39,11 +41,10 @@ export function Shop() {
 
         return (
           <div key={cat} className="mb-12">
-            {/* Category label */}
             <div className="flex items-center gap-2 mb-5">
               <span
                 className="w-7 h-7 rounded-lg flex items-center justify-center"
-                style={{ background: "var(--lavender)", color: "#fff" }}
+                style={{ background: "var(--gold-deep)", color: "#fff" }}
               >
                 {meta.icon}
               </span>
@@ -61,14 +62,13 @@ export function Shop() {
                     boxShadow: "0 4px 16px rgba(0,0,0,.05)",
                   }}
                 >
-                  {/* Badge */}
                   {product.badge && (
                     <span
                       className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-0.5 rounded-full z-10"
                       style={{
                         background: product.isFree
                           ? "var(--gold-deep)"
-                          : "var(--lavender)",
+                          : "var(--purple-brand)",
                         color: "#fff",
                       }}
                     >
@@ -76,7 +76,6 @@ export function Shop() {
                     </span>
                   )}
 
-                  {/* Icon area */}
                   <div
                     className="flex items-center justify-center h-28"
                     style={{ background: "var(--beige)" }}
@@ -86,7 +85,7 @@ export function Shop() {
                       style={{
                         background: product.isFree
                           ? "var(--gold-deep)"
-                          : "var(--lavender)",
+                          : "var(--purple-brand)",
                         color: "#fff",
                       }}
                     >
@@ -94,7 +93,6 @@ export function Shop() {
                     </span>
                   </div>
 
-                  {/* Content */}
                   <div className="flex flex-col flex-1 gap-3 p-5">
                     <h4
                       className="title text-base font-bold leading-snug"
@@ -112,15 +110,16 @@ export function Shop() {
                       href={shop.payhipUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold transition-soft hover:opacity-90"
+                      className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold transition-soft hover:opacity-90 min-h-[44px]"
                       style={{
                         background: product.isFree
                           ? "var(--gold-deep)"
-                          : "var(--lavender)",
-                        color: "#fff",
+                          : "var(--gold)",
+                        color: "var(--ink)",
+                        border: "1px solid var(--gold-deep)",
                       }}
                     >
-                      {product.isFree ? "Descargar gratis" : "Obtener"}
+                      {product.isFree ? shop.ctaFree : shop.ctaPaid}
                       <ExternalLink size={13} aria-hidden="true" />
                     </a>
                   </div>
@@ -131,20 +130,19 @@ export function Shop() {
         );
       })}
 
-      {/* Ver toda la tienda */}
       <div className="text-center mt-4">
         <a
           href={shop.payhipUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl font-semibold transition-soft hover:opacity-90"
+          className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl font-semibold transition-soft hover:opacity-90 min-h-[48px]"
           style={{
             border: "1.5px solid var(--gold-deep)",
             color: "var(--gold-deep)",
             background: "transparent",
           }}
         >
-          Ver toda la tienda en Payhip
+          {shop.ctaAlternate}
           <ExternalLink size={15} aria-hidden="true" />
         </a>
       </div>

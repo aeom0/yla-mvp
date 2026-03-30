@@ -23,7 +23,7 @@ El producto actual en desarrollo es un **landing page / sitio web** que servirá
 | UI | React 19 + Tailwind CSS v4 |
 | Lenguaje | TypeScript (strict) |
 | Iconos | Lucide React |
-| Tipografía | Playfair Display + Lato (Google Fonts) |
+| Tipografía | Playfair Display + Lato (`@fontsource`) |
 | CMS / Contenido | Notion (exportado como Markdown) |
 | Backend (futuro) | Supabase |
 | Pagos (futuro) | Stripe |
@@ -39,17 +39,22 @@ El producto actual en desarrollo es un **landing page / sitio web** que servirá
 ### Paleta de colores
 
 ```ts
-// tokens de color — usar siempre estas variables
+// tokens de color — usar siempre estas variables (ver `src/app/globals.css`)
 colors: {
-  lavender:  '#B497D6',  // principal espiritual
-  beige:     '#F6EBD9',  // fondo base cálido
-  gold:      '#E8D3A3',  // acento dorado (abundancia) — color dominante en CTAs y detalles
-  smoke:     '#DADADA',  // texto secundario
-  charcoal:  '#333333',  // texto principal
+  lavender:      '#B497D6',  // espiritual, complemento
+  beige:         '#F6EBD9',  // fondo base cálido
+  gold:          '#E8D3A3',  // acento dominante en CTAs (botón primario)
+  goldDeep:      '#c9a96e',  // bordes / acento fuerte
+  smoke:         '#DADADA',  // texto secundario
+  charcoal/ink:  '#333333',  // texto principal
+  // Referencia brief marca (Contexto YLA) — fondos y bloques premium:
+  purpleBrand:   '#5B3A8E',  // --purple-brand
+  lilaDoc:       '#C6B7E2',  // --lila-doc
+  goldDoc:       '#D4AF37',  // --gold-doc (acento editorial)
 }
 ```
 
-> **Nota de diseño (v2):** El refresh visual de marzo 2026 consolidó el **gold** como acento principal en botones, borders y highlights. El lavanda se usa como complemento espiritual pero el dorado es el tono dominante de la marca.
+> **Nota de diseño:** El **dorado** es el color de los CTAs primarios (`Button` variante `primary`). Lavanda y morado de marca se usan en jerarquía visual, pilares y secciones premium; valores exactos en `:root` y `.dark` de `globals.css`.
 
 ### Tipografía
 
@@ -71,47 +76,34 @@ colors: {
 
 ```
 src/
-├── app/                        # App Router de Next.js
-│   ├── layout.tsx              # Layout raíz (fuentes, metadata, providers)
-│   ├── page.tsx                # Landing page principal
-│   └── globals.css             # Variables CSS + Tailwind base
+├── app/
+│   ├── layout.tsx
+│   ├── page.tsx                 # Landing (orden de secciones en un solo archivo)
+│   ├── globals.css
+│   ├── api/subscribe/route.ts  # POST email (MVP; conectar ESP después)
+│   └── membresia/page.tsx      # Página membresía + comparación de planes
 │
 ├── components/
-│   ├── ui/                     # Componentes atómicos reutilizables
-│   │   ├── Button.tsx
-│   │   ├── Card.tsx
-│   │   └── Section.tsx
-│   │
-│   ├── home/                   # Secciones del landing (una por bloque visual)
+│   ├── ui/                     # Button, Card, Section
+│   ├── home/
 │   │   ├── Hero.tsx
-│   │   ├── Philosophy.tsx
-│   │   ├── Programs.tsx
+│   │   ├── Philosophy.tsx      # Pilares + bloque copy Lógica/Alma
+│   │   ├── Programs.tsx        # Tarjetas programa + bloque clases personalizadas
+│   │   ├── Testimonials.tsx
 │   │   ├── About.tsx
-│   │   ├── Community.tsx
+│   │   ├── Community.tsx       # Grid IG, WhatsApp, newsletter
 │   │   ├── Shop.tsx
+│   │   ├── LeadMagnet.tsx      # Lead magnet → /api/subscribe
 │   │   ├── FAQ.tsx
 │   │   └── Footer.tsx
-│   │
-│   ├── layout/                 # Header y navegación
-│   │   ├── Header.tsx
+│   ├── layout/
+│   │   ├── Header.tsx          # Nav + CTA «Empezar aquí»
 │   │   └── BottomNav.tsx
-│   │
-│   └── theme/                  # Toggle de tema
-│       └── ThemeToggle.tsx
+│   └── theme/ThemeToggle.tsx
 │
-├── data/                       # Contenido centralizado (fuente de verdad)
-│   └── content.ts              # Exporta todo el contenido como constantes TS
-│
-├── lib/                        # Utilidades y helpers
-│   ├── utils.ts
-│   └── constants.ts
-│
-├── hooks/                      # Custom hooks de React
-│
-├── types/                      # Tipos e interfaces TypeScript
-│   └── index.ts
-│
-└── styles/                     # Estilos globales adicionales si aplica
+├── data/content.ts             # Fuente de verdad del copy
+├── lib/, hooks/, types/
+└── styles/                     # si aplica
 ```
 
 ---
@@ -158,18 +150,21 @@ export default function Hero() {
 
 ---
 
-## 🌐 Secciones del landing (estado actual)
+## 🌐 Landing y rutas (estado actual)
 
-| Sección | Componente | Estado |
-|---------|-----------|--------|
-| Hero principal | `Hero.tsx` | ✅ Implementado |
-| Filosofía del método | `Philosophy.tsx` | ✅ Implementado |
-| Programas | `Programs.tsx` | ✅ Implementado |
-| Sobre Yube | `About.tsx` | ✅ Implementado |
-| Comunidad | `Community.tsx` | ✅ Implementado |
-| Tienda / Productos | `Shop.tsx` | ✅ Implementado |
-| FAQ | `FAQ.tsx` | ✅ Implementado |
-| Footer | `Footer.tsx` | ✅ Implementado |
+| Bloque / ruta | Componente o ruta | Notas |
+|---------------|---------------------|--------|
+| Hero | `Hero.tsx` | Fórmula beneficio + método + acción; CTAs a guía gratis y programas |
+| Filosofía | `Philosophy.tsx` | Pilares Cuerpo / Mente / Espíritu + par Lógica / Alma |
+| Programas | `Programs.tsx` | Tres programas + CTA a tienda; bloque clases personalizadas |
+| Testimonios | `Testimonials.tsx` | Tarjetas con iniciales (sustituir por fotos cuando haya) |
+| Sobre Yube | `About.tsx` | Bio extendida; video YouTube opcional (`about.welcomeVideoYoutubeId`) |
+| Comunidad | `Community.tsx` | «Comunidad en movimiento», grid IG, WhatsApp, cartas (newsletter) |
+| Tienda | `Shop.tsx` | Enlaces Payhip; CTAs desde `content.ts` |
+| Lead magnet | `LeadMagnet.tsx` | `#guia-gratis` → `POST /api/subscribe` |
+| FAQ | `FAQ.tsx` | |
+| Footer | `Footer.tsx` | Enlaces funnel + confianza (pagos / garantía copy) |
+| Membresía | `app/membresia/page.tsx` | Tabla de planes; diferencial «Cartas para habitarte» |
 
 ---
 
@@ -195,22 +190,9 @@ export default function Hero() {
 
 ---
 
-## 🚀 Roadmap del proyecto
+## 🚀 Roadmap
 
-```
-Fase 0 (actual) ── Landing page Next.js
-       │
-Fase 1 ────────── PWA: dashboard espiritual, bitácora del alma,
-       │           modo ritual, rituales lunares, comunidad
-       │
-Fase 2 ────────── Full web app: membresías, pagos Stripe,
-       │           Supabase auth + DB, tienda integrada
-       │
-Fase 3 ────────── App nativa (tras validación en web)
-       │
-Fase 4 ────────── Concept Store física (Turmero/Maracay)
-                   con integración QR ↔ app
-```
+El detalle de fases, pendientes inmediatos y deuda técnica está en **[ROADMAP.md](./ROADMAP.md)** (fuente única para planificación).
 
 ---
 
@@ -246,4 +228,4 @@ Fase 4 ────────── Concept Store física (Turmero/Maracay)
 
 ---
 
-*Este archivo debe mantenerse actualizado conforme el proyecto evoluciona. Es la fuente de verdad para cualquier sesión de Claude Code.*
+*Este archivo debe mantenerse alineado con el código y con `ROADMAP.md`. Es la guía técnica para sesiones de asistentes de código.*

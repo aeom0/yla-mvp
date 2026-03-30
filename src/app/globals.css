@@ -20,6 +20,9 @@
   --color-gold: var(--gold);
   --color-smoke: var(--smoke);
   --color-ink: var(--ink);
+  --color-purple-brand: var(--purple-brand);
+  --color-lila-doc: var(--lila-doc);
+  --color-gold-doc: var(--gold-doc);
   --shadow-soft: 0 6px 24px rgba(0,0,0,.06);
   --shadow-warm: 0 8px 32px rgba(232,211,163,.25);
 }
@@ -34,6 +37,12 @@
   --gold-deep: #c9a96e;
   --smoke: #DADADA;
   --ink: #333333;
+
+  /* Referencia Contexto_YLA.docx (identidad “lógica y alma”); CTAs primarios = gold (skill yla-dev) */
+  --purple-brand: #5b3a8e;
+  --lila-doc: #c6b7e2;
+  --gray-doc: #d9d9d9;
+  --gold-doc: #d4af37;
 
   --font-title: "Playfair Display", serif;
   --font-body: "Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;

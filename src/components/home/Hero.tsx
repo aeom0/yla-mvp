@@ -9,15 +9,13 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Fondo degradado lila → beige */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(160deg, rgba(180,151,214,.13) 0%, rgba(232,211,163,.10) 60%, transparent 100%)",
+            "linear-gradient(160deg, color-mix(in srgb, var(--purple-brand) 8%, transparent) 0%, rgba(232,211,163,.10) 55%, transparent 100%)",
         }}
       />
-      {/* Orbe decorativo superior derecha */}
       <div
         aria-hidden="true"
         className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-20 pointer-events-none"
@@ -26,7 +24,6 @@ export function Hero() {
             "radial-gradient(circle, var(--lavender) 0%, transparent 70%)",
         }}
       />
-      {/* Orbe dorado inferior izquierda */}
       <div
         aria-hidden="true"
         className="absolute -bottom-16 -left-16 w-72 h-72 rounded-full opacity-15 pointer-events-none"
@@ -37,7 +34,6 @@ export function Hero() {
       />
 
       <div className="container-yla relative z-10 text-center py-24">
-        {/* Tagline pill */}
         <div
           className="inline-flex items-center gap-2 rounded-full px-4 py-2 mb-8"
           style={{
@@ -54,58 +50,59 @@ export function Hero() {
           </span>
         </div>
 
-        {/* Título */}
         <h1
-          className="title text-5xl md:text-6xl lg:text-7xl mb-5 leading-tight"
+          className="title text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight"
           style={{ color: "var(--accent)" }}
         >
           {hero.title}
         </h1>
 
-        {/* Subtítulo */}
         <p
-          className="text-xl md:text-2xl mb-3 max-w-2xl mx-auto font-medium"
+          className="text-xl md:text-2xl mb-3 max-w-2xl mx-auto font-semibold leading-snug"
           style={{ color: "var(--text)" }}
         >
-          {hero.subtitle}
+          {hero.headlineEmotional}
         </p>
-
-        {/* Descripción */}
         <p
-          className="text-lg md:text-xl mb-12 max-w-xl mx-auto italic"
-          style={{ color: "var(--muted)" }}
+          className="text-lg md:text-xl mb-3 max-w-2xl mx-auto leading-relaxed"
+          style={{ color: "var(--text)" }}
         >
-          &ldquo;{hero.description}&rdquo;
+          {hero.headlineMethod}
+        </p>
+        <p
+          className="text-base md:text-lg mb-2 max-w-xl mx-auto font-medium"
+          style={{ color: "var(--gold-deep)" }}
+        >
+          {hero.headlineAction}
+        </p>
+        <p className="text-sm mb-10" style={{ color: "var(--muted)" }}>
+          {hero.microCta}
         </p>
 
-        {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button
             variant="primary"
-            className="text-base px-8 py-4"
+            className="text-base px-8 py-4 min-h-[48px]"
             onClick={() =>
-              (window.location.href = siteContent.community.whatsappLink)
+              document.getElementById("guia-gratis")?.scrollIntoView({ behavior: "smooth" })
             }
           >
             {hero.cta.primary}
           </Button>
           <Button
             variant="ghost"
-            className="text-base px-8 py-4"
+            className="text-base px-8 py-4 min-h-[48px]"
             onClick={() =>
-              document
-                .getElementById("filosofia")
-                ?.scrollIntoView({ behavior: "smooth" })
+              document.getElementById("programas")?.scrollIntoView({ behavior: "smooth" })
             }
           >
             {hero.cta.secondary}
           </Button>
         </div>
 
-        {/* Stats — con acento dorado en el valor */}
         <div className="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6 max-w-3xl mx-auto">
           {[
-            { value: "4", label: "Programas" },
+            { value: "3", label: "Programas" },
             { value: "100+", label: "Alumnas" },
             { value: "8+", label: "Clases/mes" },
             { value: "20+", label: "Productos" },
