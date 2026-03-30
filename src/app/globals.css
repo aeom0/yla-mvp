@@ -96,7 +96,8 @@ h1, h2, h3, .title { font-family: var(--font-title); }
 .container-yla {
   max-width: 80rem;
   margin: 0 auto;
-  padding: 0 1.5rem;
+  padding-left: max(1rem, env(safe-area-inset-left, 0px));
+  padding-right: max(1rem, env(safe-area-inset-right, 0px));
 }
 .card {
   background: var(--card);

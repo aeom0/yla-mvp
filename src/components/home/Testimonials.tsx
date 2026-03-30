@@ -7,11 +7,11 @@ export function Testimonials() {
   return (
     <Section id="testimonios">
       <SectionHeader title={testimonials.title} subtitle={testimonials.subtitle} centered />
-      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
         {testimonials.items.map((item, i) => (
           <figure
             key={i}
-            className="rounded-2xl p-6 transition-soft hover:-translate-y-0.5"
+            className="rounded-2xl p-5 sm:p-6 transition-soft hover:-translate-y-0.5"
             style={{
               background: "var(--card)",
               border: "1px solid var(--border)",

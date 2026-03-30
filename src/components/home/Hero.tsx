@@ -31,16 +31,16 @@ export function Hero() {
         }}
       />
 
-      <div className="container-yla relative z-10 text-center py-24">
+      <div className="container-yla relative z-10 text-center py-16 sm:py-20 md:py-24">
         <h1
-          className="title text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight"
+          className="title text-[clamp(1.85rem,6.5vw,4.5rem)] sm:text-5xl md:text-6xl lg:text-7xl mb-5 sm:mb-6 leading-[1.12] sm:leading-tight px-1"
           style={{ color: "var(--accent)" }}
         >
           {hero.title}
         </h1>
 
         <p
-          className="text-xl md:text-2xl mb-4 max-w-2xl mx-auto font-semibold leading-snug"
+          className="text-lg sm:text-xl md:text-2xl mb-4 max-w-2xl mx-auto font-semibold leading-snug px-2"
           style={{ color: "var(--text)" }}
         >
           {hero.headlineEmotional}

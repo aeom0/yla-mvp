@@ -41,11 +41,11 @@ export function LeadMagnet() {
   return (
     <section
       id="guia-gratis"
-      className="py-20 md:py-24"
+      className="py-14 sm:py-20 md:py-24"
       style={{ background: "var(--section-alt)" }}
     >
       <div className="container-yla max-w-2xl mx-auto text-center px-4">
-        <h2 className="title text-3xl md:text-4xl mb-4" style={{ color: "var(--accent)" }}>
+        <h2 className="title text-2xl sm:text-3xl md:text-4xl mb-4 px-1 leading-tight" style={{ color: "var(--accent)" }}>
           {leadMagnet.title}
         </h2>
         <p className="text-base md:text-lg mb-10 leading-relaxed" style={{ color: "var(--muted)" }}>

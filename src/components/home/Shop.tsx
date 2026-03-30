@@ -2,20 +2,21 @@
 
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
-import { BookOpen, ExternalLink, Headphones, Star } from "lucide-react";
+import { lucideBrand } from "@/lib/lucideBrand";
+import { ExternalLink, Headphones, NotebookPen, ScrollText } from "lucide-react";
 
 type ProductCategory = "guia" | "cuaderno" | "audio";
 
 const categoryMeta: Record<ProductCategory, { label: string; icon: React.ReactNode }> = {
-  guia:     { label: "Guías",             icon: <Star size={16} /> },
-  cuaderno: { label: "Cuadernos digitales", icon: <BookOpen size={16} /> },
-  audio:    { label: "Meditaciones",      icon: <Headphones size={16} /> },
+  guia:     { label: "Guías",               icon: <ScrollText {...lucideBrand} size={16} /> },
+  cuaderno: { label: "Cuadernos digitales", icon: <NotebookPen {...lucideBrand} size={16} /> },
+  audio:    { label: "Meditaciones",        icon: <Headphones {...lucideBrand} size={16} /> },
 };
 
 const categoryIconLarge: Record<ProductCategory, React.ReactNode> = {
-  guia:     <Star size={28} />,
-  cuaderno: <BookOpen size={28} />,
-  audio:    <Headphones size={28} />,
+  guia:     <ScrollText {...lucideBrand} size={28} />,
+  cuaderno: <NotebookPen {...lucideBrand} size={28} />,
+  audio:    <Headphones {...lucideBrand} size={28} />,
 };
 
 export function Shop() {
@@ -43,7 +44,7 @@ export function Shop() {
               <h3 className="title text-xl">{meta.label}</h3>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
+            <div className="grid grid-cols-1 min-[420px]:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4 sm:gap-5">
               {products.map((product) => (
                 <article
                   key={product.id}
@@ -90,7 +91,7 @@ export function Shop() {
                       style={{ background: "var(--purple)" }}
                     >
                       {product.isFree ? shop.ctaFree : shop.ctaPaid}
-                      <ExternalLink size={13} aria-hidden="true" />
+                      <ExternalLink {...lucideBrand} size={14} aria-hidden="true" />
                     </a>
                   </div>
                 </article>
@@ -109,7 +110,7 @@ export function Shop() {
           style={{ background: "var(--purple)", boxShadow: "var(--shadow-purple)" }}
         >
           Ver toda la tienda
-          <ExternalLink size={15} aria-hidden="true" />
+          <ExternalLink {...lucideBrand} size={16} aria-hidden="true" />
         </a>
       </div>
     </Section>

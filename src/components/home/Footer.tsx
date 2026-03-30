@@ -1,5 +1,7 @@
 import { siteContent } from "@/data/content";
-import { Instagram, MessageCircle, Music2, Youtube } from "lucide-react";
+import { TiktokGlyph } from "@/components/ui/icons/TiktokGlyph";
+import { lucideBrand } from "@/lib/lucideBrand";
+import { Instagram, MessageCircle, Youtube } from "lucide-react";
 
 export function Footer() {
   const { footer } = siteContent;
@@ -22,10 +24,10 @@ export function Footer() {
             </p>
             <div className="flex gap-3">
               {[
-                { href: footer.social.instagram, icon: <Instagram size={17} />, label: "Instagram" },
-                { href: footer.social.tiktok,    icon: <Music2 size={17} />,     label: "TikTok" },
-                { href: footer.social.youtube,   icon: <Youtube size={17} />,    label: "YouTube" },
-                { href: footer.social.whatsapp,  icon: <MessageCircle size={17} />, label: "WhatsApp" },
+                { href: footer.social.instagram, icon: <Instagram {...lucideBrand} size={17} />, label: "Instagram" },
+                { href: footer.social.tiktok,    icon: <TiktokGlyph size={17} />,     label: "TikTok" },
+                { href: footer.social.youtube,   icon: <Youtube {...lucideBrand} size={17} />,    label: "YouTube" },
+                { href: footer.social.whatsapp,  icon: <MessageCircle {...lucideBrand} size={17} />, label: "WhatsApp" },
               ].map(({ href, icon, label }) => (
                 <a
                   key={label}

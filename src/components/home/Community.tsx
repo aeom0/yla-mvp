@@ -4,7 +4,9 @@ import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
-import { Instagram, Youtube, Music2, MessageCircle } from "lucide-react";
+import { TiktokGlyph } from "@/components/ui/icons/TiktokGlyph";
+import { lucideBrand } from "@/lib/lucideBrand";
+import { Instagram, MessageCircle, Youtube } from "lucide-react";
 
 const CHANNELS = [
   {
@@ -22,7 +24,7 @@ const CHANNELS = [
     label: "TikTok",
     handle: "@yube.karina",
     description: "Clips cortos de movimiento e intención.",
-    icon: Music2,
+    icon: TiktokGlyph,
     href: "https://tiktok.com/@yube.karina",
     color: "var(--purple)",
     bg: "var(--purple-mist)",
@@ -92,7 +94,7 @@ export function Community() {
       />
 
       {/* 4 canales sociales */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-14">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto mb-10 sm:mb-14">
         {CHANNELS.map((ch) => {
           const Icon = ch.icon;
           return (
@@ -101,14 +103,14 @@ export function Community() {
               href={ch.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex flex-col items-center text-center gap-3 rounded-2xl p-5 transition-soft hover:-translate-y-1 hover:shadow-md"
+              className="flex flex-col items-center text-center gap-2 sm:gap-3 rounded-2xl p-4 sm:p-5 transition-soft hover:-translate-y-1 hover:shadow-md min-h-0"
               style={{ background: "var(--card)", border: "1px solid var(--border)" }}
             >
               <span
                 className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ background: ch.bg }}
               >
-                <Icon size={22} style={{ color: ch.color }} aria-hidden />
+                <Icon {...lucideBrand} size={22} style={{ color: ch.color }} aria-hidden />
               </span>
               <div>
                 <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>

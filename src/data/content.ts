@@ -1,6 +1,25 @@
 // Contenido centralizado — Yoga con Lógica y Alma
 
 export const siteContent = {
+  header: {
+    brand: {
+      /** Una línea desde breakpoint `sm` (puede truncarse hasta `lg`) */
+      full: "Yoga con Lógica y Alma",
+      /** Dos líneas en móvil angosto por debajo de `sm` */
+      compactLines: ["Yoga con", "Lógica y Alma"] as const,
+    },
+    ctaMembresia: "Empezar aquí",
+    accesoAlumnas: "Acceso alumnas",
+    accesoAlumnasHref: "/dashboard",
+    nav: [
+      { href: "/", label: "Inicio", match: "exact" as const },
+      { href: "/#programas", label: "Programas", match: "hash" as const },
+      { href: "/membresia", label: "Membresía", match: "path" as const },
+      { href: "/#tienda", label: "Tienda", match: "hash" as const },
+      { href: "/faq", label: "FAQ", match: "path" as const },
+    ],
+  },
+
   hero: {
     title: "Yoga con Lógica y Alma®",
     headlineEmotional: "Encuentra estructura para tu mente y espacio para tu alma.",
@@ -18,19 +37,19 @@ export const siteContent = {
       "Yoga con Lógica y Alma es la fusión entre el cuerpo que se mueve con intención y la mente que reflexiona con claridad. Es usar herramientas de análisis y autoconocimiento junto con la práctica del yoga para conectar con nosotras mismas de forma profunda, consciente y real.",
     pillars: [
       {
-        icon: "Activity",
+        icon: "Flower2",
         title: "Cuerpo",
         description:
           "Movimiento con intención: posturas y respiración para anclarte en lo físico sin perder la ternura.",
       },
       {
-        icon: "Brain",
+        icon: "Lightbulb",
         title: "Mente",
         description:
           "Lógica aplicada a lo emocional: observar patrones y tomar decisiones con más claridad interna.",
       },
       {
-        icon: "Sparkles",
+        icon: "MoonStar",
         title: "Espíritu",
         description:
           "Un espacio para recordar quién eres más allá de tus responsabilidades y volver a ti.",

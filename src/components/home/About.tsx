@@ -1,6 +1,7 @@
 import { Section } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
-import { Award, BookOpen, Briefcase } from "lucide-react";
+import { lucideBrand } from "@/lib/lucideBrand";
+import { BadgeCheck, Compass, Gem, NotebookPen } from "lucide-react";
 
 export function About() {
   const { about } = siteContent;
@@ -9,7 +10,7 @@ export function About() {
   return (
     <Section id="sobre-mi" style={{ background: "var(--section-alt)" }}>
       <div className="max-w-5xl mx-auto">
-        <div className="grid md:grid-cols-2 gap-14 items-start">
+        <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
 
           {/* Imagen / Video */}
           <div className="order-2 md:order-1">
@@ -34,7 +35,7 @@ export function About() {
                   border: "1px solid var(--border)",
                 }}
               >
-                <Award size={80} style={{ color: "var(--purple-soft)", opacity: 0.5 }} aria-hidden />
+                <Gem {...lucideBrand} size={72} style={{ color: "var(--purple-soft)", opacity: 0.45 }} aria-hidden />
                 <div
                   className="absolute bottom-0 left-0 right-0 h-1"
                   style={{ background: "var(--purple)" }}
@@ -62,7 +63,7 @@ export function About() {
               >
                 Sobre mí
               </span>
-              <h2 className="title text-3xl md:text-4xl" style={{ color: "var(--accent)" }}>
+              <h2 className="title text-2xl sm:text-3xl md:text-4xl" style={{ color: "var(--accent)" }}>
                 {about.title}
               </h2>
             </div>
@@ -81,9 +82,9 @@ export function About() {
 
             <div className="space-y-3 pt-1">
               {[
-                { icon: <Briefcase size={15} />, text: "Ingeniera industrial de profesión" },
-                { icon: <Award size={15} />, text: "Instructora de yoga y meditación — 500 h certificadas" },
-                { icon: <BookOpen size={15} />, text: "Metodología propia: lógica aplicada al bienestar" },
+                { icon: <Compass {...lucideBrand} size={16} />, text: "Ingeniera industrial de profesión" },
+                { icon: <BadgeCheck {...lucideBrand} size={16} />, text: "Instructora de yoga y meditación — 500 h certificadas" },
+                { icon: <NotebookPen {...lucideBrand} size={16} />, text: "Metodología propia: lógica aplicada al bienestar" },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <span

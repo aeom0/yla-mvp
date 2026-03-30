@@ -4,7 +4,8 @@ import { Button } from "@/components/ui/Button";
 import { Card, CardBody } from "@/components/ui/Card";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
-import { Check } from "lucide-react";
+import { lucideBrand } from "@/lib/lucideBrand";
+import { CircleCheck } from "lucide-react";
 
 const accentColor = {
   lavender: "var(--purple-soft)",
@@ -22,7 +23,7 @@ export function Programs() {
     <Section id="programas">
       <SectionHeader title={programs.title} centered />
 
-      <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-5 sm:gap-8 max-w-6xl mx-auto">
         {programs.items.map((program, i) => {
           const color =
             accentColor[(program.accent as keyof typeof accentColor) ?? "lavender"];
@@ -49,7 +50,13 @@ export function Programs() {
                 <div className="space-y-2 mb-6 flex-1">
                   {program.stages.map((stage, j) => (
                     <div key={j} className="flex items-start gap-2">
-                      <Check size={16} className="mt-0.5 flex-shrink-0" style={{ color: color }} />
+                      <CircleCheck
+                        {...lucideBrand}
+                        size={18}
+                        className="mt-0.5 flex-shrink-0"
+                        style={{ color: color }}
+                        aria-hidden
+                      />
                       <span className="text-sm">{stage}</span>
                     </div>
                   ))}

@@ -2,6 +2,7 @@
 
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
+import { lucideBrand } from "@/lib/lucideBrand";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 
@@ -25,13 +26,14 @@ export function FAQ() {
           >
             <button
               onClick={() => setOpen(open === i ? null : i)}
-              className="w-full flex items-center justify-between gap-4 px-6 py-5 text-left"
+              className="w-full flex items-center justify-between gap-3 sm:gap-4 px-4 sm:px-6 py-4 sm:py-5 text-left"
               aria-expanded={open === i}
             >
               <span className="font-semibold text-sm md:text-base" style={{ color: "var(--text)" }}>
                 {item.question}
               </span>
               <ChevronDown
+                {...lucideBrand}
                 size={18}
                 className="flex-shrink-0 transition-transform duration-200"
                 style={{
@@ -47,7 +49,7 @@ export function FAQ() {
                 transition: "max-height 0.3s cubic-bezier(.22,.61,.36,1)",
               }}
             >
-              <p className="px-6 pb-5 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+              <p className="px-4 sm:px-6 pb-4 sm:pb-5 text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
                 {item.answer}
               </p>
             </div>

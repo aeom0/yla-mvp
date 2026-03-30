@@ -21,7 +21,7 @@ export default function RootLayout({
           <div className="min-h-dvh flex flex-col">
             <Header />
             {/* Removemos el padding del container para que la landing tenga full width */}
-            <main className="flex-1">{children}</main>
+            <main className="flex-1 pb-16 md:pb-0">{children}</main>
             <BottomNav />
           </div>
         </Providers>

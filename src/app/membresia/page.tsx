@@ -1,7 +1,8 @@
 import Link from "next/link";
 import type { Metadata } from "next";
 import { siteContent } from "@/data/content";
-import { Check, Mail } from "lucide-react";
+import { lucideBrand } from "@/lib/lucideBrand";
+import { CircleCheck, Mail } from "lucide-react";
 
 export const metadata: Metadata = {
   title: "Membresía | Yoga con Lógica y Alma",
@@ -13,7 +14,7 @@ export default function MembresiaPage() {
   const { membership } = siteContent;
 
   return (
-    <div className="pb-16">
+    <div>
       <section
         className="py-16 md:py-20 text-center px-4"
         style={{
@@ -51,7 +52,7 @@ export default function MembresiaPage() {
               className="w-14 h-14 rounded-2xl flex items-center justify-center shrink-0"
               style={{ background: "color-mix(in srgb, var(--lavender) 18%, transparent)" }}
             >
-              <Mail className="w-7 h-7" style={{ color: "var(--lavender-deep)" }} aria-hidden />
+              <Mail {...lucideBrand} size={28} style={{ color: "var(--lavender-deep)" }} aria-hidden />
             </div>
             <div>
               <h2 className="title text-2xl mb-2" style={{ color: "var(--accent)" }}>
@@ -99,7 +100,8 @@ export default function MembresiaPage() {
               <ul className="space-y-3 flex-1 mb-8">
                 {plan.features.map((f, j) => (
                   <li key={j} className="flex gap-2 text-sm">
-                    <Check
+                    <CircleCheck
+                      {...lucideBrand}
                       className="flex-shrink-0 mt-0.5"
                       size={18}
                       style={{
