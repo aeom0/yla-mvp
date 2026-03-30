@@ -15,7 +15,6 @@ export function Philosophy() {
         subtitle={philosophy.description}
         centered
       />
-
       <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
         {philosophy.pillars.map((pillar, i) => {
           const Icon = iconMap[pillar.icon as keyof typeof iconMap];

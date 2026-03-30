@@ -19,11 +19,12 @@ export function Testimonials() {
             }}
           >
             <div className="flex items-center gap-3 mb-4">
+              {/* Avatar con iniciales — fondo morado pálido, texto morado */}
               <div
-                className="w-12 h-12 rounded-full flex items-center justify-center title text-lg shrink-0"
+                className="w-12 h-12 rounded-full flex items-center justify-center title text-base shrink-0 font-semibold"
                 style={{
-                  background: "color-mix(in srgb, var(--lavender) 20%, transparent)",
-                  color: "var(--lavender-deep)",
+                  background: "var(--purple-pale)",
+                  color: "var(--purple)",
                 }}
                 aria-hidden
               >
@@ -43,7 +44,10 @@ export function Testimonials() {
                 </div>
               </figcaption>
             </div>
-            <blockquote className="text-sm leading-relaxed italic" style={{ color: "var(--muted)" }}>
+            <blockquote
+              className="text-sm leading-relaxed italic"
+              style={{ color: "var(--muted)" }}
+            >
               &ldquo;{item.quote}&rdquo;
             </blockquote>
           </figure>

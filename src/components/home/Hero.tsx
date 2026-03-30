@@ -8,22 +8,27 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
+      {/* Gradiente muy sutil — solo profundidad, sin color dominante */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(160deg, rgba(91,58,142,.10) 0%, rgba(212,175,55,.06) 55%, transparent 100%)",
+            "linear-gradient(160deg, rgba(91,58,142,.07) 0%, rgba(200,168,75,.04) 60%, transparent 100%)",
         }}
       />
       <div
         aria-hidden="true"
-        className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-15 pointer-events-none"
-        style={{ background: "radial-gradient(circle, var(--purple-soft) 0%, transparent 70%)" }}
+        className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(91,58,142,.10) 0%, transparent 65%)",
+        }}
       />
       <div
         aria-hidden="true"
-        className="absolute -bottom-16 -left-16 w-72 h-72 rounded-full opacity-10 pointer-events-none"
-        style={{ background: "radial-gradient(circle, var(--gold) 0%, transparent 70%)" }}
+        className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full pointer-events-none"
+        style={{
+          background: "radial-gradient(circle, rgba(200,168,75,.07) 0%, transparent 65%)",
+        }}
       />
 
       <div className="container-yla relative z-10 text-center py-24">
@@ -42,13 +47,13 @@ export function Hero() {
         </p>
 
         <p
-          className="text-base md:text-lg mb-2 max-w-xl mx-auto font-medium"
-          style={{ color: "var(--accent-warm)" }}
+          className="text-base md:text-lg mb-2 max-w-xl mx-auto"
+          style={{ color: "var(--muted)" }}
         >
           {hero.headlineAction}
         </p>
 
-        <p className="text-sm mb-10" style={{ color: "var(--muted)" }}>
+        <p className="text-sm mb-10" style={{ color: "var(--muted)", opacity: 0.7 }}>
           {hero.microCta}
         </p>
 

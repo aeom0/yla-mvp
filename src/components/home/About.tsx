@@ -11,7 +11,7 @@ export function About() {
       <div className="max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-14 items-start">
 
-          {/* Imagen / Video placeholder */}
+          {/* Imagen / Video */}
           <div className="order-2 md:order-1">
             {videoId ? (
               <div
@@ -30,7 +30,7 @@ export function About() {
               <div
                 className="aspect-square rounded-2xl flex items-center justify-center relative overflow-hidden max-w-md mx-auto md:max-w-none"
                 style={{
-                  background: "linear-gradient(135deg, rgba(91,58,142,.15) 0%, rgba(212,175,55,.12) 100%)",
+                  background: "linear-gradient(135deg, var(--purple-mist) 0%, var(--gold-pale) 100%)",
                   border: "1px solid var(--border)",
                 }}
               >
@@ -49,7 +49,7 @@ export function About() {
             )}
           </div>
 
-          {/* Contenido textual */}
+          {/* Texto */}
           <div className="order-1 md:order-2 space-y-5">
             <div>
               <span
@@ -67,7 +67,6 @@ export function About() {
               </h2>
             </div>
 
-            {/* Credencial profesional — limpia, uniforme */}
             <p className="text-sm font-semibold leading-relaxed" style={{ color: "var(--purple)" }}>
               {about.credential}
             </p>
@@ -80,7 +79,6 @@ export function About() {
               {about.extended}
             </p>
 
-            {/* Tres pilares profesionales */}
             <div className="space-y-3 pt-1">
               {[
                 { icon: <Briefcase size={15} />, text: "Ingeniera industrial de profesión" },

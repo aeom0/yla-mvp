@@ -7,12 +7,14 @@
 @import "@fontsource/lato/700.css";
 
 /*
-  SISTEMA DE COLOR — Yoga con Lógica y Alma
-  Morado profundo  #5B3A8E  — identidad espiritual principal
-  Lila suave       #C6B7E2  — complemento, fondos suaves
-  Beige cálido     #F6EBD9  — base neutra, tierra
-  Dorado           #D4AF37  — acento de abundancia (solo detalles)
-  Carbón           #333333  — texto
+  PALETA — Yoga con Lógica y Alma
+  Base: blanco limpio + beige muy sutil
+  Acento espiritual: morado #5B3A8E
+  Acento cálido (solo detalles): dorado #D4AF37
+  Texto: carbón #2d2d2d
+
+  REGLA: cero valores heredados de variables viejas.
+  Todos los tokens resuelven a un hex fijo.
 */
 
 @theme {
@@ -22,62 +24,63 @@
   --color-border:      var(--border);
   --color-muted:       var(--muted);
   --color-accent:      var(--accent);
-  --color-accent-warm: var(--accent-warm);
   --color-purple:      var(--purple);
   --color-purple-soft: var(--purple-soft);
-  --color-beige:       var(--beige);
   --color-gold:        var(--gold);
-  --color-smoke:       var(--smoke);
+  --color-beige:       var(--beige);
   --color-ink:         var(--ink);
-  --shadow-soft:       0 6px 24px rgba(0,0,0,.07);
-  --shadow-purple:     0 8px 32px rgba(91,58,142,.18);
+  --shadow-soft:       0 4px 20px rgba(0,0,0,.06);
+  --shadow-purple:     0 6px 28px rgba(91,58,142,.22);
 }
 
-/* — Paleta fija — */
+/* — Paleta base (inmutable) — */
 :root {
-  --purple:      #5B3A8E;
-  --purple-deep: #432a6b;
-  --purple-soft: #C6B7E2;
-  --purple-mist: rgba(91,58,142,.08);
+  /* Morado — único acento espiritual */
+  --purple:       #5B3A8E;
+  --purple-deep:  #432a6b;
+  --purple-soft:  #C6B7E2;
+  --purple-mist:  rgba(91, 58, 142, 0.07);
+  --purple-pale:  rgba(91, 58, 142, 0.12);
 
-  --beige:       #F6EBD9;
-  --beige-warm:  #f0e0c4;
+  /* Fondo base — blanco con calídez mnima, NO rosado */
+  --beige:        #FAF7F2;
+  --beige-warm:   #F3EDE3;
 
-  --gold:        #D4AF37;
-  --gold-pale:   rgba(212,175,55,.15);
+  /* Dorado — solo para detalles sutiles (no botones) */
+  --gold:         #C8A84B;
+  --gold-pale:    rgba(200, 168, 75, 0.12);
 
-  --smoke:       #D9D9D9;
-  --ink:         #333333;
+  /* Neutros */
+  --ink:          #2d2d2d;
+  --smoke:        #d0ccd8;
 
-  --font-title:  "Playfair Display", serif;
-  --font-body:   "Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-title:   "Playfair Display", serif;
+  --font-body:    "Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* — Tokens LIGHT — */
+/* — Tokens semánticos LIGHT — */
 :root {
-  --bg:          var(--beige);
-  --text:        var(--ink);
-  --card:        #ffffff;
-  --border:      rgba(91,58,142,.18);
-  --muted:       #6b5f80;
-  --accent:      var(--purple);
-  --accent-warm: var(--gold);
-  --section-alt: #ede5f7;
+  --bg:           #FAF7F2;
+  --text:         #2d2d2d;
+  --card:         #ffffff;
+  --border:       rgba(91, 58, 142, 0.14);
+  --muted:        #72657e;
+  --accent:       #5B3A8E;
+  --section-alt:  #F0EBF8;  /* lila muy pálido, sin rosado */
 }
 
 /* — Tokens DARK — */
 .dark {
-  --bg:          #1a1525;
-  --text:        var(--beige);
-  --card:        #221c30;
-  --border:      #3d3355;
-  --muted:       #a99ec0;
-  --accent:      var(--purple-soft);
-  --accent-warm: var(--gold);
-  --section-alt: #1e1829;
+  --bg:           #16121f;
+  --text:         #EDE8F5;
+  --card:         #201b2e;
+  --border:       rgba(198, 183, 226, 0.15);
+  --muted:        #a89fc0;
+  --accent:       #C6B7E2;
+  --section-alt:  #1c1829;
 }
 
-/* — Base — */
+/* — Reset / Base — */
 *, *::before, *::after { box-sizing: border-box; }
 html, body { height: 100%; }
 body {
@@ -86,26 +89,22 @@ body {
   background: var(--bg);
   color: var(--text);
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 h1, h2, h3, .title { font-family: var(--font-title); }
 
 /* — Layout — */
-.container-yla { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
+.container-yla {
+  max-width: 80rem;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
 .card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 1rem;
-  box-shadow: 0 6px 24px rgba(0,0,0,.06);
+  box-shadow: 0 4px 20px rgba(0,0,0,.05);
 }
 .transition-soft { transition: all .25s cubic-bezier(.22,.61,.36,1); }
 
-/* — Utilities — */
-.text-gold     { color: var(--gold); }
-.bg-gold-pale  { background: var(--gold-pale); }
-.border-gold   { border-color: var(--gold); }
-.text-purple   { color: var(--purple); }
-.bg-purple-mist { background: var(--purple-mist); }
-.border-purple { border-color: var(--purple); }
-
+/* — Helpers — */
 .section-wave { display: block; width: 100%; overflow: hidden; line-height: 0; }
