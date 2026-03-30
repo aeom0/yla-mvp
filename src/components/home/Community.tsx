@@ -2,10 +2,52 @@
 
 import { useState } from "react";
 import { Button } from "@/components/ui/Button";
-import { Card, CardBody } from "@/components/ui/Card";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
-import { Instagram, Mail, MessageCircle } from "lucide-react";
+import { Instagram, Youtube, Music2, MessageCircle } from "lucide-react";
+
+const CHANNELS = [
+  {
+    id: "instagram",
+    label: "Instagram",
+    handle: "@yogaconlogicayalma",
+    description: "Práctica, reflexiones y detrás de cámaras.",
+    icon: Instagram,
+    href: "https://instagram.com/yogaconlogicayalma",
+    color: "var(--purple)",
+    bg: "var(--purple-mist)",
+  },
+  {
+    id: "tiktok",
+    label: "TikTok",
+    handle: "@yogaconlogicayalma",
+    description: "Clips cortos de movimiento e intención.",
+    icon: Music2,
+    href: "https://tiktok.com/@yogaconlogicayalma",
+    color: "var(--purple)",
+    bg: "var(--purple-mist)",
+  },
+  {
+    id: "youtube",
+    label: "YouTube",
+    handle: "Yoga con Lógica y Alma",
+    description: "Clases completas y contenido en profundidad.",
+    icon: Youtube,
+    href: "https://youtube.com/@yogaconlogicayalma",
+    color: "var(--purple)",
+    bg: "var(--purple-mist)",
+  },
+  {
+    id: "whatsapp",
+    label: "WhatsApp",
+    handle: "Almas en Armonía",
+    description: "Comunidad activa de mujeres en el camino.",
+    icon: MessageCircle,
+    href: siteContent.community.whatsappLink,
+    color: "var(--gold)",
+    bg: "var(--gold-pale)",
+  },
+] as const;
 
 export function Community() {
   const { community, newsletter } = siteContent;
@@ -18,7 +60,6 @@ export function Community() {
     const fd = new FormData(form);
     const email = String(fd.get("email") ?? "").trim();
     if (!email) return;
-
     setStatus("loading");
     setMessage("");
     try {
@@ -34,7 +75,7 @@ export function Community() {
         return;
       }
       setStatus("success");
-      setMessage("Gracias. Pronto recibís novedades en tu bandeja.");
+      setMessage("Gracias. Pronto recibirás novedades en tu bandeja.");
       form.reset();
     } catch {
       setStatus("error");
@@ -50,131 +91,90 @@ export function Community() {
         centered
       />
 
-      <div className="grid grid-cols-2 md:grid-cols-3 gap-3 max-w-4xl mx-auto mb-12">
-        {community.instagramGrid.map((cell, i) => (
-          <a
-            key={i}
-            href={cell.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="aspect-square rounded-2xl flex flex-col items-center justify-center gap-2 transition-soft hover:-translate-y-0.5 hover:shadow-md min-h-[120px]"
-            style={{
-              background:
-                i % 3 === 0
-                  ? "linear-gradient(145deg, color-mix(in srgb, var(--lavender) 25%, var(--beige)), var(--beige))"
-                  : i % 3 === 1
-                    ? "linear-gradient(145deg, color-mix(in srgb, var(--purple-brand) 12%, var(--beige)), var(--beige-warm))"
-                    : "linear-gradient(145deg, var(--beige), color-mix(in srgb, var(--gold) 35%, var(--beige)))",
-              border: "1px solid var(--border)",
-            }}
+      {/* 4 canales sociales */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-4xl mx-auto mb-14">
+        {CHANNELS.map((ch) => {
+          const Icon = ch.icon;
+          return (
+            <a
+              key={ch.id}
+              href={ch.href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex flex-col items-center text-center gap-3 rounded-2xl p-5 transition-soft hover:-translate-y-1 hover:shadow-md"
+              style={{
+                background: "var(--card)",
+                border: "1px solid var(--border)",
+              }}
+            >
+              <span
+                className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                style={{ background: ch.bg }}
+              >
+                <Icon size={22} style={{ color: ch.color }} aria-hidden />
+              </span>
+              <div>
+                <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>
+                  {ch.label}
+                </p>
+                <p className="text-xs mt-0.5" style={{ color: "var(--muted)" }}>
+                  {ch.handle}
+                </p>
+              </div>
+              <p className="text-xs leading-relaxed" style={{ color: "var(--muted)" }}>
+                {ch.description}
+              </p>
+            </a>
+          );
+        })}
+      </div>
+
+      {/* Newsletter */}
+      <div
+        className="max-w-lg mx-auto rounded-2xl p-8"
+        style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+      >
+        <h3 className="title text-2xl mb-2 text-center">{newsletter.title}</h3>
+        <p className="text-sm mb-1 text-center" style={{ color: "var(--muted)" }}>
+          {newsletter.description}
+        </p>
+        <p className="text-xs mb-6 text-center" style={{ color: "var(--muted)" }}>
+          {newsletter.microcopy}
+        </p>
+
+        {status === "success" ? (
+          <p
+            className="rounded-2xl px-4 py-3 text-sm text-center"
+            style={{ background: "var(--bg)", border: "1px solid var(--border)", color: "var(--text)" }}
           >
-            <Instagram size={22} style={{ color: "var(--lavender-deep)" }} aria-hidden />
-            <span className="text-xs font-medium text-center px-2" style={{ color: "var(--text)" }}>
-              {cell.label}
-            </span>
-          </a>
-        ))}
-      </div>
-
-      <div className="max-w-2xl mx-auto text-center mb-10">
-        <a
-          href={siteContent.classes.socialPractice.href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 text-sm font-semibold underline-offset-4 hover:opacity-80"
-          style={{ color: "var(--lavender-deep)" }}
-        >
-          {siteContent.classes.socialPractice.label}
-        </a>
-      </div>
-
-      <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-        <Card
-          className="transition-soft hover:shadow-lg"
-          style={{ borderTop: "3px solid var(--lavender)" }}
-        >
-          <CardBody className="py-10 px-6">
-            <div
-              className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 mx-auto md:mx-0"
-              style={{ background: "rgba(180,151,214,.15)" }}
-            >
-              <MessageCircle size={32} style={{ color: "var(--lavender)" }} />
-            </div>
-            <h3 className="title text-2xl mb-3 text-center md:text-left">{community.title}</h3>
-            <p className="mb-4 text-center md:text-left" style={{ color: "var(--muted)" }}>
-              {community.description}
-            </p>
-            <p
-              className="text-sm mb-6 text-center md:text-left leading-relaxed"
-              style={{ color: "var(--muted)" }}
-            >
-              {community.whatsappHelper}
-            </p>
-            <div className="flex justify-center md:justify-start">
-              <Button
-                variant="primary"
-                className="min-h-[48px]"
-                onClick={() => window.open(community.whatsappLink, "_blank")}
-              >
-                {community.whatsappCta}
-              </Button>
-            </div>
-          </CardBody>
-        </Card>
-
-        <Card
-          className="transition-soft hover:shadow-lg"
-          style={{ borderTop: "3px solid var(--gold-deep)" }}
-        >
-          <CardBody className="py-10 px-6">
-            <div
-              className="inline-flex items-center justify-center w-16 h-16 rounded-full mb-4 mx-auto md:mx-0"
-              style={{ background: "rgba(201,169,110,.15)" }}
-            >
-              <Mail size={32} style={{ color: "var(--gold-deep)" }} />
-            </div>
-            <h3 className="title text-2xl mb-3 text-center md:text-left">{newsletter.title}</h3>
-            <p className="mb-2 text-center md:text-left" style={{ color: "var(--muted)" }}>
-              {newsletter.description}
-            </p>
-            <p className="text-xs mb-6 text-center md:text-left" style={{ color: "var(--muted)" }}>
-              {newsletter.microcopy}
-            </p>
-            {status === "success" ? (
-              <p
-                className="rounded-2xl px-4 py-3 text-sm text-center"
-                style={{ background: "var(--bg)", border: "1px solid var(--border)", color: "var(--text)" }}
-              >
-                {message}
-              </p>
-            ) : (
-              <form className="flex flex-col gap-3" onSubmit={handleNewsletterSubmit}>
-                <input
-                  type="email"
-                  name="email"
-                  placeholder={newsletter.placeholder}
-                  required
-                  autoComplete="email"
-                  disabled={status === "loading"}
-                  className="rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--gold-deep)] min-h-[48px]"
-                  style={{
-                    border: "1px solid var(--border)",
-                    background: "var(--bg)",
-                    color: "var(--text)",
-                  }}
-                />
-                <Button type="submit" variant="primary" disabled={status === "loading"} className="min-h-[48px]">
-                  {status === "loading" ? "Enviando…" : newsletter.cta}
-                </Button>
-              </form>
-            )}
-            {status === "error" && message ? (
-              <p className="mt-3 text-sm text-center" style={{ color: "#b91c1c" }} role="alert">
-                {message}
-              </p>
-            ) : null}
-          </CardBody>
-        </Card>
+            {message}
+          </p>
+        ) : (
+          <form className="flex flex-col gap-3" onSubmit={handleNewsletterSubmit}>
+            <input
+              type="email"
+              name="email"
+              placeholder={newsletter.placeholder}
+              required
+              autoComplete="email"
+              disabled={status === "loading"}
+              className="rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--purple)] min-h-[48px]"
+              style={{
+                border: "1px solid var(--border)",
+                background: "var(--bg)",
+                color: "var(--text)",
+              }}
+            />
+            <Button type="submit" variant="primary" disabled={status === "loading"} className="min-h-[48px]">
+              {status === "loading" ? "Enviando…" : newsletter.cta}
+            </Button>
+          </form>
+        )}
+        {status === "error" && message && (
+          <p className="mt-3 text-sm text-center" style={{ color: "#b91c1c" }} role="alert">
+            {message}
+          </p>
+        )}
       </div>
     </Section>
   );

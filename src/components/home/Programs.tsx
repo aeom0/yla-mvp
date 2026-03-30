@@ -7,8 +7,8 @@ import { siteContent } from "@/data/content";
 import { Check } from "lucide-react";
 
 const accentColor = {
-  lavender: "var(--lavender)",
-  gold: "var(--gold-deep)",
+  lavender: "var(--purple-soft)",
+  gold: "var(--gold)",
 };
 
 export function Programs() {
@@ -20,11 +20,7 @@ export function Programs() {
 
   return (
     <Section id="programas">
-      <SectionHeader
-        title={programs.title}
-        subtitle={programs.subtitle}
-        centered
-      />
+      <SectionHeader title={programs.title} centered />
 
       <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
         {programs.items.map((program, i) => {
@@ -46,25 +42,18 @@ export function Programs() {
                 >
                   {program.duration}
                 </div>
-
                 <h3 className="title text-2xl mb-2">{program.title}</h3>
                 <p className="mb-6" style={{ color: "var(--muted)" }}>
                   {program.description}
                 </p>
-
                 <div className="space-y-2 mb-6 flex-1">
                   {program.stages.map((stage, j) => (
                     <div key={j} className="flex items-start gap-2">
-                      <Check
-                        size={16}
-                        className="mt-0.5 flex-shrink-0"
-                        style={{ color: color }}
-                      />
+                      <Check size={16} className="mt-0.5 flex-shrink-0" style={{ color: color }} />
                       <span className="text-sm">{stage}</span>
                     </div>
                   ))}
                 </div>
-
                 <p className="text-xs mb-3 text-center" style={{ color: "var(--muted)" }}>
                   {programs.cardMicrocopy}
                 </p>
@@ -77,35 +66,24 @@ export function Programs() {
         })}
       </div>
 
-      <div className="max-w-2xl mx-auto mt-16">
+      {/* Clases personalizadas — espaciado ajustado, un solo CTA */}
+      <div className="max-w-2xl mx-auto mt-12 mb-0">
         <Card
           className="transition-soft hover:shadow-lg"
-          style={{ borderTop: "3px solid var(--gold-deep)" }}
+          style={{ borderTop: "3px solid var(--gold)" }}
         >
-          <CardBody className="py-10 px-6 md:px-10 text-center">
+          <CardBody className="py-8 px-6 md:px-10 text-center">
             <h3 className="title text-2xl mb-3">{classes.personalized.title}</h3>
-            <p className="mb-2 leading-relaxed" style={{ color: "var(--muted)" }}>
+            <p className="mb-6 leading-relaxed" style={{ color: "var(--muted)" }}>
               {classes.personalized.description}
             </p>
-            <p className="text-xs mb-8" style={{ color: "var(--muted)" }}>
-              {classes.personalized.microcopy}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button
-                variant="primary"
-                className="min-h-[48px]"
-                onClick={() => window.open(classes.personalized.href, "_blank")}
-              >
-                {classes.personalized.ctaPrimary}
-              </Button>
-              <Button
-                variant="ghost"
-                className="min-h-[48px]"
-                onClick={() => window.open(classes.personalized.href, "_blank")}
-              >
-                {classes.personalized.ctaSecondary}
-              </Button>
-            </div>
+            <Button
+              variant="primary"
+              className="min-h-[48px]"
+              onClick={() => window.open(classes.personalized.href, "_blank")}
+            >
+              {classes.personalized.ctaPrimary}
+            </Button>
           </CardBody>
         </Card>
       </div>

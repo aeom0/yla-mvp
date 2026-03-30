@@ -11,14 +11,13 @@
    Identidad visual: Contexto_YLA.docx (marzo 2026)
    ============================================================
    Morado profundo  #5B3A8E  → elegancia, introspección, espiritualidad
-   Lila suave       #C6B7E2  → calma, feminidad, suavidad
-   Beige cálido     #F6EBD9  → base neutra, calidez, tierra
-   Dorado acento    #D4AF37  → valor, merecimiento, abundancia
-   Gris neutro      #D9D9D9  → balance, estructura
-   Carbón           #333333  → legibilidad, contraste
+   Lila suave       #C6B7E2  → calma, feminidad
+   Beige cálido     #F6EBD9  → base neutra, tierra
+   Dorado           #D4AF37  → merecimiento, abundancia (acento cálido)
+   Gris neutro      #D9D9D9  → estructura
+   Carbón           #333333  → legibilidad
    ============================================================ */
 
-/* Tailwind v4 theme tokens */
 @theme {
   --color-bg:           var(--bg);
   --color-text:         var(--text);
@@ -31,7 +30,6 @@
   --color-purple-soft:  var(--purple-soft);
   --color-beige:        var(--beige);
   --color-gold:         var(--gold);
-  --color-gold-deep:    var(--gold-deep);
   --color-smoke:        var(--smoke);
   --color-ink:          var(--ink);
   --shadow-soft:        0 6px 24px rgba(0,0,0,.07);
@@ -39,28 +37,23 @@
   --shadow-purple:      0 8px 32px rgba(91,58,142,.18);
 }
 
-/* ── Paleta fija (nunca cambia entre temas) ── */
+/* ── Paleta fija ── */
 :root {
-  /* Morado */
   --purple:       #5B3A8E;
   --purple-deep:  #432a6b;
   --purple-soft:  #C6B7E2;
   --purple-mist:  rgba(91,58,142,.08);
 
-  /* Beige */
   --beige:        #F6EBD9;
   --beige-warm:   #f0e0c4;
 
-  /* Dorado */
+  /* Un solo gold — el saturado del docx */
   --gold:         #D4AF37;
-  --gold-deep:    #b8920e;
   --gold-pale:    rgba(212,175,55,.15);
 
-  /* Neutros */
   --smoke:        #D9D9D9;
   --ink:          #333333;
 
-  /* Tipografía */
   --font-title:   "Playfair Display", serif;
   --font-body:    "Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
@@ -73,8 +66,8 @@
   --border:      rgba(91,58,142,.18);
   --muted:       #6b5f80;
   --accent:      var(--purple);
-  --accent-warm: var(--gold-deep);
-  --section-alt: #ede5f7;   /* lila muy suave — secciones alternas */
+  --accent-warm: var(--gold);
+  --section-alt: #ede5f7;
 }
 
 /* ── Tokens semánticos DARK ── */
@@ -102,7 +95,7 @@ body {
 }
 h1, h2, h3, .title { font-family: var(--font-title); }
 
-/* ── Layout helpers ── */
+/* ── Layout ── */
 .container-yla { max-width: 80rem; margin: 0 auto; padding: 0 1.5rem; }
 .card {
   background: var(--card);
@@ -112,17 +105,14 @@ h1, h2, h3, .title { font-family: var(--font-title); }
 }
 .transition-soft { transition: all .25s cubic-bezier(.22,.61,.36,1); }
 
-/* ── Gold utility classes ── */
-.text-gold-deep  { color: var(--gold-deep); }
-.bg-gold-soft    { background: var(--gold-pale); }
-.border-gold     { border-color: var(--gold-deep); }
+/* ── Utilities ── */
+.text-gold      { color: var(--gold); }
+.bg-gold-pale   { background: var(--gold-pale); }
+.border-gold    { border-color: var(--gold); }
+.text-purple    { color: var(--purple); }
+.bg-purple-mist { background: var(--purple-mist); }
+.border-purple  { border-color: var(--purple); }
 
-/* ── Purple utility classes ── */
-.text-purple     { color: var(--purple); }
-.bg-purple-mist  { background: var(--purple-mist); }
-.border-purple   { border-color: var(--purple); }
-
-/* ── Section wave (decorativo) ── */
 .section-wave {
   display: block;
   width: 100%;

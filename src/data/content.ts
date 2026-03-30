@@ -1,10 +1,9 @@
-// Contenido centralizado de la aplicación
-// Basado en Notion + Contexto_YLA.docx (CTAs y funnel alineados al plan)
+// Contenido centralizado — Yoga con Lógica y Alma
+// Fuente de verdad: Notion + Contexto_YLA.docx
 
 export const siteContent = {
   hero: {
     title: "Yoga con Lógica y Alma®",
-    /** Fórmula doc: beneficio emocional + método lógico + acción */
     headlineEmotional: "Encuentra estructura para tu mente y espacio para tu alma.",
     headlineAction: "Empieza hoy con un regalo: tu primera herramienta gratis.",
     microCta: "Acceso inmediato • a tu ritmo",
@@ -29,22 +28,15 @@ export const siteContent = {
         icon: "Brain",
         title: "Mente",
         description:
-          "Lógica aplicada a lo emocional: observar patrones, tiempo real y decisiones con más claridad.",
+          "Lógica aplicada a lo emocional: observar patrones y tomar decisiones con más claridad interna.",
       },
       {
         icon: "Sparkles",
         title: "Espíritu",
         description:
-          "Un espacio para soltar la armadura y recordar quién eres más allá de tus responsabilidades.",
+          "Un espacio para recordar quién eres más allá de tus responsabilidades y volver a ti.",
       },
     ],
-  },
-
-  copyDual: {
-    logicExample:
-      "Clases de 20 minutos diseñadas para integrarse en tu jornada laboral.",
-    soulExample:
-      "Un espacio donde soltar la armadura y recordar quién eres más allá de tus responsabilidades.",
   },
 
   forWho: {
@@ -60,7 +52,6 @@ export const siteContent = {
 
   programs: {
     title: "Programas de Transformación",
-    subtitle: "Un camino estructurado por objetivos: elige por dónde quieres crecer",
     cardCta: "Ver este programa",
     cardMicrocopy: "Incluye clases + guía paso a paso",
     items: [
@@ -107,9 +98,8 @@ export const siteContent = {
     personalized: {
       title: "Clases personalizadas",
       description:
-        "Sesión uno a uno, premium e íntima: adaptamos la práctica a tu cuerpo y tu proceso.",
+        "Sesión uno a uno adaptada a tu cuerpo, tu ritmo y tu proceso.",
       ctaPrimary: "Reservar mi espacio",
-      ctaSecondary: "Quiero mi clase personalizada",
       microcopy: "Adaptado a tu cuerpo y tu proceso",
       href: "https://chat.whatsapp.com/Din0PQRJ645InTV6R7ZXYC?mode=gi_t",
     },
@@ -126,14 +116,12 @@ export const siteContent = {
       },
       {
         name: "Alma y Movimiento",
-        description:
-          "Yoga suave para conectar desde la calma, suavidad y tranquilidad.",
+        description: "Yoga suave para conectar desde la calma, suavidad y tranquilidad.",
         frequency: "2x semana",
       },
       {
         name: "Clases Temáticas",
-        description:
-          "Prácticas especiales según la energía del mes o propósito específico.",
+        description: "Prácticas especiales según la energía del mes o propósito específico.",
         frequency: "2x mes",
       },
     ],
@@ -148,11 +136,7 @@ export const siteContent = {
         name: "Plan Consciente",
         price: "$45/mes",
         classes: "8 clases al mes",
-        features: [
-          "Acceso a grabaciones",
-          "Comunidad WhatsApp",
-          "Clases temáticas incluidas",
-        ],
+        features: ["Acceso a grabaciones", "Comunidad WhatsApp", "Clases temáticas incluidas"],
       },
     ],
   },
@@ -160,7 +144,7 @@ export const siteContent = {
   leadMagnet: {
     title: "Tu clase express para bajar la ansiedad",
     subtitle:
-      "Te regalamos una guía práctica de 15 minutos: respiración y movimiento para integrar en el día. Déjame tu correo y te envío el acceso.",
+      "Una guía práctica de 15 minutos: respiración y movimiento para integrar en el día. Déjame tu correo y te envío el acceso.",
     bulletLogic: "Formato corto: encaja entre reuniones y responsabilidades.",
     bulletSoul: "Un ritual breve para volver a ti sin culpa ni presión.",
     emailPlaceholder: "Tu email",
@@ -173,31 +157,11 @@ export const siteContent = {
     title: "Herramientas del Método",
     subtitle: "Lógica aplicada al alma",
     items: [
-      {
-        icon: "Wind",
-        title: "Yoga físico",
-        description: "Adaptado a tu nivel y propósito, con intención clara",
-      },
-      {
-        icon: "Wind",
-        title: "Meditación y respiración",
-        description: "Prácticas accesibles de 5-15 minutos",
-      },
-      {
-        icon: "PenLine",
-        title: "Escritura consciente",
-        description: "Journaling guiado para autoconocimiento profundo",
-      },
-      {
-        icon: "Brain",
-        title: "Lógica estructurada",
-        description: "Rueda de vida, FODA del alma, mapas de flujo",
-      },
-      {
-        icon: "Sparkles",
-        title: "Rituales simbólicos",
-        description: "Anclar intenciones desde lo sutil hacia lo tangible",
-      },
+      { icon: "Wind", title: "Yoga físico", description: "Adaptado a tu nivel y propósito, con intención clara" },
+      { icon: "Wind", title: "Meditación y respiración", description: "Prácticas accesibles de 5-15 minutos" },
+      { icon: "PenLine", title: "Escritura consciente", description: "Journaling guiado para autoconocimiento profundo" },
+      { icon: "Brain", title: "Lógica estructurada", description: "Rueda de vida, FODA del alma, mapas de flujo" },
+      { icon: "Sparkles", title: "Rituales simbólicos", description: "Anclar intenciones desde lo sutil hacia lo tangible" },
     ],
   },
 
@@ -206,20 +170,17 @@ export const siteContent = {
     subtitle: "Lo que dicen quienes ya caminan con el método",
     items: [
       {
-        quote:
-          "Por fin entendí mi ansiedad sin sentirme juzgada. La estructura me da calma y el yoga me devuelve al cuerpo.",
+        quote: "Por fin entendí mi ansiedad sin sentirme juzgada. La estructura me da calma y el yoga me devuelve al cuerpo.",
         name: "Mariana R.",
         role: "Emprendedora",
       },
       {
-        quote:
-          "No es el yoga de solo estirar: es orden por dentro. Las cartas y los rituales me aterrizan cada mes.",
+        quote: "No es el yoga de solo estirar: es orden por dentro. Las cartas y los rituales me aterrizan cada mes.",
         name: "Carla V.",
         role: "Ingeniera",
       },
       {
-        quote:
-          "Las clases cortas me salvaron en semanas de locura. Siento que recuperé mi ritmo sin renunciar al trabajo.",
+        quote: "Las clases cortas me salvaron en semanas de locura. Siento que recuperé mi ritmo sin renunciar al trabajo.",
         name: "Andrea L.",
         role: "Docente",
       },
@@ -229,11 +190,11 @@ export const siteContent = {
   about: {
     title: "Hola, soy Yube Karina",
     credential:
-      "Ingeniera industrial de profesión, yogui de corazón. Creadora de Yoga con Lógica y Alma.",
+      "Ingeniera industrial de profesión. Instructora de yoga y meditación, 500 horas certificadas. CEO de Yoga con Lógica y Alma.",
     description:
-      "Un espacio donde la mente y el espíritu se abrazan: combino estructura con sensibilidad, amor propio con acción, espiritualidad con práctica. Llevo años cruzando dos mundos que la mayoría separa: el pensamiento estructurado de la ingeniería y la sabiduría profunda del yoga.",
+      "Llevo años cruzando dos mundos que la mayoría separa: el pensamiento estructurado de la ingeniería y la sabiduría profunda del yoga. De esa fusión nació este método: un espacio donde la mente y el espíritu se encuentran.",
     extended:
-      "Soy facilitadora de experiencias que transforman, una respiración a la vez. También practico pole dance, creo en el merecimiento y sueño con un mundo más consciente. Bienvenida a mi universo: aquí todo nace desde el alma.",
+      "Soy facilitadora de experiencias que transforman, una respiración a la vez. Practico pole dance, creo en el merecimiento y sueño con un mundo más consciente. Bienvenida a mi universo.",
     highlights: [
       "Facilitadora de experiencias transformadoras",
       "Practicante de pole dance",
@@ -241,8 +202,7 @@ export const siteContent = {
       "Soñadora de un mundo más consciente",
     ],
     quote:
-      "Aquí combino estructura con sensibilidad, amor propio con acción, espiritualidad con práctica. Bienvenida a mi universo. Aquí, todo nace desde el alma.",
-    /** ID de YouTube (solo el ID); vacío = mostramos bloque "próximamente" */
+      "Combino estructura con sensibilidad, amor propio con acción, espiritualidad con práctica. Aquí todo nace desde el alma.",
     welcomeVideoYoutubeId: "" as string,
   },
 
@@ -255,89 +215,36 @@ export const siteContent = {
     ctaAlternate: "Comenzar ahora",
     payhipNote: "Acceso inmediato • pago seguro",
     products: [
-      {
-        id: "posturas-gratis",
-        category: "guia" as const,
-        title: "Guía de posturas básicas",
-        intention: "Tu primer paso en el camino del yoga. Con amor y claridad.",
-        badge: "Gratis",
-        isFree: true,
-      },
-      {
-        id: "camino-merecimiento",
-        category: "cuaderno" as const,
-        title: "Camino al Merecimiento",
-        intention: "Recuérdate que mereces todo lo que deseas con intención.",
-        badge: null,
-        isFree: false,
-      },
-      {
-        id: "mandalas-abundancia",
-        category: "cuaderno" as const,
-        title: "Mandalas de Abundancia",
-        intention: "Colorea tu camino hacia la prosperidad con conciencia.",
-        badge: null,
-        isFree: false,
-      },
-      {
-        id: "camino-abundancia",
-        category: "cuaderno" as const,
-        title: "Camino a la Abundancia",
-        intention: "Un diario que transforma tus pensamientos en realidad.",
-        badge: "Nuevo",
-        isFree: false,
-      },
-      {
-        id: "meditacion-descanso",
-        category: "audio" as const,
-        title: "Meditaciones para el descanso",
-        intention: "Suelta el día. Deja que el cuerpo respire y el alma descanse.",
-        badge: null,
-        isFree: false,
-      },
-      {
-        id: "pack-yoga-lunar",
-        category: "video" as const,
-        title: "Pack Yoga Lunar",
-        intention: "Sincroniza tu práctica con los ciclos de la luna.",
-        badge: "Popular",
-        isFree: false,
-      },
+      { id: "posturas-gratis", category: "guia" as const, title: "Guía de posturas básicas", intention: "Tu primer paso en el camino del yoga. Con amor y claridad.", badge: "Gratis", isFree: true },
+      { id: "camino-merecimiento", category: "cuaderno" as const, title: "Camino al Merecimiento", intention: "Recuérdate que mereces todo lo que deseas con intención.", badge: null, isFree: false },
+      { id: "mandalas-abundancia", category: "cuaderno" as const, title: "Mandalas de Abundancia", intention: "Colorea tu camino hacia la prosperidad con conciencia.", badge: null, isFree: false },
+      { id: "camino-abundancia", category: "cuaderno" as const, title: "Camino a la Abundancia", intention: "Un diario que transforma tus pensamientos en realidad.", badge: "Nuevo", isFree: false },
+      { id: "meditacion-descanso", category: "audio" as const, title: "Meditaciones para el descanso", intention: "Suelta el día. Deja que el cuerpo respire y el alma descanse.", badge: null, isFree: false },
+      { id: "pack-yoga-lunar", category: "video" as const, title: "Pack Yoga Lunar", intention: "Sincroniza tu práctica con los ciclos de la luna.", badge: "Popular", isFree: false },
     ],
   },
 
   membership: {
     title: "Membresía",
     tagline: "No es solo una clase: es tu ritual mensual de orden y expansión.",
-    intro:
-      "Incluye práctica guiada, contenido exclusivo y el acompañamiento que no encontrás en una clase suelta.",
+    intro: "Incluye práctica guiada, contenido exclusivo y el acompañamiento que no encontrás en una clase suelta.",
     differentiatorTitle: "Cartas para habitarte",
     differentiatorBody:
-      "Cada mes, una carta escrita con intención: reflexión, ritual y práctica para habitar tu vida con más presencia. Es el corazón humano de la membresía.",
+      "Cada mes, una carta escrita con intención: reflexión, ritual y práctica para habitar tu vida con más presencia.",
     plans: [
       {
         id: "mensual",
         name: "Mensual",
         price: "Consultar en Payhip",
         highlight: false,
-        features: [
-          "Acceso al contenido del mes",
-          "Cartas para habitarte",
-          "Comunidad de apoyo",
-          "Cancelás cuando quieras",
-        ],
+        features: ["Acceso al contenido del mes", "Cartas para habitarte", "Comunidad de apoyo", "Cancelás cuando quieras"],
       },
       {
         id: "anual",
         name: "Anual",
         price: "2 meses de regalo vs. pagar mes a mes",
         highlight: true,
-        features: [
-          "Todo lo del plan mensual",
-          "Mejor precio por mes",
-          "Prioridad en novedades y rituales",
-          "Compromiso con tu proceso",
-        ],
+        features: ["Todo lo del plan mensual", "Mejor precio por mes", "Prioridad en novedades y rituales", "Compromiso con tu proceso"],
       },
     ],
     cta: "Quiero la membresía",
@@ -351,40 +258,39 @@ export const siteContent = {
       {
         question: "¿Qué hace único a Yoga con Lógica y Alma?",
         answer:
-          "Es un punto de encuentro entre lo tangible y lo sutil. Integra lo físico, lo mental y lo energético como caminos para reconectar con nuestra esencia. Aquí el cuerpo es un canal de conciencia, la lógica una herramienta de claridad, y el alma la guía que nos devuelve al hogar interior.",
+          "Es un punto de encuentro entre lo tangible y lo sutil. Integra lo físico, lo mental y lo energético como caminos para reconectar con nuestra esencia. El cuerpo es un canal de conciencia, la lógica una herramienta de claridad, y el alma la guía que nos devuelve al hogar interior.",
       },
       {
         question: "¿Qué nivel necesito para empezar?",
         answer:
-          "No necesitas experiencia previa en yoga ni en herramientas de desarrollo personal. Solo ganas de conocerte, de explorar tu cuerpo con amor y tu mente con curiosidad. Cada práctica se adapta a ti, a tu momento, a tu energía.",
+          "No necesitas experiencia previa. Solo ganas de conocerte, de explorar tu cuerpo con amor y tu mente con curiosidad. Cada práctica se adapta a ti, a tu momento, a tu energía.",
       },
       {
         question: "¿En qué se diferencia de una clase tradicional de yoga?",
         answer:
-          "Mientras en una clase tradicional el enfoque está en las posturas físicas, aquí vamos más allá: integramos yoga con recursos de crecimiento personal — análisis FODA del alma, rueda de la vida, journaling — creando una experiencia más profunda y transformadora.",
+          "Más allá de las posturas físicas, integramos recursos de crecimiento personal — análisis FODA del alma, rueda de la vida, journaling — creando una experiencia más profunda y transformadora.",
       },
       {
         question: "¿Cuánto duran las sesiones?",
         answer:
-          "Las clases suelen durar 60 minutos, pero también ofrecemos prácticas más cortas de 10, 30 o 45 minutos. Tenemos un plan \"a tu ritmo\" para que puedas integrarlas sin presión en tu rutina.",
+          "Las clases suelen durar 60 minutos, con opciones de 10, 30 y 45 minutos. Tenemos un plan \"a tu ritmo\" para integrarlas sin presión en tu rutina.",
       },
       {
         question: "¿Cómo se integran las herramientas de análisis?",
         answer:
-          "Al final de cada clase dejamos un espacio para aplicar dinámicas de reflexión — preguntas poderosas, mapas mentales, ejercicios de scripting. Además hacemos seguimiento en sesiones posteriores y acompañamiento fuera del espacio de clase.",
+          "Al final de cada clase dejamos un espacio para aplicar dinámicas de reflexión — preguntas poderosas, mapas mentales, scripting. Además hacemos seguimiento en sesiones posteriores.",
       },
     ],
   },
 
   community: {
     sectionTitle: "Comunidad en movimiento",
-    sectionSubtitle: "Practicamos en vivo, compartimos en redes y nos encontramos en WhatsApp.",
+    sectionSubtitle: "Encuéntranos en las plataformas donde practicamos y compartimos.",
     title: "Almas en Armonía",
     description:
-      "Más que clases: un grupo de mujeres conscientes que se apoyan en el camino. Si tenés dudas sobre cómo arrancar, escribime.",
-    whatsappCta: "Unirme a este espacio",
-    whatsappHelper:
-      "¿Dudas sobre cómo iniciar? Hablemos por WhatsApp — te respondo con calma.",
+      "Un grupo de mujeres que caminan juntas hacia el equilibrio y el autoconocimiento.",
+    whatsappCta: "Unirme al grupo",
+    whatsappHelper: "¿Dudas sobre cómo iniciar? Escríbenos por WhatsApp.",
     whatsappLink: "https://chat.whatsapp.com/Din0PQRJ645InTV6R7ZXYC?mode=gi_t",
     instagramGrid: [
       { label: "Práctica", href: "https://instagram.com/yogaconlogicayalma" },
@@ -398,23 +304,22 @@ export const siteContent = {
 
   newsletter: {
     title: "Cartas con Lógica y Alma",
-    description:
-      "Cartas mensuales con rituales y práctica para habitar tu vida con más presencia.",
+    description: "Reflexiones, rituales y práctica en tu bandeja cada dos semanas.",
     placeholder: "Tu email",
     cta: "Quiero recibir mis cartas",
-    microcopy: "Cartas mensuales + rituales + práctica",
+    microcopy: "Sin spam. Solo contenido con intención.",
   },
 
   blog: {
     label: "Entre la lógica y el alma",
     href: "https://instagram.com/yogaconlogicayalma",
-    externalHint: "Por ahora te espero en Instagram con reflexiones y práctica.",
+    externalHint: "Por ahora te esperamos en Instagram con reflexiones y práctica.",
   },
 
   trust: {
-    paymentLine: "Pagos seguros con métodos habituales en Payhip (PayPal, tarjetas).",
+    paymentLine: "Pagos seguros a través de Payhip (PayPal, tarjetas).",
     guarantee:
-      "Si tu producto digital incluye garantía en Payhip, aparece en la página de compra: acá siempre seremos transparentes.",
+      "Si tu producto digital incluye garantía, aparece en la página de compra de Payhip.",
   },
 
   footer: {
@@ -423,9 +328,9 @@ export const siteContent = {
       main: [
         { label: "Explorar programas", href: "/#programas" },
         { label: "Membresía", href: "/membresia" },
-        { label: "Leer desde el cuerpo", href: "https://instagram.com/yogaconlogicayalma" },
+        { label: "Blog", href: "https://instagram.com/yogaconlogicayalma" },
         { label: "Recibir mis cartas", href: "/#comunidad" },
-        { label: "Contactarme", href: "/#comunidad" },
+        { label: "Contacto", href: "/#comunidad" },
         { label: "Tienda", href: "/#tienda" },
         { label: "FAQ", href: "/#faq" },
       ],

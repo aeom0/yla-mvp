@@ -8,35 +8,26 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-      {/* Fondo degradado lila → beige */}
+      {/* Gradiente de fondo */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "linear-gradient(160deg, color-mix(in srgb, var(--purple-brand) 8%, transparent) 0%, rgba(232,211,163,.10) 55%, transparent 100%)",
+            "linear-gradient(160deg, rgba(91,58,142,.10) 0%, rgba(212,175,55,.08) 55%, transparent 100%)",
         }}
       />
-      {/* Orbe decorativo superior derecha */}
       <div
         aria-hidden="true"
         className="absolute -top-24 -right-24 w-96 h-96 rounded-full opacity-20 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, var(--lavender) 0%, transparent 70%)",
-        }}
+        style={{ background: "radial-gradient(circle, var(--purple-soft) 0%, transparent 70%)" }}
       />
-      {/* Orbe dorado inferior izquierda */}
       <div
         aria-hidden="true"
-        className="absolute -bottom-16 -left-16 w-72 h-72 rounded-full opacity-15 pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(circle, var(--gold-deep) 0%, transparent 70%)",
-        }}
+        className="absolute -bottom-16 -left-16 w-72 h-72 rounded-full opacity-10 pointer-events-none"
+        style={{ background: "radial-gradient(circle, var(--gold) 0%, transparent 70%)" }}
       />
 
       <div className="container-yla relative z-10 text-center py-24">
-        {/* Título principal — ocupa todo el centro visual */}
         <h1
           className="title text-5xl md:text-6xl lg:text-7xl mb-6 leading-tight"
           style={{ color: "var(--accent)" }}
@@ -44,7 +35,6 @@ export function Hero() {
           {hero.title}
         </h1>
 
-        {/* Beneficio emocional */}
         <p
           className="text-xl md:text-2xl mb-4 max-w-2xl mx-auto font-semibold leading-snug"
           style={{ color: "var(--text)" }}
@@ -52,20 +42,18 @@ export function Hero() {
           {hero.headlineEmotional}
         </p>
 
-        {/* CTA de acción */}
         <p
           className="text-base md:text-lg mb-2 max-w-xl mx-auto font-medium"
-          style={{ color: "var(--gold-deep)" }}
+          style={{ color: "var(--accent-warm)" }}
         >
           {hero.headlineAction}
         </p>
 
-        {/* Micro copy de confianza */}
         <p className="text-sm mb-10" style={{ color: "var(--muted)" }}>
           {hero.microCta}
         </p>
 
-        {/* CTAs principales */}
+        {/* CTAs */}
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
           <Button
             variant="primary"
@@ -87,14 +75,10 @@ export function Hero() {
           </Button>
         </div>
 
-        {/* ——— Social proof strip — DEBAJO de los CTAs ——— */}
-        {/* Aparece al hacer un pequeño scroll natural, no compite con el título */}
+        {/* Social proof — DEBAJO de los CTAs, no compite con el título */}
         <div
           className="grid grid-cols-2 md:grid-cols-4 gap-px max-w-2xl mx-auto rounded-2xl overflow-hidden"
-          style={{
-            background: "var(--border)",
-            boxShadow: "0 2px 16px rgba(0,0,0,.06)",
-          }}
+          style={{ background: "var(--border)", boxShadow: "0 2px 16px rgba(0,0,0,.06)" }}
         >
           {[
             { value: "3", label: "Programas" },
@@ -109,10 +93,7 @@ export function Hero() {
             >
               <div
                 className="text-3xl md:text-4xl font-semibold mb-0.5"
-                style={{
-                  color: "var(--gold-deep)",
-                  fontFamily: "var(--font-title)",
-                }}
+                style={{ color: "var(--accent)", fontFamily: "var(--font-title)" }}
               >
                 {stat.value}
               </div>
