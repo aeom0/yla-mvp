@@ -10,40 +10,40 @@ const CHANNELS = [
   {
     id: "instagram",
     label: "Instagram",
-    handle: "@yogaconlogicayalma",
+    handle: "@yube.karina",
     description: "Práctica, reflexiones y detrás de cámaras.",
     icon: Instagram,
-    href: "https://instagram.com/yogaconlogicayalma",
+    href: "https://www.instagram.com/yube.karina?igsh=MWg4Z2M5ang2YzI2bg==",
     color: "var(--purple)",
     bg: "var(--purple-mist)",
   },
   {
     id: "tiktok",
     label: "TikTok",
-    handle: "@yogaconlogicayalma",
+    handle: "@yube.karina",
     description: "Clips cortos de movimiento e intención.",
     icon: Music2,
-    href: "https://tiktok.com/@yogaconlogicayalma",
+    href: "https://tiktok.com/@yube.karina",
     color: "var(--purple)",
     bg: "var(--purple-mist)",
   },
   {
     id: "youtube",
     label: "YouTube",
-    handle: "Yoga con Lógica y Alma",
+    handle: "@yube.karinag",
     description: "Clases completas y contenido en profundidad.",
     icon: Youtube,
-    href: "https://youtube.com/@yogaconlogicayalma",
+    href: "https://youtube.com/@yube.karinag?si=tBKXzfHdKXK6Sx7t",
     color: "var(--purple)",
     bg: "var(--purple-mist)",
   },
   {
     id: "whatsapp",
     label: "WhatsApp",
-    handle: "Almas en Armonía",
-    description: "Comunidad activa de mujeres en el camino.",
+    handle: "Yoga con Lógica y Alma",
+    description: "Escríbenos directamente o únete al grupo.",
     icon: MessageCircle,
-    href: siteContent.community.whatsappLink,
+    href: "https://wa.me/584243547179",
     color: "var(--gold)",
     bg: "var(--gold-pale)",
   },
@@ -102,10 +102,7 @@ export function Community() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center text-center gap-3 rounded-2xl p-5 transition-soft hover:-translate-y-1 hover:shadow-md"
-              style={{
-                background: "var(--card)",
-                border: "1px solid var(--border)",
-              }}
+              style={{ background: "var(--card)", border: "1px solid var(--border)" }}
             >
               <span
                 className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
@@ -141,7 +138,6 @@ export function Community() {
         <p className="text-xs mb-6 text-center" style={{ color: "var(--muted)" }}>
           {newsletter.microcopy}
         </p>
-
         {status === "success" ? (
           <p
             className="rounded-2xl px-4 py-3 text-sm text-center"
@@ -159,11 +155,7 @@ export function Community() {
               autoComplete="email"
               disabled={status === "loading"}
               className="rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--purple)] min-h-[48px]"
-              style={{
-                border: "1px solid var(--border)",
-                background: "var(--bg)",
-                color: "var(--text)",
-              }}
+              style={{ border: "1px solid var(--border)", background: "var(--bg)", color: "var(--text)" }}
             />
             <Button type="submit" variant="primary" disabled={status === "loading"} className="min-h-[48px]">
               {status === "loading" ? "Enviando…" : newsletter.cta}

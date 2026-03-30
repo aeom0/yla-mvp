@@ -1,5 +1,4 @@
 // Contenido centralizado — Yoga con Lógica y Alma
-// Fuente de verdad: Notion + Contexto_YLA.docx
 
 export const siteContent = {
   hero: {
@@ -101,11 +100,11 @@ export const siteContent = {
         "Sesión uno a uno adaptada a tu cuerpo, tu ritmo y tu proceso.",
       ctaPrimary: "Reservar mi espacio",
       microcopy: "Adaptado a tu cuerpo y tu proceso",
-      href: "https://chat.whatsapp.com/Din0PQRJ645InTV6R7ZXYC?mode=gi_t",
+      href: "https://wa.me/584243547179",
     },
     socialPractice: {
       label: "Practicar conmigo aquí",
-      href: "https://instagram.com/yogaconlogicayalma",
+      href: "https://www.instagram.com/yube.karina?igsh=MWg4Z2M5ang2YzI2bg==",
     },
     items: [
       {
@@ -144,13 +143,11 @@ export const siteContent = {
   leadMagnet: {
     title: "Tu clase express para bajar la ansiedad",
     subtitle:
-      "Una guía práctica de 15 minutos: respiración y movimiento para integrar en el día. Déjame tu correo y te envío el acceso.",
-    bulletLogic: "Formato corto: encaja entre reuniones y responsabilidades.",
-    bulletSoul: "Un ritual breve para volver a ti sin culpa ni presión.",
+      "Una guía práctica de 15 minutos: respiración y movimiento para integrar en el día. Deja tu correo y te envío el acceso.",
     emailPlaceholder: "Tu email",
     submitLabel: "Quiero mi clase gratis",
     successMessage: "Listo. Revisa tu correo en unos minutos (revisa spam por si acaso).",
-    privacyNote: "No spam. Solo contenido con intención.",
+    privacyNote: "Sin spam. Solo contenido con intención.",
   },
 
   tools: {
@@ -158,10 +155,9 @@ export const siteContent = {
     subtitle: "Lógica aplicada al alma",
     items: [
       { icon: "Wind", title: "Yoga físico", description: "Adaptado a tu nivel y propósito, con intención clara" },
-      { icon: "Wind", title: "Meditación y respiración", description: "Prácticas accesibles de 5-15 minutos" },
+      { icon: "Wind", title: "Meditación y respiración", description: "Prácticas accesibles de 5 a 15 minutos" },
       { icon: "PenLine", title: "Escritura consciente", description: "Journaling guiado para autoconocimiento profundo" },
       { icon: "Brain", title: "Lógica estructurada", description: "Rueda de vida, FODA del alma, mapas de flujo" },
-      { icon: "Sparkles", title: "Rituales simbólicos", description: "Anclar intenciones desde lo sutil hacia lo tangible" },
     ],
   },
 
@@ -175,7 +171,7 @@ export const siteContent = {
         role: "Emprendedora",
       },
       {
-        quote: "No es el yoga de solo estirar: es orden por dentro. Las cartas y los rituales me aterrizan cada mes.",
+        quote: "No es el yoga de solo estirar: es orden por dentro. Las cartas y los espacios de reflexión me aterrizan cada mes.",
         name: "Carla V.",
         role: "Ingeniera",
       },
@@ -212,25 +208,22 @@ export const siteContent = {
     payhipUrl: "https://payhip.com/ConLogicayAlma",
     ctaPaid: "Acceder al programa",
     ctaFree: "Descargar gratis",
-    ctaAlternate: "Comenzar ahora",
-    payhipNote: "Acceso inmediato • pago seguro",
     products: [
       { id: "posturas-gratis", category: "guia" as const, title: "Guía de posturas básicas", intention: "Tu primer paso en el camino del yoga. Con amor y claridad.", badge: "Gratis", isFree: true },
       { id: "camino-merecimiento", category: "cuaderno" as const, title: "Camino al Merecimiento", intention: "Recuérdate que mereces todo lo que deseas con intención.", badge: null, isFree: false },
       { id: "mandalas-abundancia", category: "cuaderno" as const, title: "Mandalas de Abundancia", intention: "Colorea tu camino hacia la prosperidad con conciencia.", badge: null, isFree: false },
       { id: "camino-abundancia", category: "cuaderno" as const, title: "Camino a la Abundancia", intention: "Un diario que transforma tus pensamientos en realidad.", badge: "Nuevo", isFree: false },
       { id: "meditacion-descanso", category: "audio" as const, title: "Meditaciones para el descanso", intention: "Suelta el día. Deja que el cuerpo respire y el alma descanse.", badge: null, isFree: false },
-      { id: "pack-yoga-lunar", category: "video" as const, title: "Pack Yoga Lunar", intention: "Sincroniza tu práctica con los ciclos de la luna.", badge: "Popular", isFree: false },
     ],
   },
 
   membership: {
     title: "Membresía",
-    tagline: "No es solo una clase: es tu ritual mensual de orden y expansión.",
+    tagline: "No es solo una clase: es tu espacio mensual de orden y expansión.",
     intro: "Incluye práctica guiada, contenido exclusivo y el acompañamiento que no encontrás en una clase suelta.",
     differentiatorTitle: "Cartas para habitarte",
     differentiatorBody:
-      "Cada mes, una carta escrita con intención: reflexión, ritual y práctica para habitar tu vida con más presencia.",
+      "Cada mes, una carta escrita con intención: reflexión y práctica para habitar tu vida con más presencia.",
     plans: [
       {
         id: "mensual",
@@ -244,7 +237,7 @@ export const siteContent = {
         name: "Anual",
         price: "2 meses de regalo vs. pagar mes a mes",
         highlight: true,
-        features: ["Todo lo del plan mensual", "Mejor precio por mes", "Prioridad en novedades y rituales", "Compromiso con tu proceso"],
+        features: ["Todo lo del plan mensual", "Mejor precio por mes", "Prioridad en novedades", "Compromiso con tu proceso"],
       },
     ],
     cta: "Quiero la membresía",
@@ -291,20 +284,14 @@ export const siteContent = {
       "Un grupo de mujeres que caminan juntas hacia el equilibrio y el autoconocimiento.",
     whatsappCta: "Unirme al grupo",
     whatsappHelper: "¿Dudas sobre cómo iniciar? Escríbenos por WhatsApp.",
-    whatsappLink: "https://chat.whatsapp.com/Din0PQRJ645InTV6R7ZXYC?mode=gi_t",
-    instagramGrid: [
-      { label: "Práctica", href: "https://instagram.com/yogaconlogicayalma" },
-      { label: "Rituales", href: "https://instagram.com/yogaconlogicayalma" },
-      { label: "Detrás de cámaras", href: "https://instagram.com/yogaconlogicayalma" },
-      { label: "Mantras", href: "https://instagram.com/yogaconlogicayalma" },
-      { label: "Comunidad", href: "https://instagram.com/yogaconlogicayalma" },
-      { label: "Más en IG", href: "https://instagram.com/yogaconlogicayalma" },
-    ],
+    whatsappLink: "https://chat.whatsapp.com/CMQfDb0vlfbLAJ2pf9nn9I?mode=gi_t",
+    whatsappDirect: "https://wa.me/584243547179",
+    instagramGrid: [],
   },
 
   newsletter: {
     title: "Cartas con Lógica y Alma",
-    description: "Reflexiones, rituales y práctica en tu bandeja cada dos semanas.",
+    description: "Reflexiones y práctica en tu bandeja cada dos semanas.",
     placeholder: "Tu email",
     cta: "Quiero recibir mis cartas",
     microcopy: "Sin spam. Solo contenido con intención.",
@@ -312,7 +299,7 @@ export const siteContent = {
 
   blog: {
     label: "Entre la lógica y el alma",
-    href: "https://instagram.com/yogaconlogicayalma",
+    href: "https://www.instagram.com/yube.karina?igsh=MWg4Z2M5ang2YzI2bg==",
     externalHint: "Por ahora te esperamos en Instagram con reflexiones y práctica.",
   },
 
@@ -323,16 +310,14 @@ export const siteContent = {
   },
 
   footer: {
-    tagline: "Organizamos el bienestar, ritualizamos la estructura",
+    tagline: "Organizamos el bienestar, estructuramos el alma",
     links: {
       main: [
-        { label: "Explorar programas", href: "/#programas" },
+        { label: "Programas", href: "/#programas" },
         { label: "Membresía", href: "/membresia" },
-        { label: "Blog", href: "https://instagram.com/yogaconlogicayalma" },
-        { label: "Recibir mis cartas", href: "/#comunidad" },
-        { label: "Contacto", href: "/#comunidad" },
         { label: "Tienda", href: "/#tienda" },
-        { label: "FAQ", href: "/#faq" },
+        { label: "FAQ", href: "/faq" },
+        { label: "Contacto", href: "https://wa.me/584243547179" },
       ],
       legal: [
         { label: "Política de Privacidad", href: "/privacidad" },
@@ -340,8 +325,10 @@ export const siteContent = {
       ],
     },
     social: {
-      instagram: "https://instagram.com/yogaconlogicayalma",
-      whatsapp: "https://chat.whatsapp.com/Din0PQRJ645InTV6R7ZXYC?mode=gi_t",
+      instagram: "https://www.instagram.com/yube.karina?igsh=MWg4Z2M5ang2YzI2bg==",
+      tiktok: "https://tiktok.com/@yube.karina",
+      youtube: "https://youtube.com/@yube.karinag?si=tBKXzfHdKXK6Sx7t",
+      whatsapp: "https://wa.me/584243547179",
     },
   },
 };

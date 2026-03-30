@@ -2,37 +2,29 @@
 
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
-import { BookOpen, ExternalLink, Headphones, Star, Video } from "lucide-react";
+import { BookOpen, ExternalLink, Headphones, Star } from "lucide-react";
 
-type ProductCategory = "guia" | "cuaderno" | "audio" | "video";
+type ProductCategory = "guia" | "cuaderno" | "audio";
 
-const categoryMeta: Record<
-  ProductCategory,
-  { label: string; icon: React.ReactNode }
-> = {
-  guia: { label: "Guías", icon: <Star size={16} /> },
+const categoryMeta: Record<ProductCategory, { label: string; icon: React.ReactNode }> = {
+  guia:     { label: "Guías",             icon: <Star size={16} /> },
   cuaderno: { label: "Cuadernos digitales", icon: <BookOpen size={16} /> },
-  audio: { label: "Meditaciones", icon: <Headphones size={16} /> },
-  video: { label: "Clases en video", icon: <Video size={16} /> },
+  audio:    { label: "Meditaciones",      icon: <Headphones size={16} /> },
 };
 
 const categoryIconLarge: Record<ProductCategory, React.ReactNode> = {
-  guia: <Star size={28} />,
+  guia:     <Star size={28} />,
   cuaderno: <BookOpen size={28} />,
-  audio: <Headphones size={28} />,
-  video: <Video size={28} />,
+  audio:    <Headphones size={28} />,
 };
 
 export function Shop() {
   const { shop } = siteContent;
-  const categories: ProductCategory[] = ["guia", "cuaderno", "audio", "video"];
+  const categories: ProductCategory[] = ["guia", "cuaderno", "audio"];
 
   return (
     <Section id="tienda" style={{ background: "var(--section-alt)" }}>
       <SectionHeader title={shop.title} subtitle={shop.subtitle} centered />
-      <p className="text-center text-sm -mt-4 mb-10 max-w-lg mx-auto" style={{ color: "var(--muted)" }}>
-        {shop.payhipNote}
-      </p>
 
       {categories.map((cat) => {
         const products = shop.products.filter((p) => p.category === cat);
@@ -44,7 +36,7 @@ export function Shop() {
             <div className="flex items-center gap-2 mb-5">
               <span
                 className="w-7 h-7 rounded-lg flex items-center justify-center"
-                style={{ background: "var(--gold-deep)", color: "#fff" }}
+                style={{ background: "var(--purple-mist)", color: "var(--purple)" }}
               >
                 {meta.icon}
               </span>
@@ -64,13 +56,8 @@ export function Shop() {
                 >
                   {product.badge && (
                     <span
-                      className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-0.5 rounded-full z-10"
-                      style={{
-                        background: product.isFree
-                          ? "var(--gold-deep)"
-                          : "var(--purple-brand)",
-                        color: "#fff",
-                      }}
+                      className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-0.5 rounded-full z-10 text-white"
+                      style={{ background: product.isFree ? "var(--gold)" : "var(--purple)" }}
                     >
                       {product.badge}
                     </span>
@@ -81,43 +68,26 @@ export function Shop() {
                     style={{ background: "var(--beige)" }}
                   >
                     <span
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center"
-                      style={{
-                        background: product.isFree
-                          ? "var(--gold-deep)"
-                          : "var(--purple-brand)",
-                        color: "#fff",
-                      }}
+                      className="w-14 h-14 rounded-2xl flex items-center justify-center text-white"
+                      style={{ background: product.isFree ? "var(--gold)" : "var(--purple)" }}
                     >
-                      {categoryIconLarge[product.category]}
+                      {categoryIconLarge[product.category as ProductCategory]}
                     </span>
                   </div>
 
                   <div className="flex flex-col flex-1 gap-3 p-5">
-                    <h4
-                      className="title text-base font-bold leading-snug"
-                      style={{ color: "var(--text)" }}
-                    >
+                    <h4 className="title text-base font-bold leading-snug" style={{ color: "var(--text)" }}>
                       {product.title}
                     </h4>
-                    <p
-                      className="text-sm leading-relaxed flex-1 italic"
-                      style={{ color: "var(--muted)" }}
-                    >
+                    <p className="text-sm leading-relaxed flex-1 italic" style={{ color: "var(--muted)" }}>
                       &ldquo;{product.intention}&rdquo;
                     </p>
                     <a
                       href={shop.payhipUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold transition-soft hover:opacity-90 min-h-[44px]"
-                      style={{
-                        background: product.isFree
-                          ? "var(--gold-deep)"
-                          : "var(--gold)",
-                        color: "var(--ink)",
-                        border: "1px solid var(--gold-deep)",
-                      }}
+                      className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold transition-soft hover:opacity-90 min-h-[44px] text-white"
+                      style={{ background: "var(--purple)" }}
                     >
                       {product.isFree ? shop.ctaFree : shop.ctaPaid}
                       <ExternalLink size={13} aria-hidden="true" />
@@ -135,14 +105,10 @@ export function Shop() {
           href={shop.payhipUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl font-semibold transition-soft hover:opacity-90 min-h-[48px]"
-          style={{
-            border: "1.5px solid var(--gold-deep)",
-            color: "var(--gold-deep)",
-            background: "transparent",
-          }}
+          className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl font-semibold transition-soft hover:opacity-90 min-h-[48px] text-white"
+          style={{ background: "var(--purple)", boxShadow: "var(--shadow-purple)" }}
         >
-          {shop.ctaAlternate}
+          Ver toda la tienda
           <ExternalLink size={15} aria-hidden="true" />
         </a>
       </div>
