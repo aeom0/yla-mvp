@@ -4,6 +4,7 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
 import { ExternalLink, Headphones, NotebookPen, ScrollText } from "lucide-react";
+import Link from "next/link";
 
 type ProductCategory = "guia" | "cuaderno" | "audio";
 
@@ -64,6 +65,7 @@ export function Shop() {
                     </span>
                   )}
 
+                  {/* Ícono */}
                   <div
                     className="flex items-center justify-center h-28"
                     style={{ background: "var(--beige)" }}
@@ -76,23 +78,45 @@ export function Shop() {
                     </span>
                   </div>
 
-                  <div className="flex flex-col flex-1 gap-3 p-5">
+                  <div className="flex flex-col flex-1 gap-2 p-5">
                     <h4 className="title text-base font-bold leading-snug" style={{ color: "var(--text)" }}>
                       {product.title}
                     </h4>
                     <p className="text-sm leading-relaxed flex-1 italic" style={{ color: "var(--muted)" }}>
                       &ldquo;{product.intention}&rdquo;
                     </p>
-                    <a
-                      href={shop.payhipUrl}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold transition-soft hover:opacity-90 min-h-[44px] text-white"
-                      style={{ background: "var(--purple)" }}
-                    >
-                      {product.isFree ? shop.ctaFree : shop.ctaPaid}
-                      <ExternalLink {...lucideBrand} size={14} aria-hidden="true" />
-                    </a>
+
+                    {/* Precio */}
+                    <div className="flex items-center justify-between mt-1">
+                      <span
+                        className="text-lg font-bold"
+                        style={{ color: product.isFree ? "var(--gold)" : "var(--purple)" }}
+                      >
+                        {product.isFree ? "Gratis" : product.price}
+                      </span>
+                    </div>
+
+                    {/* CTA — página propia si pago, Payhip si gratis */}
+                    {product.isFree ? (
+                      <a
+                        href={product.payhipProductUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold transition-soft hover:opacity-90 min-h-[44px] text-white mt-1"
+                        style={{ background: "var(--gold)" }}
+                      >
+                        {shop.ctaFree}
+                        <ExternalLink {...lucideBrand} size={14} aria-hidden="true" />
+                      </a>
+                    ) : (
+                      <Link
+                        href={`/tienda/${product.slug}`}
+                        className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold transition-soft hover:opacity-90 min-h-[44px] text-white mt-1"
+                        style={{ background: "var(--purple)" }}
+                      >
+                        Ver detalles
+                      </Link>
+                    )}
                   </div>
                 </article>
               ))}
