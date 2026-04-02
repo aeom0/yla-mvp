@@ -4,6 +4,7 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
 import { ExternalLink, Headphones, NotebookPen, ScrollText } from "lucide-react";
+import Image from "next/image";
 import Link from "next/link";
 
 type ProductCategory = "guia" | "cuaderno" | "audio";
@@ -12,12 +13,6 @@ const categoryMeta: Record<ProductCategory, { label: string; icon: React.ReactNo
   guia:     { label: "Guías",               icon: <ScrollText {...lucideBrand} size={16} /> },
   cuaderno: { label: "Cuadernos digitales", icon: <NotebookPen {...lucideBrand} size={16} /> },
   audio:    { label: "Meditaciones",        icon: <Headphones {...lucideBrand} size={16} /> },
-};
-
-const categoryIconLarge: Record<ProductCategory, React.ReactNode> = {
-  guia:     <ScrollText {...lucideBrand} size={28} />,
-  cuaderno: <NotebookPen {...lucideBrand} size={28} />,
-  audio:    <Headphones {...lucideBrand} size={28} />,
 };
 
 export function Shop() {
@@ -56,6 +51,7 @@ export function Shop() {
                     boxShadow: "0 4px 16px rgba(0,0,0,.05)",
                   }}
                 >
+                  {/* Badge */}
                   {product.badge && (
                     <span
                       className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-0.5 rounded-full z-10 text-white"
@@ -65,17 +61,26 @@ export function Shop() {
                     </span>
                   )}
 
-                  {/* Ícono */}
-                  <div
-                    className="flex items-center justify-center h-28"
-                    style={{ background: "var(--beige)" }}
-                  >
-                    <span
-                      className="w-14 h-14 rounded-2xl flex items-center justify-center text-white"
-                      style={{ background: product.isFree ? "var(--gold)" : "var(--purple)" }}
-                    >
-                      {categoryIconLarge[product.category as ProductCategory]}
-                    </span>
+                  {/* Imagen del producto */}
+                  <div className="relative h-44 w-full overflow-hidden" style={{ background: "var(--beige)" }}>
+                    {product.image ? (
+                      <Image
+                        src={product.image}
+                        alt={product.title}
+                        fill
+                        className="object-cover transition-soft group-hover:scale-105"
+                        sizes="(max-width: 420px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                      />
+                    ) : (
+                      <div className="w-full h-full flex items-center justify-center">
+                        <span
+                          className="w-14 h-14 rounded-2xl flex items-center justify-center text-white"
+                          style={{ background: product.isFree ? "var(--gold)" : "var(--purple)" }}
+                        >
+                          {categoryMeta[product.category as ProductCategory]?.icon}
+                        </span>
+                      </div>
+                    )}
                   </div>
 
                   <div className="flex flex-col flex-1 gap-2 p-5">
@@ -87,16 +92,14 @@ export function Shop() {
                     </p>
 
                     {/* Precio */}
-                    <div className="flex items-center justify-between mt-1">
-                      <span
-                        className="text-lg font-bold"
-                        style={{ color: product.isFree ? "var(--gold)" : "var(--purple)" }}
-                      >
-                        {product.isFree ? "Gratis" : product.price}
-                      </span>
-                    </div>
+                    <span
+                      className="text-lg font-bold mt-1"
+                      style={{ color: product.isFree ? "var(--gold)" : "var(--purple)" }}
+                    >
+                      {product.isFree ? "Gratis" : product.price}
+                    </span>
 
-                    {/* CTA — página propia si pago, Payhip si gratis */}
+                    {/* CTA */}
                     {product.isFree ? (
                       <a
                         href={product.payhipProductUrl}

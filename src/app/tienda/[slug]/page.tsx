@@ -2,6 +2,7 @@ import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
 import { ArrowLeft, Check, ExternalLink, Headphones, NotebookPen, ScrollText, ShoppingBag } from "lucide-react";
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 
@@ -11,6 +12,12 @@ const categoryIcon: Record<string, React.ReactNode> = {
   guia:     <ScrollText {...lucideBrand} size={32} />,
   cuaderno: <NotebookPen {...lucideBrand} size={32} />,
   audio:    <Headphones {...lucideBrand} size={32} />,
+};
+
+const categoryLabel: Record<string, string> = {
+  guia: "Guía",
+  cuaderno: "Cuaderno digital",
+  audio: "Audio",
 };
 
 export async function generateStaticParams() {
@@ -26,6 +33,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `${product.title} — Yoga con Lógica y Alma`,
     description: product.intention,
+    openGraph: {
+      title: product.title,
+      description: product.intention,
+      images: product.image ? [{ url: product.image }] : [],
+    },
   };
 }
 
@@ -51,22 +63,36 @@ export default async function ProductPage({ params }: Props) {
 
         <div className="grid md:grid-cols-2 gap-10 md:gap-16 items-start">
 
-          {/* Columna izquierda — visual */}
+          {/* Columna izquierda — imagen + incluye */}
           <div className="space-y-6">
-            {/* Hero visual del producto */}
+            {/* Imagen del producto */}
             <div
-              className="aspect-square rounded-3xl flex items-center justify-center"
-              style={{
-                background: "linear-gradient(135deg, var(--purple-mist) 0%, var(--section-alt) 100%)",
-                border: "1px solid var(--border)",
-              }}
+              className="relative w-full rounded-3xl overflow-hidden"
+              style={{ border: "1px solid var(--border)" }}
             >
-              <div
-                className="w-24 h-24 rounded-2xl flex items-center justify-center text-white"
-                style={{ background: "var(--purple)", boxShadow: "var(--shadow-purple)" }}
-              >
-                {categoryIcon[product.category] ?? <ShoppingBag {...lucideBrand} size={32} />}
-              </div>
+              {product.image ? (
+                <Image
+                  src={product.image}
+                  alt={product.title}
+                  width={600}
+                  height={600}
+                  className="w-full h-auto object-cover"
+                  style={{ aspectRatio: "1/1" }}
+                  priority
+                />
+              ) : (
+                <div
+                  className="aspect-square flex items-center justify-center"
+                  style={{ background: "linear-gradient(135deg, var(--purple-mist) 0%, var(--section-alt) 100%)" }}
+                >
+                  <div
+                    className="w-24 h-24 rounded-2xl flex items-center justify-center text-white"
+                    style={{ background: "var(--purple)", boxShadow: "var(--shadow-purple)" }}
+                  >
+                    {categoryIcon[product.category] ?? <ShoppingBag {...lucideBrand} size={32} />}
+                  </div>
+                </div>
+              )}
             </div>
 
             {/* Qué incluye */}
@@ -74,9 +100,7 @@ export default async function ProductPage({ params }: Props) {
               className="rounded-2xl p-6 space-y-4"
               style={{ background: "var(--card)", border: "1px solid var(--border)" }}
             >
-              <h3 className="title text-lg" style={{ color: "var(--accent)" }}>
-                ¿Qué incluye?
-              </h3>
+              <h3 className="title text-lg" style={{ color: "var(--accent)" }}>¿Qué incluye?</h3>
               <ul className="space-y-3">
                 {product.includes.map((item, i) => (
                   <li key={i} className="flex items-start gap-3">
@@ -95,12 +119,11 @@ export default async function ProductPage({ params }: Props) {
 
           {/* Columna derecha — copy + CTA */}
           <div className="space-y-6">
-            {/* Badge categoría */}
             <span
               className="inline-block text-xs font-semibold px-3 py-1 rounded-full"
               style={{ background: "var(--purple-mist)", color: "var(--purple)", border: "1px solid var(--border)" }}
             >
-              {product.category === "guia" ? "Guía" : product.category === "cuaderno" ? "Cuaderno digital" : "Audio"}
+              {categoryLabel[product.category] ?? product.category}
             </span>
 
             <h1 className="title text-3xl md:text-4xl leading-tight" style={{ color: "var(--accent)" }}>
@@ -115,7 +138,7 @@ export default async function ProductPage({ params }: Props) {
               {product.description}
             </p>
 
-            {/* Para quién es */}
+            {/* Para quién */}
             <div
               className="rounded-2xl p-5"
               style={{ background: "var(--section-alt)", border: "1px solid var(--border)" }}
@@ -156,7 +179,6 @@ export default async function ProductPage({ params }: Props) {
               </p>
             </div>
 
-            {/* Trust */}
             <p className="text-xs text-center" style={{ color: "var(--muted)" }}>
               ¿Tienes dudas?{" "}
               <a
