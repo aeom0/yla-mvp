@@ -36,9 +36,9 @@ export function Header() {
           <Image
             src="/logo.png"
             alt="Yoga con Lógica y Alma logo"
-            width={120}
-            height={36}
-            className="hidden sm:block h-8 w-auto object-contain"
+            width={500}
+            height={500}
+            className="hidden sm:block h-24 w-auto object-contain"
             priority
             onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
           />

@@ -24,9 +24,9 @@ export function Footer() {
               <Image
                 src="/logo-white.png"
                 alt="Yoga con Lógica y Alma"
-                width={140}
-                height={42}
-                className="h-9 w-auto object-contain"
+                width={500}
+                height={500}
+                className="h-28 w-auto object-contain"
                 onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
               />
               {/* Fallback texto — siempre visible, oculto por JS si logo carga */}
