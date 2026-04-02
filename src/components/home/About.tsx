@@ -2,10 +2,12 @@ import { Section } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
 import { BadgeCheck, Compass, Gem, NotebookPen } from "lucide-react";
+import Image from "next/image";
 
 export function About() {
   const { about } = siteContent;
   const videoId = about.welcomeVideoYoutubeId?.trim();
+  const hasPhoto = !!about.yubeFoto;
 
   return (
     <Section id="sobre-mi" style={{ background: "var(--section-alt)" }}>
@@ -15,6 +17,7 @@ export function About() {
           {/* Imagen / Video */}
           <div className="order-2 md:order-1">
             {videoId ? (
+              /* Video de YouTube embed */
               <div
                 className="aspect-video rounded-2xl overflow-hidden border"
                 style={{ borderColor: "var(--border)" }}
@@ -27,25 +30,42 @@ export function About() {
                   allowFullScreen
                 />
               </div>
+            ) : hasPhoto ? (
+              /* Foto real de Yube */
+              <div className="relative rounded-2xl overflow-hidden max-w-md mx-auto md:max-w-none" style={{ border: "1px solid var(--border)" }}>
+                <Image
+                  src={about.yubeFoto}
+                  alt="Yube Karina — Instructora de Yoga con Lógica y Alma"
+                  width={600}
+                  height={800}
+                  className="w-full h-auto object-cover"
+                  style={{ aspectRatio: "3/4", objectPosition: "top center" }}
+                  priority
+                />
+                {/* Franja morada inferior con frase */}
+                <div
+                  className="absolute bottom-0 left-0 right-0 px-5 py-3"
+                  style={{ background: "linear-gradient(to top, rgba(22,18,31,.85) 0%, transparent 100%)" }}
+                >
+                  <p className="text-xs italic text-center" style={{ color: "rgba(237,232,245,.75)" }}>
+                    &ldquo;Aquí todo nace desde el alma.&rdquo;
+                  </p>
+                </div>
+              </div>
             ) : (
+              /* Placeholder mientras no hay foto */
               <div
-                className="aspect-square rounded-2xl flex items-center justify-center relative overflow-hidden max-w-md mx-auto md:max-w-none"
+                className="aspect-square rounded-2xl flex flex-col items-center justify-center relative overflow-hidden max-w-md mx-auto md:max-w-none gap-3"
                 style={{
                   background: "linear-gradient(135deg, var(--purple-mist) 0%, var(--gold-pale) 100%)",
                   border: "1px solid var(--border)",
                 }}
               >
                 <Gem {...lucideBrand} size={72} style={{ color: "var(--purple-soft)", opacity: 0.45 }} aria-hidden />
-                <div
-                  className="absolute bottom-0 left-0 right-0 h-1"
-                  style={{ background: "var(--purple)" }}
-                />
-                <div
-                  className="absolute bottom-5 left-4 right-4 text-center text-xs px-2"
-                  style={{ color: "var(--muted)" }}
-                >
-                  Próximamente: video de bienvenida
-                </div>
+                <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: "var(--purple)" }} />
+                <p className="absolute bottom-5 text-xs px-4 text-center" style={{ color: "var(--muted)" }}>
+                  Próximamente: foto de Yube
+                </p>
               </div>
             )}
           </div>

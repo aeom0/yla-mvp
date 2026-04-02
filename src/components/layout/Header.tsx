@@ -2,6 +2,7 @@
 
 import { ThemeToggle } from "@/components/theme/ThemeToggle";
 import { siteContent } from "@/data/content";
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -25,18 +26,29 @@ export function Header() {
       }}
     >
       <div className="container-yla h-14 flex items-center justify-between gap-2 sm:gap-3 min-w-0">
+        {/* Logo / Brand */}
         <Link
           href="/"
-          className="title min-w-0 flex-1 pr-1 tracking-tight hover:opacity-90 transition-opacity sm:flex-initial sm:max-w-none md:text-base lg:text-lg"
-          style={{ color: "var(--accent)" }}
+          className="flex items-center gap-2 min-w-0 flex-1 pr-1 hover:opacity-90 transition-opacity sm:flex-initial"
+          aria-label="Yoga con Lógica y Alma — Inicio"
         >
-          {/* Dos líneas solo en móvil angosto: más legible que truncate */}
-          <span className="flex flex-col leading-[1.12] text-[11px] sm:hidden">
-            <span>{brandLine1}</span>
-            <span>{brandLine2}</span>
-          </span>
-          <span className="hidden sm:inline text-sm md:text-base truncate sm:max-w-[min(100%,11rem)] md:max-w-[13.5rem] lg:max-w-none">
-            {header.brand.full}
+          {/* Logo imagen — se oculta si no existe, el texto toma el relevo */}
+          <Image
+            src="/logo.png"
+            alt="Yoga con Lógica y Alma logo"
+            width={120}
+            height={36}
+            className="hidden sm:block h-8 w-auto object-contain"
+            priority
+            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+          />
+          {/* Fallback texto: visible siempre en móvil angosto, en desktop solo si el logo falla */}
+          <span
+            className="title tracking-tight sm:hidden"
+            style={{ color: "var(--accent)", fontSize: "clamp(0.65rem, 3.5vw, 0.85rem)", lineHeight: 1.15 }}
+          >
+            <span className="block">{brandLine1}</span>
+            <span className="block">{brandLine2}</span>
           </span>
         </Link>
 
@@ -73,7 +85,7 @@ export function Header() {
           <ThemeToggle />
         </nav>
 
-        {/* CTA principal — morado, sin gold */}
+        {/* CTA principal */}
         <div className="flex items-center gap-1.5 sm:gap-2 shrink-0">
           <Link
             href="/membresia"

@@ -1,5 +1,16 @@
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
+import Image from "next/image";
+
+/** Genera las iniciales de un nombre completo (máx. 2 letras) */
+function getInitials(name: string): string {
+  return name
+    .split(/\s+/)
+    .map((w) => w[0])
+    .join("")
+    .slice(0, 2)
+    .toUpperCase();
+}
 
 export function Testimonials() {
   const { testimonials } = siteContent;
@@ -19,22 +30,28 @@ export function Testimonials() {
             }}
           >
             <div className="flex items-center gap-3 mb-4">
-              {/* Avatar con iniciales — fondo morado pálido, texto morado */}
-              <div
-                className="w-12 h-12 rounded-full flex items-center justify-center title text-base shrink-0 font-semibold"
-                style={{
-                  background: "var(--purple-pale)",
-                  color: "var(--purple)",
-                }}
-                aria-hidden
-              >
-                {item.name
-                  .split(/\s+/)
-                  .map((w) => w[0])
-                  .join("")
-                  .slice(0, 2)
-                  .toUpperCase()}
-              </div>
+              {/* Avatar: foto real si existe, iniciales si no */}
+              {item.photo ? (
+                <Image
+                  src={item.photo}
+                  alt={item.name}
+                  width={48}
+                  height={48}
+                  className="w-12 h-12 rounded-full object-cover shrink-0"
+                  style={{ border: "2px solid var(--border)" }}
+                />
+              ) : (
+                <div
+                  className="w-12 h-12 rounded-full flex items-center justify-center title text-base shrink-0 font-semibold select-none"
+                  style={{
+                    background: "var(--purple-pale)",
+                    color: "var(--purple)",
+                  }}
+                  aria-hidden
+                >
+                  {getInitials(item.name)}
+                </div>
+              )}
               <figcaption>
                 <div className="font-semibold text-sm" style={{ color: "var(--text)" }}>
                   {item.name}
