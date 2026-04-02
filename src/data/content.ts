@@ -24,7 +24,7 @@ export const siteContent = {
     title: "Yoga con Lógica y Alma®",
     headlineEmotional: "Encuentra estructura para tu mente y espacio para tu alma.",
     headlineAction: "Empieza hoy con un regalo: tu primera herramienta gratis.",
-    microCta: "Acceso inmediato • a tu ritmo",
+    microCta: "Acceso inmediato • A tu propio ritmo",
     /**
      * Imagen de fondo del Hero.
      * Archivo en /public/hero-banner.jpeg
@@ -38,7 +38,7 @@ export const siteContent = {
   },
 
   philosophy: {
-    title: "Un punto de encuentro entre lo tangible y lo sutil",
+    title: "Yoga con Lógica y Alma, un punto de encuentro entre lo tangible y lo sutil",
     description:
       "Yoga con Lógica y Alma es la fusión entre el cuerpo que se mueve con intención y la mente que reflexiona con claridad. Es usar herramientas de análisis y autoconocimiento junto con la práctica del yoga para conectar con nosotras mismas de forma profunda, consciente y real.",
     pillars: [
