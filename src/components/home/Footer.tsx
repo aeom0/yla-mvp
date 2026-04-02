@@ -1,3 +1,5 @@
+"use client";
+
 import { TiktokGlyph } from "@/components/ui/icons/TiktokGlyph";
 import { lucideBrand } from "@/lib/lucideBrand";
 import { siteContent } from "@/data/content";
