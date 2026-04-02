@@ -27,10 +27,10 @@ export const siteContent = {
     microCta: "Acceso inmediato • a tu ritmo",
     /**
      * Imagen de fondo del Hero.
-     * Coloca el archivo en /public/hero-banner.jpg y pon la ruta aquí.
+     * Archivo en /public/hero-banner.jpeg
      * Deja vacío ("") para usar el fondo degradado predeterminado.
      */
-    bannerImage: "/hero-banner.jpg" as string,
+    bannerImage: "/hero-banner.jpeg" as string,
     cta: {
       primary: "Comenzar mi práctica",
       secondary: "Explorar programas",
@@ -194,24 +194,20 @@ export const siteContent = {
         quote: "Por fin entendí mi ansiedad sin sentirme juzgada. La estructura me da calma y el yoga me devuelve al cuerpo.",
         name: "Mariana R.",
         role: "Emprendedora",
-        /**
-         * Ruta relativa a /public.
-         * Coloca la foto en /public/testimonios/mariana.jpg
-         * Deja en "" para usar avatar de iniciales.
-         */
-        photo: "/testimonios/mariana.jpg" as string,
+        /** /public/testimonios/mariana.jpeg — deja "" para iniciales */
+        photo: "/testimonios/mariana.jpeg" as string,
       },
       {
         quote: "No es el yoga de solo estirar: es orden por dentro. Las cartas y los espacios de reflexión me aterrizan cada mes.",
         name: "Carla V.",
         role: "Ingeniera",
-        photo: "/testimonios/carla.jpg" as string,
+        photo: "/testimonios/carla.jpeg" as string,
       },
       {
         quote: "Las clases cortas me salvaron en semanas de locura. Siento que recuperé mi ritmo sin renunciar al trabajo.",
         name: "Andrea L.",
         role: "Docente",
-        photo: "/testimonios/andrea.jpg" as string,
+        photo: "/testimonios/andrea.jpeg" as string,
       },
     ],
   },
@@ -233,14 +229,12 @@ export const siteContent = {
     quote:
       "Combino estructura con sensibilidad, amor propio con acción, espiritualidad con práctica. Aquí todo nace desde el alma.",
     /**
-     * Foto de Yube en la sección About.
-     * Coloca el archivo en /public/yube-foto.jpg y pon la ruta aquí.
+     * Foto de Yube. Archivo en /public/yube-foto.jpeg
      * Deja en "" para mostrar el placeholder.
      */
-    yubeFoto: "/yube-foto.jpg" as string,
+    yubeFoto: "/yube-foto.jpeg" as string,
     /**
-     * YouTube video ID para el video de bienvenida (opcional).
-     * Si se define, tiene prioridad sobre yubeFoto.
+     * YouTube video ID (tiene prioridad sobre yubeFoto si se define).
      * Ej: "dQw4w9WgXcQ" → https://youtu.be/dQw4w9WgXcQ
      */
     welcomeVideoYoutubeId: "" as string,
