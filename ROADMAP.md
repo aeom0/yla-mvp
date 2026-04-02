@@ -3,7 +3,7 @@
 Documento vivo: prioridades de producto y técnica.
 Para convenciones de código ver `CLAUDE.md` y `.claude/skills/yla-dev-SKILL.md`.
 
-Última revisión: marzo 2026.
+Última revisión: abril 2026.
 
 ---
 
@@ -20,8 +20,8 @@ Un hub digital que concentre **captación (lead magnet + newsletter)**, **venta 
 | Componente | Descripción | Estado |
 |---|---|---|
 | `Hero.tsx` | Hero principal con CTAs y stats | ✅ Live |
-| `Philosophy.tsx` | Pilares Cuerpo / Mente / Espíritu | ✅ Live |
-| `Programs.tsx` | Cards de los 3 programas de 4 meses | ✅ Live |
+| `Philosophy.tsx` | Pilares Cuerpo / Mente / Espíritu — jerarquía visual, botones diferenciados por pilar, micro-animaciones | ✅ Live |
+| `Programs.tsx` | Cards de los 3 programas + card Clases Personalizadas rediseñada (logros, para ti si, cómo funciona) | ✅ Live |
 | `Testimonials.tsx` | Reseñas de alumnas (avatares iniciales) | ✅ Live |
 | `About.tsx` | Bio de Yube (placeholder de imagen) | ✅ Live — imagen pendiente |
 | `Community.tsx` | Cards de redes sociales | ✅ Live |

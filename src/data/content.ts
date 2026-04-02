@@ -50,7 +50,7 @@ export const siteContent = {
   },
 
   programs: {
-    title: "Programas de Transformación",
+    title: "Programas para volver a ti",
     cardCta: "Ver este programa",
     cardMicrocopy: "Incluye clases + guía paso a paso",
     items: [
@@ -63,7 +63,7 @@ export const siteContent = {
   classes: {
     title: "Clases Online",
     subtitle: "Práctica desde donde estés",
-    personalized: { title: "Clases personalizadas", description: "Sesión uno a uno adaptada a tu cuerpo, tu ritmo y tu proceso.", ctaPrimary: "Reservar mi espacio", microcopy: "Adaptado a tu cuerpo y tu proceso", href: "https://wa.me/584243547179" },
+    personalized: { title: "Clases personalizadas", subtitle: "Tu práctica, diseñada para ti", description: "Sesión uno a uno adaptada a tu cuerpo, tu ritmo y tu proceso.", ctaPrimary: "Reservar mi espacio", microcopy: "Adaptado a tu cuerpo y tu proceso", href: "https://wa.me/584243547179" },
     socialPractice: { label: "Practicar conmigo aquí", href: "https://www.instagram.com/yube.karina?igsh=MWg4Z2M5ang2YzI2bg==" },
     items: [
       { name: "Respira y Fluye", description: "Clases con ritmo pausado, enfoque restaurativo. Ideal para soltar tensiones físicas y mentales.", frequency: "Semanal" },
@@ -227,7 +227,7 @@ export const siteContent = {
 
   newsletter: {
     title: "Cartas con Lógica y Alma",
-    description: "Reflexiones y práctica en tu bandeja cada dos semanas.",
+    description: "Reflexiones y práctica en tu bandeja.",
     placeholder: "Tu email",
     cta: "Quiero recibir mis cartas",
     microcopy: "Sin spam. Solo contenido con intención.",
