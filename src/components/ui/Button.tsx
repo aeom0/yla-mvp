@@ -34,7 +34,7 @@ export function Button({
 
   return (
     <button
-      className={`${base} hover:bg-[var(--purple-mist)] active:scale-[.98] ${className}`}
+      className={`${base} hover:bg-(--purple-mist) active:scale-[.98] ${className}`}
       style={{
         background: "transparent",
         border: "1.5px solid var(--purple)",

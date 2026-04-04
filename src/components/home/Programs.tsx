@@ -80,7 +80,7 @@ export function Programs() {
                       <CircleCheck
                         {...lucideBrand}
                         size={18}
-                        className="mt-0.5 flex-shrink-0"
+                        className="mt-0.5 shrink-0"
                         style={{ color: color }}
                         aria-hidden
                       />
@@ -95,7 +95,7 @@ export function Programs() {
                   {programs.cardMicrocopy}
                 </p>
                 <button
-                  className="w-full mt-auto min-h-[48px] inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-medium transition-soft text-white hover:opacity-90 active:scale-[.98]"
+                  className="w-full mt-auto min-h-12 inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-medium transition-soft text-white hover:opacity-90 active:scale-[.98]"
                   style={{
                     background: btnColor,
                     boxShadow: "var(--shadow-purple)",
@@ -161,7 +161,7 @@ export function Programs() {
                       <CheckCircle2
                         {...lucideBrand}
                         size={16}
-                        className="mt-0.5 flex-shrink-0"
+                        className="mt-0.5 shrink-0"
                         style={{ color: "var(--purple)" }}
                         aria-hidden
                       />
@@ -183,7 +183,7 @@ export function Programs() {
                   {forYouIf.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm">
                       <span
-                        className="mt-1 w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        className="mt-1 w-1.5 h-1.5 rounded-full shrink-0"
                         style={{ background: "var(--purple-soft)" }}
                         aria-hidden
                       />
@@ -222,7 +222,7 @@ export function Programs() {
                         {step.step}
                       </div>
                       <span
-                        className="text-xs text-center max-w-[80px] leading-tight"
+                        className="text-xs text-center max-w-20 leading-tight"
                         style={{ color: "var(--muted)" }}
                       >
                         {step.label}
@@ -244,7 +244,7 @@ export function Programs() {
             <div className="text-center">
               <Button
                 variant="primary"
-                className="min-h-[52px] px-8 text-base hover:brightness-110 active:scale-95 transition-all duration-200"
+                className="min-h-13 px-8 text-base hover:brightness-110 active:scale-95 transition-all duration-200"
                 onClick={() => window.open(classes.personalized.href, "_blank")}
               >
                 {classes.personalized.ctaPrimary}
