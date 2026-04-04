@@ -1,6 +1,9 @@
 import type { SVGAttributes } from "react";
 
-type TiktokGlyphProps = Omit<SVGAttributes<SVGSVGElement>, "width" | "height"> & {
+type TiktokGlyphProps = Omit<
+  SVGAttributes<SVGSVGElement>,
+  "width" | "height"
+> & {
   size?: number;
   /** Incluido por compatibilidad con props de Lucide al hacer spread; se ignora. */
   strokeWidth?: number;

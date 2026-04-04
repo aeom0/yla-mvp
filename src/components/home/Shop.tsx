@@ -3,16 +3,30 @@
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
-import { ExternalLink, Headphones, NotebookPen, ScrollText } from "lucide-react";
+import {
+  ExternalLink,
+  Headphones,
+  NotebookPen,
+  ScrollText,
+} from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
 type ProductCategory = "guia" | "cuaderno" | "audio";
 
-const categoryMeta: Record<ProductCategory, { label: string; icon: React.ReactNode }> = {
-  guia:     { label: "Guías",               icon: <ScrollText {...lucideBrand} size={16} /> },
-  cuaderno: { label: "Cuadernos digitales", icon: <NotebookPen {...lucideBrand} size={16} /> },
-  audio:    { label: "Meditaciones",        icon: <Headphones {...lucideBrand} size={16} /> },
+const categoryMeta: Record<
+  ProductCategory,
+  { label: string; icon: React.ReactNode }
+> = {
+  guia: { label: "Guías", icon: <ScrollText {...lucideBrand} size={16} /> },
+  cuaderno: {
+    label: "Cuadernos digitales",
+    icon: <NotebookPen {...lucideBrand} size={16} />,
+  },
+  audio: {
+    label: "Meditaciones",
+    icon: <Headphones {...lucideBrand} size={16} />,
+  },
 };
 
 export function Shop() {
@@ -33,7 +47,10 @@ export function Shop() {
             <div className="flex items-center gap-2 mb-5">
               <span
                 className="w-7 h-7 rounded-lg flex items-center justify-center"
-                style={{ background: "var(--purple-mist)", color: "var(--purple)" }}
+                style={{
+                  background: "var(--purple-mist)",
+                  color: "var(--purple)",
+                }}
               >
                 {meta.icon}
               </span>
@@ -55,14 +72,21 @@ export function Shop() {
                   {product.badge && (
                     <span
                       className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-0.5 rounded-full z-10 text-white"
-                      style={{ background: product.isFree ? "var(--gold)" : "var(--purple)" }}
+                      style={{
+                        background: product.isFree
+                          ? "var(--gold)"
+                          : "var(--purple)",
+                      }}
                     >
                       {product.badge}
                     </span>
                   )}
 
                   {/* Imagen del producto */}
-                  <div className="relative h-44 w-full overflow-hidden" style={{ background: "var(--beige)" }}>
+                  <div
+                    className="relative h-44 w-full overflow-hidden"
+                    style={{ background: "var(--beige)" }}
+                  >
                     {product.image ? (
                       <Image
                         src={product.image}
@@ -75,26 +99,41 @@ export function Shop() {
                       <div className="w-full h-full flex items-center justify-center">
                         <span
                           className="w-14 h-14 rounded-2xl flex items-center justify-center text-white"
-                          style={{ background: product.isFree ? "var(--gold)" : "var(--purple)" }}
+                          style={{
+                            background: product.isFree
+                              ? "var(--gold)"
+                              : "var(--purple)",
+                          }}
                         >
-                          {categoryMeta[product.category as ProductCategory]?.icon}
+                          {
+                            categoryMeta[product.category as ProductCategory]
+                              ?.icon
+                          }
                         </span>
                       </div>
                     )}
                   </div>
 
                   <div className="flex flex-col flex-1 gap-2 p-5">
-                    <h4 className="title text-base font-bold leading-snug" style={{ color: "var(--text)" }}>
+                    <h4
+                      className="title text-base font-bold leading-snug"
+                      style={{ color: "var(--text)" }}
+                    >
                       {product.title}
                     </h4>
-                    <p className="text-sm leading-relaxed flex-1 italic" style={{ color: "var(--muted)" }}>
+                    <p
+                      className="text-sm leading-relaxed flex-1 italic"
+                      style={{ color: "var(--muted)" }}
+                    >
                       &ldquo;{product.intention}&rdquo;
                     </p>
 
                     {/* Precio */}
                     <span
                       className="text-lg font-bold mt-1"
-                      style={{ color: product.isFree ? "var(--gold)" : "var(--purple)" }}
+                      style={{
+                        color: product.isFree ? "var(--gold)" : "var(--purple)",
+                      }}
                     >
                       {product.isFree ? "Gratis" : product.price}
                     </span>
@@ -109,7 +148,11 @@ export function Shop() {
                         style={{ background: "var(--gold)" }}
                       >
                         {shop.ctaFree}
-                        <ExternalLink {...lucideBrand} size={14} aria-hidden="true" />
+                        <ExternalLink
+                          {...lucideBrand}
+                          size={14}
+                          aria-hidden="true"
+                        />
                       </a>
                     ) : (
                       <Link
@@ -134,7 +177,10 @@ export function Shop() {
           target="_blank"
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl font-semibold transition-soft hover:opacity-90 min-h-[48px] text-white"
-          style={{ background: "var(--purple)", boxShadow: "var(--shadow-purple)" }}
+          style={{
+            background: "var(--purple)",
+            boxShadow: "var(--shadow-purple)",
+          }}
         >
           Ver toda la tienda
           <ExternalLink {...lucideBrand} size={16} aria-hidden="true" />

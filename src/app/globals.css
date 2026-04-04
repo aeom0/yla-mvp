@@ -18,71 +18,79 @@
 */
 
 @theme {
-  --color-bg:          var(--bg);
-  --color-text:        var(--text);
-  --color-card:        var(--card);
-  --color-border:      var(--border);
-  --color-muted:       var(--muted);
-  --color-accent:      var(--accent);
-  --color-purple:      var(--purple);
+  --color-bg: var(--bg);
+  --color-text: var(--text);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-muted: var(--muted);
+  --color-accent: var(--accent);
+  --color-purple: var(--purple);
   --color-purple-soft: var(--purple-soft);
-  --color-gold:        var(--gold);
-  --color-beige:       var(--beige);
-  --color-ink:         var(--ink);
-  --shadow-soft:       0 4px 20px rgba(0,0,0,.06);
-  --shadow-purple:     0 6px 28px rgba(91,58,142,.22);
+  --color-gold: var(--gold);
+  --color-beige: var(--beige);
+  --color-ink: var(--ink);
+  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);
+  --shadow-purple: 0 6px 28px rgba(91, 58, 142, 0.22);
 }
 
 /* — Paleta base (inmutable) — */
 :root {
   /* Morado — único acento espiritual */
-  --purple:       #5B3A8E;
-  --purple-deep:  #432a6b;
-  --purple-soft:  #C6B7E2;
-  --purple-mist:  rgba(91, 58, 142, 0.07);
-  --purple-pale:  rgba(91, 58, 142, 0.12);
+  --purple: #5b3a8e;
+  --purple-deep: #432a6b;
+  --purple-soft: #c6b7e2;
+  --purple-mist: rgba(91, 58, 142, 0.07);
+  --purple-pale: rgba(91, 58, 142, 0.12);
 
   /* Fondo base — blanco con calídez mnima, NO rosado */
-  --beige:        #FAF7F2;
-  --beige-warm:   #F3EDE3;
+  --beige: #faf7f2;
+  --beige-warm: #f3ede3;
 
   /* Dorado — solo para detalles sutiles (no botones) */
-  --gold:         #C8A84B;
-  --gold-pale:    rgba(200, 168, 75, 0.12);
+  --gold: #c8a84b;
+  --gold-pale: rgba(200, 168, 75, 0.12);
 
   /* Neutros */
-  --ink:          #2d2d2d;
-  --smoke:        #d0ccd8;
+  --ink: #2d2d2d;
+  --smoke: #d0ccd8;
 
-  --font-title:   "Playfair Display", serif;
-  --font-body:    "Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  --font-title: "Playfair Display", serif;
+  --font-body:
+    "Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
 /* — Tokens semánticos LIGHT — */
 :root {
-  --bg:           #FAF7F2;
-  --text:         #2d2d2d;
-  --card:         #ffffff;
-  --border:       rgba(91, 58, 142, 0.14);
-  --muted:        #72657e;
-  --accent:       #5B3A8E;
-  --section-alt:  #F0EBF8;  /* lila muy pálido, sin rosado */
+  --bg: #faf7f2;
+  --text: #2d2d2d;
+  --card: #ffffff;
+  --border: rgba(91, 58, 142, 0.14);
+  --muted: #72657e;
+  --accent: #5b3a8e;
+  --section-alt: #f0ebf8; /* lila muy pálido, sin rosado */
 }
 
 /* — Tokens DARK — */
 .dark {
-  --bg:           #16121f;
-  --text:         #EDE8F5;
-  --card:         #201b2e;
-  --border:       rgba(198, 183, 226, 0.15);
-  --muted:        #a89fc0;
-  --accent:       #C6B7E2;
-  --section-alt:  #1c1829;
+  --bg: #16121f;
+  --text: #ede8f5;
+  --card: #201b2e;
+  --border: rgba(198, 183, 226, 0.15);
+  --muted: #a89fc0;
+  --accent: #c6b7e2;
+  --section-alt: #1c1829;
 }
 
 /* — Reset / Base — */
-*, *::before, *::after { box-sizing: border-box; }
-html, body { height: 100%; }
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+}
 body {
   margin: 0;
   font-family: var(--font-body);
@@ -90,7 +98,12 @@ body {
   color: var(--text);
   -webkit-font-smoothing: antialiased;
 }
-h1, h2, h3, .title { font-family: var(--font-title); }
+h1,
+h2,
+h3,
+.title {
+  font-family: var(--font-title);
+}
 
 /* — Layout — */
 .container-yla {
@@ -103,9 +116,16 @@ h1, h2, h3, .title { font-family: var(--font-title); }
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 1rem;
-  box-shadow: 0 4px 20px rgba(0,0,0,.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
 }
-.transition-soft { transition: all .25s cubic-bezier(.22,.61,.36,1); }
+.transition-soft {
+  transition: all 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
 
 /* — Helpers — */
-.section-wave { display: block; width: 100%; overflow: hidden; line-height: 0; }
+.section-wave {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}

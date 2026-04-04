@@ -4,7 +4,8 @@ import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Preguntas frecuentes — Yoga con Lógica y Alma",
-  description: "Todo lo que necesitas saber sobre el método, los programas y las clases.",
+  description:
+    "Todo lo que necesitas saber sobre el método, los programas y las clases.",
 };
 
 export default function FAQPage() {

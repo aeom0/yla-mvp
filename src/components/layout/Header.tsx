@@ -40,12 +40,18 @@ export function Header() {
             height={500}
             className="hidden sm:block h-24 w-auto object-contain"
             priority
-            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+            onError={(e) => {
+              (e.currentTarget as HTMLImageElement).style.display = "none";
+            }}
           />
           {/* Fallback texto: visible siempre en móvil angosto, en desktop solo si el logo falla */}
           <span
             className="title tracking-tight sm:hidden"
-            style={{ color: "var(--accent)", fontSize: "clamp(0.65rem, 3.5vw, 0.85rem)", lineHeight: 1.15 }}
+            style={{
+              color: "var(--accent)",
+              fontSize: "clamp(0.65rem, 3.5vw, 0.85rem)",
+              lineHeight: 1.15,
+            }}
           >
             <span className="block">{brandLine1}</span>
             <span className="block">{brandLine2}</span>
@@ -77,7 +83,9 @@ export function Header() {
               background: pathname.startsWith(header.accesoAlumnasHref)
                 ? "var(--purple-mist)"
                 : "transparent",
-              color: pathname.startsWith(header.accesoAlumnasHref) ? "var(--purple)" : "var(--text)",
+              color: pathname.startsWith(header.accesoAlumnasHref)
+                ? "var(--purple)"
+                : "var(--text)",
             }}
           >
             {header.accesoAlumnas}

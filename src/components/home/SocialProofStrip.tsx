@@ -10,7 +10,10 @@ export function SocialProofStrip() {
     <div className="container-yla py-8 sm:py-10">
       <div
         className="grid grid-cols-2 md:grid-cols-4 gap-px max-w-2xl mx-auto rounded-2xl overflow-hidden"
-        style={{ background: "var(--border)", boxShadow: "0 2px 16px rgba(0,0,0,.06)" }}
+        style={{
+          background: "var(--border)",
+          boxShadow: "0 2px 16px rgba(0,0,0,.06)",
+        }}
       >
         {stats.map((stat, i) => (
           <div
@@ -20,11 +23,17 @@ export function SocialProofStrip() {
           >
             <div
               className="text-2xl sm:text-3xl md:text-4xl font-semibold mb-0.5"
-              style={{ color: "var(--accent)", fontFamily: "var(--font-title)" }}
+              style={{
+                color: "var(--accent)",
+                fontFamily: "var(--font-title)",
+              }}
             >
               {stat.value}
             </div>
-            <div className="text-xs uppercase tracking-wide" style={{ color: "var(--muted)" }}>
+            <div
+              className="text-xs uppercase tracking-wide"
+              style={{ color: "var(--muted)" }}
+            >
               {stat.label}
             </div>
           </div>

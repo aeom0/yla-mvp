@@ -53,7 +53,9 @@ const CHANNELS = [
 
 export function Community() {
   const { community, newsletter } = siteContent;
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
   const [message, setMessage] = useState("");
 
   async function handleNewsletterSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -73,7 +75,9 @@ export function Community() {
       const data = (await res.json().catch(() => ({}))) as { error?: string };
       if (!res.ok) {
         setStatus("error");
-        setMessage(data.error ?? "No pudimos guardar tu email. Intenta otra vez.");
+        setMessage(
+          data.error ?? "No pudimos guardar tu email. Intenta otra vez.",
+        );
         return;
       }
       setStatus("success");
@@ -104,23 +108,37 @@ export function Community() {
               target="_blank"
               rel="noopener noreferrer"
               className="flex flex-col items-center text-center gap-2 sm:gap-3 rounded-2xl p-4 sm:p-5 transition-soft hover:-translate-y-1 hover:shadow-md min-h-0"
-              style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+              style={{
+                background: "var(--card)",
+                border: "1px solid var(--border)",
+              }}
             >
               <span
                 className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
                 style={{ background: ch.bg }}
               >
-                <Icon {...lucideBrand} size={22} style={{ color: ch.color }} aria-hidden />
+                <Icon
+                  {...lucideBrand}
+                  size={22}
+                  style={{ color: ch.color }}
+                  aria-hidden
+                />
               </span>
               <div>
-                <p className="text-sm font-semibold" style={{ color: "var(--text)" }}>
+                <p
+                  className="text-sm font-semibold"
+                  style={{ color: "var(--text)" }}
+                >
                   {ch.label}
                 </p>
                 <p className="text-xs mt-0.5" style={{ color: "var(--muted)" }}>
                   {ch.handle}
                 </p>
               </div>
-              <p className="text-xs leading-relaxed" style={{ color: "var(--muted)" }}>
+              <p
+                className="text-xs leading-relaxed"
+                style={{ color: "var(--muted)" }}
+              >
                 {ch.description}
               </p>
             </a>
@@ -134,21 +152,34 @@ export function Community() {
         style={{ background: "var(--card)", border: "1px solid var(--border)" }}
       >
         <h3 className="title text-2xl mb-2 text-center">{newsletter.title}</h3>
-        <p className="text-sm mb-1 text-center" style={{ color: "var(--muted)" }}>
+        <p
+          className="text-sm mb-1 text-center"
+          style={{ color: "var(--muted)" }}
+        >
           {newsletter.description}
         </p>
-        <p className="text-xs mb-6 text-center" style={{ color: "var(--muted)" }}>
+        <p
+          className="text-xs mb-6 text-center"
+          style={{ color: "var(--muted)" }}
+        >
           {newsletter.microcopy}
         </p>
         {status === "success" ? (
           <p
             className="rounded-2xl px-4 py-3 text-sm text-center"
-            style={{ background: "var(--bg)", border: "1px solid var(--border)", color: "var(--text)" }}
+            style={{
+              background: "var(--bg)",
+              border: "1px solid var(--border)",
+              color: "var(--text)",
+            }}
           >
             {message}
           </p>
         ) : (
-          <form className="flex flex-col gap-3" onSubmit={handleNewsletterSubmit}>
+          <form
+            className="flex flex-col gap-3"
+            onSubmit={handleNewsletterSubmit}
+          >
             <input
               type="email"
               name="email"
@@ -157,15 +188,28 @@ export function Community() {
               autoComplete="email"
               disabled={status === "loading"}
               className="rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--purple)] min-h-[48px]"
-              style={{ border: "1px solid var(--border)", background: "var(--bg)", color: "var(--text)" }}
+              style={{
+                border: "1px solid var(--border)",
+                background: "var(--bg)",
+                color: "var(--text)",
+              }}
             />
-            <Button type="submit" variant="primary" disabled={status === "loading"} className="min-h-[48px]">
+            <Button
+              type="submit"
+              variant="primary"
+              disabled={status === "loading"}
+              className="min-h-[48px]"
+            >
               {status === "loading" ? "Enviando…" : newsletter.cta}
             </Button>
           </form>
         )}
         {status === "error" && message && (
-          <p className="mt-3 text-sm text-center" style={{ color: "#b91c1c" }} role="alert">
+          <p
+            className="mt-3 text-sm text-center"
+            style={{ color: "#b91c1c" }}
+            role="alert"
+          >
             {message}
           </p>
         )}

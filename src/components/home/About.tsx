@@ -13,7 +13,6 @@ export function About() {
     <Section id="sobre-mi" style={{ background: "var(--section-alt)" }}>
       <div className="max-w-5xl mx-auto">
         <div className="grid md:grid-cols-2 gap-10 md:gap-14 items-start">
-
           {/* Imagen / Video */}
           <div className="order-2 md:order-1">
             {videoId ? (
@@ -32,7 +31,10 @@ export function About() {
               </div>
             ) : hasPhoto ? (
               /* Foto real de Yube */
-              <div className="relative rounded-2xl overflow-hidden max-w-md mx-auto md:max-w-none" style={{ border: "1px solid var(--border)" }}>
+              <div
+                className="relative rounded-2xl overflow-hidden max-w-md mx-auto md:max-w-none"
+                style={{ border: "1px solid var(--border)" }}
+              >
                 <Image
                   src={about.yubeFoto}
                   alt="Yube Karina — Instructora de Yoga con Lógica y Alma"
@@ -45,9 +47,15 @@ export function About() {
                 {/* Franja morada inferior con frase */}
                 <div
                   className="absolute bottom-0 left-0 right-0 px-5 py-3"
-                  style={{ background: "linear-gradient(to top, rgba(22,18,31,.85) 0%, transparent 100%)" }}
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(22,18,31,.85) 0%, transparent 100%)",
+                  }}
                 >
-                  <p className="text-xs italic text-center" style={{ color: "rgba(237,232,245,.75)" }}>
+                  <p
+                    className="text-xs italic text-center"
+                    style={{ color: "rgba(237,232,245,.75)" }}
+                  >
                     &ldquo;Aquí todo nace desde el alma.&rdquo;
                   </p>
                 </div>
@@ -57,13 +65,25 @@ export function About() {
               <div
                 className="aspect-square rounded-2xl flex flex-col items-center justify-center relative overflow-hidden max-w-md mx-auto md:max-w-none gap-3"
                 style={{
-                  background: "linear-gradient(135deg, var(--purple-mist) 0%, var(--gold-pale) 100%)",
+                  background:
+                    "linear-gradient(135deg, var(--purple-mist) 0%, var(--gold-pale) 100%)",
                   border: "1px solid var(--border)",
                 }}
               >
-                <Gem {...lucideBrand} size={72} style={{ color: "var(--purple-soft)", opacity: 0.45 }} aria-hidden />
-                <div className="absolute bottom-0 left-0 right-0 h-1" style={{ background: "var(--purple)" }} />
-                <p className="absolute bottom-5 text-xs px-4 text-center" style={{ color: "var(--muted)" }}>
+                <Gem
+                  {...lucideBrand}
+                  size={72}
+                  style={{ color: "var(--purple-soft)", opacity: 0.45 }}
+                  aria-hidden
+                />
+                <div
+                  className="absolute bottom-0 left-0 right-0 h-1"
+                  style={{ background: "var(--purple)" }}
+                />
+                <p
+                  className="absolute bottom-5 text-xs px-4 text-center"
+                  style={{ color: "var(--muted)" }}
+                >
                   Próximamente: foto de Yube
                 </p>
               </div>
@@ -83,37 +103,63 @@ export function About() {
               >
                 Sobre mí
               </span>
-              <h2 className="title text-2xl sm:text-3xl md:text-4xl" style={{ color: "var(--accent)" }}>
+              <h2
+                className="title text-2xl sm:text-3xl md:text-4xl"
+                style={{ color: "var(--accent)" }}
+              >
                 {about.title}
               </h2>
             </div>
 
-            <p className="text-sm font-semibold leading-relaxed" style={{ color: "var(--purple)" }}>
+            <p
+              className="text-sm font-semibold leading-relaxed"
+              style={{ color: "var(--purple)" }}
+            >
               {about.credential}
             </p>
 
-            <p className="text-sm leading-relaxed" style={{ color: "var(--text)", opacity: 0.9 }}>
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: "var(--text)", opacity: 0.9 }}
+            >
               {about.description}
             </p>
 
-            <p className="text-sm leading-relaxed" style={{ color: "var(--muted)" }}>
+            <p
+              className="text-sm leading-relaxed"
+              style={{ color: "var(--muted)" }}
+            >
               {about.extended}
             </p>
 
             <div className="space-y-3 pt-1">
               {[
-                { icon: <Compass {...lucideBrand} size={16} />, text: "Ingeniera industrial de profesión" },
-                { icon: <BadgeCheck {...lucideBrand} size={16} />, text: "Instructora de yoga y meditación — 500 h certificadas" },
-                { icon: <NotebookPen {...lucideBrand} size={16} />, text: "Metodología propia: lógica aplicada al bienestar" },
+                {
+                  icon: <Compass {...lucideBrand} size={16} />,
+                  text: "Ingeniera industrial de profesión",
+                },
+                {
+                  icon: <BadgeCheck {...lucideBrand} size={16} />,
+                  text: "Instructora de yoga y meditación — 500 h certificadas",
+                },
+                {
+                  icon: <NotebookPen {...lucideBrand} size={16} />,
+                  text: "Metodología propia: lógica aplicada al bienestar",
+                },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <span
                     className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
-                    style={{ background: "var(--purple-mist)", color: "var(--purple)" }}
+                    style={{
+                      background: "var(--purple-mist)",
+                      color: "var(--purple)",
+                    }}
                   >
                     {item.icon}
                   </span>
-                  <span className="text-sm" style={{ color: "var(--text)" }}>{item.text}</span>
+                  <span className="text-sm" style={{ color: "var(--text)" }}>
+                    {item.text}
+                  </span>
                 </div>
               ))}
             </div>

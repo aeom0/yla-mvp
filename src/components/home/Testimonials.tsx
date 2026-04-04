@@ -17,7 +17,11 @@ export function Testimonials() {
 
   return (
     <Section id="testimonios">
-      <SectionHeader title={testimonials.title} subtitle={testimonials.subtitle} centered />
+      <SectionHeader
+        title={testimonials.title}
+        subtitle={testimonials.subtitle}
+        centered
+      />
       <div className="grid md:grid-cols-3 gap-4 sm:gap-6 md:gap-8 max-w-6xl mx-auto">
         {testimonials.items.map((item, i) => (
           <figure
@@ -53,7 +57,10 @@ export function Testimonials() {
                 </div>
               )}
               <figcaption>
-                <div className="font-semibold text-sm" style={{ color: "var(--text)" }}>
+                <div
+                  className="font-semibold text-sm"
+                  style={{ color: "var(--text)" }}
+                >
                   {item.name}
                 </div>
                 <div className="text-xs" style={{ color: "var(--muted)" }}>

@@ -9,7 +9,6 @@ export function Hero() {
 
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden">
-
       {/* ── Imagen de fondo (banner) ── */}
       {hasBanner && (
         <div
@@ -41,12 +40,18 @@ export function Hero() {
           <div
             aria-hidden="true"
             className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(91,58,142,.10) 0%, transparent 65%)" }}
+            style={{
+              background:
+                "radial-gradient(circle, rgba(91,58,142,.10) 0%, transparent 65%)",
+            }}
           />
           <div
             aria-hidden="true"
             className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full pointer-events-none"
-            style={{ background: "radial-gradient(circle, rgba(200,168,75,.07) 0%, transparent 65%)" }}
+            style={{
+              background:
+                "radial-gradient(circle, rgba(200,168,75,.07) 0%, transparent 65%)",
+            }}
           />
         </>
       )}
@@ -68,14 +73,19 @@ export function Hero() {
 
         <p
           className="text-base md:text-lg mb-2 max-w-xl mx-auto"
-          style={{ color: hasBanner ? "rgba(255,255,255,.72)" : "var(--muted)" }}
+          style={{
+            color: hasBanner ? "rgba(255,255,255,.72)" : "var(--muted)",
+          }}
         >
           {hero.headlineAction}
         </p>
 
         <p
           className="text-sm mb-10"
-          style={{ color: hasBanner ? "rgba(255,255,255,.55)" : "var(--muted)", opacity: hasBanner ? 1 : 0.7 }}
+          style={{
+            color: hasBanner ? "rgba(255,255,255,.55)" : "var(--muted)",
+            opacity: hasBanner ? 1 : 0.7,
+          }}
         >
           {hero.microCta}
         </p>
@@ -85,7 +95,9 @@ export function Hero() {
             variant="primary"
             className="text-base px-8 py-4 min-h-[48px]"
             onClick={() =>
-              document.getElementById("guia-gratis")?.scrollIntoView({ behavior: "smooth" })
+              document
+                .getElementById("guia-gratis")
+                ?.scrollIntoView({ behavior: "smooth" })
             }
           >
             {hero.cta.primary}
@@ -93,9 +105,15 @@ export function Hero() {
           <Button
             variant="ghost"
             className="text-base px-8 py-4 min-h-[48px]"
-            style={hasBanner ? { borderColor: "rgba(255,255,255,.35)", color: "#fff" } : {}}
+            style={
+              hasBanner
+                ? { borderColor: "rgba(255,255,255,.35)", color: "#fff" }
+                : {}
+            }
             onClick={() =>
-              document.getElementById("programas")?.scrollIntoView({ behavior: "smooth" })
+              document
+                .getElementById("programas")
+                ?.scrollIntoView({ behavior: "smooth" })
             }
           >
             {hero.cta.secondary}

@@ -19,8 +19,14 @@ export function ThemeToggle() {
       aria-label="Alternar tema"
       title="Alternar tema"
     >
-      {isDark ? <Sun {...lucideBrand} size={16} /> : <Moon {...lucideBrand} size={16} />}
-      <span className="text-sm hidden sm:inline">{isDark ? "Claro" : "Oscuro"}</span>
+      {isDark ? (
+        <Sun {...lucideBrand} size={16} />
+      ) : (
+        <Moon {...lucideBrand} size={16} />
+      )}
+      <span className="text-sm hidden sm:inline">
+        {isDark ? "Claro" : "Oscuro"}
+      </span>
     </button>
   );
 }

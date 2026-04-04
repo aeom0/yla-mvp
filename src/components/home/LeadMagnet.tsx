@@ -1,12 +1,14 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { siteContent } from "@/data/content";
+import { useState } from "react";
 
 export function LeadMagnet() {
   const { leadMagnet } = siteContent;
-  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
   const [message, setMessage] = useState("");
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -45,22 +47,35 @@ export function LeadMagnet() {
       style={{ background: "var(--section-alt)" }}
     >
       <div className="container-yla max-w-2xl mx-auto text-center px-4">
-        <h2 className="title text-2xl sm:text-3xl md:text-4xl mb-4 px-1 leading-tight" style={{ color: "var(--accent)" }}>
+        <h2
+          className="title text-2xl sm:text-3xl md:text-4xl mb-4 px-1 leading-tight"
+          style={{ color: "var(--accent)" }}
+        >
           {leadMagnet.title}
         </h2>
-        <p className="text-base md:text-lg mb-10 leading-relaxed" style={{ color: "var(--muted)" }}>
+        <p
+          className="text-base md:text-lg mb-10 leading-relaxed"
+          style={{ color: "var(--muted)" }}
+        >
           {leadMagnet.subtitle}
         </p>
 
         {status === "success" ? (
           <p
             className="rounded-2xl px-6 py-4 text-sm font-medium"
-            style={{ background: "var(--card)", border: "1px solid var(--border)", color: "var(--text)" }}
+            style={{
+              background: "var(--card)",
+              border: "1px solid var(--border)",
+              color: "var(--text)",
+            }}
           >
             {message}
           </p>
         ) : (
-          <form onSubmit={handleSubmit} className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto items-stretch">
+          <form
+            onSubmit={handleSubmit}
+            className="flex flex-col sm:flex-row gap-3 max-w-lg mx-auto items-stretch"
+          >
             <label htmlFor="lead-email" className="sr-only">
               {leadMagnet.emailPlaceholder}
             </label>
@@ -72,14 +87,19 @@ export function LeadMagnet() {
               autoComplete="email"
               placeholder={leadMagnet.emailPlaceholder}
               disabled={status === "loading"}
-              className="flex-1 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--purple)] min-h-[48px]"
+              className="flex-1 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-(--purple) min-h-12"
               style={{
                 border: "1px solid var(--border)",
                 background: "var(--card)",
                 color: "var(--text)",
               }}
             />
-            <Button type="submit" variant="primary" className="sm:w-auto shrink-0 min-h-[48px]" disabled={status === "loading"}>
+            <Button
+              type="submit"
+              variant="primary"
+              className="sm:w-auto shrink-0 min-h-12"
+              disabled={status === "loading"}
+            >
               {status === "loading" ? "Enviando…" : leadMagnet.submitLabel}
             </Button>
           </form>

@@ -11,7 +11,11 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 
   SIN gold en botones. El dorado es solo para detalles decorativos.
 */
-export function Button({ variant = "primary", className = "", ...props }: Props) {
+export function Button({
+  variant = "primary",
+  className = "",
+  ...props
+}: Props) {
   const base =
     "inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-medium transition-soft";
 

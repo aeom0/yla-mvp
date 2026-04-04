@@ -47,14 +47,17 @@ export function Programs() {
         centered
       />
 
-      <div className="grid md:grid-cols-3 gap-5 sm:gap-8 max-w-6xl mx-auto">
+      <div className="grid md:grid-cols-3 gap-5 sm:gap-8 max-w-6xl mx-auto items-stretch">
         {programs.items.map((program, i) => {
           const color =
-            accentColor[(program.accent as keyof typeof accentColor) ?? "lavender"];
+            accentColor[
+              (program.accent as keyof typeof accentColor) ?? "lavender"
+            ];
+          const btnColor = ["#5B3A8E", "#7B5AB0", "#9E82C8"][i] ?? "#5B3A8E";
           return (
             <Card
               key={i}
-              className="hover:scale-[1.02] transition-soft flex flex-col"
+              className="hover:scale-[1.02] transition-soft flex flex-col h-full"
               style={{ borderTop: `3px solid ${color}` }}
             >
               <CardBody className="flex flex-col flex-1">
@@ -85,12 +88,22 @@ export function Programs() {
                     </div>
                   ))}
                 </div>
-                <p className="text-xs mb-3 text-center" style={{ color: "var(--muted)" }}>
+                <p
+                  className="text-xs mb-3 text-center"
+                  style={{ color: "var(--muted)" }}
+                >
                   {programs.cardMicrocopy}
                 </p>
-                <Button variant="primary" className="w-full mt-auto min-h-[48px]" onClick={scrollToTienda}>
+                <button
+                  className="w-full mt-auto min-h-[48px] inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-medium transition-soft text-white hover:opacity-90 active:scale-[.98]"
+                  style={{
+                    background: btnColor,
+                    boxShadow: "var(--shadow-purple)",
+                  }}
+                  onClick={scrollToTienda}
+                >
                   {programs.cardCta}
-                </Button>
+                </button>
               </CardBody>
             </Card>
           );
@@ -120,7 +133,10 @@ export function Programs() {
             <h3 className="title text-2xl sm:text-3xl mb-2">
               {classes.personalized.title}
             </h3>
-            <p style={{ color: "var(--muted)" }} className="text-sm leading-relaxed">
+            <p
+              style={{ color: "var(--muted)" }}
+              className="text-sm leading-relaxed"
+            >
               No todos los cuerpos necesitan lo mismo…{" "}
               <span className="italic">
                 por eso tu práctica tampoco debería ser igual a la de todos.
@@ -183,8 +199,8 @@ export function Programs() {
               className="text-sm italic text-center leading-relaxed mb-8 px-4"
               style={{ color: "var(--purple)", borderLeft: "none" }}
             >
-              &ldquo;Integro técnica, conciencia corporal y conexión emocional… para que no solo
-              practiques, sino que te entiendas.&rdquo;
+              &ldquo;Integro técnica, conciencia corporal y conexión emocional…
+              para que no solo practiques, sino que te entiendas.&rdquo;
             </blockquote>
 
             {/* Cómo funciona */}
@@ -205,7 +221,10 @@ export function Programs() {
                       >
                         {step.step}
                       </div>
-                      <span className="text-xs text-center max-w-[80px] leading-tight" style={{ color: "var(--muted)" }}>
+                      <span
+                        className="text-xs text-center max-w-[80px] leading-tight"
+                        style={{ color: "var(--muted)" }}
+                      >
                         {step.label}
                       </span>
                     </div>
@@ -233,7 +252,10 @@ export function Programs() {
               <p className="text-xs mt-2" style={{ color: "var(--muted)" }}>
                 Clases online • adaptadas a ti
               </p>
-              <p className="text-xs mt-1 italic" style={{ color: "var(--purple-soft)" }}>
+              <p
+                className="text-xs mt-1 italic"
+                style={{ color: "var(--purple-soft)" }}
+              >
                 En cada sesión conectarás mejor con tu cuerpo.
               </p>
             </div>
