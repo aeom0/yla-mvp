@@ -39,7 +39,7 @@ export function Hero() {
         <>
           <div
             aria-hidden="true"
-            className="absolute -top-32 -right-32 w-[480px] h-[480px] rounded-full pointer-events-none"
+            className="absolute -top-32 -right-32 w-120 h-120 rounded-full pointer-events-none"
             style={{
               background:
                 "radial-gradient(circle, rgba(91,58,142,.10) 0%, transparent 65%)",
@@ -93,7 +93,7 @@ export function Hero() {
         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
           <Button
             variant="primary"
-            className="text-base px-8 py-4 min-h-[48px]"
+            className="text-base px-8 py-4 min-h-12"
             onClick={() =>
               document
                 .getElementById("guia-gratis")
@@ -104,7 +104,7 @@ export function Hero() {
           </Button>
           <Button
             variant="ghost"
-            className="text-base px-8 py-4 min-h-[48px]"
+            className="text-base px-8 py-4 min-h-12"
             style={
               hasBanner
                 ? { borderColor: "rgba(255,255,255,.35)", color: "#fff" }

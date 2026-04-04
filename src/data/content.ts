@@ -29,10 +29,9 @@ export const siteContent = {
   },
 
   philosophy: {
-    title:
-      "Yoga con Lógica y Alma, un punto de encuentro entre lo tangible y lo sutil",
+    title: "Yoga con Lógica y Alma",
     description:
-      "Yoga con Lógica y Alma es la fusión entre el cuerpo que se mueve con intención y la mente que reflexiona con claridad. Es usar herramientas de análisis y autoconocimiento junto con la práctica del yoga para conectar con nosotras mismas de forma profunda, consciente y real.",
+      "Es la fusión entre el cuerpo que se mueve con intención y la mente que reflexiona con claridad. Es usar herramientas de análisis y autoconocimiento junto con la práctica del yoga para conectar con nosotras mismas de forma profunda, consciente y real.",
     pillars: [
       {
         icon: "Flower2",

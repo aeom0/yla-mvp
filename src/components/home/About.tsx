@@ -149,7 +149,7 @@ export function About() {
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <span
-                    className="w-8 h-8 rounded-lg flex items-center justify-center flex-shrink-0"
+                    className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
                     style={{
                       background: "var(--purple-mist)",
                       color: "var(--purple)",
