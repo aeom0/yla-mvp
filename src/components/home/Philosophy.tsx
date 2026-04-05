@@ -7,27 +7,26 @@ const iconMap = { Flower2, Lightbulb, MoonStar };
 
 const pillarConfig = [
   {
-    btnColor: "#5B3A8E",
     cta: "Comenzar mi práctica",
     subtext: "Acceso inmediato • a tu ritmo",
     href: "https://youtube.com/@yogaconlogicayalma",
     external: true,
   },
   {
-    btnColor: "#7B5AB0",
     cta: "Explorar contenido",
     subtext: "Tests para descubrir más sobre ti",
     href: "/tests",
     external: false,
   },
   {
-    btnColor: "#9E82C8",
     cta: "Reencontrarme",
     subtext: "Blog + reflexiones",
     href: "/blog",
     external: false,
   },
 ];
+
+const BTN_COLOR = "#5B3A8E";
 
 export function Philosophy() {
   const { philosophy } = siteContent;
@@ -48,42 +47,41 @@ export function Philosophy() {
           return (
             <div
               key={i}
-              className="group relative rounded-2xl bg-white p-6 sm:p-7 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer"
+              className="group relative rounded-2xl bg-white p-6 sm:p-7 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               style={{
-                borderTop: `3px solid ${config.btnColor}`,
+                borderTop: `3px solid ${BTN_COLOR}`,
                 boxShadow: "0 2px 12px rgba(91,58,142,0.07)",
               }}
             >
-              {/* Icono */}
-              <div
-                className="inline-flex items-center justify-center rounded-full w-14 h-14 mb-4 transition-transform duration-300 group-hover:scale-110"
-                style={{ background: "rgba(91,58,142,0.08)" }}
-              >
-                <Icon size={26} style={{ color: config.btnColor }} />
+              {/* Icono — centrado y grande */}
+              <div className="flex justify-center mb-5">
+                <div
+                  className="flex items-center justify-center rounded-full w-20 h-20 transition-transform duration-300 group-hover:scale-110"
+                  style={{ background: "rgba(91,58,142,0.08)" }}
+                >
+                  <Icon size={40} style={{ color: BTN_COLOR }} />
+                </div>
               </div>
 
-              {/* Título */}
-              <h3 className="title text-xl mb-2">{pillar.title}</h3>
+              {/* Título — centrado */}
+              <h3 className="title text-xl mb-2 text-center">{pillar.title}</h3>
 
-              {/* Descripción */}
+              {/* Descripción — centrada */}
               <p
-                className="text-sm leading-relaxed mb-5 flex-1"
+                className="text-sm leading-relaxed mb-5 flex-1 text-center"
                 style={{ color: "var(--muted)" }}
               >
                 {pillar.description}
               </p>
 
-              {/* Botón funcional */}
+              {/* Botón — color sólido morado uniforme, sin degradado */}
               {config.external ? (
                 <a
                   href={config.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-2.5 px-4 rounded-xl text-sm font-medium tracking-wide text-center transition-all duration-200 active:scale-95 hover:opacity-90 text-white block"
-                  style={{
-                    background: config.btnColor,
-                    boxShadow: "0 2px 8px rgba(91,58,142,0.18)",
-                  }}
+                  style={{ background: BTN_COLOR }}
                 >
                   {config.cta}
                 </a>
@@ -91,10 +89,7 @@ export function Philosophy() {
                 <Link
                   href={config.href}
                   className="w-full py-2.5 px-4 rounded-xl text-sm font-medium tracking-wide text-center transition-all duration-200 active:scale-95 hover:opacity-90 text-white block"
-                  style={{
-                    background: config.btnColor,
-                    boxShadow: "0 2px 8px rgba(91,58,142,0.18)",
-                  }}
+                  style={{ background: BTN_COLOR }}
                 >
                   {config.cta}
                 </Link>
