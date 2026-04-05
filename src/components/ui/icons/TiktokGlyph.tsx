@@ -9,9 +9,7 @@ type TiktokGlyphProps = Omit<
   strokeWidth?: number;
 };
 
-/**
- * Marca TikTok (glifo reconocible) — Lucide no incluye este icono en la versión actual del proyecto.
- */
+/** Glifo TikTok (fill); Lucide no expone ícono oficial en la versión fijada del proyecto. */
 export function TiktokGlyph(props: TiktokGlyphProps) {
   const { size = 24, className, strokeWidth, ...svgProps } = props;
   void strokeWidth;

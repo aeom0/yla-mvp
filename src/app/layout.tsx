@@ -5,6 +5,7 @@ import "./globals.css";
 import Providers from "./providers";
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://yla-mvp.vercel.app"),
   title: "Yoga con Lógica y Alma",
   description: "Organizamos el bienestar, ritualizamos la estructura.",
 };

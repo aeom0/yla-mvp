@@ -21,7 +21,10 @@ export function FAQ() {
             style={{
               background: "var(--card)",
               border: `1px solid ${open === i ? "var(--accent)" : "var(--border)"}`,
-              boxShadow: open === i ? "0 4px 20px rgba(91,58,142,.12)" : "none",
+              boxShadow:
+                open === i
+                  ? "0 4px 20px color-mix(in srgb, var(--accent) 12%, transparent)"
+                  : "none",
             }}
           >
             <button

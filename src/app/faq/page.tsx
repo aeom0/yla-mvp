@@ -10,11 +10,11 @@ export const metadata: Metadata = {
 
 export default function FAQPage() {
   return (
-    <>
-      <div className="pt-8">
+    <div className="min-h-0">
+      <div className="pt-8 pb-4">
         <FAQ />
       </div>
       <Footer />
-    </>
+    </div>
   );
 }

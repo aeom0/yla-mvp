@@ -22,5 +22,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Email no válido" }, { status: 400 });
   }
 
+  // TODO: enviar a Resend / lista — por ahora solo validamos y respondemos 200
   return NextResponse.json({ ok: true as const });
 }

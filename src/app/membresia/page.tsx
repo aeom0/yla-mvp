@@ -1,8 +1,8 @@
-import Link from "next/link";
-import type { Metadata } from "next";
 import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
 import { CircleCheck, Mail } from "lucide-react";
+import type { Metadata } from "next";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Membresía | Yoga con Lógica y Alma",
@@ -52,7 +52,7 @@ export default function MembresiaPage() {
             background: "var(--card)",
             border:
               "2px solid color-mix(in srgb, var(--rose-deep) 55%, var(--border))",
-            boxShadow: "0 8px 32px rgba(0,0,0,.06)",
+            boxShadow: "var(--shadow-soft)",
           }}
         >
           <div className="flex flex-col md:flex-row md:items-start gap-4 md:gap-6">
@@ -136,7 +136,7 @@ export default function MembresiaPage() {
                   <li key={j} className="flex gap-2 text-sm">
                     <CircleCheck
                       {...lucideBrand}
-                      className="flex-shrink-0 mt-0.5"
+                      className="shrink-0 mt-0.5"
                       size={18}
                       style={{
                         color: "var(--rose-deep)",

@@ -12,7 +12,7 @@ export function SocialProofStrip() {
         className="grid grid-cols-2 md:grid-cols-4 gap-px max-w-2xl mx-auto rounded-2xl overflow-hidden"
         style={{
           background: "var(--border)",
-          boxShadow: "0 2px 16px rgba(0,0,0,.06)",
+          boxShadow: "var(--shadow-soft)",
         }}
       >
         {stats.map((stat, i) => (

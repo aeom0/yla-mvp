@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 
-// /tienda → vuelve al landing en la sección tienda
+/** Redirección permanente al ancla de tienda en el landing (catálogo en Payhip). */
 export default function TiendaPage() {
   redirect("/#tienda");
 }

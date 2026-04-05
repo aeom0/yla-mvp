@@ -9,6 +9,7 @@ import { Shop } from "@/components/home/Shop";
 import { SocialProofStrip } from "@/components/home/SocialProofStrip";
 import { Testimonials } from "@/components/home/Testimonials";
 
+/** Landing principal — orden de secciones alineado con ROADMAP / skill YLA. */
 export default function Home() {
   return (
     <>

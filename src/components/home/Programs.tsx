@@ -118,7 +118,8 @@ export function Programs() {
           className="rounded-2xl overflow-hidden"
           style={{
             border: "1.5px solid var(--accent-soft)",
-            boxShadow: "0 4px 32px rgba(91,58,142,0.10)",
+            boxShadow:
+              "0 4px 32px color-mix(in srgb, var(--accent) 10%, transparent)",
           }}
         >
           {/* Header de la card */}

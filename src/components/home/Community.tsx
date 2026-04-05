@@ -1,12 +1,12 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/Button";
 import { Section, SectionHeader } from "@/components/ui/Section";
-import { siteContent } from "@/data/content";
 import { TiktokGlyph } from "@/components/ui/icons/TiktokGlyph";
+import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
 import { Instagram, MessageCircle, Youtube } from "lucide-react";
+import { useState } from "react";
 
 const CHANNELS = [
   {
@@ -114,7 +114,7 @@ export function Community() {
               }}
             >
               <span
-                className="w-12 h-12 rounded-xl flex items-center justify-center flex-shrink-0"
+                className="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
                 style={{ background: ch.bg }}
               >
                 <Icon
@@ -187,7 +187,7 @@ export function Community() {
               required
               autoComplete="email"
               disabled={status === "loading"}
-              className="rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)] min-h-[48px]"
+              className="rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-(--accent) min-h-[48px]"
               style={{
                 border: "1px solid var(--border)",
                 background: "var(--bg)",
