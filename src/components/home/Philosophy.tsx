@@ -5,37 +5,29 @@ import Link from "next/link";
 
 const iconMap = { Flower2, Lightbulb, MoonStar };
 
-type PillarAction =
-  | { type: "external"; href: string; label: string }
-  | { type: "internal"; href: string; label: string }
-  | { type: "dual"; primary: { href: string; label: string; external?: boolean }; secondary: { href: string; label: string; external?: boolean } };
-
-const pillarActions: PillarAction[] = [
+const pillarConfig = [
   {
-    type: "external",
+    btnColor: "#5B3A8E",
+    cta: "Comenzar mi práctica",
+    subtext: "Acceso inmediato • a tu ritmo",
     href: "https://www.youtube.com/@yube.karinag",
-    label: "Ver clases en YouTube",
+    external: true,
   },
   {
-    type: "internal",
+    btnColor: "#7B5AB0",
+    cta: "Explorar contenido",
+    subtext: "Tests para descubrir más sobre ti",
     href: "/tests",
-    label: "Tests para descubrir más sobre ti",
+    external: false,
   },
   {
-    type: "dual",
-    primary: {
-      href: "https://www.youtube.com/@yube.karinag",
-      label: "Ver en YouTube",
-      external: true,
-    },
-    secondary: {
-      href: "/blog",
-      label: "Leer el Blog",
-    },
+    btnColor: "#9E82C8",
+    cta: "Reencontrarme",
+    subtext: "Blog + YouTube + reflexiones",
+    href: "https://www.youtube.com/@yube.karinag",
+    external: true,
   },
 ];
-
-const accentColors = ["#5B3A8E", "#7B5AB0", "#9E82C8"];
 
 export function Philosophy() {
   const { philosophy } = siteContent;
@@ -51,15 +43,14 @@ export function Philosophy() {
       <div className="grid md:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto items-stretch">
         {philosophy.pillars.map((pillar, i) => {
           const Icon = iconMap[pillar.icon as keyof typeof iconMap];
-          const action = pillarActions[i];
-          const accent = accentColors[i];
+          const config = pillarConfig[i];
 
           return (
             <div
               key={i}
-              className="group relative rounded-2xl bg-white p-6 sm:p-7 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
+              className="group relative rounded-2xl bg-white p-6 sm:p-7 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer"
               style={{
-                borderTop: `3px solid ${accent}`,
+                borderTop: `3px solid ${config.btnColor}`,
                 boxShadow: "0 2px 12px rgba(91,58,142,0.07)",
               }}
             >
@@ -68,7 +59,7 @@ export function Philosophy() {
                 className="inline-flex items-center justify-center rounded-full w-14 h-14 mb-4 transition-transform duration-300 group-hover:scale-110"
                 style={{ background: "rgba(91,58,142,0.08)" }}
               >
-                <Icon size={26} style={{ color: accent }} />
+                <Icon size={26} style={{ color: config.btnColor }} />
               </div>
 
               {/* Título */}
@@ -76,67 +67,46 @@ export function Philosophy() {
 
               {/* Descripción */}
               <p
-                className="text-sm leading-relaxed mb-6 flex-1"
+                className="text-sm leading-relaxed mb-5 flex-1"
                 style={{ color: "var(--muted)" }}
               >
                 {pillar.description}
               </p>
 
-              {/* CTA por pilar */}
-              {action.type === "external" && (
+              {/* Botón funcional */}
+              {config.external ? (
                 <a
-                  href={action.href}
+                  href={config.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-2.5 px-4 rounded-xl text-sm font-semibold text-center transition-all duration-200 hover:opacity-90 active:scale-95 text-white block"
-                  style={{ background: accent }}
+                  className="w-full py-2.5 px-4 rounded-xl text-sm font-medium tracking-wide text-center transition-all duration-200 active:scale-95 hover:opacity-90 text-white block"
+                  style={{
+                    background: config.btnColor,
+                    boxShadow: "0 2px 8px rgba(91,58,142,0.18)",
+                  }}
                 >
-                  {action.label}
+                  {config.cta}
                 </a>
+              ) : (
+                <Link
+                  href={config.href}
+                  className="w-full py-2.5 px-4 rounded-xl text-sm font-medium tracking-wide text-center transition-all duration-200 active:scale-95 hover:opacity-90 text-white block"
+                  style={{
+                    background: config.btnColor,
+                    boxShadow: "0 2px 8px rgba(91,58,142,0.18)",
+                  }}
+                >
+                  {config.cta}
+                </Link>
               )}
 
-              {action.type === "internal" && (
-                <>
-                  <Link
-                    href={action.href}
-                    className="w-full py-2.5 px-4 rounded-xl text-sm font-semibold text-center transition-all duration-200 hover:opacity-90 active:scale-95 text-white block"
-                    style={{ background: accent }}
-                  >
-                    Ir a los tests
-                  </Link>
-                  <p
-                    className="text-xs mt-2 text-center"
-                    style={{ color: "var(--muted)" }}
-                  >
-                    {action.label}
-                  </p>
-                </>
-              )}
-
-              {action.type === "dual" && (
-                <div className="flex flex-col gap-2">
-                  <a
-                    href={action.primary.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-full py-2.5 px-4 rounded-xl text-sm font-semibold text-center transition-all duration-200 hover:opacity-90 active:scale-95 text-white block"
-                    style={{ background: accent }}
-                  >
-                    {action.primary.label}
-                  </a>
-                  <Link
-                    href={action.secondary.href}
-                    className="w-full py-2.5 px-4 rounded-xl text-sm font-semibold text-center transition-all duration-200 hover:opacity-90 active:scale-95 block"
-                    style={{
-                      border: `1.5px solid ${accent}`,
-                      color: accent,
-                      background: "transparent",
-                    }}
-                  >
-                    {action.secondary.label}
-                  </Link>
-                </div>
-              )}
+              {/* Sub-texto */}
+              <p
+                className="text-xs mt-2 text-center tracking-wide"
+                style={{ color: "var(--muted)" }}
+              >
+                {config.subtext}
+              </p>
             </div>
           );
         })}
