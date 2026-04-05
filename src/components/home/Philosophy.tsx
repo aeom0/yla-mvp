@@ -5,12 +5,14 @@ import Link from "next/link";
 
 const iconMap = { Flower2, Lightbulb, MoonStar };
 
+const YOUTUBE_URL = "https://youtube.com/@yogaconlogicayalma";
+
 const pillarConfig = [
   {
     btnColor: "#5B3A8E",
     cta: "Comenzar mi práctica",
     subtext: "Acceso inmediato • a tu ritmo",
-    href: "https://www.youtube.com/@yube.karinag",
+    href: YOUTUBE_URL,
     external: true,
   },
   {
@@ -24,7 +26,7 @@ const pillarConfig = [
     btnColor: "#9E82C8",
     cta: "Reencontrarme",
     subtext: "Blog + YouTube + reflexiones",
-    href: "https://www.youtube.com/@yube.karinag",
+    href: YOUTUBE_URL,
     external: true,
   },
 ];

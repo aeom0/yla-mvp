@@ -53,7 +53,7 @@ export const siteContent = {
       },
     ],
     links: {
-      youtubeChannelHref: "https://www.youtube.com/@yube.karinag",
+      youtubeChannelHref: "https://youtube.com/@yogaconlogicayalma",
       cuerpoYoutubeLabel: "Ver clases en YouTube",
       menteTestsLabel: "Ir a los tests",
       menteTestsHint: "Tests para descubrir más sobre ti",
@@ -528,7 +528,7 @@ export const siteContent = {
       instagram:
         "https://www.instagram.com/yube.karina?igsh=MWg4Z2M5ang2YzI2bg==",
       tiktok: "https://tiktok.com/@yube.karina",
-      youtube: "https://youtube.com/@yube.karinag?si=tBKXzfHdKXK6Sx7t",
+      youtube: "https://youtube.com/@yogaconlogicayalma",
       whatsapp: "https://wa.me/584243547179",
     },
   },
