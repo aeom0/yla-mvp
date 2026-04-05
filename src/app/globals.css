@@ -8,13 +8,13 @@
 
 /*
   PALETA — Yoga con Lógica y Alma
-  Base: blanco limpio + beige muy sutil
-  Acento espiritual: morado #5B3A8E
-  Acento cálido (solo detalles): dorado #D4AF37
-  Texto: carbón #2d2d2d
-
-  REGLA: cero valores heredados de variables viejas.
-  Todos los tokens resuelven a un hex fijo.
+  Sistema: Aurora Consciente
+  Morado profundo #7B5EA7 → CTA y accent principal
+  Lavanda #B497D6 → accent espiritual secundario
+  Rosa cuarzo #E8C4C4 → hover, borders, cards alt
+  Sage #A8C5A0 → badges, sección salud/naturaleza
+  Fondo #F8F4F0 → blanco cálido
+  Ancla #3D2865 → texto display, footer
 */
 
 @theme {
@@ -24,35 +24,43 @@
   --color-border: var(--border);
   --color-muted: var(--muted);
   --color-accent: var(--accent);
-  --color-purple: var(--purple);
-  --color-purple-soft: var(--purple-soft);
-  --color-gold: var(--gold);
+  --color-accent-soft: var(--accent-soft);
+  --color-lavender: var(--lavender);
+  --color-lavender-deep: var(--lavender-deep);
+  --color-rose: var(--rose);
+  --color-sage: var(--sage);
   --color-beige: var(--beige);
   --color-ink: var(--ink);
   --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --shadow-purple: 0 6px 28px rgba(91, 58, 142, 0.22);
+  --shadow-purple: 0 6px 28px rgba(123, 94, 167, 0.22);
 }
 
 /* — Paleta base (inmutable) — */
 :root {
-  /* Morado — único acento espiritual */
-  --purple: #5b3a8e;
-  --purple-deep: #432a6b;
-  --purple-soft: #c6b7e2;
-  --purple-mist: rgba(91, 58, 142, 0.07);
-  --purple-pale: rgba(91, 58, 142, 0.12);
+  /* Morado — acento espiritual dominante */
+  --lavender-deep: #7b5ea7;
+  --lavender: #b497d6;
+  --lavender-pale: rgba(123, 94, 167, 0.10);
+  --lavender-mist: rgba(123, 94, 167, 0.06);
 
-  /* Fondo base — blanco con calídez mnima, NO rosado */
-  --beige: #faf7f2;
-  --beige-warm: #f3ede3;
+  /* Ancla — texto display y footer */
+  --violet-anchor: #3d2865;
 
-  /* Dorado — solo para detalles sutiles (no botones) */
-  --gold: #c8a84b;
-  --gold-pale: rgba(200, 168, 75, 0.12);
+  /* Rosa cuarzo — hover, borders alt, cards secundarias */
+  --rose: #e8c4c4;
+  --rose-deep: #c8928f;
+
+  /* Sage — badges, sección naturaleza/bienestar */
+  --sage: #a8c5a0;
+  --sage-deep: #6b9e8a;
+
+  /* Fondo base */
+  --beige: #f8f4f0;
+  --beige-warm: #f0e8e0;
 
   /* Neutros */
   --ink: #2d2d2d;
-  --smoke: #d0ccd8;
+  --smoke: #c8c0d0;
 
   --font-title: "Playfair Display", serif;
   --font-body:
@@ -61,24 +69,26 @@
 
 /* — Tokens semánticos LIGHT — */
 :root {
-  --bg: #faf7f2;
+  --bg: #f8f4f0;
   --text: #2d2d2d;
   --card: #ffffff;
-  --border: rgba(91, 58, 142, 0.14);
-  --muted: #72657e;
-  --accent: #5b3a8e;
-  --section-alt: #f0ebf8; /* lila muy pálido, sin rosado */
+  --border: rgba(123, 94, 167, 0.15);
+  --muted: #7a6880;
+  --accent: #7b5ea7;
+  --accent-soft: #b497d6;
+  --section-alt: #f0eaf8;
 }
 
 /* — Tokens DARK — */
 .dark {
-  --bg: #16121f;
+  --bg: #18142a;
   --text: #ede8f5;
-  --card: #201b2e;
-  --border: rgba(198, 183, 226, 0.15);
-  --muted: #a89fc0;
-  --accent: #c6b7e2;
-  --section-alt: #1c1829;
+  --card: #221c38;
+  --border: rgba(180, 151, 214, 0.16);
+  --muted: #a892bc;
+  --accent: #b497d6;
+  --accent-soft: #7b5ea7;
+  --section-alt: #1e1930;
 }
 
 /* — Reset / Base — */
@@ -122,7 +132,18 @@ h3,
   transition: all 0.25s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
-/* — Helpers — */
+/* — Helpers Aurora Consciente — */
+.text-sage { color: var(--sage-deep); }
+.bg-sage-soft { background: rgba(168, 197, 160, 0.18); }
+.border-sage { border-color: var(--sage-deep); }
+
+.text-rose-deep { color: var(--rose-deep); }
+.bg-rose-soft { background: rgba(232, 196, 196, 0.20); }
+.border-rose { border-color: var(--rose); }
+
+.text-anchor { color: var(--violet-anchor); }
+
+/* — Decorativo — */
 .section-wave {
   display: block;
   width: 100%;
