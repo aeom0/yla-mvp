@@ -23,9 +23,9 @@ const pillarConfig = [
   {
     btnColor: "#9E82C8",
     cta: "Reencontrarme",
-    subtext: "Blog + YouTube + reflexiones",
-    href: "https://youtube.com/@yogaconlogicayalma",
-    external: true,
+    subtext: "Blog + reflexiones",
+    href: "/blog",
+    external: false,
   },
 ];
 
