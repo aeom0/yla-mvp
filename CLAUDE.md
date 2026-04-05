@@ -81,7 +81,13 @@ src/
 │   ├── page.tsx                 # Landing (orden de secciones en un solo archivo)
 │   ├── globals.css
 │   ├── api/subscribe/route.ts  # POST email (MVP; conectar ESP después)
-│   └── membresia/page.tsx      # Página membresía + comparación de planes
+│   ├── blog/page.tsx           # Placeholder blog (próximamente)
+│   ├── tests/page.tsx          # Placeholder tests (próximamente)
+│   ├── programas/[slug]/page.tsx  # Ficha de cada programa
+│   ├── tienda/page.tsx         # Índice tienda
+│   ├── tienda/[slug]/page.tsx  # Ficha producto Payhip
+│   ├── membresia/page.tsx      # Página membresía + comparación de planes
+│   └── faq/page.tsx            # FAQ standalone
 │
 ├── components/
 │   ├── ui/                     # Button, Card, Section
@@ -155,8 +161,11 @@ export default function Hero() {
 | Bloque / ruta | Componente o ruta | Notas |
 |---------------|---------------------|--------|
 | Hero | `Hero.tsx` | Fórmula beneficio + método + acción; CTAs a guía gratis y programas |
-| Filosofía | `Philosophy.tsx` | Pilares Cuerpo / Mente / Espíritu + par Lógica / Alma |
-| Programas | `Programs.tsx` | Tres programas + CTA a tienda; bloque clases personalizadas |
+| Filosofía | `Philosophy.tsx` | Pilares Cuerpo / Mente / Alma; CTA por pilar (YouTube `@yogaconlogicayalma`, `/tests`, `/blog`) |
+| Programas | `Programs.tsx` | Tres programas → `/programas/[id]`; `programs.items[].detail` en `content.ts`; bloque clases personalizadas |
+| Ficha programa | `app/programas/[slug]/page.tsx` | Etapas, para quién, incluye, precio, CTA WhatsApp |
+| Tests (placeholder) | `app/tests/page.tsx` | `siteContent.testsPage` |
+| Blog (placeholder) | `app/blog/page.tsx` | `siteContent.blogPage` |
 | Testimonios | `Testimonials.tsx` | Tarjetas con iniciales (sustituir por fotos cuando haya) |
 | Sobre Yube | `About.tsx` | Bio extendida; video YouTube opcional (`about.welcomeVideoYoutubeId`) |
 | Comunidad | `Community.tsx` | «Comunidad en movimiento», grid IG, WhatsApp, cartas (newsletter) |
@@ -165,6 +174,7 @@ export default function Hero() {
 | FAQ | `FAQ.tsx` | |
 | Footer | `Footer.tsx` | Enlaces funnel + confianza (pagos / garantía copy) |
 | Membresía | `app/membresia/page.tsx` | Tabla de planes; diferencial «Cartas para habitarte» |
+| Tienda | `app/tienda/page.tsx`, `app/tienda/[slug]/page.tsx` | Catálogo y ficha desde `content.ts` → Payhip |
 
 ---
 

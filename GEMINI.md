@@ -75,7 +75,7 @@ Morado marca (brief)    → #5B3A8E  — bloques premium / identidad (variables 
 Lila suave (brief)      → #C6B7E2  — fondos tipo lead magnet
 ```
 
-Los valores viven en `src/app/globals.css`; el botón primario del diseño actual es **dorado**, no morado.
+Los valores viven en `src/app/globals.css`. El componente `Button` primario sigue en **dorado**; bloques como Philosophy y las cards de programas usan **morado de marca** (`#5B3A8E`) para CTAs sólidos en esas secciones.
 
 ### Tipografía
 
@@ -105,7 +105,10 @@ yla-mvp/
 │   │   ├── page.tsx              ← landing (orden de secciones)
 │   │   ├── globals.css
 │   │   ├── api/subscribe/route.ts
-│   │   └── membresia/page.tsx
+│   │   ├── blog/page.tsx , tests/page.tsx
+│   │   ├── programas/[slug]/page.tsx
+│   │   ├── tienda/page.tsx , tienda/[slug]/page.tsx
+│   │   ├── membresia/page.tsx , faq/page.tsx
 │   ├── components/
 │   │   ├── home/
 │   │   │   ├── Hero, Philosophy, Programs, Testimonials,
@@ -137,8 +140,11 @@ Alberto lo actualiza en el código.
 | Sección / ruta | Qué muestra |
 |----------------|------------|
 | **Hero** | Tagline, título, líneas beneficio + método + acción, 2 CTAs, estadísticas |
-| **Philosophy** | Pilares Cuerpo / Mente / Espíritu + bloque copy Lógica / Alma |
-| **Programs** | Tres programas + CTA hacia tienda; bloque clases personalizadas |
+| **Philosophy** | Pilares Cuerpo / Mente / Alma; un CTA por card (YouTube canal YLA, página `/tests`, página `/blog`) |
+| **Programs** | Tres programas con enlace a ficha `/programas/[slug]`; descripción bajo el botón; bloque clases personalizadas |
+| **`/programas/...`** | Detalle: etapas, para quién, qué incluye, precio, WhatsApp (`content.ts` → `detail`) |
+| **`/tests` · `/blog`** | Páginas placeholder hasta lanzar contenido |
+| **`/tienda`** | Catálogo y enlaces a fichas `/tienda/[slug]` |
 | **Testimonios** | Tarjetas con citas (avanzar a fotos reales con permiso) |
 | **About** | Bio extendida; video YouTube opcional (`welcomeVideoYoutubeId` en `content.ts`) |
 | **Community** | «Comunidad en movimiento», grid hacia IG, WhatsApp, newsletter cartas |
@@ -147,6 +153,7 @@ Alberto lo actualiza en el código.
 | **FAQ** | Acordeón |
 | **Footer** | Enlaces de funnel, confianza, legal, redes |
 | **`/membresia`** | Comparación planes; destacado «Cartas para habitarte» |
+| **`/faq`** | Preguntas frecuentes (página dedicada) |
 
 ---
 

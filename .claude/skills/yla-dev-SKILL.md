@@ -85,7 +85,7 @@ El método fusiona estructura analítica con práctica espiritual. El dev/asesor
 
 ---
 
-## 📁 Estado real del codebase (marzo 2026)
+## 📁 Estado real del codebase (abril 2026)
 
 ```
 src/
@@ -96,6 +96,11 @@ src/
 │   │                              Shop → LeadMagnet → SocialProofStrip → Footer
 │   ├── globals.css
 │   ├── api/subscribe/route.ts  ← endpoint email (sin ESP conectado aún)
+│   ├── blog/page.tsx           ← placeholder próximamente ✅
+│   ├── tests/page.tsx          ← placeholder próximamente ✅
+│   ├── programas/[slug]/page.tsx ← ficha programa (SSG) ✅
+│   ├── tienda/page.tsx         ← índice tienda ✅
+│   ├── tienda/[slug]/page.tsx  ← ficha producto ✅
 │   ├── membresia/page.tsx      ← página de planes ✅
 │   └── faq/page.tsx            ← FAQ standalone ✅
 │
@@ -103,8 +108,8 @@ src/
 │   ├── ui/          Button.tsx · Card.tsx · Section.tsx
 │   ├── home/
 │   │   ├── Hero.tsx            ✅ (sin video aún)
-│   │   ├── Philosophy.tsx      ✅
-│   │   ├── Programs.tsx        ✅ (sin precios)
+│   │   ├── Philosophy.tsx      ✅ CTAs: YT, /tests, /blog (morado uniforme)
+│   │   ├── Programs.tsx        ✅ → /programas/[slug]; detail en content
 │   │   ├── Testimonials.tsx    ✅ (avatares iniciales, sin fotos reales)
 │   │   ├── About.tsx           ✅ (placeholder imagen Yube)
 │   │   ├── Community.tsx       ✅
@@ -252,4 +257,4 @@ npm run lint     # ESLint
 ---
 
 *Skill mantenido por Alberto. Actualizar tras cada sesión con cambios arquitectónicos.*
-*Última actualización: marzo 2026.*
+*Última actualización: abril 2026.*

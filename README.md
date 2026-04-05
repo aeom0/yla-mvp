@@ -32,7 +32,11 @@ Todo el copy visible sale de [`src/data/content.ts`](src/data/content.ts). Los c
 | Ruta | Descripción |
 |------|-------------|
 | `/` | Landing (Hero, filosofía, programas, testimonios, sobre mí, comunidad, tienda, lead magnet, FAQ) |
+| `/programas/[slug]` | Ficha de programa (p. ej. `encuentra-tu-centro`, `enraiza-te`, `elogio-a-ti`) |
+| `/tests` · `/blog` | Placeholders «próximamente» (copy en `content.ts`) |
+| `/tienda` · `/tienda/[slug]` | Tienda y ficha de producto |
 | `/membresia` | Página de membresía y comparación de planes |
+| `/faq` | FAQ en página propia |
 | `POST /api/subscribe` | Validación de email (MVP; falta conectar proveedor de correo) |
 
 ## Documentación del repo

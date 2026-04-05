@@ -3,7 +3,14 @@
 Documento vivo: prioridades de producto y técnica.
 Para convenciones de código ver `CLAUDE.md` y `.claude/skills/yla-dev-SKILL.md`.
 
-Última revisión: abril 2026.
+Última revisión: abril 2026 (alineado con últimos commits en `main`).
+
+### Cambios recientes (últimos commits)
+
+- **Programas:** rutas estáticas `/programas/[slug]` con ficha (etapas, `detail` en `content.ts`, CTA WhatsApp). En landing, card con botón morado «Conocer más» y descripción corta *debajo* del CTA.
+- **Philosophy:** cards alineadas (borde superior y CTA en morado `#5B3A8E`), íconos centrados y más grandes; un CTA por pilar — **Cuerpo** → YouTube `@yogaconlogicayalma`, **Mente** → `/tests`, **Alma** → `/blog` (sin segundo enlace a YouTube en Alma).
+- **Placeholders:** `/tests` y `/blog` (copy en `siteContent.testsPage` / `blogPage`).
+- **Contenido:** título/copy de filosofía simplificado en `content.ts`; URL del canal de YouTube corregida donde aplica.
 
 ---
 
@@ -20,8 +27,8 @@ Un hub digital que concentre **captación (lead magnet + newsletter)**, **venta 
 | Componente | Descripción | Estado |
 |---|---|---|
 | `Hero.tsx` | Hero principal con CTAs y stats | ✅ Live |
-| `Philosophy.tsx` | Pilares Cuerpo / Mente / Espíritu — jerarquía visual, botones diferenciados por pilar, micro-animaciones | ✅ Live |
-| `Programs.tsx` | Cards de los 3 programas + card Clases Personalizadas rediseñada (logros, para ti si, cómo funciona) | ✅ Live |
+| `Philosophy.tsx` | Pilares Cuerpo / Mente / Alma — cards uniformes (morado marca), íconos centrados; CTAs: YouTube, `/tests`, `/blog` | ✅ Live |
+| `Programs.tsx` | Tres programas → enlace a `/programas/[slug]`; microcopy + descripción bajo CTA; bloque Clases personalizadas | ✅ Live |
 | `Testimonials.tsx` | Reseñas de alumnas (avatares iniciales) | ✅ Live |
 | `About.tsx` | Bio de Yube (placeholder de imagen) | ✅ Live — imagen pendiente |
 | `Community.tsx` | Cards de redes sociales | ✅ Live |
@@ -37,6 +44,10 @@ Un hub digital que concentre **captación (lead magnet + newsletter)**, **venta 
 | `/` | ✅ Landing principal |
 | `/membresia` | ✅ Página de planes |
 | `/faq` | ✅ FAQ standalone |
+| `/programas/[slug]` | ✅ Ficha de programa (SSG; slugs desde `content.ts`) |
+| `/tests` | ✅ Placeholder «próximamente» |
+| `/blog` | ✅ Placeholder «próximamente» |
+| `/tienda` · `/tienda/[slug]` | ✅ Catálogo y ficha producto |
 | `/api/subscribe` | ✅ Endpoint (sin ESP conectado aún) |
 
 ---
@@ -70,9 +81,8 @@ Desbloqueadores: Yube entrega logo, foto y video.
 - [ ] **Preview de cuadernos** — 2-3 imágenes del interior de cada cuaderno
   - Archivos destino: `public/products/[slug]/preview-1.jpg`
   - Componente: `Shop.tsx` — añadir mini galería en la card
-- [ ] **Página individual de producto** — ruta `/tienda/[slug]`
-  - Nueva ruta: `src/app/tienda/[slug]/page.tsx`
-  - Incluye: descripción larga, galería de previews, precio, CTA a Payhip, testimonios del producto
+- [x] **Página individual de producto** — ruta `/tienda/[slug]` (`src/app/tienda/[slug]/page.tsx`) ✅
+  - Pendiente mejora: galería de previews, testimonios por producto
 - [ ] **Sección "Empieza aquí"** — nuevo componente `StartHere.tsx`
   - Flujo visual: Guía gratis → Clase grabada → Membresía → Programa
   - Posición: entre `Philosophy` y `Programs` en `page.tsx`
@@ -96,7 +106,7 @@ Desbloqueadores: Yube entrega logo, foto y video.
 |---|---|
 | Textos Hero (título, subtítulo, tagline) | `hero` |
 | Productos de tienda (título, precio, badge, imagen, intención) | `product` |
-| Programas (título, duración, etapas) | `program` |
+| Programas (título, duración, etapas, `detail`, CTA) | `program` |
 | Testimonios (nombre, rol, texto, foto) | `testimonial` |
 | FAQ (pregunta, respuesta) | `faq` |
 | About (foto, bio, credentials, quote) | `about` |
