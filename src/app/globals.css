@@ -32,7 +32,8 @@
   --color-beige: var(--beige);
   --color-ink: var(--ink);
   --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --shadow-accent: 0 6px 28px rgba(123, 94, 167, 0.22);
+  /* Valor por defecto light; .dark redefine --shadow-accent en el elemento */
+  --shadow-accent: 0 4px 16px rgba(123, 94, 167, 0.3);
 }
 
 /* — Paleta base (inmutable) — */
@@ -40,8 +41,8 @@
   /* Morado — acento espiritual dominante */
   --lavender-deep: #7b5ea7;
   --lavender: #b497d6;
-  --lavender-pale: rgba(123, 94, 167, 0.1);
-  --lavender-mist: rgba(123, 94, 167, 0.06);
+  --lavender-pale: rgba(123, 94, 167, 0.12);
+  --lavender-mist: rgba(123, 94, 167, 0.07);
 
   /* Ancla — texto display y footer */
   --violet-anchor: #3d2865;
@@ -49,7 +50,7 @@
   /* Rosa cuarzo — hover, borders alt, cards secundarias */
   --rose: #e8c4c4;
   --rose-deep: #c8928f;
-  --rose-pale: rgba(232, 196, 196, 0.15);
+  --rose-pale: rgba(232, 196, 196, 0.2);
 
   /* Sage — badges, sección naturaleza/bienestar */
   --sage: #a8c5a0;
@@ -68,7 +69,7 @@
     "Lato", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
 }
 
-/* — Tokens semánticos LIGHT — */
+/* — Tokens semánticos LIGHT (+ footer fijo + sombra acento) — */
 :root {
   --bg: #f8f4f0;
   --text: #2d2d2d;
@@ -78,19 +79,19 @@
   --accent: #7b5ea7;
   --accent-soft: #b497d6;
   --section-alt: #f0eaf8;
-}
 
-/* — Footer fijo oscuro (no depende del toggle .dark del usuario) — */
-:root {
+  --shadow-accent: 0 4px 16px rgba(123, 94, 167, 0.3);
+
+  /* Footer oscuro fijo (mismas referencias en light y .dark) */
   --footer-bg: #18142a;
   --footer-text: #ede8f5;
-  --footer-link: rgba(237, 232, 245, 0.65);
+  --footer-brand: #b497d6;
   --footer-quote: rgba(237, 232, 245, 0.55);
+  --footer-section-title: #a8c5a0;
+  --footer-link: rgba(237, 232, 245, 0.7);
+  --footer-icon-bg: rgba(123, 94, 167, 0.2);
+  --footer-border-top: rgba(237, 232, 245, 0.1);
   --footer-meta: rgba(237, 232, 245, 0.35);
-  --footer-border-top: rgba(237, 232, 245, 0.08);
-  --footer-icon-bg: var(--lavender-pale);
-  --footer-brand: var(--lavender);
-  --footer-section-title: var(--accent);
 }
 
 /* — Tokens DARK — */
@@ -103,6 +104,18 @@
   --accent: #b497d6;
   --accent-soft: #7b5ea7;
   --section-alt: #1e1930;
+
+  --shadow-accent: 0 4px 16px rgba(180, 151, 214, 0.25);
+
+  --footer-bg: #18142a;
+  --footer-text: #ede8f5;
+  --footer-brand: #b497d6;
+  --footer-quote: rgba(237, 232, 245, 0.55);
+  --footer-section-title: #a8c5a0;
+  --footer-link: rgba(237, 232, 245, 0.7);
+  --footer-icon-bg: rgba(123, 94, 167, 0.2);
+  --footer-border-top: rgba(237, 232, 245, 0.1);
+  --footer-meta: rgba(237, 232, 245, 0.35);
 }
 
 /* — Reset / Base — */
