@@ -67,9 +67,7 @@ export function Programs() {
                   {program.duration}
                 </div>
                 <h3 className="title text-2xl mb-2">{program.title}</h3>
-                <p className="mb-6" style={{ color: "var(--muted)" }}>
-                  {program.description}
-                </p>
+
                 <div className="space-y-2 mb-6 flex-1">
                   {program.stages.map((stage, j) => (
                     <div key={j} className="flex items-start gap-2">
@@ -84,30 +82,37 @@ export function Programs() {
                     </div>
                   ))}
                 </div>
+
                 <p
                   className="text-xs mb-3 text-center"
                   style={{ color: "var(--muted)" }}
                 >
                   {programs.cardMicrocopy}
                 </p>
+
+                {/* Botón sólido morado */}
                 <Link
                   href={`/programas/${program.id}`}
-                  className="w-full mt-auto inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-medium transition-soft hover:bg-(--purple-mist) active:scale-[.98] min-h-12"
-                  style={{
-                    background: "transparent",
-                    border: "1.5px solid var(--purple)",
-                    color: "var(--purple)",
-                  }}
+                  className="w-full mt-auto inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-medium transition-soft hover:opacity-90 active:scale-[.98] min-h-12 text-white"
+                  style={{ background: "var(--purple)" }}
                 >
                   {programs.conocerMasLabel}
                 </Link>
+
+                {/* Descripción debajo del botón */}
+                <p
+                  className="text-xs mt-3 text-center italic"
+                  style={{ color: "var(--muted)" }}
+                >
+                  {program.description}
+                </p>
               </CardBody>
             </Card>
           );
         })}
       </div>
 
-      {/* Clases personalizadas — rediseño completo */}
+      {/* Clases personalizadas */}
       <div className="max-w-3xl mx-auto mt-14">
         <div
           className="rounded-2xl overflow-hidden"
