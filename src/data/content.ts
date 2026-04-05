@@ -52,6 +52,14 @@ export const siteContent = {
           "Un espacio para recordar quién eres más allá de tus responsabilidades y volver a ti.",
       },
     ],
+    links: {
+      youtubeChannelHref: "https://www.youtube.com/@yube.karinag",
+      cuerpoYoutubeLabel: "Ver clases en YouTube",
+      menteTestsLabel: "Ir a los tests",
+      menteTestsHint: "Tests para descubrir más sobre ti",
+      almaYoutubeLabel: "Ver en YouTube",
+      almaBlogLabel: "Leer el Blog",
+    },
   },
 
   forWho: {
@@ -69,6 +77,7 @@ export const siteContent = {
     title: "Programas para volver a ti",
     cardCta: "Ver este programa",
     cardMicrocopy: "Incluye clases + guía paso a paso",
+    conocerMasLabel: "Conocer más",
     items: [
       {
         id: "encuentra-tu-centro",
@@ -82,6 +91,20 @@ export const siteContent = {
           "Avanzar con Intención",
         ],
         accent: "lavender",
+        detail: {
+          tagline: "Conecta con el ahora y descubre quién eres de verdad.",
+          includes: [
+            "PDFs interactivos y editables",
+            "Audios guiados de respiración y reflexión",
+            "Videos cortos e infografías",
+            "Apoyo y seguimiento vía Zoom y WhatsApp",
+          ],
+          forWho:
+            "Para mujeres que sienten que viven en piloto automático y quieren reconectar con su esencia.",
+          price: "Consultar precio",
+          ctaLabel: "Quiero saber más",
+          ctaLink: "https://wa.me/584243547179",
+        },
       },
       {
         id: "enraiza-te",
@@ -95,6 +118,20 @@ export const siteContent = {
           "Integración y expansión",
         ],
         accent: "gold",
+        detail: {
+          tagline: "Fortalece tu base. Desarrolla tu liderazgo interior.",
+          includes: [
+            "PDFs interactivos y editables",
+            "Audios guiados de respiración y reflexión",
+            "Videos cortos e infografías",
+            "Apoyo y seguimiento vía Zoom y WhatsApp",
+          ],
+          forWho:
+            "Para mujeres que buscan estabilidad emocional y quieren liderar su vida desde adentro.",
+          price: "Consultar precio",
+          ctaLabel: "Quiero saber más",
+          ctaLink: "https://wa.me/584243547179",
+        },
       },
       {
         id: "elogio-a-ti",
@@ -103,6 +140,20 @@ export const siteContent = {
         description: "Reconecta con tu esencia y activa tu poder personal",
         stages: ["Despertar", "Reconexión", "Reprogramación", "Consagración"],
         accent: "lavender",
+        detail: {
+          tagline: "Reconecta con tu esencia. Activa tu poder personal.",
+          includes: [
+            "PDFs interactivos y editables",
+            "Audios guiados de respiración y reflexión",
+            "Videos cortos e infografías",
+            "Apoyo y seguimiento vía Zoom y WhatsApp",
+          ],
+          forWho:
+            "Para mujeres listas para soltar lo que no las representa y consagrarse en quienes realmente son.",
+          price: "Consultar precio",
+          ctaLabel: "Quiero saber más",
+          ctaLink: "https://wa.me/584243547179",
+        },
       },
     ],
   },
@@ -480,6 +531,19 @@ export const siteContent = {
       youtube: "https://youtube.com/@yube.karinag?si=tBKXzfHdKXK6Sx7t",
       whatsapp: "https://wa.me/584243547179",
     },
+  },
+
+  testsPage: {
+    title: "Descúbrete con Lógica y Alma",
+    subtitle:
+      "Tests diseñados para mirarte hacia adentro con estructura y corazón.",
+    comingSoon: "Próximamente · Estamos preparando algo especial para ti.",
+  },
+
+  blogPage: {
+    title: "Reflexiones con Lógica y Alma",
+    subtitle: "Artículos, ideas y herramientas para vivir con más intención.",
+    comingSoon: "Próximamente · El alma también tiene cosas que decir.",
   },
 };
 

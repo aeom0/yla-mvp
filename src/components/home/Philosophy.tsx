@@ -1,7 +1,8 @@
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
-import { Flower2, Lightbulb, MoonStar } from "lucide-react";
+import { ArrowRight, ExternalLink, Flower2, Lightbulb, MoonStar } from "lucide-react";
+import Link from "next/link";
 
 const iconMap = { Flower2, Lightbulb, MoonStar };
 
@@ -29,6 +30,7 @@ const pillarConfig: {
 
 export function Philosophy() {
   const { philosophy } = siteContent;
+  const { links: nav } = philosophy;
 
   return (
     <Section id="filosofia" style={{ background: "var(--section-alt)" }}>
@@ -76,6 +78,7 @@ export function Philosophy() {
 
               {/* Botón */}
               <button
+                type="button"
                 className="w-full py-2.5 px-4 rounded-xl text-sm font-medium tracking-wide transition-all duration-200 active:scale-95 hover:opacity-90 text-white"
                 style={{
                   background: config.btnColor,
@@ -92,6 +95,54 @@ export function Philosophy() {
               >
                 {config.subtext}
               </p>
+
+              {/* Enlaces por pilar */}
+              {i === 0 && (
+                <a
+                  href={nav.youtubeChannelHref}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 mt-4 text-sm font-semibold transition-soft hover:opacity-80 justify-center"
+                  style={{ color: "var(--gold-deep)" }}
+                >
+                  {nav.cuerpoYoutubeLabel} <ExternalLink size={14} aria-hidden />
+                </a>
+              )}
+              {i === 1 && (
+                <div className="mt-4 flex flex-col items-center gap-1">
+                  <Link
+                    href="/tests"
+                    className="inline-flex items-center gap-2 text-sm font-semibold transition-soft hover:opacity-80"
+                    style={{ color: "var(--gold-deep)" }}
+                  >
+                    {nav.menteTestsLabel} <ArrowRight size={14} aria-hidden />
+                  </Link>
+                  <span className="text-xs" style={{ color: "var(--muted)" }}>
+                    {nav.menteTestsHint}
+                  </span>
+                </div>
+              )}
+              {i === 2 && (
+                <div className="mt-4 flex flex-col items-center gap-2">
+                  <a
+                    href={nav.youtubeChannelHref}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 text-sm font-semibold transition-soft hover:opacity-80"
+                    style={{ color: "var(--gold-deep)" }}
+                  >
+                    {nav.almaYoutubeLabel}{" "}
+                    <ExternalLink size={14} aria-hidden />
+                  </a>
+                  <Link
+                    href="/blog"
+                    className="inline-flex items-center gap-2 text-sm font-semibold transition-soft hover:opacity-80"
+                    style={{ color: "var(--lavender)" }}
+                  >
+                    {nav.almaBlogLabel} <ArrowRight size={14} aria-hidden />
+                  </Link>
+                </div>
+              )}
             </div>
           );
         })}
@@ -99,4 +150,3 @@ export function Philosophy() {
     </Section>
   );
 }
-

@@ -6,6 +6,7 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
 import { CheckCircle2, CircleCheck } from "lucide-react";
+import Link from "next/link";
 
 const accentColor = {
   lavender: "var(--purple-soft)",
@@ -35,10 +36,6 @@ const howItWorks = [
 export function Programs() {
   const { programs, classes } = siteContent;
 
-  function scrollToTienda() {
-    document.getElementById("tienda")?.scrollIntoView({ behavior: "smooth" });
-  }
-
   return (
     <Section id="programas">
       <SectionHeader
@@ -53,7 +50,6 @@ export function Programs() {
             accentColor[
               (program.accent as keyof typeof accentColor) ?? "lavender"
             ];
-          const btnColor = ["#5B3A8E", "#7B5AB0", "#9E82C8"][i] ?? "#5B3A8E";
           return (
             <Card
               key={i}
@@ -94,16 +90,17 @@ export function Programs() {
                 >
                   {programs.cardMicrocopy}
                 </p>
-                <button
-                  className="w-full mt-auto min-h-12 inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-medium transition-soft text-white hover:opacity-90 active:scale-[.98]"
+                <Link
+                  href={`/programas/${program.id}`}
+                  className="w-full mt-auto inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-medium transition-soft hover:bg-(--purple-mist) active:scale-[.98] min-h-12"
                   style={{
-                    background: btnColor,
-                    boxShadow: "var(--shadow-purple)",
+                    background: "transparent",
+                    border: "1.5px solid var(--purple)",
+                    color: "var(--purple)",
                   }}
-                  onClick={scrollToTienda}
                 >
-                  {programs.cardCta}
-                </button>
+                  {programs.conocerMasLabel}
+                </Link>
               </CardBody>
             </Card>
           );
