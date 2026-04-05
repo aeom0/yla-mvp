@@ -2,7 +2,6 @@ import { Section, SectionHeader } from "@/components/ui/Section";
 import { siteContent } from "@/data/content";
 import Image from "next/image";
 
-/** Genera las iniciales de un nombre completo (máx. 2 letras) */
 function getInitials(name: string): string {
   return name
     .split(/\s+/)
@@ -34,7 +33,6 @@ export function Testimonials() {
             }}
           >
             <div className="flex items-center gap-3 mb-4">
-              {/* Avatar: foto real si existe, iniciales si no */}
               {item.photo ? (
                 <Image
                   src={item.photo}
@@ -42,14 +40,15 @@ export function Testimonials() {
                   width={48}
                   height={48}
                   className="w-12 h-12 rounded-full object-cover shrink-0"
-                  style={{ border: "2px solid var(--border)" }}
+                  style={{ border: "2px solid var(--sage)" }}
                 />
               ) : (
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center title text-base shrink-0 font-semibold select-none"
                   style={{
-                    background: "var(--lavender-pale)",
-                    color: "var(--accent)",
+                    background: "rgba(168,197,160,.18)",
+                    color: "var(--sage-deep)",
+                    border: "1.5px solid var(--sage)",
                   }}
                   aria-hidden
                 >
@@ -63,7 +62,7 @@ export function Testimonials() {
                 >
                   {item.name}
                 </div>
-                <div className="text-xs" style={{ color: "var(--muted)" }}>
+                <div className="text-xs" style={{ color: "var(--sage-deep)" }}>
                   {item.role}
                 </div>
               </figcaption>

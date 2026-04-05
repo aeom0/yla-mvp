@@ -5,6 +5,13 @@ import Link from "next/link";
 
 const iconMap = { Flower2, Lightbulb, MoonStar };
 
+// Cada pilar tiene su propio acento — así se ve la paleta Aurora Consciente
+const pillarAccents = [
+  { color: "var(--accent)",     bg: "var(--lavender-mist)" },   // 1 — lavanda
+  { color: "var(--rose-deep)", bg: "rgba(200,146,143,.10)" },   // 2 — rosa cuarzo
+  { color: "var(--sage-deep)", bg: "rgba(107,158,138,.10)" },   // 3 — sage
+];
+
 const pillarConfig = [
   {
     cta: "Comenzar mi práctica",
@@ -41,34 +48,29 @@ export function Philosophy() {
         {philosophy.pillars.map((pillar, i) => {
           const Icon = iconMap[pillar.icon as keyof typeof iconMap];
           const config = pillarConfig[i];
+          const accent = pillarAccents[i];
 
           return (
             <div
               key={i}
               className="group relative rounded-2xl bg-white p-6 sm:p-7 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               style={{
-                borderTop: "3px solid var(--accent)",
-                boxShadow:
-                  "0 2px 12px color-mix(in srgb, var(--accent) 7%, transparent)",
+                borderTop: `3px solid ${accent.color}`,
+                boxShadow: `0 2px 12px color-mix(in srgb, ${accent.color} 7%, transparent)`,
               }}
             >
-              {/* Icono — centrado y grande */}
+              {/* Icono */}
               <div className="flex justify-center mb-5">
                 <div
                   className="flex items-center justify-center rounded-full w-20 h-20 transition-transform duration-300 group-hover:scale-110"
-                  style={{
-                    background:
-                      "color-mix(in srgb, var(--accent) 8%, transparent)",
-                  }}
+                  style={{ background: accent.bg }}
                 >
-                  <Icon size={40} style={{ color: "var(--accent)" }} />
+                  <Icon size={40} style={{ color: accent.color }} />
                 </div>
               </div>
 
-              {/* Título — centrado */}
               <h3 className="title text-xl mb-2 text-center">{pillar.title}</h3>
 
-              {/* Descripción — centrada */}
               <p
                 className="text-sm leading-relaxed mb-5 flex-1 text-center"
                 style={{ color: "var(--muted)" }}
@@ -76,14 +78,13 @@ export function Philosophy() {
                 {pillar.description}
               </p>
 
-              {/* Botón — color sólido morado uniforme, sin degradado */}
               {config.external ? (
                 <a
                   href={config.href}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-2.5 px-4 rounded-xl text-sm font-medium tracking-wide text-center transition-all duration-200 active:scale-95 hover:opacity-90 text-white block"
-                  style={{ background: "var(--accent)" }}
+                  style={{ background: accent.color }}
                 >
                   {config.cta}
                 </a>
@@ -91,13 +92,12 @@ export function Philosophy() {
                 <Link
                   href={config.href}
                   className="w-full py-2.5 px-4 rounded-xl text-sm font-medium tracking-wide text-center transition-all duration-200 active:scale-95 hover:opacity-90 text-white block"
-                  style={{ background: "var(--accent)" }}
+                  style={{ background: accent.color }}
                 >
                   {config.cta}
                 </Link>
               )}
 
-              {/* Sub-texto */}
               <p
                 className="text-xs mt-2 text-center tracking-wide"
                 style={{ color: "var(--muted)" }}

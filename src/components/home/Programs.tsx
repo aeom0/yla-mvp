@@ -8,9 +8,11 @@ import { lucideBrand } from "@/lib/lucideBrand";
 import { CheckCircle2, CircleCheck } from "lucide-react";
 import Link from "next/link";
 
-const accentColor = {
-  lavender: "var(--accent-soft)",
-  rose: "var(--rose)",
+// Aurora Consciente: cada programa tiene su propio acento
+const accentColor: Record<string, string> = {
+  lavender: "var(--accent)",       // Encuentra tu Centro — morado
+  sage:     "var(--sage-deep)",    // Enraíza-Te — verde sage
+  rose:     "var(--rose-deep)",    // Elogio a Ti — rosa cuarzo
 };
 
 const achievements = [
@@ -46,10 +48,7 @@ export function Programs() {
 
       <div className="grid md:grid-cols-3 gap-5 sm:gap-8 max-w-6xl mx-auto items-stretch">
         {programs.items.map((program, i) => {
-          const color =
-            accentColor[
-              (program.accent as keyof typeof accentColor) ?? "lavender"
-            ];
+          const color = accentColor[program.accent ?? "lavender"] ?? "var(--accent)";
           return (
             <Card
               key={i}
@@ -57,15 +56,18 @@ export function Programs() {
               style={{ borderTop: `3px solid ${color}` }}
             >
               <CardBody className="flex flex-col flex-1">
+                {/* Badge duración con el acento del programa */}
                 <div
                   className="inline-flex items-center gap-1 rounded-full px-3 py-1 text-xs font-semibold mb-4 self-start"
                   style={{
-                    background: `color-mix(in srgb, ${color} 15%, transparent)`,
+                    background: `color-mix(in srgb, ${color} 12%, transparent)`,
                     color: color,
+                    border: `1px solid color-mix(in srgb, ${color} 30%, transparent)`,
                   }}
                 >
                   {program.duration}
                 </div>
+
                 <h3 className="title text-2xl mb-2">{program.title}</h3>
 
                 <div className="space-y-2 mb-6 flex-1">
@@ -90,16 +92,14 @@ export function Programs() {
                   {programs.cardMicrocopy}
                 </p>
 
-                {/* Botón sólido morado */}
                 <Link
                   href={`/programas/${program.id}`}
                   className="w-full mt-auto inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-medium transition-soft hover:opacity-90 active:scale-[.98] min-h-12 text-white"
-                  style={{ background: "var(--accent)" }}
+                  style={{ background: color }}
                 >
                   {programs.conocerMasLabel}
                 </Link>
 
-                {/* Descripción debajo del botón */}
                 <p
                   className="text-xs mt-3 text-center italic"
                   style={{ color: "var(--muted)" }}
@@ -118,11 +118,9 @@ export function Programs() {
           className="rounded-2xl overflow-hidden"
           style={{
             border: "1.5px solid var(--accent-soft)",
-            boxShadow:
-              "0 4px 32px color-mix(in srgb, var(--accent) 10%, transparent)",
+            boxShadow: "0 4px 32px color-mix(in srgb, var(--accent) 10%, transparent)",
           }}
         >
-          {/* Header de la card */}
           <div
             className="px-6 sm:px-10 pt-8 pb-6 text-center"
             style={{ background: "var(--lavender-mist)" }}
@@ -136,10 +134,7 @@ export function Programs() {
             <h3 className="title text-2xl sm:text-3xl mb-2">
               {classes.personalized.title}
             </h3>
-            <p
-              style={{ color: "var(--muted)" }}
-              className="text-sm leading-relaxed"
-            >
+            <p style={{ color: "var(--muted)" }} className="text-sm leading-relaxed">
               No todos los cuerpos necesitan lo mismo…{" "}
               <span className="italic">
                 por eso tu práctica tampoco debería ser igual a la de todos.
@@ -147,10 +142,8 @@ export function Programs() {
             </p>
           </div>
 
-          {/* Cuerpo */}
           <div className="px-6 sm:px-10 py-8 bg-white">
             <div className="grid sm:grid-cols-2 gap-8 mb-8">
-              {/* Qué vas a lograr */}
               <div>
                 <p
                   className="text-xs font-bold tracking-widest uppercase mb-4"
@@ -165,7 +158,7 @@ export function Programs() {
                         {...lucideBrand}
                         size={16}
                         className="mt-0.5 shrink-0"
-                        style={{ color: "var(--accent)" }}
+                        style={{ color: "var(--sage-deep)" }}
                         aria-hidden
                       />
                       <span>{item}</span>
@@ -174,7 +167,6 @@ export function Programs() {
                 </ul>
               </div>
 
-              {/* Para ti si */}
               <div>
                 <p
                   className="text-xs font-bold tracking-widest uppercase mb-4"
@@ -186,8 +178,8 @@ export function Programs() {
                   {forYouIf.map((item, i) => (
                     <li key={i} className="flex items-start gap-2 text-sm">
                       <span
-                        className="mt-1 w-1.5 h-1.5 rounded-full shrink-0"
-                        style={{ background: "var(--accent-soft)" }}
+                        className="mt-1.5 w-1.5 h-1.5 rounded-full shrink-0"
+                        style={{ background: "var(--sage-deep)" }}
                         aria-hidden
                       />
                       <span style={{ color: "var(--muted)" }}>{item}</span>
@@ -197,7 +189,6 @@ export function Programs() {
               </div>
             </div>
 
-            {/* Cita Yube */}
             <blockquote
               className="text-sm italic text-center leading-relaxed mb-8 px-4"
               style={{ color: "var(--accent)", borderLeft: "none" }}
@@ -206,7 +197,6 @@ export function Programs() {
               para que no solo practiques, sino que te entiendas.&rdquo;
             </blockquote>
 
-            {/* Cómo funciona */}
             <div className="mb-8">
               <p
                 className="text-xs font-bold tracking-widest uppercase mb-5 text-center"
@@ -234,7 +224,7 @@ export function Programs() {
                     {i < howItWorks.length - 1 && (
                       <div
                         className="w-8 sm:w-12 h-px mb-5"
-                        style={{ background: "var(--accent-soft)" }}
+                        style={{ background: "var(--sage)" }}
                         aria-hidden
                       />
                     )}
@@ -243,7 +233,6 @@ export function Programs() {
               </div>
             </div>
 
-            {/* CTA */}
             <div className="text-center">
               <Button
                 variant="primary"
@@ -257,7 +246,7 @@ export function Programs() {
               </p>
               <p
                 className="text-xs mt-1 italic"
-                style={{ color: "var(--accent-soft)" }}
+                style={{ color: "var(--sage-deep)" }}
               >
                 En cada sesión conectarás mejor con tu cuerpo.
               </p>

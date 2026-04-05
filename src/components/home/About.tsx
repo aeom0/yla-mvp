@@ -16,7 +16,6 @@ export function About() {
           {/* Imagen / Video */}
           <div className="order-2 md:order-1">
             {videoId ? (
-              /* Video de YouTube embed */
               <div
                 className="aspect-video rounded-2xl overflow-hidden border"
                 style={{ borderColor: "var(--border)" }}
@@ -30,7 +29,6 @@ export function About() {
                 />
               </div>
             ) : hasPhoto ? (
-              /* Foto real de Yube */
               <div
                 className="relative rounded-2xl overflow-hidden max-w-md mx-auto md:max-w-none"
                 style={{ border: "1px solid var(--border)" }}
@@ -44,12 +42,10 @@ export function About() {
                   style={{ aspectRatio: "3/4", objectPosition: "top center" }}
                   priority
                 />
-                {/* Franja morada inferior con frase */}
                 <div
                   className="absolute bottom-0 left-0 right-0 px-5 py-3"
                   style={{
-                    background:
-                      "linear-gradient(to top, rgba(22,18,31,.85) 0%, transparent 100%)",
+                    background: "linear-gradient(to top, rgba(22,18,31,.85) 0%, transparent 100%)",
                   }}
                 >
                   <p
@@ -61,12 +57,10 @@ export function About() {
                 </div>
               </div>
             ) : (
-              /* Placeholder mientras no hay foto */
               <div
                 className="aspect-square rounded-2xl flex flex-col items-center justify-center relative overflow-hidden max-w-md mx-auto md:max-w-none gap-3"
                 style={{
-                  background:
-                    "linear-gradient(135deg, var(--lavender-mist) 0%, var(--rose-pale) 100%)",
+                  background: "var(--lavender-mist)",
                   border: "1px solid var(--border)",
                 }}
               >
@@ -111,9 +105,10 @@ export function About() {
               </h2>
             </div>
 
+            {/* Credential con sage */}
             <p
               className="text-sm font-semibold leading-relaxed"
-              style={{ color: "var(--accent)" }}
+              style={{ color: "var(--sage-deep)" }}
             >
               {about.credential}
             </p>
@@ -132,28 +127,32 @@ export function About() {
               {about.extended}
             </p>
 
+            {/* Pillares con colores alternados */}
             <div className="space-y-3 pt-1">
               {[
                 {
                   icon: <Compass {...lucideBrand} size={16} />,
                   text: "Ingeniera industrial de profesión",
+                  color: "var(--accent)",
+                  bg: "var(--lavender-mist)",
                 },
                 {
                   icon: <BadgeCheck {...lucideBrand} size={16} />,
                   text: "Instructora de yoga y meditación — 500 h certificadas",
+                  color: "var(--sage-deep)",
+                  bg: "rgba(107,158,138,.10)",
                 },
                 {
                   icon: <NotebookPen {...lucideBrand} size={16} />,
                   text: "Metodología propia: lógica aplicada al bienestar",
+                  color: "var(--rose-deep)",
+                  bg: "rgba(200,146,143,.10)",
                 },
               ].map((item, i) => (
                 <div key={i} className="flex items-center gap-3">
                   <span
                     className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
-                    style={{
-                      background: "var(--lavender-mist)",
-                      color: "var(--accent)",
-                    }}
+                    style={{ background: item.bg, color: item.color }}
                   >
                     {item.icon}
                   </span>
@@ -164,9 +163,10 @@ export function About() {
               ))}
             </div>
 
+            {/* Blockquote con borde sage */}
             <blockquote
               className="border-l-4 pl-4 italic text-sm leading-relaxed"
-              style={{ borderColor: "var(--rose)", color: "var(--muted)" }}
+              style={{ borderColor: "var(--sage-deep)", color: "var(--muted)" }}
             >
               {about.quote}
             </blockquote>
