@@ -20,7 +20,7 @@ export function FAQ() {
             className="rounded-2xl overflow-hidden transition-soft"
             style={{
               background: "var(--card)",
-              border: `1px solid ${open === i ? "var(--purple)" : "var(--border)"}`,
+              border: `1px solid ${open === i ? "var(--accent)" : "var(--border)"}`,
               boxShadow: open === i ? "0 4px 20px rgba(91,58,142,.12)" : "none",
             }}
           >
@@ -40,7 +40,7 @@ export function FAQ() {
                 size={18}
                 className="flex-shrink-0 transition-transform duration-200"
                 style={{
-                  color: open === i ? "var(--purple)" : "var(--muted)",
+                  color: open === i ? "var(--accent)" : "var(--muted)",
                   transform: open === i ? "rotate(180deg)" : "rotate(0deg)",
                 }}
               />

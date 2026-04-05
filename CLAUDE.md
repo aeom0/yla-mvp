@@ -36,25 +36,32 @@ El producto actual en desarrollo es un **landing page / sitio web** que servirá
 
 ## 🎨 Sistema de diseño
 
-### Paleta de colores
+### Paleta de colores (sistema **Aurora Consciente**)
 
 ```ts
-// tokens de color — usar siempre estas variables (ver `src/app/globals.css`)
+// Variables CSS en `src/app/globals.css` — en JSX/Tailwind usar `var(--token)` o colores del theme
 colors: {
-  lavender:      '#B497D6',  // espiritual, complemento
-  beige:         '#F6EBD9',  // fondo base cálido
-  gold:          '#E8D3A3',  // acento dominante en CTAs (botón primario)
-  goldDeep:      '#c9a96e',  // bordes / acento fuerte
-  smoke:         '#DADADA',  // texto secundario
-  charcoal/ink:  '#333333',  // texto principal
-  // Referencia brief marca (Contexto YLA) — fondos y bloques premium:
-  purpleBrand:   '#5B3A8E',  // --purple-brand
-  lilaDoc:       '#C6B7E2',  // --lila-doc
-  goldDoc:       '#D4AF37',  // --gold-doc (acento editorial)
+  // Semánticos (light / dark en :root y .dark)
+  accent:          'var(--accent)',       // CTA primario (#7B5EA7 light; lavanda en dark)
+  accentSoft:      'var(--accent-soft)',  // acento espiritual secundario
+  bg:              'var(--bg)',
+  text:            'var(--text)',
+  muted:           'var(--muted)',
+  border:          'var(--border)',
+  sectionAlt:      'var(--section-alt)',
+  // Paleta base
+  lavenderDeep:    '#7B5EA7',  // --lavender-deep (morado CTA)
+  lavender:        '#B497D6',  // --lavender
+  rose:            '#E8C4C4',  // --rose (cuarzo; gratis / acentos suaves)
+  roseDeep:        '#C8928F',  // --rose-deep
+  sage:            '#A8C5A0',  // --sage
+  violetAnchor:    '#3D2865',  // --violet-anchor (display, footer oscuro)
+  beige:           '#F8F4F0',  // --beige (fondo base claro)
+  ink:             '#2D2D2D',  // --ink
 }
 ```
 
-> **Nota de diseño:** El **dorado** es el color de los CTAs primarios (`Button` variante `primary`). Lavanda y morado de marca se usan en jerarquía visual, pilares y secciones premium; valores exactos en `:root` y `.dark` de `globals.css`.
+> **Nota:** No uses nombres legacy `--purple*` ni `--gold*` en código nuevo: mapean a `--accent` / `--lavender-*` / `--rose*`. `Button` primary = `var(--accent)`. Sombras de CTA: `var(--shadow-accent)`.
 
 ### Tipografía
 
@@ -68,7 +75,7 @@ colors: {
 - Minimalismo funcional: menos es más.
 - Se siente como un ritual digital, no como un gimnasio.
 - Animaciones sutiles (brillo, fade, latido) — nunca flashy.
-- Dark mode: fondo morado profundo + texto dorado/blanco.
+- Dark mode: fondo morado profundo + texto claro; acento lavanda.
 
 ---
 

@@ -48,8 +48,8 @@ export function Testimonials() {
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center title text-base shrink-0 font-semibold select-none"
                   style={{
-                    background: "var(--purple-pale)",
-                    color: "var(--purple)",
+                    background: "var(--lavender-pale)",
+                    color: "var(--accent)",
                   }}
                   aria-hidden
                 >

@@ -94,14 +94,14 @@ export default async function ProductPage({ params }: Props) {
                   className="aspect-square flex items-center justify-center"
                   style={{
                     background:
-                      "linear-gradient(135deg, var(--purple-mist) 0%, var(--section-alt) 100%)",
+                      "linear-gradient(135deg, var(--lavender-mist) 0%, var(--section-alt) 100%)",
                   }}
                 >
                   <div
                     className="w-24 h-24 rounded-2xl flex items-center justify-center text-white"
                     style={{
-                      background: "var(--purple)",
-                      boxShadow: "var(--shadow-purple)",
+                      background: "var(--accent)",
+                      boxShadow: "var(--shadow-accent)",
                     }}
                   >
                     {categoryIcon[product.category] ?? (
@@ -128,12 +128,12 @@ export default async function ProductPage({ params }: Props) {
                   <li key={i} className="flex items-start gap-3">
                     <span
                       className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0"
-                      style={{ background: "var(--purple-mist)" }}
+                      style={{ background: "var(--lavender-mist)" }}
                     >
                       <Check
                         {...lucideBrand}
                         size={12}
-                        style={{ color: "var(--purple)" }}
+                        style={{ color: "var(--accent)" }}
                       />
                     </span>
                     <span className="text-sm" style={{ color: "var(--text)" }}>
@@ -150,8 +150,8 @@ export default async function ProductPage({ params }: Props) {
             <span
               className="inline-block text-xs font-semibold px-3 py-1 rounded-full"
               style={{
-                background: "var(--purple-mist)",
-                color: "var(--purple)",
+                background: "var(--lavender-mist)",
+                color: "var(--accent)",
                 border: "1px solid var(--border)",
               }}
             >
@@ -189,7 +189,7 @@ export default async function ProductPage({ params }: Props) {
             >
               <p
                 className="text-xs font-semibold uppercase tracking-widest mb-2"
-                style={{ color: "var(--purple)" }}
+                style={{ color: "var(--accent)" }}
               >
                 ¿Para quién es?
               </p>
@@ -213,7 +213,7 @@ export default async function ProductPage({ params }: Props) {
               <div className="flex items-baseline gap-2">
                 <span
                   className="title text-4xl font-bold"
-                  style={{ color: "var(--purple)" }}
+                  style={{ color: "var(--accent)" }}
                 >
                   {product.price}
                 </span>
@@ -228,8 +228,8 @@ export default async function ProductPage({ params }: Props) {
                 rel="noopener noreferrer"
                 className="flex items-center justify-center gap-2 w-full py-4 rounded-2xl text-base font-bold text-white transition-soft hover:opacity-90 min-h-[56px]"
                 style={{
-                  background: "var(--purple)",
-                  boxShadow: "var(--shadow-purple)",
+                  background: "var(--accent)",
+                  boxShadow: "var(--shadow-accent)",
                 }}
               >
                 Obtener ahora
@@ -254,7 +254,7 @@ export default async function ProductPage({ params }: Props) {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline underline-offset-2 transition-soft hover:opacity-70"
-                style={{ color: "var(--purple)" }}
+                style={{ color: "var(--accent)" }}
               >
                 Escríbenos por WhatsApp
               </a>

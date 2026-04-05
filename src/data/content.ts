@@ -117,7 +117,7 @@ export const siteContent = {
           "Fuerza y liderazgo interior",
           "Integración y expansión",
         ],
-        accent: "gold",
+        accent: "rose",
         detail: {
           tagline: "Fortalece tu base. Desarrolla tu liderazgo interior.",
           includes: [

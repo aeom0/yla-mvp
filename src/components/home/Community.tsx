@@ -16,8 +16,8 @@ const CHANNELS = [
     description: "Práctica, reflexiones y detrás de cámaras.",
     icon: Instagram,
     href: "https://www.instagram.com/yube.karina?igsh=MWg4Z2M5ang2YzI2bg==",
-    color: "var(--purple)",
-    bg: "var(--purple-mist)",
+    color: "var(--accent)",
+    bg: "var(--lavender-mist)",
   },
   {
     id: "tiktok",
@@ -26,8 +26,8 @@ const CHANNELS = [
     description: "Clips cortos de movimiento e intención.",
     icon: TiktokGlyph,
     href: "https://tiktok.com/@yube.karina",
-    color: "var(--purple)",
-    bg: "var(--purple-mist)",
+    color: "var(--accent)",
+    bg: "var(--lavender-mist)",
   },
   {
     id: "youtube",
@@ -36,8 +36,8 @@ const CHANNELS = [
     description: "Clases completas y contenido en profundidad.",
     icon: Youtube,
     href: "https://youtube.com/@yube.karinag?si=tBKXzfHdKXK6Sx7t",
-    color: "var(--purple)",
-    bg: "var(--purple-mist)",
+    color: "var(--accent)",
+    bg: "var(--lavender-mist)",
   },
   {
     id: "whatsapp",
@@ -46,8 +46,8 @@ const CHANNELS = [
     description: "Escríbenos directamente o únete al grupo.",
     icon: MessageCircle,
     href: "https://wa.me/584243547179",
-    color: "var(--gold)",
-    bg: "var(--gold-pale)",
+    color: "var(--rose)",
+    bg: "var(--rose-pale)",
   },
 ] as const;
 
@@ -187,7 +187,7 @@ export function Community() {
               required
               autoComplete="email"
               disabled={status === "loading"}
-              className="rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--purple)] min-h-[48px]"
+              className="rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[var(--accent)] min-h-[48px]"
               style={{
                 border: "1px solid var(--border)",
                 background: "var(--bg)",

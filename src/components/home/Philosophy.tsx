@@ -26,8 +26,6 @@ const pillarConfig = [
   },
 ];
 
-const BTN_COLOR = "#5B3A8E";
-
 export function Philosophy() {
   const { philosophy } = siteContent;
 
@@ -49,17 +47,21 @@ export function Philosophy() {
               key={i}
               className="group relative rounded-2xl bg-white p-6 sm:p-7 flex flex-col transition-all duration-300 hover:shadow-xl hover:-translate-y-1"
               style={{
-                borderTop: `3px solid ${BTN_COLOR}`,
-                boxShadow: "0 2px 12px rgba(91,58,142,0.07)",
+                borderTop: "3px solid var(--accent)",
+                boxShadow:
+                  "0 2px 12px color-mix(in srgb, var(--accent) 7%, transparent)",
               }}
             >
               {/* Icono — centrado y grande */}
               <div className="flex justify-center mb-5">
                 <div
                   className="flex items-center justify-center rounded-full w-20 h-20 transition-transform duration-300 group-hover:scale-110"
-                  style={{ background: "rgba(91,58,142,0.08)" }}
+                  style={{
+                    background:
+                      "color-mix(in srgb, var(--accent) 8%, transparent)",
+                  }}
                 >
-                  <Icon size={40} style={{ color: BTN_COLOR }} />
+                  <Icon size={40} style={{ color: "var(--accent)" }} />
                 </div>
               </div>
 
@@ -81,7 +83,7 @@ export function Philosophy() {
                   target="_blank"
                   rel="noopener noreferrer"
                   className="w-full py-2.5 px-4 rounded-xl text-sm font-medium tracking-wide text-center transition-all duration-200 active:scale-95 hover:opacity-90 text-white block"
-                  style={{ background: BTN_COLOR }}
+                  style={{ background: "var(--accent)" }}
                 >
                   {config.cta}
                 </a>
@@ -89,7 +91,7 @@ export function Philosophy() {
                 <Link
                   href={config.href}
                   className="w-full py-2.5 px-4 rounded-xl text-sm font-medium tracking-wide text-center transition-all duration-200 active:scale-95 hover:opacity-90 text-white block"
-                  style={{ background: BTN_COLOR }}
+                  style={{ background: "var(--accent)" }}
                 >
                   {config.cta}
                 </Link>

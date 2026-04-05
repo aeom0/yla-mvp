@@ -12,7 +12,7 @@ export function Footer() {
   return (
     <footer
       className="py-16 px-4"
-      style={{ background: "#16121f", color: "#EDE8F5" }}
+      style={{ background: "var(--footer-bg)", color: "var(--footer-text)" }}
     >
       <div className="container-yla">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-10">
@@ -31,13 +31,16 @@ export function Footer() {
                 }}
               />
               {/* Fallback texto — siempre visible, oculto por JS si logo carga */}
-              <h3 className="title text-lg" style={{ color: "#C6B7E2" }}>
+              <h3
+                className="title text-lg"
+                style={{ color: "var(--footer-brand)" }}
+              >
                 Yoga con Lógica y Alma®
               </h3>
             </div>
             <p
               className="text-sm leading-relaxed italic"
-              style={{ color: "rgba(237,232,245,.55)" }}
+              style={{ color: "var(--footer-quote)" }}
             >
               &ldquo;{footer.tagline}&rdquo;
             </p>
@@ -72,8 +75,8 @@ export function Footer() {
                   aria-label={label}
                   className="w-9 h-9 rounded-xl flex items-center justify-center transition-soft hover:opacity-80"
                   style={{
-                    background: "rgba(198,183,226,.14)",
-                    color: "#C6B7E2",
+                    background: "var(--footer-icon-bg)",
+                    color: "var(--footer-brand)",
                   }}
                 >
                   {icon}
@@ -86,7 +89,7 @@ export function Footer() {
           <div>
             <h4
               className="text-xs font-semibold uppercase tracking-widest mb-4"
-              style={{ color: "#C8A84B" }}
+              style={{ color: "var(--footer-section-title)" }}
             >
               Navegación
             </h4>
@@ -96,7 +99,7 @@ export function Footer() {
                   <a
                     href={link.href}
                     className="text-sm transition-soft hover:opacity-80"
-                    style={{ color: "rgba(237,232,245,.65)" }}
+                    style={{ color: "var(--footer-link)" }}
                   >
                     {link.label}
                   </a>
@@ -109,7 +112,7 @@ export function Footer() {
           <div>
             <h4
               className="text-xs font-semibold uppercase tracking-widest mb-4"
-              style={{ color: "#C8A84B" }}
+              style={{ color: "var(--footer-section-title)" }}
             >
               Legal
             </h4>
@@ -119,7 +122,7 @@ export function Footer() {
                   <a
                     href={link.href}
                     className="text-sm transition-soft hover:opacity-80"
-                    style={{ color: "rgba(237,232,245,.65)" }}
+                    style={{ color: "var(--footer-link)" }}
                   >
                     {link.label}
                   </a>
@@ -132,8 +135,8 @@ export function Footer() {
         <div
           className="pt-6 flex flex-col md:flex-row items-center justify-between gap-2 text-xs"
           style={{
-            borderTop: "1px solid rgba(237,232,245,.08)",
-            color: "rgba(237,232,245,.35)",
+            borderTop: "1px solid var(--footer-border-top)",
+            color: "var(--footer-meta)",
           }}
         >
           <span>

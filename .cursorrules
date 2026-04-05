@@ -14,7 +14,7 @@ Este archivo es la fuente de verdad del proyecto: stack, diseño, arquitectura, 
 - **Lenguaje:** TypeScript strict — sin `any` implícito
 - **Contenido:** Todo el texto vive en `src/data/content.ts` — nunca hardcodear strings en JSX
 - **Componentes:** `src/components/home/` (secciones) · `src/components/ui/` (átomos) · `src/components/layout/`
-- **Color dominante:** `--gold: #E8D3A3` — usar en CTAs, borders y highlights
+- **Color dominante (Aurora):** `var(--accent)` / `--lavender-deep` — CTAs y acento principal; rosa cuarzo (`--rose`) para highlights suaves
 - **Mobile-first siempre:** 375px es el viewport de referencia
 - **No instalar dependencias sin confirmar con Alberto**
 

@@ -48,8 +48,8 @@ export function Shop() {
               <span
                 className="w-7 h-7 rounded-lg flex items-center justify-center"
                 style={{
-                  background: "var(--purple-mist)",
-                  color: "var(--purple)",
+                  background: "var(--lavender-mist)",
+                  color: "var(--accent)",
                 }}
               >
                 {meta.icon}
@@ -74,8 +74,8 @@ export function Shop() {
                       className="absolute top-3 right-3 text-xs font-semibold px-2.5 py-0.5 rounded-full z-10 text-white"
                       style={{
                         background: product.isFree
-                          ? "var(--gold)"
-                          : "var(--purple)",
+                          ? "var(--rose)"
+                          : "var(--accent)",
                       }}
                     >
                       {product.badge}
@@ -101,8 +101,8 @@ export function Shop() {
                           className="w-14 h-14 rounded-2xl flex items-center justify-center text-white"
                           style={{
                             background: product.isFree
-                              ? "var(--gold)"
-                              : "var(--purple)",
+                              ? "var(--rose)"
+                              : "var(--accent)",
                           }}
                         >
                           {
@@ -132,7 +132,7 @@ export function Shop() {
                     <span
                       className="text-lg font-bold mt-1"
                       style={{
-                        color: product.isFree ? "var(--gold)" : "var(--purple)",
+                        color: product.isFree ? "var(--rose)" : "var(--accent)",
                       }}
                     >
                       {product.isFree ? "Gratis" : product.price}
@@ -145,7 +145,7 @@ export function Shop() {
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold transition-soft hover:opacity-90 min-h-[44px] text-white mt-1"
-                        style={{ background: "var(--gold)" }}
+                        style={{ background: "var(--rose)" }}
                       >
                         {shop.ctaFree}
                         <ExternalLink
@@ -158,7 +158,7 @@ export function Shop() {
                       <Link
                         href={`/tienda/${product.slug}`}
                         className="inline-flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-semibold transition-soft hover:opacity-90 min-h-[44px] text-white mt-1"
-                        style={{ background: "var(--purple)" }}
+                        style={{ background: "var(--accent)" }}
                       >
                         Ver detalles
                       </Link>
@@ -178,8 +178,8 @@ export function Shop() {
           rel="noopener noreferrer"
           className="inline-flex items-center gap-2 px-8 py-3 rounded-2xl font-semibold transition-soft hover:opacity-90 min-h-[48px] text-white"
           style={{
-            background: "var(--purple)",
-            boxShadow: "var(--shadow-purple)",
+            background: "var(--accent)",
+            boxShadow: "var(--shadow-accent)",
           }}
         >
           Ver toda la tienda

@@ -7,8 +7,9 @@ Para convenciones de código ver `CLAUDE.md` y `.claude/skills/yla-dev-SKILL.md`
 
 ### Cambios recientes (últimos commits)
 
-- **Programas:** rutas estáticas `/programas/[slug]` con ficha (etapas, `detail` en `content.ts`, CTA WhatsApp). En landing, card con botón morado «Conocer más» y descripción corta *debajo* del CTA.
-- **Philosophy:** cards alineadas (borde superior y CTA en morado `#5B3A8E`), íconos centrados y más grandes; un CTA por pilar — **Cuerpo** → YouTube `@yogaconlogicayalma`, **Mente** → `/tests`, **Alma** → `/blog` (sin segundo enlace a YouTube en Alma).
+- **Design tokens:** código y docs alineados con **Aurora Consciente** — `var(--accent)`, `--lavender-*`, `--rose*`, `--violet-anchor`; sin `--purple*` / `--gold*` en TSX. Programas: acento de card `lavender` | `rose` en `content.ts` (antes `gold` → `rose`).
+- **Programas:** rutas estáticas `/programas/[slug]` con ficha (etapas, `detail` en `content.ts`, CTA WhatsApp). En landing, card con botón «Conocer más» y descripción corta *debajo* del CTA.
+- **Philosophy:** cards alineadas (borde superior y CTA con `var(--accent)`), íconos centrados y más grandes; un CTA por pilar — **Cuerpo** → YouTube `@yogaconlogicayalma`, **Mente** → `/tests`, **Alma** → `/blog` (sin segundo enlace a YouTube en Alma).
 - **Placeholders:** `/tests` y `/blog` (copy en `siteContent.testsPage` / `blogPage`).
 - **Contenido:** título/copy de filosofía simplificado en `content.ts`; URL del canal de YouTube corregida donde aplica.
 
@@ -27,7 +28,7 @@ Un hub digital que concentre **captación (lead magnet + newsletter)**, **venta 
 | Componente | Descripción | Estado |
 |---|---|---|
 | `Hero.tsx` | Hero principal con CTAs y stats | ✅ Live |
-| `Philosophy.tsx` | Pilares Cuerpo / Mente / Alma — cards uniformes (morado marca), íconos centrados; CTAs: YouTube, `/tests`, `/blog` | ✅ Live |
+| `Philosophy.tsx` | Pilares Cuerpo / Mente / Alma — cards uniformes (`var(--accent)`), íconos centrados; CTAs: YouTube, `/tests`, `/blog` | ✅ Live |
 | `Programs.tsx` | Tres programas → enlace a `/programas/[slug]`; microcopy + descripción bajo CTA; bloque Clases personalizadas | ✅ Live |
 | `Testimonials.tsx` | Reseñas de alumnas (avatares iniciales) | ✅ Live |
 | `About.tsx` | Bio de Yube (placeholder de imagen) | ✅ Live — imagen pendiente |

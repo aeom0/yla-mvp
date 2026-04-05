@@ -19,12 +19,12 @@ export default function MembresiaPage() {
         className="py-16 md:py-20 text-center px-4"
         style={{
           background:
-            "linear-gradient(180deg, color-mix(in srgb, var(--purple-brand) 12%, var(--beige)) 0%, var(--bg) 100%)",
+            "linear-gradient(180deg, color-mix(in srgb, var(--violet-anchor) 12%, var(--beige)) 0%, var(--bg) 100%)",
         }}
       >
         <p
           className="text-xs font-semibold uppercase tracking-widest mb-3"
-          style={{ color: "var(--purple-brand)" }}
+          style={{ color: "var(--violet-anchor)" }}
         >
           Membresía
         </p>
@@ -36,7 +36,7 @@ export default function MembresiaPage() {
         </h1>
         <p
           className="text-lg md:text-xl max-w-2xl mx-auto mb-2 font-medium"
-          style={{ color: "var(--gold-deep)" }}
+          style={{ color: "var(--rose-deep)" }}
         >
           {membership.tagline}
         </p>
@@ -51,7 +51,7 @@ export default function MembresiaPage() {
           style={{
             background: "var(--card)",
             border:
-              "2px solid color-mix(in srgb, var(--gold-doc) 55%, var(--border))",
+              "2px solid color-mix(in srgb, var(--rose-deep) 55%, var(--border))",
             boxShadow: "0 8px 32px rgba(0,0,0,.06)",
           }}
         >
@@ -97,14 +97,14 @@ export default function MembresiaPage() {
               className="rounded-2xl p-6 md:p-8 flex flex-col transition-soft hover:-translate-y-0.5"
               style={{
                 background: plan.highlight
-                  ? "var(--purple-brand)"
+                  ? "var(--violet-anchor)"
                   : "var(--card)",
                 color: plan.highlight ? "#fff" : "var(--text)",
                 border: plan.highlight
-                  ? "2px solid color-mix(in srgb, var(--gold-doc) 70%, transparent)"
+                  ? "2px solid color-mix(in srgb, var(--rose-deep) 70%, transparent)"
                   : "1px solid var(--border)",
                 boxShadow: plan.highlight
-                  ? "0 12px 40px rgba(91,58,142,.25)"
+                  ? "0 12px 40px rgba(123,94,167,.28)"
                   : "0 4px 16px rgba(0,0,0,.05)",
               }}
             >
@@ -113,7 +113,7 @@ export default function MembresiaPage() {
                   className="self-start text-xs font-semibold uppercase tracking-wide px-3 py-1 rounded-full mb-4"
                   style={{
                     background:
-                      "color-mix(in srgb, var(--gold-doc) 35%, transparent)",
+                      "color-mix(in srgb, var(--rose-deep) 35%, transparent)",
                     color: "#1a1520",
                   }}
                 >
@@ -139,9 +139,7 @@ export default function MembresiaPage() {
                       className="flex-shrink-0 mt-0.5"
                       size={18}
                       style={{
-                        color: plan.highlight
-                          ? "var(--gold-doc)"
-                          : "var(--gold-deep)",
+                        color: "var(--rose-deep)",
                       }}
                       aria-hidden
                     />
@@ -161,7 +159,7 @@ export default function MembresiaPage() {
                 href={membership.payhipUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 transition-soft w-full font-semibold shadow-soft bg-gold text-ink border border-[color:var(--gold-deep)] hover:opacity-95"
+                className="inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 transition-soft w-full font-semibold shadow-soft bg-rose text-ink border border-rose-deep hover:opacity-95"
               >
                 {membership.cta}
               </a>

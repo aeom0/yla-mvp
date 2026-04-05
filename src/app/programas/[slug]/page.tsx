@@ -16,10 +16,14 @@ export default async function ProgramPage({ params }: ProgramPageProps) {
   const program = siteContent.programs.items.find((p) => p.id === slug);
   if (!program) notFound();
 
-  const accentHex = program.accent === "gold" ? "#c9a96e" : "#B497D6";
+  const accentColor =
+    program.accent === "rose" ? "var(--rose-deep)" : "var(--accent-soft)";
 
   return (
-    <main className="min-h-screen py-20 px-6" style={{ background: "var(--bg)" }}>
+    <main
+      className="min-h-screen py-20 px-6"
+      style={{ background: "var(--bg)" }}
+    >
       <div className="max-w-3xl mx-auto">
         <Link
           href="/#programas"
@@ -33,13 +37,16 @@ export default async function ProgramPage({ params }: ProgramPageProps) {
           <span
             className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4"
             style={{
-              background: `color-mix(in srgb, ${accentHex} 15%, transparent)`,
-              color: accentHex,
+              background: `color-mix(in srgb, ${accentColor} 15%, transparent)`,
+              color: accentColor,
             }}
           >
             {program.duration}
           </span>
-          <h1 className="title text-4xl md:text-5xl mb-3" style={{ color: "var(--accent)" }}>
+          <h1
+            className="title text-4xl md:text-5xl mb-3"
+            style={{ color: "var(--accent)" }}
+          >
             {program.title}
           </h1>
           <p className="text-xl italic" style={{ color: "var(--muted)" }}>
@@ -49,9 +56,12 @@ export default async function ProgramPage({ params }: ProgramPageProps) {
 
         <div
           className="rounded-2xl p-6 mb-6"
-          style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+          style={{
+            background: "var(--card)",
+            border: "1px solid var(--border)",
+          }}
         >
-          <h2 className="title text-xl mb-3" style={{ color: accentHex }}>
+          <h2 className="title text-xl mb-3" style={{ color: accentColor }}>
             ¿Para quién es?
           </h2>
           <p style={{ color: "var(--text)" }}>{program.detail.forWho}</p>
@@ -59,9 +69,12 @@ export default async function ProgramPage({ params }: ProgramPageProps) {
 
         <div
           className="rounded-2xl p-6 mb-6"
-          style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+          style={{
+            background: "var(--card)",
+            border: "1px solid var(--border)",
+          }}
         >
-          <h2 className="title text-xl mb-4" style={{ color: accentHex }}>
+          <h2 className="title text-xl mb-4" style={{ color: accentColor }}>
             Las 4 etapas
           </h2>
           <div className="space-y-3">
@@ -69,7 +82,7 @@ export default async function ProgramPage({ params }: ProgramPageProps) {
               <div key={i} className="flex items-start gap-3">
                 <span
                   className="w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold shrink-0 text-white"
-                  style={{ background: accentHex }}
+                  style={{ background: accentColor }}
                 >
                   {i + 1}
                 </span>
@@ -81,9 +94,12 @@ export default async function ProgramPage({ params }: ProgramPageProps) {
 
         <div
           className="rounded-2xl p-6 mb-6"
-          style={{ background: "var(--card)", border: "1px solid var(--border)" }}
+          style={{
+            background: "var(--card)",
+            border: "1px solid var(--border)",
+          }}
         >
-          <h2 className="title text-xl mb-4" style={{ color: accentHex }}>
+          <h2 className="title text-xl mb-4" style={{ color: accentColor }}>
             ¿Qué incluye?
           </h2>
           <div className="space-y-2">
@@ -92,7 +108,7 @@ export default async function ProgramPage({ params }: ProgramPageProps) {
                 <Check
                   size={16}
                   className="mt-0.5 shrink-0"
-                  style={{ color: accentHex }}
+                  style={{ color: accentColor }}
                   aria-hidden
                 />
                 <span className="text-sm">{item}</span>
@@ -104,8 +120,8 @@ export default async function ProgramPage({ params }: ProgramPageProps) {
         <div
           className="rounded-2xl p-8 text-center"
           style={{
-            background: `color-mix(in srgb, ${accentHex} 8%, transparent)`,
-            border: `1.5px solid ${accentHex}`,
+            background: `color-mix(in srgb, ${accentColor} 8%, transparent)`,
+            border: `1.5px solid ${accentColor}`,
           }}
         >
           <p className="title text-2xl mb-2" style={{ color: "var(--text)" }}>
@@ -119,7 +135,7 @@ export default async function ProgramPage({ params }: ProgramPageProps) {
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 px-8 py-4 rounded-2xl font-semibold text-white transition-soft hover:opacity-90"
-            style={{ background: accentHex }}
+            style={{ background: accentColor }}
           >
             <MessageCircle size={18} aria-hidden />
             {program.detail.ctaLabel}

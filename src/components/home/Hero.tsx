@@ -28,8 +28,8 @@ export function Hero() {
         className="absolute inset-0 pointer-events-none"
         style={{
           background: hasBanner
-            ? "linear-gradient(160deg, rgba(91,58,142,.72) 0%, rgba(22,18,31,.80) 100%)"
-            : "linear-gradient(160deg, rgba(91,58,142,.07) 0%, rgba(200,168,75,.04) 60%, transparent 100%)",
+            ? "linear-gradient(160deg, color-mix(in srgb, var(--accent) 72%, transparent) 0%, color-mix(in srgb, var(--violet-anchor) 80%, transparent) 100%)"
+            : "linear-gradient(160deg, color-mix(in srgb, var(--accent) 7%, transparent) 0%, color-mix(in srgb, var(--accent-soft) 4%, transparent) 60%, transparent 100%)",
         }}
         aria-hidden="true"
       />
@@ -42,7 +42,7 @@ export function Hero() {
             className="absolute -top-32 -right-32 w-120 h-120 rounded-full pointer-events-none"
             style={{
               background:
-                "radial-gradient(circle, rgba(91,58,142,.10) 0%, transparent 65%)",
+                "radial-gradient(circle, color-mix(in srgb, var(--accent) 10%, transparent) 0%, transparent 65%)",
             }}
           />
           <div
@@ -50,7 +50,7 @@ export function Hero() {
             className="absolute -bottom-20 -left-20 w-80 h-80 rounded-full pointer-events-none"
             style={{
               background:
-                "radial-gradient(circle, rgba(200,168,75,.07) 0%, transparent 65%)",
+                "radial-gradient(circle, color-mix(in srgb, var(--accent-soft) 7%, transparent) 0%, transparent 65%)",
             }}
           />
         </>
@@ -59,14 +59,18 @@ export function Hero() {
       <div className="container-yla relative z-10 text-center py-16 sm:py-20 md:py-24">
         <h1
           className="title text-[clamp(1.85rem,6.5vw,4.5rem)] sm:text-5xl md:text-6xl lg:text-7xl mb-5 sm:mb-6 leading-[1.12] sm:leading-tight px-1"
-          style={{ color: hasBanner ? "#ffffff" : "var(--accent)" }}
+          style={{ color: hasBanner ? "white" : "var(--accent)" }}
         >
           {hero.title}
         </h1>
 
         <p
           className="text-lg sm:text-xl md:text-2xl mb-4 max-w-2xl mx-auto font-semibold leading-snug px-2"
-          style={{ color: hasBanner ? "rgba(255,255,255,.92)" : "var(--text)" }}
+          style={{
+            color: hasBanner
+              ? "color-mix(in srgb, white 92%, transparent)"
+              : "var(--text)",
+          }}
         >
           {hero.headlineEmotional}
         </p>
@@ -74,7 +78,9 @@ export function Hero() {
         <p
           className="text-base md:text-lg mb-2 max-w-xl mx-auto"
           style={{
-            color: hasBanner ? "rgba(255,255,255,.72)" : "var(--muted)",
+            color: hasBanner
+              ? "color-mix(in srgb, white 72%, transparent)"
+              : "var(--muted)",
           }}
         >
           {hero.headlineAction}
@@ -83,7 +89,9 @@ export function Hero() {
         <p
           className="text-sm mb-10"
           style={{
-            color: hasBanner ? "rgba(255,255,255,.55)" : "var(--muted)",
+            color: hasBanner
+              ? "color-mix(in srgb, white 55%, transparent)"
+              : "var(--muted)",
             opacity: hasBanner ? 1 : 0.7,
           }}
         >
@@ -107,7 +115,10 @@ export function Hero() {
             className="text-base px-8 py-4 min-h-12"
             style={
               hasBanner
-                ? { borderColor: "rgba(255,255,255,.35)", color: "#fff" }
+                ? {
+                    borderColor: "color-mix(in srgb, white 35%, transparent)",
+                    color: "white",
+                  }
                 : {}
             }
             onClick={() =>

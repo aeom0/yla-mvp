@@ -19,8 +19,10 @@ yarn dev
 Abre [http://localhost:3000](http://localhost:3000).
 
 ```bash
-yarn build   # verificación producción + tipos
+yarn build        # verificación producción + tipos
 yarn lint
+yarn format       # Prettier (src + config acotados; ver package.json)
+yarn format:check
 ```
 
 ## Contenido

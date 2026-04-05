@@ -66,19 +66,19 @@ export function About() {
                 className="aspect-square rounded-2xl flex flex-col items-center justify-center relative overflow-hidden max-w-md mx-auto md:max-w-none gap-3"
                 style={{
                   background:
-                    "linear-gradient(135deg, var(--purple-mist) 0%, var(--gold-pale) 100%)",
+                    "linear-gradient(135deg, var(--lavender-mist) 0%, var(--rose-pale) 100%)",
                   border: "1px solid var(--border)",
                 }}
               >
                 <Gem
                   {...lucideBrand}
                   size={72}
-                  style={{ color: "var(--purple-soft)", opacity: 0.45 }}
+                  style={{ color: "var(--accent-soft)", opacity: 0.45 }}
                   aria-hidden
                 />
                 <div
                   className="absolute bottom-0 left-0 right-0 h-1"
-                  style={{ background: "var(--purple)" }}
+                  style={{ background: "var(--accent)" }}
                 />
                 <p
                   className="absolute bottom-5 text-xs px-4 text-center"
@@ -96,8 +96,8 @@ export function About() {
               <span
                 className="inline-block text-xs font-semibold px-3 py-1 rounded-full mb-4"
                 style={{
-                  background: "var(--purple-mist)",
-                  color: "var(--purple)",
+                  background: "var(--lavender-mist)",
+                  color: "var(--accent)",
                   border: "1px solid var(--border)",
                 }}
               >
@@ -113,7 +113,7 @@ export function About() {
 
             <p
               className="text-sm font-semibold leading-relaxed"
-              style={{ color: "var(--purple)" }}
+              style={{ color: "var(--accent)" }}
             >
               {about.credential}
             </p>
@@ -151,8 +151,8 @@ export function About() {
                   <span
                     className="w-8 h-8 rounded-lg flex items-center justify-center shrink-0"
                     style={{
-                      background: "var(--purple-mist)",
-                      color: "var(--purple)",
+                      background: "var(--lavender-mist)",
+                      color: "var(--accent)",
                     }}
                   >
                     {item.icon}
@@ -166,7 +166,7 @@ export function About() {
 
             <blockquote
               className="border-l-4 pl-4 italic text-sm leading-relaxed"
-              style={{ borderColor: "var(--gold)", color: "var(--muted)" }}
+              style={{ borderColor: "var(--rose)", color: "var(--muted)" }}
             >
               {about.quote}
             </blockquote>

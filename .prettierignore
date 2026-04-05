@@ -1,0 +1,10 @@
+.next
+node_modules
+.yarn
+dist
+build
+coverage
+public
+*.md
+.claude
+*.code-workspace

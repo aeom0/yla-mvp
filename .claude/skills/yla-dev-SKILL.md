@@ -52,22 +52,17 @@ El método fusiona estructura analítica con práctica espiritual. El dev/asesor
 
 ## 🎨 Sistema de diseño
 
-### Tokens de color (variables CSS en globals.css)
+### Tokens Aurora Consciente (`src/app/globals.css`)
 
-```css
---lavender:     #B497D6;  /* espiritual, complemento */
---lavender-deep:#9478bc;
---beige:        #F6EBD9;  /* fondo base cálido */
---beige-warm:   #f0e0c4;
---gold:         #E8D3A3;  /* ACENTO DOMINANTE — CTAs, borders, highlights */
---gold-deep:    #c9a96e;
---smoke:        #DADADA;  /* texto secundario */
---ink:          #333333;  /* texto principal */
-```
+**Semánticos (light en `:root`, dark en `.dark`):** `--bg`, `--text`, `--card`, `--border`, `--muted`, `--accent`, `--accent-soft`, `--section-alt`.
 
-> **Gold es el rey.** `#E8D3A3` / `#c9a96e` dominan botones, borders y highlights.
-> Lavanda = espiritual pero secundario. **Sin rosa ni pinkish en ningún lugar.**
-> Fondo de página: `#FAF7F2` (NO `#F6EBD9` que tiene canal rojo alto).
+**Paleta base:** `--lavender-deep` (#7B5EA7), `--lavender`, `--lavender-pale`, `--lavender-mist`, `--violet-anchor` (#3D2865), `--rose`, `--rose-deep`, `--rose-pale`, `--sage`, `--sage-deep`, `--beige`, `--ink`, `--smoke`.
+
+**Layout fijo:** footer usa `--footer-*` (fondo oscuro independiente del toggle de tema).
+
+**Sombras:** `--shadow-soft`, `--shadow-accent` (glow del acento en botones).
+
+En componentes y estilos inline: **`var(--accent)`** para CTAs y foco principal; **`var(--accent-soft)`** / **`var(--lavender)`** para detalles espirituales; **`var(--rose*)`** para cuarzo (gratis, bordes cálidos); **`var(--violet-anchor)`** para bloques ancla / display. **No usar** nombres legacy `--purple*`, `--gold*`, ni hex de marca viejos en TSX — ya migrados.
 
 ### Tipografía
 
@@ -80,7 +75,7 @@ El método fusiona estructura analítica con práctica espiritual. El dev/asesor
 - **Mobile-first siempre.** 375px es el viewport de referencia. Desktop = mejora progresiva.
 - Minimalismo funcional. Menos es más.
 - Animaciones sutiles: brillo, fade, latido. **Nunca flashy.**
-- Dark mode: fondo morado profundo + texto dorado/blanco.
+- Dark mode: fondo morado profundo + texto claro; acento lavanda.
 - Se siente como ritual digital, no como app de gimnasio.
 
 ---
@@ -108,7 +103,7 @@ src/
 │   ├── ui/          Button.tsx · Card.tsx · Section.tsx
 │   ├── home/
 │   │   ├── Hero.tsx            ✅ (sin video aún)
-│   │   ├── Philosophy.tsx      ✅ CTAs: YT, /tests, /blog (morado uniforme)
+│   │   ├── Philosophy.tsx      ✅ CTAs: YT, /tests, /blog (acento Aurora)
 │   │   ├── Programs.tsx        ✅ → /programas/[slug]; detail en content
 │   │   ├── Testimonials.tsx    ✅ (avatares iniciales, sin fotos reales)
 │   │   ├── About.tsx           ✅ (placeholder imagen Yube)
@@ -130,7 +125,7 @@ src/
 - `alert()` en newsletter → reemplazar por toast/modal
 - `next/image` para todas las imágenes
 - Meta tags OG por ruta
-- Accesibilidad: focus visible en dark mode con botones dorados
+- Accesibilidad: focus visible en dark mode con acento (`var(--accent)`)
 
 ---
 
@@ -236,7 +231,7 @@ Detalle completo de sprints y backlog: **`ROADMAP.md`**
 
 - [ ] ¿Se ve bien en 375px?
 - [ ] ¿Sin strings hardcodeados en JSX?
-- [ ] ¿TypeScript compila sin errores? (`npm run build`)
+- [ ] ¿TypeScript compila sin errores? (`yarn build`)
 - [ ] ¿Tailwind v4 (no v3)?
 - [ ] ¿`get_file_contents` antes de editar un archivo existente?
 - [ ] ¿El copy generado suena como Yube?
@@ -247,9 +242,11 @@ Detalle completo de sprints y backlog: **`ROADMAP.md`**
 ## 🔧 Comandos frecuentes
 
 ```bash
-npm run dev      # servidor local con Turbopack
-npm run build    # build de producción (detecta errores TS)
-npm run lint     # ESLint
+yarn dev           # servidor local con Turbopack
+yarn build         # build de producción (detecta errores TS)
+yarn lint          # ESLint
+yarn format        # Prettier (alcance en package.json)
+yarn format:check
 
 # WSL2: si hay problemas de hot reload, proyecto debe estar en ~/projects/ no en /mnt/c/
 ```

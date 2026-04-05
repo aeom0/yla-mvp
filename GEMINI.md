@@ -62,20 +62,20 @@ El sitio web (`yogaconlogicayalma.com`) actúa como **hub central** que conecta 
 
 ## 🎨 Sistema de diseño de la marca
 
-### Paleta de colores
+### Paleta de colores (Aurora Consciente)
 
 ```
-Gold (CTA primario)     → #E8D3A3  — botón principal (texto oscuro)
-Gold profundo           → #C9A96E  — bordes, acentos
-Lavanda                 → #B497D6  — espiritual, complemento
-Beige cálido            → #F6EBD9  — fondo base
-Smoke                   → #DADADA  — texto secundario
-Charcoal                → #333333  — texto principal
-Morado marca (brief)    → #5B3A8E  — bloques premium / identidad (variables CSS)
-Lila suave (brief)      → #C6B7E2  — fondos tipo lead magnet
+Acento / CTA (primario)  → #7B5EA7  — var(--accent) en light; botón principal
+Lavanda espiritual       → #B497D6  — var(--accent-soft), íconos, pills
+Rosa cuarzo              → #E8C4C4  — var(--rose); productos gratis, bordes suaves
+Rosa profundo            → #C8928F  — var(--rose-deep); acentos cálidos
+Sage bienestar           → #A8C5A0  — var(--sage)
+Violeta ancla            → #3D2865  — var(--violet-anchor); títulos display, planes destacados
+Fondo base               → #F8F4F0  — var(--beige) / var(--bg)
+Texto                    → #2D2D2D  — var(--text) (light)
 ```
 
-Los valores viven en `src/app/globals.css`. El componente `Button` primario sigue en **dorado**; bloques como Philosophy y las cards de programas usan **morado de marca** (`#5B3A8E`) para CTAs sólidos en esas secciones.
+Los valores exactos y el modo oscuro están en `src/app/globals.css`. El `Button` primario usa **`var(--accent)`** (morado Aurora). Pilares (`Philosophy`) y programas usan el mismo acento para CTAs sólidos — sin hex sueltos en componentes.
 
 ### Tipografía
 

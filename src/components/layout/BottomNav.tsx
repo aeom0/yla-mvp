@@ -39,7 +39,7 @@ export function BottomNav() {
               href={href}
               className={`flex flex-col items-center justify-center gap-0.5 py-1.5 text-[10px] leading-tight sm:text-xs transition-soft min-h-13 px-0.5 ${
                 isActive
-                  ? "text-(--gold-deep)"
+                  ? "text-(--rose-deep)"
                   : "text-(--muted) hover:text-(--text)"
               }`}
             >

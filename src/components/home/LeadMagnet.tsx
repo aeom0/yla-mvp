@@ -87,7 +87,7 @@ export function LeadMagnet() {
               autoComplete="email"
               placeholder={leadMagnet.emailPlaceholder}
               disabled={status === "loading"}
-              className="flex-1 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-(--purple) min-h-12"
+              className="flex-1 rounded-2xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-(--accent) min-h-12"
               style={{
                 border: "1px solid var(--border)",
                 background: "var(--card)",

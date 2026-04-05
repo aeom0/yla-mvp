@@ -6,10 +6,8 @@ type Props = ButtonHTMLAttributes<HTMLButtonElement> & {
 
 /*
   Botones YLA:
-  primary → morado sólido #5B3A8E, texto blanco
-  ghost   → contorno morado, fondo transparente
-
-  SIN gold en botones. El dorado es solo para detalles decorativos.
+  primary → var(--accent), texto blanco
+  ghost   → contorno var(--accent), fondo transparente
 */
 export function Button({
   variant = "primary",
@@ -24,8 +22,8 @@ export function Button({
       <button
         className={`${base} text-white hover:opacity-90 active:scale-[.98] ${className}`}
         style={{
-          background: "var(--purple)",
-          boxShadow: "var(--shadow-purple)",
+          background: "var(--accent)",
+          boxShadow: "var(--shadow-accent)",
         }}
         {...props}
       />
@@ -34,11 +32,11 @@ export function Button({
 
   return (
     <button
-      className={`${base} hover:bg-(--purple-mist) active:scale-[.98] ${className}`}
+      className={`${base} hover:bg-(--lavender-mist) active:scale-[.98] ${className}`}
       style={{
         background: "transparent",
-        border: "1.5px solid var(--purple)",
-        color: "var(--purple)",
+        border: "1.5px solid var(--accent)",
+        color: "var(--accent)",
       }}
       {...props}
     />

@@ -32,7 +32,7 @@
   --color-beige: var(--beige);
   --color-ink: var(--ink);
   --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);
-  --shadow-purple: 0 6px 28px rgba(123, 94, 167, 0.22);
+  --shadow-accent: 0 6px 28px rgba(123, 94, 167, 0.22);
 }
 
 /* — Paleta base (inmutable) — */
@@ -40,7 +40,7 @@
   /* Morado — acento espiritual dominante */
   --lavender-deep: #7b5ea7;
   --lavender: #b497d6;
-  --lavender-pale: rgba(123, 94, 167, 0.10);
+  --lavender-pale: rgba(123, 94, 167, 0.1);
   --lavender-mist: rgba(123, 94, 167, 0.06);
 
   /* Ancla — texto display y footer */
@@ -49,6 +49,7 @@
   /* Rosa cuarzo — hover, borders alt, cards secundarias */
   --rose: #e8c4c4;
   --rose-deep: #c8928f;
+  --rose-pale: rgba(232, 196, 196, 0.15);
 
   /* Sage — badges, sección naturaleza/bienestar */
   --sage: #a8c5a0;
@@ -77,6 +78,19 @@
   --accent: #7b5ea7;
   --accent-soft: #b497d6;
   --section-alt: #f0eaf8;
+}
+
+/* — Footer fijo oscuro (no depende del toggle .dark del usuario) — */
+:root {
+  --footer-bg: #18142a;
+  --footer-text: #ede8f5;
+  --footer-link: rgba(237, 232, 245, 0.65);
+  --footer-quote: rgba(237, 232, 245, 0.55);
+  --footer-meta: rgba(237, 232, 245, 0.35);
+  --footer-border-top: rgba(237, 232, 245, 0.08);
+  --footer-icon-bg: var(--lavender-pale);
+  --footer-brand: var(--lavender);
+  --footer-section-title: var(--accent);
 }
 
 /* — Tokens DARK — */
@@ -133,15 +147,29 @@ h3,
 }
 
 /* — Helpers Aurora Consciente — */
-.text-sage { color: var(--sage-deep); }
-.bg-sage-soft { background: rgba(168, 197, 160, 0.18); }
-.border-sage { border-color: var(--sage-deep); }
+.text-sage {
+  color: var(--sage-deep);
+}
+.bg-sage-soft {
+  background: rgba(168, 197, 160, 0.18);
+}
+.border-sage {
+  border-color: var(--sage-deep);
+}
 
-.text-rose-deep { color: var(--rose-deep); }
-.bg-rose-soft { background: rgba(232, 196, 196, 0.20); }
-.border-rose { border-color: var(--rose); }
+.text-rose-deep {
+  color: var(--rose-deep);
+}
+.bg-rose-soft {
+  background: rgba(232, 196, 196, 0.2);
+}
+.border-rose {
+  border-color: var(--rose);
+}
 
-.text-anchor { color: var(--violet-anchor); }
+.text-anchor {
+  color: var(--violet-anchor);
+}
 
 /* — Decorativo — */
 .section-wave {

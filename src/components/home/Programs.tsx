@@ -9,8 +9,8 @@ import { CheckCircle2, CircleCheck } from "lucide-react";
 import Link from "next/link";
 
 const accentColor = {
-  lavender: "var(--purple-soft)",
-  gold: "var(--gold)",
+  lavender: "var(--accent-soft)",
+  rose: "var(--rose)",
 };
 
 const achievements = [
@@ -94,7 +94,7 @@ export function Programs() {
                 <Link
                   href={`/programas/${program.id}`}
                   className="w-full mt-auto inline-flex items-center justify-center gap-2 rounded-2xl px-5 py-3 font-medium transition-soft hover:opacity-90 active:scale-[.98] min-h-12 text-white"
-                  style={{ background: "var(--purple)" }}
+                  style={{ background: "var(--accent)" }}
                 >
                   {programs.conocerMasLabel}
                 </Link>
@@ -117,18 +117,18 @@ export function Programs() {
         <div
           className="rounded-2xl overflow-hidden"
           style={{
-            border: "1.5px solid var(--purple-soft)",
+            border: "1.5px solid var(--accent-soft)",
             boxShadow: "0 4px 32px rgba(91,58,142,0.10)",
           }}
         >
           {/* Header de la card */}
           <div
             className="px-6 sm:px-10 pt-8 pb-6 text-center"
-            style={{ background: "var(--purple-mist)" }}
+            style={{ background: "var(--lavender-mist)" }}
           >
             <p
               className="text-xs font-semibold tracking-widest uppercase mb-1"
-              style={{ color: "var(--purple)" }}
+              style={{ color: "var(--accent)" }}
             >
               {classes.personalized.subtitle}
             </p>
@@ -153,7 +153,7 @@ export function Programs() {
               <div>
                 <p
                   className="text-xs font-bold tracking-widest uppercase mb-4"
-                  style={{ color: "var(--purple)" }}
+                  style={{ color: "var(--accent)" }}
                 >
                   Qué vas a lograr
                 </p>
@@ -164,7 +164,7 @@ export function Programs() {
                         {...lucideBrand}
                         size={16}
                         className="mt-0.5 shrink-0"
-                        style={{ color: "var(--purple)" }}
+                        style={{ color: "var(--accent)" }}
                         aria-hidden
                       />
                       <span>{item}</span>
@@ -177,7 +177,7 @@ export function Programs() {
               <div>
                 <p
                   className="text-xs font-bold tracking-widest uppercase mb-4"
-                  style={{ color: "var(--purple)" }}
+                  style={{ color: "var(--accent)" }}
                 >
                   Para ti si…
                 </p>
@@ -186,7 +186,7 @@ export function Programs() {
                     <li key={i} className="flex items-start gap-2 text-sm">
                       <span
                         className="mt-1 w-1.5 h-1.5 rounded-full shrink-0"
-                        style={{ background: "var(--purple-soft)" }}
+                        style={{ background: "var(--accent-soft)" }}
                         aria-hidden
                       />
                       <span style={{ color: "var(--muted)" }}>{item}</span>
@@ -199,7 +199,7 @@ export function Programs() {
             {/* Cita Yube */}
             <blockquote
               className="text-sm italic text-center leading-relaxed mb-8 px-4"
-              style={{ color: "var(--purple)", borderLeft: "none" }}
+              style={{ color: "var(--accent)", borderLeft: "none" }}
             >
               &ldquo;Integro técnica, conciencia corporal y conexión emocional…
               para que no solo practiques, sino que te entiendas.&rdquo;
@@ -219,7 +219,7 @@ export function Programs() {
                     <div className="flex flex-col items-center gap-1">
                       <div
                         className="w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold text-white"
-                        style={{ background: "var(--purple)" }}
+                        style={{ background: "var(--accent)" }}
                       >
                         {step.step}
                       </div>
@@ -233,7 +233,7 @@ export function Programs() {
                     {i < howItWorks.length - 1 && (
                       <div
                         className="w-8 sm:w-12 h-px mb-5"
-                        style={{ background: "var(--purple-soft)" }}
+                        style={{ background: "var(--accent-soft)" }}
                         aria-hidden
                       />
                     )}
@@ -256,7 +256,7 @@ export function Programs() {
               </p>
               <p
                 className="text-xs mt-1 italic"
-                style={{ color: "var(--purple-soft)" }}
+                style={{ color: "var(--accent-soft)" }}
               >
                 En cada sesión conectarás mejor con tu cuerpo.
               </p>

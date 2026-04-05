@@ -22,7 +22,7 @@ export function Header() {
       className="sticky top-0 z-50 backdrop-blur"
       style={{
         borderBottom: "1px solid var(--border)",
-        background: "rgba(250, 247, 242, 0.88)",
+        background: "color-mix(in srgb, var(--bg) 88%, transparent)",
       }}
     >
       <div className="container-yla h-14 flex items-center justify-between gap-2 sm:gap-3 min-w-0">
@@ -67,8 +67,8 @@ export function Header() {
                 href={item.href}
                 className="px-3 py-1.5 rounded-xl transition-soft"
                 style={{
-                  background: active ? "var(--purple-mist)" : "transparent",
-                  color: active ? "var(--purple)" : "var(--text)",
+                  background: active ? "var(--lavender-mist)" : "transparent",
+                  color: active ? "var(--accent)" : "var(--text)",
                   fontWeight: active ? 600 : 400,
                 }}
               >
@@ -81,10 +81,10 @@ export function Header() {
             className="px-3 py-1.5 rounded-xl transition-soft"
             style={{
               background: pathname.startsWith(header.accesoAlumnasHref)
-                ? "var(--purple-mist)"
+                ? "var(--lavender-mist)"
                 : "transparent",
               color: pathname.startsWith(header.accesoAlumnasHref)
-                ? "var(--purple)"
+                ? "var(--accent)"
                 : "var(--text)",
             }}
           >
@@ -99,8 +99,8 @@ export function Header() {
             href="/membresia"
             className="inline-flex items-center justify-center rounded-xl px-3 sm:px-4 py-2 text-xs sm:text-sm font-semibold text-white transition-soft hover:opacity-90 min-h-[40px] whitespace-nowrap"
             style={{
-              background: "var(--purple)",
-              boxShadow: "var(--shadow-purple)",
+              background: "var(--accent)",
+              boxShadow: "var(--shadow-accent)",
             }}
           >
             {header.ctaMembresia}
