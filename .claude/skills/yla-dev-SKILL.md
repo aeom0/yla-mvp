@@ -13,16 +13,17 @@ description: >
 # YLA Dev Skill — Yoga con Lógica y Alma
 
 > Lee este archivo completo antes de tocar una sola línea del proyecto.
-> Fuente de verdad técnica. El ROADMAP.md tiene el backlog de producto detallado.
+> Es la fuente de verdad técnica. CLAUDE.md y ROADMAP.md en el repo la complementan.
+> Última revisión: abril 2026.
 
 ---
 
 ## 🧘 Contexto del proyecto
 
-**Yoga con Lógica y Alma** es la plataforma digital de **Yube Karina** (ingeniera industrial + yogui, 500h certificadas, CEO de YLA).
-El método fusiona estructura analítica con práctica espiritual. El dev/asesor técnico es **Alberto**.
+**Yoga con Lógica y Alma** es la plataforma digital de **Yube Karina** (ingeniera industrial + instructora de yoga con formación avanzada, 500h).
+El método fusiona estructura analítica con práctica espiritual. El asesor técnico es **Alberto**.
 
-**Fase actual:** Fase 0-B — mejoras de conversión (assets reales, precios, tienda, email). Ver `ROADMAP.md`.
+**Fase actual:** Landing page completa + rutas de producto. Próximo: CMS Sanity (Fase 0-C) → PWA (Fase 1).
 
 **Tagline:** *"Organizamos el bienestar, ritualizamos la estructura."*
 **Público:** Mujeres conscientes y emprendedoras, mercado hispanohablante (Venezuela, España, LATAM).
@@ -33,99 +34,144 @@ El método fusiona estructura analítica con práctica espiritual. El dev/asesor
 
 | Capa | Tecnología | Notas |
 |------|-----------|-------|
-| Framework | Next.js 15 (App Router) | Sin Pages Router |
-| UI | React 19 + Tailwind CSS v4 | v4, no v3 |
+| Framework | Next.js 15.4.8 (App Router) | Sin Pages Router |
+| UI | React 19.2.1 + Tailwind CSS v4 | v4, NO v3 |
 | Lenguaje | TypeScript strict | Sin `any` implícito |
-| Iconos | Lucide React | Ya instalado |
-| Tipografía | Playfair Display + Lato | Via @fontsource |
-| CMS (próximo) | Sanity (free tier) | Fase 0-C |
-| Backend | Supabase | Fase 2 — proyecto: mwvgtxzvqhducjggycuu |
+| Iconos | Lucide React ^0.539 | Ya instalado |
+| Tipografía | Playfair Display + Lato + Dancing Script | Via @fontsource |
+| Gestor de paquetes | Yarn 4 (Corepack) | `ENABLE_EXPERIMENTAL_COREPACK=1` en Vercel |
+| CMS (próximo) | Sanity Studio — free tier | Fase 0-C |
+| Backend | Supabase (`mwvgtxzvqhducjggycuu`) | Fase 2 |
 | Pagos | Stripe | Fase 2 |
-| Email | Resend | Sprint 3 — free: 3k emails/mes |
-| Tienda | Payhip | Activo — payhip.com/ConLogicayAlma |
-| Deploy | Vercel | proyecto: yogaconlogicayalma |
-| Entorno | WSL2 · Windows 11 · VS Code + Claude Code | Android = target primario |
+| Tienda | Payhip | Activo |
+| Entorno | WSL2 · Windows 11 · VS Code | Android = target primario |
+| Deploy | Vercel (`yogaconlogicayalma`) | Auto-deploy desde `main` |
 
 **⚠️ No instalar nuevas dependencias sin confirmar con Alberto.**
 
 ---
 
-## 🎨 Sistema de diseño
+## 🎨 Sistema de diseño — Aurora Consciente
 
-### Tokens Aurora Consciente (`src/app/globals.css`)
+### Variables CSS (definidas en `src/app/globals.css`)
 
-**Semánticos (light en `:root`, dark en `.dark`):** `--bg`, `--text`, `--card`, `--border`, `--muted`, `--accent`, `--accent-soft`, `--section-alt`.
+```css
+/* Paleta base — valores fijos */
+--lavender-deep:  #7B5EA7;  /* CTA primario (Button variant=primary) */
+--lavender:       #B497D6;  /* espiritual, íconos, pills */
+--rose:           #E8C4C4;  /* productos gratis, bordes suaves */
+--rose-deep:      #C8928F;  /* acentos cálidos */
+--sage:           #A8C5A0;  /* bienestar */
+--violet-anchor:  #3D2865;  /* títulos display, footer oscuro */
+--beige:          #F8F4F0;  /* fondo base claro */
+--ink:            #2D2D2D;  /* texto principal */
 
-**Paleta base:** `--lavender-deep` (#7B5EA7), `--lavender`, `--lavender-pale`, `--lavender-mist`, `--violet-anchor` (#3D2865), `--rose`, `--rose-deep`, `--rose-pale`, `--sage`, `--sage-deep`, `--beige`, `--ink`, `--smoke`.
+/* Tokens semánticos light (:root) */
+--accent:         #7B5EA7;  /* = lavender-deep → CTA, borders activos */
+--accent-soft:    #B497D6;  /* = lavender */
+--bg:             #F8F4F0;
+--text:           #2D2D2D;
+--muted:          /* gris medio */
+--border:         /* lavanda muy suave */
+--section-alt:    /* lila muy suave para secciones alternas */
 
-**Layout fijo:** footer usa `--footer-*` (fondo oscuro independiente del toggle de tema).
+/* Tokens dark (.dark) */
+--bg:             #1c1a22;
+--accent:         #B497D6;  /* lavanda en dark */
+```
 
-**Sombras:** `--shadow-soft`, `--shadow-accent` (glow del acento en botones).
+> **CRÍTICO:** No uses nombres legacy `--gold*`, `--purple*` ni `#D4AF37`, `#5B3A8E`, `#FAF7F2` en código nuevo.
+> El sistema de color es Aurora Consciente. `Button primary` = `var(--accent)` = morado `#7B5EA7`.
+> Hardcodear hex directamente en `style={}` solo cuando `var()` pueda fallar silenciosamente (ej: Footer oscuro, colores de badge).
 
-En componentes y estilos inline: **`var(--accent)`** para CTAs y foco principal; **`var(--accent-soft)`** / **`var(--lavender)`** para detalles espirituales; **`var(--rose*)`** para cuarzo (gratis, bordes cálidos); **`var(--violet-anchor)`** para bloques ancla / display. **No usar** nombres legacy `--purple*`, `--gold*`, ni hex de marca viejos en TSX — ya migrados.
+### En componentes — uso correcto
+
+```tsx
+// ✅ Semántico (preferido)
+style={{ color: 'var(--accent)' }}
+style={{ background: 'var(--section-alt)' }}
+
+// ✅ Hardcoded hex cuando es color fijo de marca que no cambia con el tema
+style={{ background: '#1c1a22', color: '#B497D6' }}  // ej: Footer siempre oscuro
+
+// ❌ Legacy — NO usar
+style={{ color: 'var(--gold-deep)' }}   // token eliminado
+style={{ background: '#FAF7F2' }}        // fondo viejo
+```
 
 ### Tipografía
 
-- **Títulos / Display:** Playfair Display
-- **Cuerpo / UI:** Lato
-- **Mantras / frases canalizadas:** Dancing Script
+- `Playfair Display` → títulos, clase `.title`, `h1–h3`
+- `Lato` → body, UI, botones
+- `Dancing Script` → mantras, frases espirituales canalizadas
 
 ### Principios visuales irrompibles
 
-- **Mobile-first siempre.** 375px es el viewport de referencia. Desktop = mejora progresiva.
+- **Mobile-first.** 375px = viewport de referencia. Desktop = mejora progresiva.
 - Minimalismo funcional. Menos es más.
 - Animaciones sutiles: brillo, fade, latido. **Nunca flashy.**
-- Dark mode: fondo morado profundo + texto claro; acento lavanda.
 - Se siente como ritual digital, no como app de gimnasio.
+- Dark mode: fondo morado profundo `#1c1a22` + texto claro + acento lavanda.
 
 ---
 
-## 📁 Estado real del codebase (abril 2026)
+## 📁 Arquitectura de carpetas
 
 ```
 src/
 ├── app/
-│   ├── layout.tsx              ← fuentes, metadata, ThemeProvider
-│   ├── page.tsx                ← orden: Hero → Philosophy → Programs →
-│   │                              Testimonials → About → Community →
-│   │                              Shop → LeadMagnet → SocialProofStrip → Footer
-│   ├── globals.css
-│   ├── api/subscribe/route.ts  ← endpoint email (sin ESP conectado aún)
-│   ├── blog/page.tsx           ← placeholder próximamente ✅
-│   ├── tests/page.tsx          ← placeholder próximamente ✅
-│   ├── programas/[slug]/page.tsx ← ficha programa (SSG) ✅
-│   ├── tienda/page.tsx         ← índice tienda ✅
-│   ├── tienda/[slug]/page.tsx  ← ficha producto ✅
-│   ├── membresia/page.tsx      ← página de planes ✅
-│   └── faq/page.tsx            ← FAQ standalone ✅
+│   ├── layout.tsx
+│   ├── page.tsx                      ← landing (importa secciones en orden)
+│   ├── globals.css                   ← variables CSS Aurora Consciente + Tailwind base
+│   ├── api/
+│   │   └── subscribe/route.ts        ← POST email (ESP por conectar — Sprint 3)
+│   ├── blog/page.tsx                 ← placeholder «próximamente»
+│   ├── tests/page.tsx                ← placeholder «próximamente»
+│   ├── programas/
+│   │   └── [slug]/page.tsx           ← ficha SSG por programa
+│   ├── tienda/
+│   │   ├── page.tsx                  ← índice catálogo
+│   │   └── [slug]/page.tsx           ← ficha de producto
+│   ├── membresia/page.tsx
+│   └── faq/page.tsx
 │
 ├── components/
-│   ├── ui/          Button.tsx · Card.tsx · Section.tsx
-│   ├── home/
-│   │   ├── Hero.tsx            ✅ (sin video aún)
-│   │   ├── Philosophy.tsx      ✅ CTAs: YT, /tests, /blog (acento Aurora)
-│   │   ├── Programs.tsx        ✅ → /programas/[slug]; detail en content
-│   │   ├── Testimonials.tsx    ✅ (avatares iniciales, sin fotos reales)
-│   │   ├── About.tsx           ✅ (placeholder imagen Yube)
-│   │   ├── Community.tsx       ✅
-│   │   ├── Shop.tsx            ✅ (sin precios, redirige a Payhip)
-│   │   ├── LeadMagnet.tsx      ✅
-│   │   ├── SocialProofStrip.tsx ✅
-│   │   ├── FAQ.tsx             ✅
-│   │   └── Footer.tsx          ✅
-│   ├── layout/      Header.tsx · BottomNav.tsx
-│   └── theme/       ThemeToggle.tsx
+│   ├── ui/
+│   │   ├── Button.tsx
+│   │   ├── Card.tsx
+│   │   └── Section.tsx
+│   │
+│   ├── home/                         ← secciones del landing
+│   │   ├── Hero.tsx                  ✅
+│   │   ├── Philosophy.tsx            ✅  (CTAs: YouTube, /tests, /blog)
+│   │   ├── Programs.tsx              ✅  (→ /programas/[slug])
+│   │   ├── Testimonials.tsx          ✅  (avatares iniciales; fotos pendientes)
+│   │   ├── About.tsx                 ✅  (foto Yube pendiente)
+│   │   ├── Community.tsx             ✅
+│   │   ├── Shop.tsx                  ✅  (sin precios — Sprint 2)
+│   │   ├── LeadMagnet.tsx            ✅
+│   │   ├── SocialProofStrip.tsx      ✅
+│   │   ├── FAQ.tsx                   ✅
+│   │   └── Footer.tsx                ✅
+│   │
+│   ├── layout/
+│   │   ├── Header.tsx
+│   │   └── BottomNav.tsx
+│   │
+│   └── theme/
+│       └── ThemeToggle.tsx
 │
-├── data/content.ts             ← FUENTE DE VERDAD del contenido
-├── lib/ · hooks/ · types/
+├── data/
+│   └── content.ts                    ← FUENTE DE VERDAD del contenido
+│
+├── lib/
+│   ├── utils.ts
+│   └── constants.ts
+│
+├── hooks/
+└── types/
+    └── index.ts
 ```
-
-### Pendientes conocidos de deuda técnica
-
-- `alert()` en newsletter → reemplazar por toast/modal
-- `next/image` para todas las imágenes
-- Meta tags OG por ruta
-- Accesibilidad: focus visible en dark mode con acento (`var(--accent)`)
 
 ---
 
@@ -143,70 +189,122 @@ export default function Hero() {
 
 // ❌ INCORRECTO — string hardcodeado en JSX
 export default function Hero() {
-  return <section>Bienvenida a tu espacio sagrado</section>
+  return <section>El arte de volver a ti</section>
 }
 ```
 
-### Workflow con GitHub MCP
+### Todo el texto visible vive en `src/data/content.ts`
 
-- **Siempre** `get_file_contents` antes de editar — Cursor puede haber modificado el archivo
-- **Batchar** cambios relacionados en un solo `push_files` con commit message descriptivo
-- Conventional commits: `feat:` `fix:` `docs:` `chore:`
-- Push directo a `main` — Alberto hace `git pull` localmente
+Campos relevantes actuales:
+- `hero` — tagline, title, subtitle, description, cta, stats
+- `philosophy` — title, description, pillars[]
+- `programs.items[]` — id, title, duration, description, stages[], accent, detail
+- `programs.items[].detail` — for whom, includes, price, cta, slug
+- `testimonials[]`
+- `about` — title, credential, description, highlights[], quote, welcomeVideoYoutubeId
+- `shop.products[]` — id, category, title, intention, badge, isFree, price
+- `faq.items[]`
+- `community`, `newsletter`
+- `footer` — tagline, links, social
+- `siteContent.testsPage`, `siteContent.blogPage` — placeholders
+- `classes`, `plans[]` — para /membresia
+
+### TypeScript strict
+
+```tsx
+// Props con interfaces nombradas
+interface HeroProps { data: HeroContent; className?: string }
+// Tipos en src/types/index.ts
+```
+
+### Un componente = una responsabilidad
+
+Si supera ~150 líneas, dividir. Si mezcla fetch + render, separar en hook + componente.
 
 ---
 
-## 📦 Productos y contenido
+## 🌐 Estado actual del landing y rutas
+
+| Sección / Ruta | Componente | Estado / Notas |
+|---|---|---|
+| Hero | `Hero.tsx` | ✅ Live |
+| Filosofía | `Philosophy.tsx` | ✅ Pilares Cuerpo/Mente/Alma; CTA por pilar → YouTube, `/tests`, `/blog` |
+| Programas | `Programs.tsx` | ✅ Cards → `/programas/[slug]`; bloque clases personalizadas |
+| Testimonios | `Testimonials.tsx` | ✅ Avatares iniciales; fotos reales pendientes (Sprint 1) |
+| Sobre Yube | `About.tsx` | ✅ Foto placeholder; imagen real pendiente (Sprint 1) |
+| Comunidad | `Community.tsx` | ✅ Grid IG, WhatsApp, newsletter |
+| Tienda | `Shop.tsx` | ✅ Sin precios (Sprint 2) |
+| Lead magnet | `LeadMagnet.tsx` | ✅ `#guia-gratis` → POST `/api/subscribe` |
+| Social proof | `SocialProofStrip.tsx` | ✅ |
+| FAQ | `FAQ.tsx` | ✅ |
+| Footer | `Footer.tsx` | ✅ |
+| `/programas/[slug]` | SSG desde `content.ts` | ✅ |
+| `/tienda`, `/tienda/[slug]` | Catálogo + ficha | ✅ |
+| `/membresia` | Comparación de planes | ✅ |
+| `/faq` | FAQ standalone | ✅ |
+| `/tests`, `/blog` | Placeholders | ✅ |
+| `/api/subscribe` | POST email | ✅ Sin ESP conectado (Sprint 3) |
+
+---
+
+## 📦 Contenido de referencia
 
 ### Programas (4 meses c/u)
 
-| Programa | Etapas |
-|----------|--------|
-| Encuentra tu Centro | Conectar → Autoreconocimiento → Anclar → Avanzar |
-| Enraíza-Te | Volver al cuerpo → Estabilidad → Fuerza → Integración |
-| Elogio a Ti | Despertar → Reconexión → Reprogramación → Consagración |
+| Programa | Acento | Etapas |
+|----------|--------|--------|
+| Encuentra tu Centro | lavender | Conectar → Autoreconocimiento → Anclar → Avanzar |
+| Enraíza-Te | lavender | Volver al cuerpo → Estabilidad → Fuerza → Integración |
+| Elogio a Ti | rose | Despertar → Reconexión → Reprogramación → Consagración |
 
-### Clases online
+> Acento en `content.ts` → `accent: 'lavender' | 'rose'`. **No usar `'gold'`** — token eliminado.
 
-- **Respira y Fluye** — restaurativo, pausado
-- **Alma y Movimiento** — yoga suave
-- **Clases Temáticas** — 2x mes
-- Plan Esencial: 4 clases/mes ($25) | Plan Consciente: 8 clases/mes ($45)
+### Links activos
 
-### Productos digitales en Payhip
-
-- Guía de posturas básicas (gratis — lead magnet)
-- Camino al Merecimiento (cuaderno)
-- Mandalas de Abundancia (cuaderno)
-- Camino a la Abundancia (cuaderno)
-
-### Redes sociales activas
-
-- Instagram / TikTok: @yube.karina
+- Tienda: https://payhip.com/ConLogicayAlma
+- Comunidad WA: https://chat.whatsapp.com/Din0PQRJ645InTV6R7ZXYC
+- WhatsApp directo Yube: https://wa.me/584243547179
+- Instagram: @yube.karina
+- TikTok: @yube.karina
 - YouTube: @yube.karinag
-- WhatsApp directo: wa.me/584243547179
-- WhatsApp grupo: chat.whatsapp.com/Din0PQRJ645InTV6R7ZXYC
+- Email: yogaconlogicayalma@gmail.com
+- Live: https://yla-mvp.vercel.app
+- Dominio (pendiente DNS): yogaconlogicayalma.com
 
 ---
 
 ## 🚀 Roadmap resumido
 
 ```
-Fase 0-B (actual) ── Conversión: assets reales, precios, tienda, /tienda/[slug]
-         │
-Fase 0-C ─────────── CMS Sanity: autonomía de contenido para Yube
-         │            (schemas: hero, product, program, testimonial, faq, about, socialLinks)
-         │
-Fase 1 ───────────── PWA: bitácora, modo ritual, dashboard espiritual
-         │
-Fase 2 ───────────── Full web app: Supabase auth + Stripe membresías
-         │
-Fase 3 ───────────── App nativa (React Native / Expo)
-         │
-Fase 4 ───────────── Concept Store física (Turmero/Maracay) + QR ↔ app
+Fase 0-B ← Sprint actual
+  Sprint 1: Logo + foto Yube + video Hero + fotos testimonios
+  Sprint 2: Precios en Shop + galería productos + StartHere.tsx
+  Sprint 3: Resend conectado + dominio yogaconlogicayalma.com
+
+Fase 0-C → Sanity CMS
+  Yube edita contenido sin tocar código
+  ISR + webhook Vercel → actualización en ~30s
+
+Fase 1 → PWA
+  Dashboard espiritual, bitácora del alma, modo ritual
+
+Fase 2 → Full web app
+  Supabase auth + DB + Stripe membresías
+
+Fase 3 → App nativa (React Native / Expo)
+
+Fase 4 → Concept Store física (Turmero/Maracay)
 ```
 
-Detalle completo de sprints y backlog: **`ROADMAP.md`**
+---
+
+## 🔑 Reglas de git / deploy
+
+- Push directo a `main`. Sin PR workflow.
+- **Siempre leer el archivo con `get_file_contents` antes de editar** — Cursor puede haber modificado algo entre sesiones.
+- El `sha` es obligatorio en `create_or_update_file` para archivos existentes.
+- Commits de múltiples archivos → usar `push_files` (atómico).
+- Alberto hace `git pull` localmente tras cada push de Claude.
 
 ---
 
@@ -221,37 +319,36 @@ Detalle completo de sprints y backlog: **`ROADMAP.md`**
 > "Diseño sagrado para tu vida diaria."
 > "Cuando el alma guía y la mente acompaña."
 
-**Tono siempre:** cercano, motivador, espiritual sin ser dogmático. Nunca frío ni técnico en el copy visible.
-**Yube es siempre "Instructora"**, nunca "Maestra".
-**Credentials fijas:** "Ingeniera industrial de profesión. Instructora de yoga y meditación, 500 horas certificadas. CEO de Yoga con Lógica y Alma."
+**Tono:** cercano, motivador, espiritual sin ser dogmático. Nunca frío ni técnico en el copy visible.
+**Sobre Yube:** es **Instructora** (no "Maestra"). Credencial oficial:
+> *"Ingeniera industrial de profesión. Instructora de yoga con formación avanzada. Creadora de un método que nadie más enseña."*
 
 ---
 
-## ⚠️ Checklist antes de commit
+## ⚠️ Checklist antes de cada commit
 
 - [ ] ¿Se ve bien en 375px?
-- [ ] ¿Sin strings hardcodeados en JSX?
+- [ ] ¿Cero strings hardcodeados en JSX?
+- [ ] ¿Sin tokens legacy (`--gold`, `--purple`, hex viejos)?
 - [ ] ¿TypeScript compila sin errores? (`yarn build`)
 - [ ] ¿Tailwind v4 (no v3)?
-- [ ] ¿`get_file_contents` antes de editar un archivo existente?
-- [ ] ¿El copy generado suena como Yube?
-- [ ] ¿Alt en todas las imágenes?
+- [ ] ¿Props con interfaces nombradas?
+- [ ] ¿`alt` en todas las imágenes?
+- [ ] ¿El copy suena como Yube?
 
 ---
 
 ## 🔧 Comandos frecuentes
 
 ```bash
-yarn dev           # servidor local con Turbopack
-yarn build         # build de producción (detecta errores TS)
-yarn lint          # ESLint
-yarn format        # Prettier (alcance en package.json)
-yarn format:check
-
-# WSL2: si hay problemas de hot reload, proyecto debe estar en ~/projects/ no en /mnt/c/
+yarn dev        # servidor local (Turbopack)
+yarn build      # build producción — detecta errores TS
+yarn lint       # ESLint
 ```
+
+> WSL2: mantener el proyecto en el filesystem de Linux (`~/projects/`), no en `/mnt/c/`, para evitar problemas de hot reload.
 
 ---
 
-*Skill mantenido por Alberto. Actualizar tras cada sesión con cambios arquitectónicos.*
-*Última actualización: abril 2026.*
+*Skill mantenido por Alberto. Actualizar cada vez que haya cambios arquitectónicos mayores.*
+*Sincronizar siempre con CLAUDE.md, GEMINI.md y ROADMAP.md en el repo.*

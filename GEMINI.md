@@ -3,12 +3,13 @@
 > Este archivo es el brief técnico del proyecto **Yoga con Lógica y Alma**.
 > Yube: léelo con Gemini al inicio de cada sesión de trabajo para que tenga contexto completo.
 > Alberto (desarrollador) implementa todo lo que planifiquen juntas.
+> Última revisión: abril 2026.
 
 ---
 
 ## 🧘 ¿Qué es este proyecto?
 
-**Yoga con Lógica y Alma** es la plataforma digital de **Yube Karina** — ingeniera industrial y instructora de yoga con formación avanzada — creadora de un método propio que fusiona pensamiento analítico con práctica espiritual.
+**Yoga con Lógica y Alma** es la plataforma digital de **Yube Karina** — ingeniera industrial e instructora de yoga con formación avanzada (500h) — creadora de un método propio que fusiona pensamiento analítico con práctica espiritual.
 
 ### La web como paraguas digital
 
@@ -16,14 +17,14 @@ El sitio web (`yogaconlogicayalma.com`) actúa como **hub central** que conecta 
 
 | Canal | Estado | Detalle |
 |-------|--------|---------|
-| 🌐 Web / Tienda online | ✅ Live | `yogaconlogicayalma.vercel.app` (dominio propio próximamente) |
-| 📺 YouTube | ✅ Activo | Canal de clases y contenido |
-| 💬 WhatsApp — Almas en Armonía | ✅ Activo | 64 participantes |
-| 🎵 TikTok | ✅ Activo | 182 seguidores |
-| 📸 Instagram | ✅ Activo | 2,601 seguidores |
+| 🌐 Web | ✅ Live | `yla-mvp.vercel.app` (dominio propio próximamente) |
+| 📺 YouTube | ✅ Activo | @yube.karinag |
+| 💬 WhatsApp — Almas en Armonía | ✅ Activo | Comunidad activa |
+| 🎵 TikTok | ✅ Activo | @yube.karina |
+| 📸 Instagram | ✅ Activo | @yube.karina |
 | 🛍️ Tienda digital | ✅ Activo | Payhip — https://payhip.com/ConLogicayAlma |
 
-**Dominio:** `yogaconlogicayalma.com` (a conectar próximamente)
+**Dominio:** `yogaconlogicayalma.com` (a conectar — Sprint 3)
 
 ---
 
@@ -32,7 +33,7 @@ El sitio web (`yogaconlogicayalma.com`) actúa como **hub central** que conecta 
 | Rol | Persona | Herramienta |
 |-----|---------|-------------|
 | Creadora de contenido y marca | **Yube Karina** | Gemini AI |
-| Desarrollador técnico | **Alberto** | Claude AI + VS Code |
+| Desarrollador técnico | **Alberto** | Claude AI + VS Code / Cursor |
 
 **Flujo de trabajo:**
 1. Yube define qué quiere (con Gemini)
@@ -50,32 +51,31 @@ El sitio web (`yogaconlogicayalma.com`) actúa como **hub central** que conecta 
 | UI Library | React | 19.2.1 |
 | Estilos | Tailwind CSS | v4 |
 | Lenguaje | TypeScript | strict mode |
-| Iconos | Lucide React | ^0.539 |
 | Tipografía | Playfair Display + Lato + Dancing Script | via @fontsource |
 | Hosting | Vercel | auto-deploy desde GitHub |
-| Base de datos | Supabase | Fase 2 (próximamente) |
-| Pagos | Stripe | Fase 2 (próximamente) |
+| CMS (próximo) | Sanity Studio | Fase 0-C |
+| Base de datos | Supabase | Fase 2 |
+| Pagos | Stripe | Fase 2 |
+| Email | Resend | Sprint 3 |
 | Tienda digital | Payhip | Activo |
 | Repo | GitHub | `github.com/aeom0/yla-mvp` |
 
 ---
 
-## 🎨 Sistema de diseño de la marca
+## 🎨 Sistema de diseño de la marca — Aurora Consciente
 
-### Paleta de colores (Aurora Consciente)
+### Paleta de colores
 
 ```
-Acento / CTA (primario)  → #7B5EA7  — var(--accent) en light; botón principal
-Lavanda espiritual       → #B497D6  — var(--accent-soft), íconos, pills
-Rosa cuarzo              → #E8C4C4  — var(--rose); productos gratis, bordes suaves
-Rosa profundo            → #C8928F  — var(--rose-deep); acentos cálidos
-Sage bienestar           → #A8C5A0  — var(--sage)
-Violeta ancla            → #3D2865  — var(--violet-anchor); títulos display, planes destacados
-Fondo base               → #F8F4F0  — var(--beige) / var(--bg)
-Texto                    → #2D2D2D  — var(--text) (light)
+Acento / CTA (primario)  → #7B5EA7  — botón principal, borders activos
+Lavanda espiritual       → #B497D6  — íconos, pills, acento suave
+Rosa cuarzo              → #E8C4C4  — productos gratis, bordes suaves
+Rosa profundo            → #C8928F  — acentos cálidos
+Sage bienestar           → #A8C5A0
+Violeta ancla            → #3D2865  — títulos display, footer oscuro
+Fondo base               → #F8F4F0  — fondo claro
+Texto                    → #2D2D2D
 ```
-
-Los valores exactos y el modo oscuro están en `src/app/globals.css`. El `Button` primario usa **`var(--accent)`** (morado Aurora). Pilares (`Philosophy`) y programas usan el mismo acento para CTAs sólidos — sin hex sueltos en componentes.
 
 ### Tipografía
 
@@ -91,7 +91,7 @@ Dancing Script   → mantras, frases inspiradoras, citas canalizadas
 - Minimalismo funcional — menos es más
 - Animaciones sutiles (brillo, fade, latido) — nunca llamativo
 - Se siente como ritual digital, no como app de gimnasio
-- Dark mode disponible: fondo morado profundo + texto dorado/blanco
+- Dark mode disponible: fondo morado profundo + texto claro
 
 ---
 
@@ -105,26 +105,29 @@ yla-mvp/
 │   │   ├── page.tsx              ← landing (orden de secciones)
 │   │   ├── globals.css
 │   │   ├── api/subscribe/route.ts
-│   │   ├── blog/page.tsx , tests/page.tsx
+│   │   ├── blog/page.tsx
+│   │   ├── tests/page.tsx
 │   │   ├── programas/[slug]/page.tsx
-│   │   ├── tienda/page.tsx , tienda/[slug]/page.tsx
-│   │   ├── membresia/page.tsx , faq/page.tsx
+│   │   ├── tienda/page.tsx
+│   │   ├── tienda/[slug]/page.tsx
+│   │   ├── membresia/page.tsx
+│   │   └── faq/page.tsx
 │   ├── components/
 │   │   ├── home/
 │   │   │   ├── Hero, Philosophy, Programs, Testimonials,
-│   │   │   │   About, Community, Shop, LeadMagnet, FAQ, Footer
+│   │   │   │   About, Community, Shop, LeadMagnet,
+│   │   │   │   SocialProofStrip, FAQ, Footer
 │   │   ├── ui/ , layout/ , theme/
 │   └── data/
 │       └── content.ts            ← ⭐ TODO el texto visible vive aquí
-├── README.md
-├── ROADMAP.md                  ← fases y backlog detallados
 ├── CLAUDE.md
-└── GEMINI.md
+├── GEMINI.md
+└── ROADMAP.md
 ```
 
 ### ⭐ Regla clave: `content.ts` es la fuente de verdad
 
-Todo el texto que aparece en la web (títulos, descripciones, botones, preguntas frecuentes, etc.) vive en `src/data/content.ts`. Cuando Yube quiera cambiar un texto, Gemini debe indicar exactamente **qué campo de `content.ts` modificar** y con qué valor.
+Todo el texto que aparece en la web vive en `src/data/content.ts`. Cuando Yube quiera cambiar un texto, Gemini debe indicar exactamente **qué campo de `content.ts` modificar** y con qué valor.
 
 Ejemplo:
 ```
@@ -133,27 +136,31 @@ Gemini indica: En content.ts, campo hero.tagline, cambiar a "El arte de vivir co
 Alberto lo actualiza en el código.
 ```
 
+> **Próximamente (Fase 0-C):** Se integrará Sanity CMS para que Yube pueda editar
+> estos contenidos directamente desde una interfaz visual, sin necesitar a Alberto.
+
 ---
 
 ## 🌐 Qué incluye la web ahora
 
 | Sección / ruta | Qué muestra |
 |----------------|------------|
-| **Hero** | Tagline, título, líneas beneficio + método + acción, 2 CTAs, estadísticas |
-| **Philosophy** | Pilares Cuerpo / Mente / Alma; un CTA por card (YouTube canal YLA, página `/tests`, página `/blog`) |
-| **Programs** | Tres programas con enlace a ficha `/programas/[slug]`; descripción bajo el botón; bloque clases personalizadas |
-| **`/programas/...`** | Detalle: etapas, para quién, qué incluye, precio, WhatsApp (`content.ts` → `detail`) |
-| **`/tests` · `/blog`** | Páginas placeholder hasta lanzar contenido |
-| **`/tienda`** | Catálogo y enlaces a fichas `/tienda/[slug]` |
-| **Testimonios** | Tarjetas con citas (avanzar a fotos reales con permiso) |
-| **About** | Bio extendida; video YouTube opcional (`welcomeVideoYoutubeId` en `content.ts`) |
-| **Community** | «Comunidad en movimiento», grid hacia IG, WhatsApp, newsletter cartas |
-| **Shop** | Productos y CTAs según `content.ts`, enlaces Payhip |
-| **Lead magnet** | Formulario email → `/api/subscribe` (conectar lista de correo después) |
-| **FAQ** | Acordeón |
-| **Footer** | Enlaces de funnel, confianza, legal, redes |
-| **`/membresia`** | Comparación planes; destacado «Cartas para habitarte» |
-| **`/faq`** | Preguntas frecuentes (página dedicada) |
+| **Hero** | Tagline, título, descripción del método, 2 CTAs, estadísticas |
+| **Philosophy** | Pilares Cuerpo / Mente / Alma; un CTA por card (YouTube, `/tests`, `/blog`) |
+| **Programs** | Tres programas con enlace a ficha `/programas/[slug]`; bloque clases personalizadas |
+| **`/programas/[slug]`** | Detalle completo: etapas, para quién, qué incluye, precio, CTA WhatsApp |
+| **Testimonios** | Tarjetas con citas de alumnas (fotos reales próximamente) |
+| **About** | Bio de Yube; video YouTube opcional |
+| **Community** | Grid hacia IG, WhatsApp, newsletter |
+| **Shop** | Productos y enlaces a Payhip (precios próximamente) |
+| **Lead magnet** | Formulario email → clase gratis |
+| **Social Proof Strip** | Prueba social rápida |
+| **FAQ** | Acordeón de preguntas frecuentes |
+| **Footer** | Funnel, legal, redes sociales |
+| **`/membresia`** | Comparación de planes |
+| **`/faq`** | FAQ dedicada |
+| **`/tienda`, `/tienda/[slug]`** | Catálogo y ficha de producto |
+| **`/tests`, `/blog`** | Placeholders (próximamente) |
 
 ---
 
@@ -188,19 +195,27 @@ Planes: **Esencial** (4 clases/mes) · **Consciente** (8 clases/mes)
 
 ### Comunidad
 
-- **Almas en Armonía** — grupo de WhatsApp activo (64 participantes)
+- **Almas en Armonía** — grupo de WhatsApp activo
 
 ---
 
-## 🚀 Roadmap
+## 🗂 Próximas fases
 
-La versión detallada (pendientes de Fase 0, PWA, app, tienda física, deuda técnica) está en **`ROADMAP.md`**. Usalo como referencia única cuando planifiques con Yube.
+La versión detallada está en **`ROADMAP.md`**.
+
+| Fase | Qué viene |
+|------|----------|
+| 0-B Sprint 1 | Logo + foto Yube + video Hero + fotos testimonios |
+| 0-B Sprint 2 | Precios en tienda + galería previews + sección "Empieza aquí" |
+| 0-B Sprint 3 | Email Resend + dominio propio |
+| **0-C** | **Sanity CMS — Yube edita sin tocar código** |
+| 1 | PWA: bitácora del alma, modo ritual, dashboard espiritual |
+| 2 | Membresías con Supabase + Stripe |
+| 3 | App nativa |
 
 ---
 
 ## 💬 Voz y tono de la marca
-
-Cuando Gemini escriba copy, textos o descripciones para la web, debe sonar así:
 
 **✅ Así SÍ:**
 - Cercano, cálido, como hablar con una amiga que te guía
@@ -215,7 +230,7 @@ Cuando Gemini escriba copy, textos o descripciones para la web, debe sonar así:
 - Agresivo o de venta dura
 - Genérico ("el mejor método del mundo")
 
-### Frases clave de la marca (usar y respetar):
+### Frases clave de la marca:
 
 > "Organizamos el bienestar, ritualizamos la estructura."
 > "Conecta tu mente. Habita tu cuerpo. Expande tu esencia."
@@ -235,17 +250,6 @@ Credencial oficial:
 
 ## 🤝 Cómo trabajar con este stack
 
-### Cuando Yube quiera agregar o cambiar contenido:
-
-```
-Yube le dice a Gemini: "Quiero agregar una nueva sección de testimonios"
-Gemini responde indicando:
-  1. Qué agregar en content.ts (estructura de datos)
-  2. Qué nuevo componente crear (nombre, props, ubicación)
-  3. Dónde insertarlo en page.tsx
-Alberto implementa con Claude.
-```
-
 ### Cuando Yube quiera cambiar un texto:
 
 ```
@@ -255,31 +259,51 @@ Gemini: "En src/data/content.ts, dentro de programs.items[1].description,
 Alberto actualiza content.ts → commit → Vercel despliega automático.
 ```
 
-### Cuando Yube quiera agregar un producto nuevo a la tienda:
+### Cuando Yube quiera agregar un producto a la tienda:
 
 ```
-Gemini indica el objeto a agregar en shop.products dentro de content.ts:
+Agregar en shop.products dentro de content.ts:
 {
   id: "nombre-del-producto",
   category: "cuaderno" | "audio" | "video" | "guia",
   title: "Nombre del producto",
   intention: "Frase espiritual del producto",
   badge: "Nuevo" | null,
-  isFree: false
+  isFree: false,
+  price: "$12"
 }
 ```
+
+### Cuando Yube quiera agregar una nueva sección:
+
+```
+Yube le dice a Gemini: "Quiero una sección de rituales lunares"
+Gemini responde indicando:
+  1. Datos a agregar en content.ts
+  2. Nombre del componente nuevo y su ubicación
+  3. Dónde insertarlo en page.tsx
+Alberto implementa con Claude.
+```
+
+> **Con Sanity CMS (Fase 0-C):** Yube podrá hacer muchos de estos cambios
+> directamente desde Sanity Studio, sin necesitar a Alberto para el contenido.
 
 ---
 
 ## 🔗 Links útiles
 
-- **Web live:** https://yla-mvp.vercel.app (dominio propio: yogaconlogicayalma.com — próximamente)
+- **Web live:** https://yla-mvp.vercel.app
+- **Dominio propio (próximamente):** yogaconlogicayalma.com
 - **Tienda Payhip:** https://payhip.com/ConLogicayAlma
+- **WhatsApp directo:** https://wa.me/584243547179
 - **Comunidad WhatsApp:** https://chat.whatsapp.com/Din0PQRJ645InTV6R7ZXYC
+- **Instagram:** @yube.karina
+- **TikTok:** @yube.karina
+- **YouTube:** @yube.karinag
+- **Email:** yogaconlogicayalma@gmail.com
 - **Repositorio:** https://github.com/aeom0/yla-mvp
-- **Supabase (Fase 2):** proyecto `yogaconlogicayalma`
+- **Supabase (Fase 2):** `mwvgtxzvqhducjggycuu`
 
 ---
 
-*Documento mantenido por Alberto. Mantener alineado con `ROADMAP.md`, `CLAUDE.md` y el código.*
-
+*Documento mantenido por Alberto. Mantener alineado con `ROADMAP.md` y `CLAUDE.md`.*

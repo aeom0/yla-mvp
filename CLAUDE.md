@@ -1,16 +1,17 @@
 # CLAUDE.md — Yoga con Lógica y Alma
 
 > Guía de contexto para Claude Code. Lee este archivo antes de tocar cualquier línea de código.
+> Última revisión: abril 2026.
 
 ---
 
 ## 🧘‍♀️ Qué es este proyecto
 
-**Yoga con Lógica y Alma** es la plataforma digital de Yube Karina, ingeniera industrial y yogui, creadora de un método que fusiona estructura analítica con práctica espiritual.
+**Yoga con Lógica y Alma** es la plataforma digital de Yube Karina, ingeniera industrial e instructora de yoga con formación avanzada (500h), creadora de un método que fusiona estructura analítica con práctica espiritual.
 
-El producto actual en desarrollo es un **landing page / sitio web** que servirá como punto de entrada al ecosistema digital de la marca. Es la fase previa a una PWA y eventual app móvil nativa.
+El producto actual es un **sitio web completo** que actúa como hub de captación, venta y comunidad. Fase previa a una PWA y eventual app nativa.
 
-**Tagline:** *"Organizamos el bienestar, ritualizamos la estructura."*  
+**Tagline:** *"Organizamos el bienestar, ritualizamos la estructura."*
 **Público objetivo:** Mujeres conscientes y emprendedoras, mercado hispanohablante (Venezuela, España y LATAM).
 
 ---
@@ -19,63 +20,58 @@ El producto actual en desarrollo es un **landing page / sitio web** que servirá
 
 | Capa | Tecnología |
 |------|-----------|
-| Framework | Next.js 15 (App Router) |
-| UI | React 19 + Tailwind CSS v4 |
+| Framework | Next.js 15.4.8 (App Router) |
+| UI | React 19.2.1 + Tailwind CSS v4 |
 | Lenguaje | TypeScript (strict) |
 | Iconos | Lucide React |
-| Tipografía | Playfair Display + Lato (`@fontsource`) |
-| CMS / Contenido | Notion (exportado como Markdown) |
-| Backend (futuro) | Supabase |
-| Pagos (futuro) | Stripe |
+| Tipografía | Playfair Display + Lato + Dancing Script (`@fontsource`) |
+| Gestor de paquetes | Yarn 4 (Corepack — `ENABLE_EXPERIMENTAL_COREPACK=1` en Vercel) |
+| CMS (próximo — Fase 0-C) | Sanity Studio (free tier) |
+| Backend (Fase 2) | Supabase (`mwvgtxzvqhducjggycuu`) |
+| Pagos (Fase 2) | Stripe |
 | Tienda digital | Payhip — https://payhip.com/ConLogicayAlma |
-| Editor | VS Code + Claude Code |
+| Email (Sprint 3) | Resend |
+| Editor | VS Code + Cursor |
 | Entorno dev | WSL2 en Windows 11 |
 | Target device | Android (mobile-first) |
+| Deploy | Vercel (`yogaconlogicayalma`) — auto-deploy desde `main` |
 
 ---
 
-## 🎨 Sistema de diseño
+## 🎨 Sistema de diseño — Aurora Consciente
 
-### Paleta de colores (sistema **Aurora Consciente**)
+### Paleta de colores
 
-```ts
-// Variables CSS en `src/app/globals.css` — en JSX/Tailwind usar `var(--token)` o colores del theme
-colors: {
-  // Semánticos (light / dark en :root y .dark)
-  accent:          'var(--accent)',       // CTA primario (#7B5EA7 light; lavanda en dark)
-  accentSoft:      'var(--accent-soft)',  // acento espiritual secundario
-  bg:              'var(--bg)',
-  text:            'var(--text)',
-  muted:           'var(--muted)',
-  border:          'var(--border)',
-  sectionAlt:      'var(--section-alt)',
-  // Paleta base
-  lavenderDeep:    '#7B5EA7',  // --lavender-deep (morado CTA)
-  lavender:        '#B497D6',  // --lavender
-  rose:            '#E8C4C4',  // --rose (cuarzo; gratis / acentos suaves)
-  roseDeep:        '#C8928F',  // --rose-deep
-  sage:            '#A8C5A0',  // --sage
-  violetAnchor:    '#3D2865',  // --violet-anchor (display, footer oscuro)
-  beige:           '#F8F4F0',  // --beige (fondo base claro)
-  ink:             '#2D2D2D',  // --ink
-}
+```css
+/* Variables CSS en src/app/globals.css */
+--lavender-deep:  #7B5EA7;  /* CTA primario — Button variant=primary */
+--lavender:       #B497D6;  /* espiritual, íconos, pills */
+--rose:           #E8C4C4;  /* productos gratis, bordes suaves */
+--rose-deep:      #C8928F;  /* acentos cálidos */
+--sage:           #A8C5A0;  /* bienestar */
+--violet-anchor:  #3D2865;  /* títulos display, footer oscuro */
+--beige:          #F8F4F0;  /* fondo base claro */
+--ink:            #2D2D2D;  /* texto principal */
+
+/* Tokens semánticos (cambian con el tema) */
+--accent:         #7B5EA7   /* light */ / #B497D6 /* dark */
 ```
 
-> **Nota:** No uses nombres legacy `--purple*` ni `--gold*` en código nuevo: mapean a `--accent` / `--lavender-*` / `--rose*`. `Button` primary = `var(--accent)`. Sombras de CTA: `var(--shadow-accent)`.
+> **⚠️ No usar tokens legacy:** `--gold*`, `--purple*`, ni hex `#D4AF37`, `#5B3A8E`, `#FAF7F2`.
+> `Button primary` usa `var(--accent)`. En `content.ts`, acento de programas = `'lavender' | 'rose'` (no `'gold'`).
 
 ### Tipografía
 
-- **Títulos / Display:** Playfair Display (elegante, femenino)
-- **Cuerpo / UI:** Lato (limpia, legible)
-- **Mantras / Frases canalizadas:** Dancing Script (manuscrito)
+- **Títulos / Display:** Playfair Display
+- **Cuerpo / UI:** Lato
+- **Mantras / Frases canalizadas:** Dancing Script
 
 ### Principios visuales
 
 - Mobile-first siempre. Desktop es una mejora progresiva.
 - Minimalismo funcional: menos es más.
-- Se siente como un ritual digital, no como un gimnasio.
 - Animaciones sutiles (brillo, fade, latido) — nunca flashy.
-- Dark mode: fondo morado profundo + texto claro; acento lavanda.
+- Dark mode: fondo `#1c1a22` + acento lavanda + texto claro.
 
 ---
 
@@ -85,38 +81,38 @@ colors: {
 src/
 ├── app/
 │   ├── layout.tsx
-│   ├── page.tsx                 # Landing (orden de secciones en un solo archivo)
-│   ├── globals.css
-│   ├── api/subscribe/route.ts  # POST email (MVP; conectar ESP después)
-│   ├── blog/page.tsx           # Placeholder blog (próximamente)
-│   ├── tests/page.tsx          # Placeholder tests (próximamente)
-│   ├── programas/[slug]/page.tsx  # Ficha de cada programa
-│   ├── tienda/page.tsx         # Índice tienda
-│   ├── tienda/[slug]/page.tsx  # Ficha producto Payhip
-│   ├── membresia/page.tsx      # Página membresía + comparación de planes
-│   └── faq/page.tsx            # FAQ standalone
+│   ├── page.tsx                      # Landing (orden de secciones)
+│   ├── globals.css                   # Variables CSS + Tailwind base
+│   ├── api/subscribe/route.ts        # POST email (Resend — Sprint 3)
+│   ├── blog/page.tsx                 # Placeholder
+│   ├── tests/page.tsx                # Placeholder
+│   ├── programas/[slug]/page.tsx     # Ficha SSG por programa
+│   ├── tienda/page.tsx               # Índice catálogo
+│   ├── tienda/[slug]/page.tsx        # Ficha de producto
+│   ├── membresia/page.tsx
+│   └── faq/page.tsx
 │
 ├── components/
-│   ├── ui/                     # Button, Card, Section
+│   ├── ui/                           # Button, Card, Section
 │   ├── home/
-│   │   ├── Hero.tsx
-│   │   ├── Philosophy.tsx      # Pilares + bloque copy Lógica/Alma
-│   │   ├── Programs.tsx        # Tarjetas programa + bloque clases personalizadas
-│   │   ├── Testimonials.tsx
-│   │   ├── About.tsx
-│   │   ├── Community.tsx       # Grid IG, WhatsApp, newsletter
-│   │   ├── Shop.tsx
-│   │   ├── LeadMagnet.tsx      # Lead magnet → /api/subscribe
-│   │   ├── FAQ.tsx
-│   │   └── Footer.tsx
+│   │   ├── Hero.tsx                  ✅
+│   │   ├── Philosophy.tsx            ✅  CTAs: YouTube, /tests, /blog
+│   │   ├── Programs.tsx              ✅  → /programas/[slug]
+│   │   ├── Testimonials.tsx          ✅  fotos pendientes
+│   │   ├── About.tsx                 ✅  foto Yube pendiente
+│   │   ├── Community.tsx             ✅
+│   │   ├── Shop.tsx                  ✅  sin precios
+│   │   ├── LeadMagnet.tsx            ✅
+│   │   ├── SocialProofStrip.tsx      ✅
+│   │   ├── FAQ.tsx                   ✅
+│   │   └── Footer.tsx                ✅
 │   ├── layout/
-│   │   ├── Header.tsx          # Nav + CTA «Empezar aquí»
+│   │   ├── Header.tsx
 │   │   └── BottomNav.tsx
 │   └── theme/ThemeToggle.tsx
 │
-├── data/content.ts             # Fuente de verdad del copy
+├── data/content.ts                   # ⭐ Fuente de verdad del copy
 ├── lib/, hooks/, types/
-└── styles/                     # si aplica
 ```
 
 ---
@@ -126,123 +122,154 @@ src/
 ### Componentes
 
 - Un componente por archivo. Nombre en PascalCase.
-- Siempre usar `export default` para componentes de sección.
-- Named exports para componentes UI atómicos.
-- **No mezclar lógica con presentación.** La UI renderiza, los hooks y utils piensan.
+- `export default` para secciones. Named exports para átomos UI.
+- No mezclar lógica con presentación.
 
 ```tsx
 // ✅ Correcto
-export default function Hero({ data }: HeroProps) {
-  return <section>...</section>
-}
-
-// ❌ Incorrecto — lógica de negocio dentro del componente visual
 export default function Hero() {
-  const data = fetch('/api/hero') // no acá
-  ...
+  const { hero } = siteContent
+  return <section>{hero.title}</section>
 }
+// ❌ String hardcodeado
+return <section>El arte de volver a ti</section>
 ```
 
 ### TypeScript
 
-- Strict mode activado. Sin `any` implícito.
-- Definir interfaces en `src/types/index.ts`.
-- Props siempre tipadas con interfaces nombradas (`HeroProps`, `ProgramCardProps`, etc.)
+- Strict mode. Sin `any` implícito.
+- Interfaces en `src/types/index.ts`, nombradas (`HeroProps`, etc.)
 
 ### Contenido
 
-- Todo el texto visible de la UI vive en `src/data/content.ts`.
-- Los componentes consumen el contenido como props o imports — nunca hardcodean strings.
-- Esto facilita i18n futuro y edición sin tocar componentes.
+- Todo el texto visible en `src/data/content.ts`. Nunca hardcodear strings en JSX.
 
 ### Tailwind CSS v4
 
-- Usar utility classes directamente. No crear clases CSS personalizadas salvo necesidad real.
-- Los colores de marca están definidos como variables CSS en `globals.css`.
-- Respetar el orden: layout → spacing → typography → color → effects.
+- Utility classes directamente. Colores vía variables CSS en `globals.css`.
+- No usar `tailwind.config.js` con sintaxis v3.
 
 ---
 
-## 🌐 Landing y rutas (estado actual)
+## 🌐 Rutas y secciones (estado actual)
 
-| Bloque / ruta | Componente o ruta | Notas |
-|---------------|---------------------|--------|
-| Hero | `Hero.tsx` | Fórmula beneficio + método + acción; CTAs a guía gratis y programas |
-| Filosofía | `Philosophy.tsx` | Pilares Cuerpo / Mente / Alma; CTA por pilar (YouTube `@yogaconlogicayalma`, `/tests`, `/blog`) |
-| Programas | `Programs.tsx` | Tres programas → `/programas/[id]`; `programs.items[].detail` en `content.ts`; bloque clases personalizadas |
-| Ficha programa | `app/programas/[slug]/page.tsx` | Etapas, para quién, incluye, precio, CTA WhatsApp |
-| Tests (placeholder) | `app/tests/page.tsx` | `siteContent.testsPage` |
-| Blog (placeholder) | `app/blog/page.tsx` | `siteContent.blogPage` |
-| Testimonios | `Testimonials.tsx` | Tarjetas con iniciales (sustituir por fotos cuando haya) |
-| Sobre Yube | `About.tsx` | Bio extendida; video YouTube opcional (`about.welcomeVideoYoutubeId`) |
-| Comunidad | `Community.tsx` | «Comunidad en movimiento», grid IG, WhatsApp, cartas (newsletter) |
-| Tienda | `Shop.tsx` | Enlaces Payhip; CTAs desde `content.ts` |
-| Lead magnet | `LeadMagnet.tsx` | `#guia-gratis` → `POST /api/subscribe` |
-| FAQ | `FAQ.tsx` | |
-| Footer | `Footer.tsx` | Enlaces funnel + confianza (pagos / garantía copy) |
-| Membresía | `app/membresia/page.tsx` | Tabla de planes; diferencial «Cartas para habitarte» |
-| Tienda | `app/tienda/page.tsx`, `app/tienda/[slug]/page.tsx` | Catálogo y ficha desde `content.ts` → Payhip |
+| Sección / Ruta | Estado |
+|---|---|
+| `/` — Landing completa | ✅ Live |
+| `/programas/[slug]` | ✅ SSG |
+| `/tienda`, `/tienda/[slug]` | ✅ |
+| `/membresia` | ✅ |
+| `/faq` | ✅ |
+| `/tests`, `/blog` | ✅ Placeholder |
+| `/api/subscribe` | ✅ Sin ESP |
+
+### Pendientes Sprint 1 (desbloqueadores: Yube entrega assets)
+- [ ] Logo en Header (`public/logo.png`)
+- [ ] Foto de Yube en About (`public/yube-about.jpg`)
+- [ ] Video Hero (YouTube embed en `hero.youtubeVideoId`)
+- [ ] Fotos testimonios (`public/testimonials/`)
+
+### Pendientes Sprint 2
+- [ ] Precios en Shop (`product.price` en `content.ts`)
+- [ ] Galería previews de cuadernos
+- [ ] Componente `StartHere.tsx` (entre Philosophy y Programs)
+
+### Pendientes Sprint 3
+- [ ] Conectar Resend a `/api/subscribe`
+- [ ] DNS de `yogaconlogicayalma.com` → Vercel
+
+---
+
+## 🗂 Fase 0-C — Sanity CMS (próxima tras Sprint 3)
+
+Yube editará estos contenidos sin tocar código:
+
+| Contenido | Schema |
+|---|---|
+| Textos Hero, stats | `hero` (singleton) |
+| Productos tienda (título, precio, badge, imagen) | `product` (collection) |
+| Programas (etapas, detail, CTA) | `program` (collection) |
+| Testimonios | `testimonial` (collection) |
+| FAQ | `faqItem` (collection) |
+| About (foto, bio, quote) | `about` (singleton) |
+| Links sociales | `siteConfig` (singleton) |
+| Clases y planes | `class` (collection) |
+
+**Flujo:** Sanity Studio → webhook → Vercel ISR revalida en ~30s. Sin deploy manual.
 
 ---
 
 ## 📦 Productos y contenido de referencia
 
-### Programas principales (4 meses c/u)
-- **Encuentra tu Centro** — 4 etapas: Conectar → Autoreconocimiento → Anclar → Avanzar
-- **Enraíza-Te** — 4 etapas: Volver al cuerpo → Estabilidad → Fuerza → Integración
-- **Elogio a Ti** — 4 etapas: Despertar → Reconexión → Reprogramación → Consagración
+### Programas (4 meses c/u)
+- **Encuentra tu Centro** — Conectar → Autoreconocimiento → Anclar → Avanzar
+- **Enraíza-Te** — Volver al cuerpo → Estabilidad → Fuerza → Integración
+- **Elogio a Ti** — Despertar → Reconexión → Reprogramación → Consagración
 
 ### Clases online
-- **Respira y Fluye** — ritmo pausado, restaurativo
-- **Alma y Movimiento** — yoga suave y tranquilo
-- **Clases Temáticas** — 2 veces al mes
-- Precios: Plan Esencial 4 clases/mes · Plan Consciente 8 clases/mes
+- **Respira y Fluye** — restaurativo, pausado
+- **Alma y Movimiento** — yoga suave
+- **Clases Temáticas** — 2x mes
 
 ### Productos digitales (Payhip)
-- Cuadernos: *Camino al Merecimiento*, *Mandalas de Abundancia*, *Camino a la Abundancia*
-- Guía de posturas básicas (descargable gratis)
-
-### Comunidad
-- **Almas en Armonía** — comunidad de WhatsApp activa
+- Guía de posturas básicas *(gratis)*
+- Camino al Merecimiento
+- Mandalas de Abundancia
+- Camino a la Abundancia
 
 ---
 
 ## 🚀 Roadmap
 
-El detalle de fases, pendientes inmediatos y deuda técnica está en **[ROADMAP.md](./ROADMAP.md)** (fuente única para planificación).
+Detalle completo en **[ROADMAP.md](./ROADMAP.md)**.
+
+```
+Fase 0-B (Sprint actual) → Assets reales + precios + email
+Fase 0-C               → Sanity CMS
+Fase 1                 → PWA: bitácora, ritual, dashboard espiritual
+Fase 2                 → Supabase + Stripe
+Fase 3                 → App nativa
+Fase 4                 → Concept Store física
+```
 
 ---
 
 ## ⚠️ Reglas críticas para Claude Code
 
-1. **Mobile-first siempre.** Si un componente no se ve bien en 375px, no está listo.
-2. **Contenido separado del componente.** Ningún string de UI hardcodeado dentro de JSX.
-3. **Un componente = una responsabilidad.** Si crece demasiado, dividir.
-4. **No instalar dependencias sin preguntar.** El stack está definido y se respeta.
-5. **Tailwind v4.** La sintaxis de configuración cambió respecto a v3 — no usar `tailwind.config.js` con `theme.extend` de la forma antigua.
-6. **TypeScript strict.** Tipado explícito en todo. Sin `as any` salvo caso extremo documentado.
-7. **Accesibilidad mínima.** Alt en imágenes, roles ARIA donde aplique, contraste de colores respetado.
-8. **El tono de la marca es sagrado.** Cualquier texto generado debe sentirse como Yube lo diría: cercano, motivador, espiritual sin ser dogmático.
+1. **Leer antes de escribir.** Siempre `get_file_contents` antes de editar — Cursor puede haber cambiado el archivo.
+2. **Mobile-first.** 375px es el viewport de referencia.
+3. **Contenido en `content.ts`.** Cero strings hardcodeados en JSX.
+4. **No instalar deps sin preguntar.**
+5. **Tailwind v4.** Sin sintaxis v3.
+6. **TypeScript strict.** Sin `as any`.
+7. **Sin tokens legacy.** No `--gold`, no `--purple`, no hex del sistema viejo.
+8. **Accesibilidad mínima.** Alt en imágenes, ARIA donde aplique.
+9. **El tono de la marca es sagrado.** Cercano, espiritual sin ser dogmático.
 
 ---
 
-## 🔗 Links útiles del proyecto
+## 🔗 Links del proyecto
 
-- Tienda Payhip: https://payhip.com/ConLogicayAlma
-- Comunidad WhatsApp: https://chat.whatsapp.com/Din0PQRJ645InTV6R7ZXYC
-- Referencia de diseño: xualanyoga.com
+- Live: https://yla-mvp.vercel.app
+- Repo: https://github.com/aeom0/yla-mvp
+- Payhip: https://payhip.com/ConLogicayAlma
+- WhatsApp directo: https://wa.me/584243547179
+- Email: yogaconlogicayalma@gmail.com
+- Supabase: `mwvgtxzvqhducjggycuu`
+- Vercel project: `yogaconlogicayalma`
+- Dominio (pendiente): yogaconlogicayalma.com
 
 ---
 
-## 💬 Frases de la marca (para usar en UI/copy)
+## 💬 Frases de la marca
 
-> "Organizamos el bienestar, ritualizamos la estructura."  
-> "Conecta tu mente. Habita tu cuerpo. Expande tu esencia."  
-> "Donde la estructura sostiene el alma."  
-> "Planifica con el alma, fluye con propósito."  
-> "Yoga con intención, lógica y corazón."  
+> "Organizamos el bienestar, ritualizamos la estructura."
+> "Conecta tu mente. Habita tu cuerpo. Expande tu esencia."
+> "Donde la estructura sostiene el alma."
+> "Planifica con el alma, fluye con propósito."
+> "Yoga con intención, lógica y corazón."
 > "El arte de volver a ti."
 
 ---
 
-*Este archivo debe mantenerse alineado con el código y con `ROADMAP.md`. Es la guía técnica para sesiones de asistentes de código.*
+*Mantener alineado con ROADMAP.md y GEMINI.md. Es la guía técnica para sesiones de Claude Code.*
