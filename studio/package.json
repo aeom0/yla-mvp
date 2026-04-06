@@ -6,7 +6,8 @@
     "dev": "sanity dev",
     "build": "sanity build",
     "deploy": "sanity deploy",
-    "deploy-graphql": "sanity graphql deploy"
+    "deploy-graphql": "sanity graphql deploy",
+    "migrate:content": "node --env-file=.env --env-file-if-exists=../.env.local ./node_modules/tsx/dist/cli.mjs scripts/migrate-content.ts"
   },
   "dependencies": {
     "@sanity/vision": "^5.19.0",
@@ -16,9 +17,11 @@
     "styled-components": "^6.3.12"
   },
   "devDependencies": {
+    "@sanity/client": "^7.20.0",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "@types/styled-components": "^5.1.36",
+    "tsx": "^4.21.0",
     "typescript": "^6.0.2"
   },
   "resolutions": {

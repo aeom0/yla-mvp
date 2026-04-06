@@ -26,6 +26,8 @@ cd studio
 yarn add @sanity/client tsx --dev
 ```
 
+(O ya está en el repo: basta con `yarn install` en `studio/`.)
+
 ### Paso 2 — Crear el .env si no existe
 
 ```bash
@@ -38,12 +40,16 @@ SANITY_STUDIO_PROJECT_ID=s6xwmbxz
 SANITY_STUDIO_DATASET=production
 ```
 
+Además hace falta **`SANITY_API_TOKEN`** (token con permiso Editor en [sanity.io/manage](https://sanity.io/manage) para el proyecto `s6xwmbxz`). Puedes ponerlo en `studio/.env` o en la raíz en `.env.local` (el script `migrate:content` carga ambos).
+
 ### Paso 3 — Ejecutar el script
 
 ```bash
 cd studio
-yarn tsx scripts/migrate-content.ts
+yarn migrate:content
 ```
+
+(Equivalente a `node --env-file=.env --env-file-if-exists=../.env.local …/tsx … scripts/migrate-content.ts`.)
 
 Output esperado:
 ```
@@ -72,8 +78,8 @@ Abrir `http://localhost:3333` y confirmar que cada sección tiene datos.
 
 ```bash
 cd ~/yla-mvp
-git add studio/scripts/migrate-content.ts
-git commit -m "feat(sanity): add migration script content.ts → dataset"
+git add studio/package.json studio/yarn.lock studio/.env.example studio/CURSOR_HANDOFF.md
+git commit -m "feat(sanity): deps + script migrate:content (content.ts → dataset)"
 git push
 ```
 

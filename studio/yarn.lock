@@ -10202,6 +10202,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "yla-studio@workspace:."
   dependencies:
+    "@sanity/client": "npm:^7.20.0"
     "@sanity/vision": "npm:^5.19.0"
     "@types/react": "npm:^19.2.14"
     "@types/react-dom": "npm:^19.2.3"
@@ -10210,6 +10211,7 @@ __metadata:
     react-dom: "npm:^19.2.4"
     sanity: "npm:^5.19.0"
     styled-components: "npm:^6.3.12"
+    tsx: "npm:^4.21.0"
     typescript: "npm:^6.0.2"
   languageName: unknown
   linkType: soft
