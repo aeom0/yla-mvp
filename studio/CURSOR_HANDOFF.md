@@ -1,89 +1,92 @@
-# Handoff para Cursor — Sanity Studio YLA
+# Handoff para Cursor — Migración content.ts → Sanity
 
-> Estado al: abril 2026. Continúa desde aquí.
-
----
-
-## Qué se hizo hasta ahora
-
-1. Los **schemas de Sanity** están en `studio/schemas/` — generados y listos, no tocar.
-2. `studio/sanity.config.ts` y `studio/sanity.cli.ts` configurados con Project ID `s6xwmbxz`.
-3. Las dependencias de Sanity se instalaron con `yarn add` dentro de `/studio/`.
-4. **El problema actual:** el `studio/package.json` local fue sobreescrito por `yarn init -y` y perdió los scripts. El correcto está en el repo.
+> Estado al: abril 2026. Studio ya funciona en localhost:3333.
+> Esta tarea es autocontenida: leer, ejecutar, commitear.
 
 ---
 
-## Tarea para Cursor
+## Contexto
 
-### Paso 1 — Sincronizar el package.json local
+- **Project ID Sanity:** `s6xwmbxz` · **Dataset:** `production`
+- Todo el contenido actual vive en `src/data/content.ts`
+- Los schemas de Sanity están en `studio/schemas/` — 1:1 con ese contenido
+- **Objetivo:** poblar el dataset de Sanity con los datos de `content.ts` via script de migración
 
-```bash
-cd ~/yla-mvp
-git pull
-```
+---
 
-Esto restaura el `studio/package.json` correcto con los scripts `dev`, `build`, `deploy`.
+## Tarea — Ejecutar el script de migración
 
-### Paso 2 — Levantar el Studio
+El script está en `studio/scripts/migrate-content.ts`.
+Lo que hace: lee `src/data/content.ts` y sube cada documento al dataset usando el cliente de Sanity.
+
+### Paso 1 — Instalar dependencia del script
 
 ```bash
 cd studio
-yarn dev
+yarn add @sanity/client tsx --dev
 ```
 
-Debe abrir el Studio en `http://localhost:3333`. Si pide autenticación, loguear con la cuenta de Sanity de Yube.
-
-### Paso 3 — Verificar que los schemas cargan
-
-En el sidebar del Studio deben aparecer en este orden:
-- 🌟 Hero — Sección principal
-- 🧘 Sobre Yube
-- 🌿 Filosofía — Pilares
-- ⚙️ Configuración del sitio
-- ─────────────
-- 🛍️ Productos — Tienda
-- 🌀 Programas
-- 💬 Testimonios
-- ❓ Preguntas frecuentes
-- 🧘 Clases online
-
-Si algo no carga, revisar errores en consola — probablemente es un import roto en `studio/schemas/index.ts`.
-
-### Paso 4 — Crear el .env local del studio
+### Paso 2 — Crear el .env si no existe
 
 ```bash
 cp studio/.env.example studio/.env
 ```
 
-El `.env` ya tiene los valores correctos (Project ID y dataset). No hace falta editarlo.
+Verificar que `.env` tenga:
+```
+SANITY_STUDIO_PROJECT_ID=s6xwmbxz
+SANITY_STUDIO_DATASET=production
+```
 
-### Paso 5 — Verificar que TypeScript compila
+### Paso 3 — Ejecutar el script
 
 ```bash
 cd studio
-yarn tsc --noEmit
+yarn tsx scripts/migrate-content.ts
 ```
 
-Si hay errores de tipos en los schemas, reportar cuáles.
+Output esperado:
+```
+✓ hero creado
+✓ about creado
+✓ philosophy creado
+✓ siteConfig creado
+✓ product: posturas-gratis
+✓ product: camino-merecimiento
+✓ product: mandalas-abundancia
+✓ product: abundancia-arte-recibir
+✓ program: encuentra-tu-centro
+✓ program: enraiza-te
+✓ program: elogio-a-ti
+✓ faqItem x5
+✓ classItem x3
+✓ testimonial x3
+Migración completa.
+```
+
+### Paso 4 — Verificar en el Studio
+
+Abrir `http://localhost:3333` y confirmar que cada sección tiene datos.
+
+### Paso 5 — Commitear
+
+```bash
+cd ~/yla-mvp
+git add studio/scripts/migrate-content.ts
+git commit -m "feat(sanity): add migration script content.ts → dataset"
+git push
+```
 
 ---
 
-## Contexto técnico importante
+## Notas importantes
 
-- **Project ID Sanity:** `s6xwmbxz`
-- **Dataset:** `production`
-- **Organization ID:** `o9M8pzowd`
-- **Stack del repo principal:** Next.js 15 + React 19 + Tailwind v4 + TypeScript strict + Yarn 4
-- **El studio es un subproyecto independiente** dentro del repo — tiene su propio `package.json` y `node_modules`
-- **No instalar nada en el studio sin confirmar** — el stack está definido
-
-## Lo que viene después (no hacer aún)
-
-- Migrar datos de `src/data/content.ts` → dataset de Sanity
-- Reemplazar imports de `content.ts` por queries GROQ + ISR en Next.js
-- Configurar webhook Sanity → Vercel revalidate
-- `sanity deploy` para publicar el Studio en la nube para Yube
+- El script usa `createOrReplace` — es idempotente, se puede correr N veces sin duplicar datos
+- Los singletons usan `_id` fijo: `'hero'`, `'about'`, `'philosophy'`, `'siteConfig'`
+- Las imágenes **no se migran** (son paths locales como `/hero-banner.jpeg`) — Yube las sube manualmente desde el Studio después
+- Si el script falla con error de autenticación, hacer `cd studio && yarn sanity login` primero
+- No modificar los schemas durante la migración
 
 ---
 
-*Handoff generado por Claude. Ver ROADMAP.md para el contexto completo del proyecto.*
+*Handoff generado por Claude. Ver ROADMAP.md para contexto completo.*
