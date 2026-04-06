@@ -1,11 +1,16 @@
 import { Section } from "@/components/ui/Section";
+import type { SiteContent } from "@/data/content";
 import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
 import { BadgeCheck, Compass, Gem, NotebookPen } from "lucide-react";
 import Image from "next/image";
 
-export function About() {
-  const { about } = siteContent;
+type AboutProps = {
+  about?: SiteContent["about"];
+};
+
+export function About({ about: aboutProp }: AboutProps) {
+  const about = aboutProp ?? siteContent.about;
   const videoId = about.welcomeVideoYoutubeId?.trim();
   const hasPhoto = !!about.yubeFoto;
 

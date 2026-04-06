@@ -1,4 +1,5 @@
 import { Section, SectionHeader } from "@/components/ui/Section";
+import type { SiteContent } from "@/data/content";
 import { siteContent } from "@/data/content";
 import { Flower2, Lightbulb, MoonStar } from "lucide-react";
 import Link from "next/link";
@@ -33,8 +34,12 @@ const pillarConfig = [
   },
 ];
 
-export function Philosophy() {
-  const { philosophy } = siteContent;
+type PhilosophyProps = {
+  philosophy?: SiteContent["philosophy"];
+};
+
+export function Philosophy({ philosophy: philosophyProp }: PhilosophyProps) {
+  const philosophy = philosophyProp ?? siteContent.philosophy;
 
   return (
     <Section id="filosofia" style={{ background: "var(--section-alt)" }}>

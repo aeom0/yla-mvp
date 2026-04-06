@@ -1,4 +1,5 @@
 import { Section, SectionHeader } from "@/components/ui/Section";
+import type { SiteContent } from "@/data/content";
 import { siteContent } from "@/data/content";
 import Image from "next/image";
 
@@ -11,8 +12,12 @@ function getInitials(name: string): string {
     .toUpperCase();
 }
 
-export function Testimonials() {
-  const { testimonials } = siteContent;
+type TestimonialsProps = {
+  testimonials?: SiteContent["testimonials"];
+};
+
+export function Testimonials({ testimonials: testimonialsProp }: TestimonialsProps) {
+  const testimonials = testimonialsProp ?? siteContent.testimonials;
 
   return (
     <Section id="testimonios">

@@ -3,6 +3,7 @@
 import { Button } from "@/components/ui/Button";
 import { Card, CardBody } from "@/components/ui/Card";
 import { Section, SectionHeader } from "@/components/ui/Section";
+import type { SiteContent } from "@/data/content";
 import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
 import { CheckCircle2, CircleCheck } from "lucide-react";
@@ -35,8 +36,13 @@ const howItWorks = [
   { step: "3", label: "Comenzamos" },
 ];
 
-export function Programs() {
-  const { programs, classes } = siteContent;
+type ProgramsProps = {
+  programs?: SiteContent["programs"];
+};
+
+export function Programs({ programs: programsProp }: ProgramsProps) {
+  const { classes } = siteContent;
+  const programs = programsProp ?? siteContent.programs;
 
   return (
     <Section id="programas">

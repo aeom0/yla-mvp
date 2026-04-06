@@ -1,6 +1,7 @@
 "use client";
 
 import { Section, SectionHeader } from "@/components/ui/Section";
+import type { SiteContent } from "@/data/content";
 import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
 import {
@@ -39,8 +40,12 @@ const categoryMeta: Record<
   },
 };
 
-export function Shop() {
-  const { shop } = siteContent;
+type ShopProps = {
+  shop?: SiteContent["shop"];
+};
+
+export function Shop({ shop: shopProp }: ShopProps) {
+  const shop = shopProp ?? siteContent.shop;
   const categories: ProductCategory[] = ["guia", "cuaderno", "audio"];
 
   return (
@@ -69,7 +74,6 @@ export function Shop() {
               {products.map((product) => {
                 // Free products usan sage, paid usan el color de su categoría
                 const cardColor = product.isFree ? "var(--sage-deep)" : meta.color;
-                const cardBg   = product.isFree ? "rgba(107,158,138,.12)" : meta.bg;
 
                 return (
                   <article

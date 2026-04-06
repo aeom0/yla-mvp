@@ -1,10 +1,15 @@
 "use client";
 
 import { Button } from "@/components/ui/Button";
+import type { SiteContent } from "@/data/content";
 import { siteContent } from "@/data/content";
 
-export function Hero() {
-  const { hero } = siteContent;
+type HeroProps = {
+  hero?: SiteContent["hero"];
+};
+
+export function Hero({ hero: heroProp }: HeroProps) {
+  const hero = heroProp ?? siteContent.hero;
   const hasBanner = !!hero.bannerImage;
 
   return (

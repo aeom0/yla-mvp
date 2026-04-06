@@ -2,12 +2,17 @@
 
 import { TiktokGlyph } from "@/components/ui/icons/TiktokGlyph";
 import { lucideBrand } from "@/lib/lucideBrand";
+import type { SiteContent } from "@/data/content";
 import { siteContent } from "@/data/content";
 import { Instagram, MessageCircle, Youtube } from "lucide-react";
 import Image from "next/image";
 
-export function Footer() {
-  const { footer } = siteContent;
+type FooterProps = {
+  footer?: SiteContent["footer"];
+};
+
+export function Footer({ footer: footerProp }: FooterProps) {
+  const footer = footerProp ?? siteContent.footer;
 
   return (
     <footer

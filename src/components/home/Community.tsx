@@ -3,56 +3,85 @@
 import { Button } from "@/components/ui/Button";
 import { Section, SectionHeader } from "@/components/ui/Section";
 import { TiktokGlyph } from "@/components/ui/icons/TiktokGlyph";
+import type { SiteContent } from "@/data/content";
 import { siteContent } from "@/data/content";
 import { lucideBrand } from "@/lib/lucideBrand";
+import type { SocialUrls } from "@/lib/sanity/landingMerge";
 import { Instagram, MessageCircle, Youtube } from "lucide-react";
 import { useState } from "react";
 
-const CHANNELS = [
+const CHANNEL_DEFS = [
   {
     id: "instagram",
+    socialKey: "instagram" as const,
     label: "Instagram",
     handle: "@yube.karina",
     description: "Práctica, reflexiones y detrás de cámaras.",
     icon: Instagram,
-    href: "https://www.instagram.com/yube.karina?igsh=MWg4Z2M5ang2YzI2bg==",
     color: "var(--accent)",
     bg: "var(--lavender-mist)",
   },
   {
     id: "tiktok",
+    socialKey: "tiktok" as const,
     label: "TikTok",
     handle: "@yube.karina",
     description: "Clips cortos de movimiento e intención.",
     icon: TiktokGlyph,
-    href: "https://tiktok.com/@yube.karina",
     color: "var(--accent)",
     bg: "var(--lavender-mist)",
   },
   {
     id: "youtube",
+    socialKey: "youtube" as const,
     label: "YouTube",
     handle: "@yube.karinag",
     description: "Clases completas y contenido en profundidad.",
     icon: Youtube,
-    href: "https://youtube.com/@yube.karinag?si=tBKXzfHdKXK6Sx7t",
     color: "var(--accent)",
     bg: "var(--lavender-mist)",
   },
   {
     id: "whatsapp",
+    socialKey: "whatsapp" as const,
     label: "WhatsApp",
     handle: "Yoga con Lógica y Alma",
     description: "Escríbenos directamente o únete al grupo.",
     icon: MessageCircle,
-    href: "https://wa.me/584243547179",
     color: "var(--rose)",
     bg: "var(--rose-pale)",
   },
 ] as const;
 
-export function Community() {
-  const { community, newsletter } = siteContent;
+function channelsForSocial(social: SocialUrls) {
+  return CHANNEL_DEFS.map((d) => ({
+    ...d,
+    href: social[d.socialKey],
+  }));
+}
+
+type CommunityProps = {
+  community?: SiteContent["community"];
+  newsletter?: SiteContent["newsletter"];
+  social?: SocialUrls;
+};
+
+export function Community({
+  community: communityProp,
+  newsletter: newsletterProp,
+  social: socialProp,
+}: CommunityProps) {
+  const community = communityProp ?? siteContent.community;
+  const newsletter = newsletterProp ?? siteContent.newsletter;
+  const socialUrls: SocialUrls =
+    socialProp ??
+    ({
+      instagram: siteContent.footer.social.instagram,
+      tiktok: siteContent.footer.social.tiktok,
+      youtube: siteContent.footer.social.youtube,
+      whatsapp: siteContent.footer.social.whatsapp,
+    } satisfies SocialUrls);
+  const channels = channelsForSocial(socialUrls);
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
   >("idle");
@@ -99,7 +128,7 @@ export function Community() {
 
       {/* 4 canales sociales */}
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-4xl mx-auto mb-10 sm:mb-14">
-        {CHANNELS.map((ch) => {
+        {channels.map((ch) => {
           const Icon = ch.icon;
           return (
             <a
