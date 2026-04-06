@@ -17,24 +17,7 @@
   Ancla #3D2865 → texto display, footer
 */
 
-@theme {
-  --color-bg: var(--bg);
-  --color-text: var(--text);
-  --color-card: var(--card);
-  --color-border: var(--border);
-  --color-muted: var(--muted);
-  --color-accent: var(--accent);
-  --color-accent-soft: var(--accent-soft);
-  --color-lavender: var(--lavender);
-  --color-lavender-deep: var(--lavender-deep);
-  --color-rose: var(--rose);
-  --color-sage: var(--sage);
-  --color-beige: var(--beige);
-  --color-ink: var(--ink);
-  --shadow-soft: 0 4px 20px rgba(0, 0, 0, 0.06);
-  /* Valor por defecto light; .dark redefine --shadow-accent en el elemento */
-  --shadow-accent: 0 4px 16px rgba(123, 94, 167, 0.3);
-}
+/* Theme tokens defined as CSS custom properties below in :root and .dark */
 
 /* — Paleta base (inmutable) — */
 :root {
