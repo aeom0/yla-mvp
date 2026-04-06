@@ -1,0 +1,5 @@
+# Sanity Studio
+dist/
+.sanity/
+node_modules/
+.env

@@ -1,0 +1,62 @@
+import { defineConfig } from 'sanity'
+import { structureTool } from 'sanity/structure'
+import { visionTool } from '@sanity/vision'
+import { schemaTypes } from './schemas'
+
+// Singletons — documentos únicos, no listas
+const singletonTypes = ['hero', 'about', 'philosophy', 'siteConfig']
+const singletonActions = (input: any[], context: { schemaType: { name: string } }) =>
+  singletonTypes.includes(context.schemaType.name)
+    ? input.filter(({ action }: any) => action !== 'duplicate' && action !== 'delete')
+    : input
+
+export default defineConfig({
+  name: 'yla-studio',
+  title: 'Yoga con Lógica y Alma',
+
+  projectId: 's6xwmbxz',
+  dataset: 'production',
+
+  plugins: [
+    structureTool({
+      structure: (S) =>
+        S.list()
+          .title('Contenido')
+          .items([
+            // --- Singletons ---
+            S.listItem()
+              .title('🌟 Hero — Sección principal')
+              .child(S.document().schemaType('hero').documentId('hero')),
+            S.listItem()
+              .title('🧘 Sobre Yube')
+              .child(S.document().schemaType('about').documentId('about')),
+            S.listItem()
+              .title('🌿 Filosofía — Pilares')
+              .child(S.document().schemaType('philosophy').documentId('philosophy')),
+            S.listItem()
+              .title('⚙️ Configuración del sitio')
+              .child(S.document().schemaType('siteConfig').documentId('siteConfig')),
+
+            S.divider(),
+
+            // --- Collections ---
+            S.documentTypeListItem('product').title('🛍️ Productos — Tienda'),
+            S.documentTypeListItem('program').title('🌀 Programas'),
+            S.documentTypeListItem('testimonial').title('💬 Testimonios'),
+            S.documentTypeListItem('faqItem').title('❓ Preguntas frecuentes'),
+            S.documentTypeListItem('classItem').title('🧘 Clases online'),
+          ]),
+    }),
+    visionTool(),
+  ],
+
+  schema: {
+    types: schemaTypes,
+    templates: (templates) =>
+      templates.filter(({ schemaType }) => !singletonTypes.includes(schemaType)),
+  },
+
+  document: {
+    actions: singletonActions,
+  },
+})
