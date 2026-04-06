@@ -7,6 +7,7 @@ Para convenciones de código ver `CLAUDE.md` y `.claude/skills/yla-dev-SKILL.md`
 
 ### Cambios recientes (últimos commits)
 
+- **Sanity (Fase 0-C):** landing `/` lee datos con **GROQ + ISR** (`src/lib/sanity/`, `landingMerge.ts`) con fallback a `content.ts`. **`POST /api/revalidate`** para webhooks. Variables `NEXT_PUBLIC_SANITY_*` y `SANITY_REVALIDATE_SECRET` en Vercel. **Studio desplegado:** [yogaconlogicayalma.sanity.studio](https://yogaconlogicayalma.sanity.studio) · `sanity.cli.ts` con `deployment.appId`. Pendiente típico: webhook en sanity.io/manage si aún no apunta a producción.
 - **Design tokens:** código y docs alineados con **Aurora Consciente** — `var(--accent)`, `--lavender-*`, `--rose*`, `--violet-anchor`; sin `--purple*` / `--gold*` en TSX. Programas: acento de card `lavender` | `rose` en `content.ts` (antes `gold` → `rose`).
 - **Programas:** rutas estáticas `/programas/[slug]` con ficha (etapas, `detail` en `content.ts`, CTA WhatsApp). En landing, card con botón «Conocer más» y descripción corta *debajo* del CTA.
 - **Philosophy:** cards alineadas (borde superior y CTA con `var(--accent)`), íconos centrados y más grandes; un CTA por pilar — **Cuerpo** → YouTube `@yogaconlogicayalma`, **Mente** → `/tests`, **Alma** → `/blog` (sin segundo enlace a YouTube en Alma).

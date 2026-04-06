@@ -23,7 +23,7 @@ description: >
 **Yoga con Lógica y Alma** es la plataforma digital de **Yube Karina** (ingeniera industrial + instructora de yoga con formación avanzada, 500h).
 El método fusiona estructura analítica con práctica espiritual. El asesor técnico es **Alberto**.
 
-**Fase actual:** Landing page completa + rutas de producto. Próximo: CMS Sanity (Fase 0-C) → PWA (Fase 1).
+**Fase actual:** Landing con Sanity (GROQ + ISR + fallback `content.ts`) + Studio en https://yogaconlogicayalma.sanity.studio. Próximo: extender CMS a más rutas / PWA (Fase 1).
 
 **Tagline:** *"Organizamos el bienestar, ritualizamos la estructura."*
 **Público:** Mujeres conscientes y emprendedoras, mercado hispanohablante (Venezuela, España, LATAM).
@@ -40,7 +40,7 @@ El método fusiona estructura analítica con práctica espiritual. El asesor té
 | Iconos | Lucide React ^0.539 | Ya instalado |
 | Tipografía | Playfair Display + Lato + Dancing Script | Via @fontsource |
 | Gestor de paquetes | Yarn 4 (Corepack) | `ENABLE_EXPERIMENTAL_COREPACK=1` en Vercel |
-| CMS (próximo) | Sanity Studio — free tier | Fase 0-C |
+| CMS | Sanity Studio (hosted) + dataset `production` · home desde GROQ | Fase 0-C en curso |
 | Backend | Supabase (`mwvgtxzvqhducjggycuu`) | Fase 2 |
 | Pagos | Stripe | Fase 2 |
 | Tienda | Payhip | Activo |
@@ -281,7 +281,7 @@ Fase 0-B ← Sprint actual
   Sprint 2: Precios en Shop + galería productos + StartHere.tsx
   Sprint 3: Resend conectado + dominio yogaconlogicayalma.com
 
-Fase 0-C → Sanity CMS
+Fase 0-C → Sanity CMS (landing live; /tienda y /programas pueden seguir en content.ts)
   Yube edita contenido sin tocar código
   ISR + webhook Vercel → actualización en ~30s
 

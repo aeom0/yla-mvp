@@ -1,8 +1,18 @@
-# Handoff para Cursor — Fase 0-C final: GROQ + Webhook + Deploy
+# Handoff para Cursor — Fase 0-C: GROQ + Webhook + Deploy
 
 > Estado al: abril 2026.
-> Studio funcionando en localhost:3333. Datos migrados a Sanity. Migración completada (commit 913c462).
-> Esta es la última etapa de la Fase 0-C. Ejecutar los 3 pasos en orden. Commitear al final de cada uno.
+>
+> **Hecho en repo / producción**
+> - Landing `/` consume Sanity vía GROQ + ISR (`src/lib/sanity/`) con **fallback** a `src/data/content.ts`.
+> - Endpoint `POST /api/revalidate` para webhooks (tags por `_type`).
+> - Variables públicas + `SANITY_REVALIDATE_SECRET` en **Vercel** (configuradas).
+> - **Studio en la nube:** https://yogaconlogicayalma.sanity.studio — deploy con `cd studio && yarn deploy --yes` (tras `yarn sanity login`). `sanity.cli.ts` incluye `deployment.appId` para evitar prompts.
+> - Migración inicial del dataset: script `studio/scripts/migrate-content.ts` + `yarn migrate:content`.
+>
+> **Pendiente manual / verificación**
+> - Webhook en **sanity.io/manage** → API → Webhooks apuntando al dominio de producción (ver §2.3).
+> - Invitar a Yube como Editor si aún no tiene acceso (§3.3).
+> - Probar E2E: editar en Studio → publicar → cambio visible en la web en ~1 min (ISR + webhook).
 
 ---
 
@@ -11,13 +21,14 @@
 - **Repo raíz:** `~/yla-mvp` — Next.js 15 App Router, React 19, Tailwind v4, TypeScript strict, Yarn 4
 - **Project ID Sanity:** `s6xwmbxz` · **Dataset:** `production`
 - **Vercel project:** `yogaconlogicayalma` · **Live:** `https://yla-mvp.vercel.app`
-- Todo el contenido vive actualmente en `src/data/content.ts`
-- Los schemas de Sanity están en `studio/schemas/` — 1:1 con ese contenido
-- **`src/data/content.ts` NO se elimina** — queda como fallback de tipos hasta validar en producción
+- **Tipos y fallback:** `src/data/content.ts` sigue siendo fuente de tipos y respaldo si Sanity falla o devuelve `null`.
+- **Schemas:** `studio/schemas/` — alineados con el contenido editable en Studio.
 
 ---
 
-## Paso 1 — Conectar Next.js a Sanity (GROQ + ISR)
+## Paso 1 — Conectar Next.js a Sanity (GROQ + ISR) — **implementado**
+
+> Referencia histórica. Código real: `src/lib/sanity/client.ts`, `queries.ts`, `landingMerge.ts`, `src/app/page.tsx`, `next.config.ts`.
 
 ### 1.1 Instalar el cliente de Sanity en el repo raíz
 
@@ -217,7 +228,9 @@ git push
 
 ---
 
-## Paso 2 — Webhook Sanity → Vercel (revalidación automática)
+## Paso 2 — Webhook Sanity → Vercel (revalidación automática) — **endpoint en repo**
+
+> La ruta `src/app/api/revalidate/route.ts` ya existe. Falta confirmar el webhook en Sanity (§2.3) si no está creado.
 
 ### 2.1 Crear `src/app/api/revalidate/route.ts`
 
@@ -285,15 +298,17 @@ Ir a **sanity.io/manage → proyecto s6xwmbxz → API → Webhooks → Add webho
 - **Projection:** `{ _type }`
 - **HTTP method:** POST
 
-### 2.4 Agregar variables en Vercel (hacer Alberto manualmente)
+### 2.4 Variables en Vercel — **configuradas**
 
-En **vercel.com → proyecto yogaconlogicayalma → Settings → Environment Variables**:
+En **vercel.com → proyecto yogaconlogicayalma → Settings → Environment Variables** deben existir (valores según tu secret real):
 
 ```
 NEXT_PUBLIC_SANITY_PROJECT_ID = s6xwmbxz
 NEXT_PUBLIC_SANITY_DATASET = production
-SANITY_REVALIDATE_SECRET = yla-revalidate-2026
+SANITY_REVALIDATE_SECRET = <mismo valor que en webhook y .env.local>
 ```
+
+Tras cambiar variables: redeploy del proyecto en Vercel.
 
 ### Commit Paso 2
 
@@ -305,26 +320,29 @@ git push
 
 ---
 
-## Paso 3 — Deploy del Studio en la nube
+## Paso 3 — Deploy del Studio en la nube — **Studio publicado**
 
-### 3.1 Verificar sesión de Sanity CLI
+### 3.1 Sesión de Sanity CLI
+
+En **Sanity CLI v6** no existe `sanity whoami`. Usar:
 
 ```bash
 cd ~/yla-mvp/studio
-yarn sanity whoami
+yarn sanity login
 ```
 
-Si no muestra la cuenta de Yube: `yarn sanity login`
+si `deploy` responde con error de permisos (`sanity.project.read`, etc.).
 
 ### 3.2 Deploy
 
 ```bash
-yarn deploy
+cd ~/yla-mvp/studio
+yarn deploy --yes
 ```
 
-Responder `yogaconlogicayalma` si pregunta el nombre del host (ya está en `sanity.cli.ts`).
+Hostname: **`yogaconlogicayalma`** (en `sanity.cli.ts`). El `deployment.appId` en el mismo archivo evita pedir application id en deploys siguientes.
 
-Studio publicado en: **https://yogaconlogicayalma.sanity.studio**
+**Studio en producción:** https://yogaconlogicayalma.sanity.studio
 
 ### 3.3 Invitar a Yube al proyecto (hacer Alberto manualmente)
 
@@ -341,23 +359,18 @@ Studio publicado en: **https://yogaconlogicayalma.sanity.studio**
 
 ### Commit Paso 3
 
-```bash
-# Solo si el deploy generó archivos locales
-git add .
-git commit -m "feat(sanity): deploy Studio to yogaconlogicayalma.sanity.studio"
-git push
-```
+Los cambios versionables suelen ser solo `studio/sanity.cli.ts` (`deployment.appId`). No commitear `.env` ni `dist/`.
 
 ---
 
 ## Notas importantes para Cursor
 
 - **No eliminar `src/data/content.ts`** — es el fallback y la fuente de tipos
-- **Si `yarn build` falla por tipos:** ajustar queries GROQ para que el shape coincida — no tocar los componentes
-- **Imágenes en Sanity:** los productos/testimonios tienen `image`/`photo` vacíos — Yube los sube desde el Studio. `next/image` con `src={null | undefined}` debe mostrar el placeholder existente del componente
-- **`revalidate: 60`** en queries = fallback si el webhook falla
-- **Pasos 2.3, 2.4 y 3.3** requieren acción manual de Alberto en los dashboards de Sanity y Vercel — documentarlos claramente en el output
+- **Queries:** `src/lib/sanity/queries.ts` — si `yarn build` falla por tipos, ajustar GROQ o `landingMerge.ts` antes de romper componentes
+- **Imágenes:** productos/testimonios pueden tener `image`/`photo` vacíos hasta que Yube suba assets en Studio; los componentes ya contemplan placeholder
+- **`revalidate: 60`** en fetch = respaldo si el webhook falla
+- **Pendiente manual típico:** webhook Sanity (§2.3), invitación a Yube (§3.3); Vercel env (§2.4) ya aplicado
 
 ---
 
-*Handoff generado por Claude. Ver ROADMAP.md y CLAUDE.md para contexto completo del proyecto.*
+*Handoff vivo — Fase 0-C. Ver ROADMAP.md y CLAUDE.md.*

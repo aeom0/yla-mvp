@@ -1,7 +1,7 @@
 # CLAUDE.md — Yoga con Lógica y Alma
 
 > Guía de contexto para Claude Code. Lee este archivo antes de tocar cualquier línea de código.
-> Última revisión: abril 2026.
+> Última revisión: abril 2026 (Fase 0-C: Sanity en landing + Studio desplegado).
 
 ---
 
@@ -26,7 +26,7 @@ El producto actual es un **sitio web completo** que actúa como hub de captació
 | Iconos | Lucide React |
 | Tipografía | Playfair Display + Lato + Dancing Script (`@fontsource`) |
 | Gestor de paquetes | Yarn 4 (Corepack — `ENABLE_EXPERIMENTAL_COREPACK=1` en Vercel) |
-| CMS (próximo — Fase 0-C) | Sanity Studio (free tier) |
+| CMS (Fase 0-C) | Sanity — Studio https://yogaconlogicayalma.sanity.studio · landing `/` vía GROQ + ISR (`src/lib/sanity/`) · `content.ts` = fallback + tipos |
 | Backend (Fase 2) | Supabase (`mwvgtxzvqhducjggycuu`) |
 | Pagos (Fase 2) | Stripe |
 | Tienda digital | Payhip — https://payhip.com/ConLogicayAlma |
@@ -180,22 +180,25 @@ return <section>El arte de volver a ti</section>
 
 ---
 
-## 🗂 Fase 0-C — Sanity CMS (próxima tras Sprint 3)
+## 🗂 Fase 0-C — Sanity CMS (activo en landing + Studio en nube)
 
-Yube editará estos contenidos sin tocar código:
+Yube edita contenido en **Studio** sin tocar código. El **dataset** es la fuente para la home; `content.ts` sigue como **fallback** y tipos.
 
 | Contenido | Schema |
 |---|---|
-| Textos Hero, stats | `hero` (singleton) |
-| Productos tienda (título, precio, badge, imagen) | `product` (collection) |
-| Programas (etapas, detail, CTA) | `program` (collection) |
+| Textos Hero, banner/video | `hero` (singleton) |
+| Productos tienda | `product` (collection) |
+| Programas | `program` (collection) |
 | Testimonios | `testimonial` (collection) |
 | FAQ | `faqItem` (collection) |
-| About (foto, bio, quote) | `about` (singleton) |
-| Links sociales | `siteConfig` (singleton) |
-| Clases y planes | `class` (collection) |
+| About | `about` (singleton) |
+| Filosofía / pilares | `philosophy` (singleton) |
+| Redes, footer, newsletter, comunidad | `siteConfig` (singleton) |
+| Clases online | `classItem` (collection) |
 
-**Flujo:** Sanity Studio → webhook → Vercel ISR revalida en ~30s. Sin deploy manual.
+**Flujo:** publicar en Studio → (webhook Sanity → `POST /api/revalidate`) → `revalidateTag` por tipo · además `revalidate: 60` en queries como respaldo.
+
+**Operaciones:** migración `cd studio && yarn migrate:content` · deploy Studio `cd studio && yarn deploy --yes` (requiere `yarn sanity login`).
 
 ---
 
@@ -225,7 +228,7 @@ Detalle completo en **[ROADMAP.md](./ROADMAP.md)**.
 
 ```
 Fase 0-B (Sprint actual) → Assets reales + precios + email
-Fase 0-C               → Sanity CMS
+Fase 0-C               → Sanity CMS (landing + Studio live; rutas /tienda y /programas siguen en content.ts hasta siguiente iteración)
 Fase 1                 → PWA: bitácora, ritual, dashboard espiritual
 Fase 2                 → Supabase + Stripe
 Fase 3                 → App nativa
@@ -251,6 +254,7 @@ Fase 4                 → Concept Store física
 ## 🔗 Links del proyecto
 
 - Live: https://yla-mvp.vercel.app
+- Sanity Studio: https://yogaconlogicayalma.sanity.studio
 - Repo: https://github.com/aeom0/yla-mvp
 - Payhip: https://payhip.com/ConLogicayAlma
 - WhatsApp directo: https://wa.me/584243547179
