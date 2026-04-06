@@ -6,4 +6,7 @@ export default defineCliConfig({
     dataset: 'production',
   },
   studioHost: 'yogaconlogicayalma',
+  deployment: {
+    appId: 'jsopjvk7g1yeb2ciuamignil',
+  },
 })
