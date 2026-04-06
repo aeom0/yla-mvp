@@ -1,14 +1,18 @@
-import { defineConfig } from 'sanity'
+import { defineConfig, type DocumentActionsResolver } from 'sanity'
 import { structureTool } from 'sanity/structure'
 import { visionTool } from '@sanity/vision'
 import { schemaTypes } from './schemas'
 
 // Singletons — documentos únicos, no listas
-const singletonTypes = ['hero', 'about', 'philosophy', 'siteConfig']
-const singletonActions = (input: any[], context: { schemaType: { name: string } }) =>
-  singletonTypes.includes(context.schemaType.name)
-    ? input.filter(({ action }: any) => action !== 'duplicate' && action !== 'delete')
-    : input
+const singletonTypes = ['hero', 'about', 'philosophy', 'siteConfig'] as const
+
+const singletonActions: DocumentActionsResolver = (prev, context) => {
+  const st = context.schemaType as string | { name: string }
+  const typeName = typeof st === 'string' ? st : st.name
+  return (singletonTypes as readonly string[]).includes(typeName)
+    ? prev.filter(({ action }) => action !== 'duplicate' && action !== 'delete')
+    : prev
+}
 
 export default defineConfig({
   name: 'yla-studio',
@@ -53,7 +57,9 @@ export default defineConfig({
   schema: {
     types: schemaTypes,
     templates: (templates) =>
-      templates.filter(({ schemaType }) => !singletonTypes.includes(schemaType)),
+      templates.filter(
+        ({ schemaType }) => !(singletonTypes as readonly string[]).includes(schemaType)
+      ),
   },
 
   document: {
