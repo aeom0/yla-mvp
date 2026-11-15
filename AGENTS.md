@@ -7,6 +7,15 @@ Fuente de verdad compartida para agentes. Claude Code: ver `CLAUDE.md` (importa 
 
 ---
 
+
+### Antigravity / WSL2 / MCP (entorno Alberto)
+
+- **IDE Remote-WSL** (y Cursor/Claude en WSL): rutas Linux `/home/alber/<repo>`.
+- **Antigravity 2.0** (app Windows): rutas `Z:\home\alber\<repo>` — **nunca** `\\wsl.localhost\...` ni `\\wsl$\...` (bug UNC → “Folder doesn't exist”).
+- Remap persistente: `%USERPROFILE%\.gemini\scripts\map-wsl-z.ps1` (`Z:` → `\\wsl.localhost\Ubuntu`).
+- MCP globales: `~/.gemini/config/mcp_config.json` (Windows y WSL; symlink en `antigravity/`). Workspace: `.agents/mcp_config.json` si existe.
+- Detalle: `.agents/rules/ops-antigravity-mcp.md`.
+
 ## 🧘‍♀️ Qué es este proyecto
 
 **Yoga con Lógica y Alma** es la plataforma digital de Yube Karina, ingeniera industrial e instructora de yoga con formación avanzada (500h), creadora de un método que fusiona estructura analítica con práctica espiritual.
