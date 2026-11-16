@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "github": {
+      "command": "/home/alber/.cursor/bin/github-mcp.sh",
+      "args": []
+    },
+    "vercel": {
+      "url": "https://mcp.vercel.com"
+    }
+  }
+}

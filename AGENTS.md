@@ -13,8 +13,8 @@ Fuente de verdad compartida para agentes. Claude Code: ver `CLAUDE.md` (importa 
 - **IDE Remote-WSL** (y Cursor/Claude en WSL): rutas Linux `/home/alber/<repo>`.
 - **Antigravity 2.0** (app Windows): rutas `Z:\home\alber\<repo>` — **nunca** `\\wsl.localhost\...` ni `\\wsl$\...` (bug UNC → “Folder doesn't exist”).
 - Remap persistente: `%USERPROFILE%\.gemini\scripts\map-wsl-z.ps1` (`Z:` → `\\wsl.localhost\Ubuntu`).
-- MCP globales: `~/.gemini/config/mcp_config.json` (Windows y WSL; symlink en `antigravity/`). Workspace: `.agents/mcp_config.json` si existe.
-- Detalle: `.agents/rules/ops-antigravity-mcp.md`.
+- MCP workspace: `.agents/mcp_config.json` — solo `github` + `vercel`. **Sin MCP Supabase** (no hay BD activa en este repo; Sanity/landing).
+- Detalle Antigravity: `.agents/rules/ops-antigravity-mcp.md` (canónico en zm-tech).
 
 ## 🧘‍♀️ Qué es este proyecto
 

@@ -1,60 +1,50 @@
 ---
 trigger: model_decision
-description: 'Antigravity 2.0 vs IDE Remote-WSL (ruta Z:), MCP globales OAuth y scripts de remap — entorno WSL2 Windows 11 de Alberto'
+description: 'Antigravity 2.0 vs IDE Remote-WSL (ruta Z:), MCP stdio Supabase por org/PAT, remap WSL'
 ---
 
 # Antigravity / Gemini — WSL2 + MCP
 
-Aplica a cualquier agente (Gemini, Cursor, Claude) que configure Antigravity, abra carpetas desde Windows o toque MCP globales. **No imprimir tokens ni valores de `env`.**
+Aplica a cualquier agente (Gemini, Cursor, Claude) que configure Antigravity, abra carpetas desde Windows o toque MCP. **No imprimir tokens ni valores de `env`.**
+
+Mapa canónico de orgs/PAT/proyectos: monorepo `zm-tech` → `docs/SUPABASE.md` § Orgs, proyectos y PAT.
 
 ## Dos clientes (no confundir)
 
-| Cliente                       | Corre en       | Ruta del repo          |
-| ----------------------------- | -------------- | ---------------------- |
-| Antigravity IDE + Remote-WSL  | Ubuntu (WSL2)  | `/home/alber/<repo>`   |
+| Cliente | Corre en | Ruta del repo |
+| --- | --- | --- |
+| Antigravity IDE + Remote-WSL | Ubuntu (WSL2) | `/home/alber/<repo>` |
 | Antigravity 2.0 (app Windows) | Windows nativo | `Z:\home\alber\<repo>` |
-| Cursor / Claude Code en WSL   | Ubuntu         | `/home/alber/<repo>`   |
+| Cursor / Claude Code en WSL | Ubuntu | `/home/alber/<repo>` |
 
-- Antigravity 2.0 **no resuelve** UNC `\\wsl.localhost\...` ni `\\wsl$\...` → UI: “Folder doesn't exist”.
-- Workaround: unidad **`Z:`** → `\\wsl.localhost\Ubuntu` (`net use` persistente + Startup).
-- Script: `%USERPROFILE%\.gemini\scripts\map-wsl-z.ps1` (bat en Startup).
-- Si falta `Z:`: levantar WSL y correr el script. **No** es un problema de `PATH`.
-- **No** agregar MCP `wsl-filesystem`: Antigravity ya ve el workspace.
-- Preferido para coding agentic del monorepo: **IDE Remote-WSL** (o Cursor/Claude en WSL). 2.0 solo con `Z:\...`.
+- Antigravity 2.0 **no resuelve** UNC `\\wsl.localhost\...` → “Folder doesn't exist”.
+- Workaround: `Z:` → `\\wsl.localhost\Ubuntu` (`%USERPROFILE%\.gemini\scripts\map-wsl-z.ps1`).
+- Preferido: **IDE Remote-WSL**. No agregar MCP `wsl-filesystem`.
 
-## Proyectos registrados en Antigravity 2.0 (`Z:\`)
+## MCP — archivos
 
-`zm-tech`, `naturalforce-suite`, `zetaeme-enterprise-suite`, `ZM-Lash-and-Nails-Beauty`, `guataparobr`, `yla-mvp`, `prolens`, `ia-scout360`, `condoapp` (`CondominiOS\condoapp`).
+| Ámbito | Archivo |
+| --- | --- |
+| Global WSL | `~/.gemini/config/mcp_config.json` |
+| Workspace | `<repo>/.agents/mcp_config.json` |
+| Wrappers Supabase | `~/.gemini/scripts/mcp-supabase-*.sh` |
 
-URI en `%.gemini\config\projects\*.json`: `file:///Z:/home/alber/...` (nunca `file://wsl.localhost/...`).
+**Manage MCP panel:** bug de spinner eterno — ignorar; configurar por archivo y probar en el chat.
 
-## MCP — dónde viven
+## Orgs → PAT → MCP (WSL stdio)
 
-| Ámbito                   | Archivo                                                         |
-| ------------------------ | --------------------------------------------------------------- |
-| Global Windows           | `%USERPROFILE%\.gemini\config\mcp_config.json`                  |
-| Global Windows (symlink) | `%USERPROFILE%\.gemini\antigravity\mcp_config.json` → `config\` |
-| Global WSL2              | `~/.gemini/config/mcp_config.json`                              |
-| Global WSL2 (symlink)    | `~/.gemini/antigravity/mcp_config.json` → `../config/`          |
-| Workspace                | `<repo>/.agents/mcp_config.json`                                |
+| Org | Proyectos | MCP | PAT |
+| --- | --- | --- | --- |
+| GeemaStudio (`ieuur…`) | `udelx…` | `ClaudeSupabase` | `SUPABASE_ZMLASH_PAT` |
+| ZMTech (`eurhu…`) | `llaco…` hub · `ddfm…` Natural Force | `SupabaseZMTech` · `SupabaseNaturalForce` | `SUPABASE_ACCESS_TOKEN` ← `~/.supabase/access-token-zmtech` |
+| Alberto Orta (`behuf…`) | `laves…` ZetaEme | `SupabaseZetaeme` | `SUPABASE_PAT_ALBERTO_ORTA` ← `~/.supabase/access-token-alberto-orta` |
 
-Remotos: Streamable HTTP con campo **`url`** (también acepta `serverUrl`). OAuth al conectar; no meter PAT en el JSON.
+Sin BD Supabase activa (no montar MCP de proyecto): YLA, Guataparo, Prolens, IA Scout360, CondoApp.
 
-### Servidores globales típicos
+Otros MCP: `vercel` / `devtools` (HTTP OAuth) · `github` (`~/.cursor/bin/github-mcp.sh`) · `gcp` (stdio SA) · `pencil` solo Windows (`.exe`, no borrar).
 
-| Nombre                 | Transporte | Notas                                                                                   |
-| ---------------------- | ---------- | --------------------------------------------------------------------------------------- |
-| `ClaudeSupabase`       | HTTP       | Geema / ZM Lash — `udelxwwnyivknslueerr`                                                |
-| `SupabaseZMTech`       | HTTP       | Hub — `llacowjutjfefboqgfnj`                                                            |
-| `SupabaseNaturalForce` | HTTP       | `ddfmmgddzphxidocmjba`                                                                  |
-| `SupabaseYla`          | HTTP       | YLA — `mwvgtxzvqhducjggycuu`                                                            |
-| `SupabaseZetaeme`      | HTTP       | ZetaEme — `lavesnngygpwgmkyvuim`                                                        |
-| `vercel`               | HTTP       | OAuth Vercel                                                                            |
-| `devtools`             | HTTP       | Meta / Facebook DevTools                                                                |
-| `github`               | stdio      | Windows: `npx` + env `GITHUB_PERSONAL_ACCESS_TOKEN`. WSL: `~/.cursor/bin/github-mcp.sh` |
-| `pencil`               | stdio      | Solo Windows (`.exe` Pen). **No borrar**                                                |
-| `gcp`                  | stdio      | Solo WSL (`gcp-mcp-server`)                                                             |
+## CLI (no son MCP)
 
-Al editar MCP de Antigravity: **merge** (no pisar `pencil`). No tocar configs de Cursor, VS Code ni Claude Desktop salvo que Alberto lo pida.
+`gh` · `eas` · `vercel` · `supabase` · Meta Graph vía MCP `devtools`
 
-Workspace `.agents/mcp_config.json` puede seguir con stdio/`serverUrl` para Claude Code; el global de Antigravity prioriza HTTP+OAuth para Windows y WSL.
+Al editar: **merge** (no pisar `pencil`). No tocar Cursor/VS Code/Claude Desktop salvo pedido.
