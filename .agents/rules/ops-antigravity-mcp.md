@@ -1,50 +1,51 @@
 ---
 trigger: model_decision
-description: 'Antigravity 2.0 vs IDE Remote-WSL (ruta Z:), MCP stdio Supabase por org/PAT, remap WSL'
+description: "Antigravity 2.0 vs IDE Remote-WSL (ruta Z:), MCP stdio+PAT Windows/WSL, vercel Bearer, remap WSL"
 ---
 
 # Antigravity / Gemini — WSL2 + MCP
 
 Aplica a cualquier agente (Gemini, Cursor, Claude) que configure Antigravity, abra carpetas desde Windows o toque MCP. **No imprimir tokens ni valores de `env`.**
 
-Mapa canónico de orgs/PAT/proyectos: monorepo `zm-tech` → `docs/SUPABASE.md` § Orgs, proyectos y PAT.
+Mapa canónico de orgs/PAT/proyectos: monorepo `zm-tech` → `docs/SUPABASE.md` § Orgs, proyectos y PAT. Canónico detallado: `zm-tech/.agents/rules/ops-antigravity-mcp.md`.
 
 ## Dos clientes (no confundir)
 
-| Cliente | Corre en | Ruta del repo |
-| --- | --- | --- |
-| Antigravity IDE + Remote-WSL | Ubuntu (WSL2) | `/home/alber/<repo>` |
-| Antigravity 2.0 (app Windows) | Windows nativo | `Z:\home\alber\<repo>` |
-| Cursor / Claude Code en WSL | Ubuntu | `/home/alber/<repo>` |
+| Cliente                       | Corre en       | Ruta del repo          | MCP global (archivo distinto)                  |
+| ----------------------------- | -------------- | ---------------------- | ---------------------------------------------- |
+| Antigravity IDE + Remote-WSL  | Ubuntu (WSL2)  | `/home/alber/<repo>`   | `~/.gemini/config/mcp_config.json` (Linux)     |
+| Antigravity 2.0 (app Windows) | Windows nativo | `Z:\home\alber\<repo>` | `%USERPROFILE%\.gemini\config\mcp_config.json` |
+| Cursor / Claude Code en WSL   | Ubuntu         | `/home/alber/<repo>`   | (Cursor/Claude propios; no este archivo)       |
 
 - Antigravity 2.0 **no resuelve** UNC `\\wsl.localhost\...` → “Folder doesn't exist”.
 - Workaround: `Z:` → `\\wsl.localhost\Ubuntu` (`%USERPROFILE%\.gemini\scripts\map-wsl-z.ps1`).
-- Preferido: **IDE Remote-WSL**. No agregar MCP `wsl-filesystem`.
+- Los dos `mcp_config.json` **no son el mismo archivo** (no symlink WSL↔Windows).
+- Supabase: **stdio + PAT** (no OAuth `mcp.supabase.com`).
 
-## MCP — archivos
+## Wrappers / secretos
 
-| Ámbito | Archivo |
-| --- | --- |
-| Global WSL | `~/.gemini/config/mcp_config.json` |
-| Workspace | `<repo>/.agents/mcp_config.json` |
-| Wrappers Supabase | `~/.gemini/scripts/mcp-supabase-*.sh` |
+| Ámbito           | Path                                                                                |
+| ---------------- | ----------------------------------------------------------------------------------- |
+| Wrappers WSL     | `~/.gemini/scripts/mcp-supabase-*.sh`                                               |
+| Wrappers Windows | `%USERPROFILE%\.gemini\scripts\mcp-{supabase,github,vercel}.cmd` (vía `cmd.exe /c`) |
+| PAT espejo       | `~/.supabase/` y `%USERPROFILE%\.supabase/`                                         |
 
-**Manage MCP panel:** bug de spinner eterno — ignorar; configurar por archivo y probar en el chat.
+## Vercel MCP (Antigravity 2.0)
 
-## Orgs → PAT → MCP (WSL stdio)
+`api.vercel.com` **timeout** en esta red → OAuth/`mcp-remote` DCR falla. Usar Bearer del token `vercel login` + `mcp-vercel.cmd` (`--header-file` a `vercel-mcp-headers.txt`). No montar `url: https://mcp.vercel.com` con Authenticate nativo.
 
-| Org | Proyectos | MCP | PAT |
-| --- | --- | --- | --- |
-| GeemaStudio (`ieuur…`) | `udelx…` | `ClaudeSupabase` | `SUPABASE_ZMLASH_PAT` |
-| ZMTech (`eurhu…`) | `llaco…` hub · `ddfm…` Natural Force | `SupabaseZMTech` · `SupabaseNaturalForce` | `SUPABASE_ACCESS_TOKEN` ← `~/.supabase/access-token-zmtech` |
-| Alberto Orta (`behuf…`) | `laves…` ZetaEme | `SupabaseZetaeme` | `SUPABASE_PAT_ALBERTO_ORTA` ← `~/.supabase/access-token-alberto-orta` |
+## GitHub (2.0)
 
-Sin BD Supabase activa (no montar MCP de proyecto): YLA, Guataparo, Prolens, IA Scout360, CondoApp.
+`mcp-github.cmd` + `%USERPROFILE%\.supabase\github-pat` (espejo de `gh auth token`).
 
-Otros MCP: `vercel` / `devtools` (HTTP OAuth) · `github` (`~/.cursor/bin/github-mcp.sh`) · `gcp` (stdio SA) · `pencil` solo Windows (`.exe`, no borrar).
+## Orgs → MCP (resumen)
 
-## CLI (no son MCP)
+| Org          | MCP                                       | PAT file                    |
+| ------------ | ----------------------------------------- | --------------------------- |
+| GeemaStudio  | `ClaudeSupabase`                          | `access-token`              |
+| ZMTech       | `SupabaseZMTech` · `SupabaseNaturalForce` | `access-token-zmtech`       |
+| Alberto Orta | `SupabaseZetaeme`                         | `access-token-alberto-orta` |
 
-`gh` · `eas` · `vercel` · `supabase` · Meta Graph vía MCP `devtools`
+Sin BD Supabase: YLA, Guataparo, Prolens, IA Scout360, CondoApp — solo `github` / `vercel` / `pencil` si aplica.
 
-Al editar: **merge** (no pisar `pencil`). No tocar Cursor/VS Code/Claude Desktop salvo pedido.
+`pencil` solo Windows (no borrar). Merge al editar config de 2.0.
